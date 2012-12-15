@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class ADNUser;
+#import "ADNUser.h"
 
 @interface ADNPost : NSObject
 

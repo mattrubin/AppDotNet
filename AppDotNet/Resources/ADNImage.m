@@ -10,8 +10,4 @@
 
 @implementation ADNImage
 
-@synthesize height;
-@synthesize width;
-@synthesize url;
-
 @end
