@@ -11,11 +11,19 @@
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A76167C5FC90071D908 /* AppDotNet.m */; };
 		8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */; };
-		8CED1A81167C5FC90071D908 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A80167C5FC90071D908 /* UIKit.framework */; };
 		8CED1A82167C5FC90071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A85167C5FC90071D908 /* libAppDotNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6C167C5FC80071D908 /* libAppDotNet.a */; };
 		8CED1A8B167C5FC90071D908 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CED1A89167C5FC90071D908 /* InfoPlist.strings */; };
 		8CED1A8E167C5FC90071D908 /* AppDotNetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A8D167C5FC90071D908 /* AppDotNetTests.m */; };
+		8CED1A9E167C64110071D908 /* ADNPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A9D167C64110071D908 /* ADNPost.m */; };
+		8CED1AA1167C6DAA0071D908 /* ADNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AA0167C6DAA0071D908 /* ADNUser.m */; };
+		8CED1AA4167C6DC20071D908 /* ADNStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AA3167C6DC20071D908 /* ADNStream.m */; };
+		8CED1AA8167C6FD80071D908 /* ADNChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AA7167C6FD80071D908 /* ADNChannel.m */; };
+		8CED1AAB167C6FE80071D908 /* ADNFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AAA167C6FE80071D908 /* ADNFilter.m */; };
+		8CED1AAE167C706B0071D908 /* ADNInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AAD167C706B0071D908 /* ADNInteraction.m */; };
+		8CED1AB1167C70CF0071D908 /* ADNMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB0167C70CF0071D908 /* ADNMessage.m */; };
+		8CED1AB5167C71D20071D908 /* ADNStreamMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */; };
+		8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB7167C71E40071D908 /* ADNToken.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,11 +57,28 @@
 		8CED1A76167C5FC90071D908 /* AppDotNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDotNet.m; sourceTree = "<group>"; };
 		8CED1A7D167C5FC90071D908 /* AppDotNetTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDotNetTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		8CED1A80167C5FC90071D908 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8CED1A88167C5FC90071D908 /* AppDotNetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppDotNetTests-Info.plist"; sourceTree = "<group>"; };
 		8CED1A8A167C5FC90071D908 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8CED1A8C167C5FC90071D908 /* AppDotNetTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDotNetTests.h; sourceTree = "<group>"; };
 		8CED1A8D167C5FC90071D908 /* AppDotNetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDotNetTests.m; sourceTree = "<group>"; };
+		8CED1A9C167C64110071D908 /* ADNPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNPost.h; sourceTree = "<group>"; };
+		8CED1A9D167C64110071D908 /* ADNPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNPost.m; sourceTree = "<group>"; };
+		8CED1A9F167C6DAA0071D908 /* ADNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNUser.h; sourceTree = "<group>"; };
+		8CED1AA0167C6DAA0071D908 /* ADNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNUser.m; sourceTree = "<group>"; };
+		8CED1AA2167C6DC20071D908 /* ADNStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNStream.h; sourceTree = "<group>"; };
+		8CED1AA3167C6DC20071D908 /* ADNStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNStream.m; sourceTree = "<group>"; };
+		8CED1AA6167C6FD70071D908 /* ADNChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNChannel.h; sourceTree = "<group>"; };
+		8CED1AA7167C6FD80071D908 /* ADNChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNChannel.m; sourceTree = "<group>"; };
+		8CED1AA9167C6FE80071D908 /* ADNFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFilter.h; sourceTree = "<group>"; };
+		8CED1AAA167C6FE80071D908 /* ADNFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFilter.m; sourceTree = "<group>"; };
+		8CED1AAC167C706B0071D908 /* ADNInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNInteraction.h; sourceTree = "<group>"; };
+		8CED1AAD167C706B0071D908 /* ADNInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNInteraction.m; sourceTree = "<group>"; };
+		8CED1AAF167C70CE0071D908 /* ADNMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMessage.h; sourceTree = "<group>"; };
+		8CED1AB0167C70CF0071D908 /* ADNMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMessage.m; sourceTree = "<group>"; };
+		8CED1AB3167C71D20071D908 /* ADNStreamMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNStreamMarker.h; sourceTree = "<group>"; };
+		8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNStreamMarker.m; sourceTree = "<group>"; };
+		8CED1AB6167C71E40071D908 /* ADNToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNToken.h; sourceTree = "<group>"; };
+		8CED1AB7167C71E40071D908 /* ADNToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNToken.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +95,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */,
-				8CED1A81167C5FC90071D908 /* UIKit.framework in Frameworks */,
 				8CED1A82167C5FC90071D908 /* Foundation.framework in Frameworks */,
 				8CED1A85167C5FC90071D908 /* libAppDotNet.a in Frameworks */,
 			);
@@ -103,7 +127,6 @@
 			children = (
 				8CED1A6F167C5FC80071D908 /* Foundation.framework */,
 				8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */,
-				8CED1A80167C5FC90071D908 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +136,7 @@
 			children = (
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
+				8CED1A97167C61580071D908 /* Resources */,
 				8CED1A72167C5FC90071D908 /* Supporting Files */,
 			);
 			path = AppDotNet;
@@ -143,6 +167,31 @@
 				8CED1A89167C5FC90071D908 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CED1A97167C61580071D908 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8CED1AA6167C6FD70071D908 /* ADNChannel.h */,
+				8CED1AA7167C6FD80071D908 /* ADNChannel.m */,
+				8CED1AA9167C6FE80071D908 /* ADNFilter.h */,
+				8CED1AAA167C6FE80071D908 /* ADNFilter.m */,
+				8CED1AAC167C706B0071D908 /* ADNInteraction.h */,
+				8CED1AAD167C706B0071D908 /* ADNInteraction.m */,
+				8CED1AAF167C70CE0071D908 /* ADNMessage.h */,
+				8CED1AB0167C70CF0071D908 /* ADNMessage.m */,
+				8CED1A9C167C64110071D908 /* ADNPost.h */,
+				8CED1A9D167C64110071D908 /* ADNPost.m */,
+				8CED1AA2167C6DC20071D908 /* ADNStream.h */,
+				8CED1AA3167C6DC20071D908 /* ADNStream.m */,
+				8CED1AB3167C71D20071D908 /* ADNStreamMarker.h */,
+				8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */,
+				8CED1AB6167C71E40071D908 /* ADNToken.h */,
+				8CED1AB7167C71E40071D908 /* ADNToken.m */,
+				8CED1A9F167C6DAA0071D908 /* ADNUser.h */,
+				8CED1AA0167C6DAA0071D908 /* ADNUser.m */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +239,7 @@
 		8CED1A63167C5FC80071D908 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ADN;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Matt Rubin";
 			};
@@ -244,6 +294,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */,
+				8CED1A9E167C64110071D908 /* ADNPost.m in Sources */,
+				8CED1AA1167C6DAA0071D908 /* ADNUser.m in Sources */,
+				8CED1AA4167C6DC20071D908 /* ADNStream.m in Sources */,
+				8CED1AA8167C6FD80071D908 /* ADNChannel.m in Sources */,
+				8CED1AAB167C6FE80071D908 /* ADNFilter.m in Sources */,
+				8CED1AAE167C706B0071D908 /* ADNInteraction.m in Sources */,
+				8CED1AB1167C70CF0071D908 /* ADNMessage.m in Sources */,
+				8CED1AB5167C71D20071D908 /* ADNStreamMarker.m in Sources */,
+				8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
