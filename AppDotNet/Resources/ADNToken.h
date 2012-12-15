@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ADNUser.h"
+
 @interface ADNToken : NSObject
+
+@property NSString *clientID;
+@property NSString *clientLink;
+@property NSString *clientName;
+
+@property NSSet *scopes;
+
+@property ADNUser *user;
 
 @end
