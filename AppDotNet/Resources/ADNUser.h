@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ADNImage.h"
+
 @interface ADNUser : NSObject
 
 // Primary identifier for a user. This idspace is unique to User objects. There can be a Post and User with the same ID; no relation is implied.
@@ -34,9 +36,9 @@
 
 
 // Object representing the URL and original size of the user's avatar.
-@property id avatarImage;
+@property ADNImage *avatarImage;
 // Object representing the URL and original size of the user's cover image.
-@property id coverImage;
+@property ADNImage *coverImage;
 
 
 // An account can be one of the following types: human, bot, corporate, or feed.

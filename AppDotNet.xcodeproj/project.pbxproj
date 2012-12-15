@@ -24,6 +24,7 @@
 		8CED1AB1167C70CF0071D908 /* ADNMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB0167C70CF0071D908 /* ADNMessage.m */; };
 		8CED1AB5167C71D20071D908 /* ADNStreamMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */; };
 		8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB7167C71E40071D908 /* ADNToken.m */; };
+		8CED1ABC167CD7950071D908 /* ADNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ABB167CD7950071D908 /* ADNImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNStreamMarker.m; sourceTree = "<group>"; };
 		8CED1AB6167C71E40071D908 /* ADNToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNToken.h; sourceTree = "<group>"; };
 		8CED1AB7167C71E40071D908 /* ADNToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNToken.m; sourceTree = "<group>"; };
+		8CED1ABA167CD7950071D908 /* ADNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNImage.h; sourceTree = "<group>"; };
+		8CED1ABB167CD7950071D908 /* ADNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				8CED1AB7167C71E40071D908 /* ADNToken.m */,
 				8CED1A9F167C6DAA0071D908 /* ADNUser.h */,
 				8CED1AA0167C6DAA0071D908 /* ADNUser.m */,
+				8CED1ABA167CD7950071D908 /* ADNImage.h */,
+				8CED1ABB167CD7950071D908 /* ADNImage.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				8CED1AB1167C70CF0071D908 /* ADNMessage.m in Sources */,
 				8CED1AB5167C71D20071D908 /* ADNStreamMarker.m in Sources */,
 				8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */,
+				8CED1ABC167CD7950071D908 /* ADNImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
