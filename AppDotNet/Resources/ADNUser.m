@@ -10,4 +10,33 @@
 
 @implementation ADNUser
 
+@synthesize userID;
+
+@synthesize username;
+@synthesize name;
+
+@synthesize descriptionText;
+@synthesize descriptionHTML;
+@synthesize descriptionEntities;
+
+@synthesize timezone;
+@synthesize locale;
+
+@synthesize avatarImage;
+@synthesize coverImage;
+
+@synthesize type;
+@synthesize createdAt;
+
+@synthesize followingCount;
+@synthesize followerCount;
+@synthesize postCount;
+@synthesize starCount;
+
+@synthesize followsYou;
+@synthesize youFollow;
+@synthesize youMuted;
+
+@synthesize annotations;
+
 @end
