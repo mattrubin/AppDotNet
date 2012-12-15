@@ -10,6 +10,19 @@
 
 #import "ADNImage.h"
 
+
+typedef enum {
+    ADNUserTypeHuman        = 0,
+    ADNUserTypeBot          = (1 << 0),
+    ADNUserTypeCorporate    = (1 << 1),
+    ADNUserTypeFeed         = (1 << 2),
+} ADNUserType;
+
+
+/**
+ * A User is the central object of the App.net APIs.
+ * User objects have usernames, follow other users, and post content for their followers.
+ */
 @interface ADNUser : NSObject
 
 // Primary identifier for a user. This idspace is unique to User objects. There can be a Post and User with the same ID; no relation is implied.
@@ -42,7 +55,7 @@
 
 
 // An account can be one of the following types: human, bot, corporate, or feed.
-@property NSString *type;
+@property ADNUserType type;
 // The time at which the User was created in ISO 8601 format.
 @property NSDate *createdAt;
 
