@@ -35,6 +35,12 @@
 		8CED1ADD167D3FB80071D908 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AD3167D3FB80071D908 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1ADE167D3FB80071D908 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AD5167D3FB80071D908 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1AE2167D40580071D908 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AE1167D40580071D908 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CED1AEB167D42A00071D908 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AE9167D426D0071D908 /* CFNetwork.framework */; };
+		8CED1AEF167D43090071D908 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AEE167D43090071D908 /* CoreGraphics.framework */; };
+		8CED1AF1167D43400071D908 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF0167D43400071D908 /* UIKit.framework */; };
+		8CED1AF3167D437B0071D908 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */; };
+		8CED1AF5167D43B60071D908 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */; };
+		8CED1AF7167D56FE0071D908 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF6167D56FE0071D908 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +122,12 @@
 		8CED1AD6167D3FB80071D908 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		8CED1AE0167D40580071D908 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8CED1AE1167D40580071D908 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8CED1AE9167D426D0071D908 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8CED1AEE167D43090071D908 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8CED1AF0167D43400071D908 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8CED1AF6167D56FE0071D908 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +143,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CED1AF7167D56FE0071D908 /* libz.dylib in Frameworks */,
+				8CED1AF5167D43B60071D908 /* MobileCoreServices.framework in Frameworks */,
+				8CED1AF3167D437B0071D908 /* SystemConfiguration.framework in Frameworks */,
+				8CED1AF1167D43400071D908 /* UIKit.framework in Frameworks */,
+				8CED1AEF167D43090071D908 /* CoreGraphics.framework in Frameworks */,
+				8CED1AEB167D42A00071D908 /* CFNetwork.framework in Frameworks */,
 				8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */,
 				8CED1A82167C5FC90071D908 /* Foundation.framework in Frameworks */,
 				8CED1A85167C5FC90071D908 /* libAppDotNet.a in Frameworks */,
@@ -164,7 +182,13 @@
 			isa = PBXGroup;
 			children = (
 				8CED1A6F167C5FC80071D908 /* Foundation.framework */,
+				8CED1AE9167D426D0071D908 /* CFNetwork.framework */,
+				8CED1AEE167D43090071D908 /* CoreGraphics.framework */,
+				8CED1AF0167D43400071D908 /* UIKit.framework */,
+				8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */,
+				8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */,
 				8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */,
+				8CED1AF6167D56FE0071D908 /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

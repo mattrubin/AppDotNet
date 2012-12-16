@@ -8,6 +8,8 @@
 
 #import "AppDotNetTests.h"
 
+#import "ADN.h"
+
 @implementation AppDotNetTests
 
 - (void)setUp
@@ -24,9 +26,17 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testUsers
 {
-    STFail(@"Unit tests are not implemented yet in AppDotNetTests");
+    NSLog(@"==================================================");
+    [ADN getCurrentUserWithCompletionHandler:nil];
+    NSLog(@"==================================================");
+    [ADN getUserWithID:1 completionHandler:nil];
+    NSLog(@"==================================================");
+    [ADN getUserWithUsername:@"dalton" completionHandler:nil];
+    NSLog(@"==================================================");
+    [ADN getUserWithUsername:@"@dalton" completionHandler:nil];
+    NSLog(@"==================================================");
 }
 
 @end
