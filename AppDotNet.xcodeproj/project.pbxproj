@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
+		8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A8167DB2C100C38F51 /* ADNMention.m */; };
+		8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AB167DB32000C38F51 /* ADNHashtag.m */; };
+		8C7B24AF167DB3D600C38F51 /* ADNLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AE167DB3D600C38F51 /* ADNLink.m */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A76167C5FC90071D908 /* AppDotNet.m */; };
@@ -25,8 +29,8 @@
 		8CED1AB5167C71D20071D908 /* ADNStreamMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB4167C71D20071D908 /* ADNStreamMarker.m */; };
 		8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB7167C71E40071D908 /* ADNToken.m */; };
 		8CED1ABC167CD7950071D908 /* ADNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ABB167CD7950071D908 /* ADNImage.m */; };
-		8CED1AD7167D3FB80071D908 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC4167D3FB80071D908 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1AC0167D27590071D908 /* ADN.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ABF167D27590071D908 /* ADN.m */; };
+		8CED1AD7167D3FB80071D908 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC4167D3FB80071D908 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1AD8167D3FB80071D908 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC7167D3FB80071D908 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1AD9167D3FB80071D908 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC9167D3FB80071D908 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1ADA167D3FB80071D908 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ACB167D3FB80071D908 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -67,6 +71,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C7B24A4167DB18B00C38F51 /* ADNEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNEntities.h; sourceTree = "<group>"; };
+		8C7B24A5167DB18B00C38F51 /* ADNEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNEntities.m; sourceTree = "<group>"; };
+		8C7B24A7167DB2C100C38F51 /* ADNMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMention.h; sourceTree = "<group>"; };
+		8C7B24A8167DB2C100C38F51 /* ADNMention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMention.m; sourceTree = "<group>"; };
+		8C7B24AA167DB32000C38F51 /* ADNHashtag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNHashtag.h; sourceTree = "<group>"; };
+		8C7B24AB167DB32000C38F51 /* ADNHashtag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNHashtag.m; sourceTree = "<group>"; };
+		8C7B24AD167DB3D600C38F51 /* ADNLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNLink.h; sourceTree = "<group>"; };
+		8C7B24AE167DB3D600C38F51 /* ADNLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNLink.m; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-Prefix.pch"; sourceTree = "<group>"; };
@@ -158,6 +170,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C7B24A2167DB11300C38F51 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				8C7B24A4167DB18B00C38F51 /* ADNEntities.h */,
+				8C7B24A5167DB18B00C38F51 /* ADNEntities.m */,
+				8C7B24A7167DB2C100C38F51 /* ADNMention.h */,
+				8C7B24A8167DB2C100C38F51 /* ADNMention.m */,
+				8C7B24AA167DB32000C38F51 /* ADNHashtag.h */,
+				8C7B24AB167DB32000C38F51 /* ADNHashtag.m */,
+				8C7B24AD167DB3D600C38F51 /* ADNLink.h */,
+				8C7B24AE167DB3D600C38F51 /* ADNLink.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		8CED1A61167C5FC80071D908 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +226,7 @@
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
 				8CED1A97167C61580071D908 /* Resources */,
+				8C7B24A2167DB11300C38F51 /* Entities */,
 				8CED1ABD167D26FD0071D908 /* Server */,
 				8CED1A72167C5FC90071D908 /* Supporting Files */,
 			);
@@ -435,6 +463,10 @@
 				8CED1ADD167D3FB80071D908 /* ASIInputStream.m in Sources */,
 				8CED1ADE167D3FB80071D908 /* ASINetworkQueue.m in Sources */,
 				8CED1AE2167D40580071D908 /* Reachability.m in Sources */,
+				8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */,
+				8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */,
+				8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */,
+				8C7B24AF167DB3D600C38F51 /* ADNLink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +620,7 @@
 				8CED1A93167C5FC90071D908 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CED1A94167C5FC90071D908 /* Build configuration list for PBXNativeTarget "AppDotNetTests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +629,7 @@
 				8CED1A96167C5FC90071D908 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
