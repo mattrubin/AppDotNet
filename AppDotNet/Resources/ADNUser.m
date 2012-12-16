@@ -107,8 +107,10 @@
     self.locale   = [object objectForKey:USER_KEY_LOCALE];
     NSLog(@"Time zone: %@, locale: %@", self.timezone, self.locale);
     
-    //self.avatarImage = [ADNImage imageWithJSONObject:[object objectForKey:USER_KEY_AVATAR_IMAGE]];
-    //self.coverImage  = [ADNImage imageWithJSONObject:[object objectForKey:USER_KEY_COVER_IMAGE]];
+    self.avatarImage = [ADNImage imageWithDictionary:[object objectForKey:USER_KEY_AVATAR_IMAGE]];
+    self.coverImage  = [ADNImage imageWithDictionary:[object objectForKey:USER_KEY_COVER_IMAGE]];
+    NSLog(@"Avatar image: %@", self.avatarImage);
+    NSLog(@"Cover image: %@", self.coverImage);
     
     self.type = [ADNUser typeFromString:[object objectForKey:USER_KEY_TYPE]];
     //self.createdAt = [object objectForKey:USER_KEY_CREATED_AT];

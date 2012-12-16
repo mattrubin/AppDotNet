@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ADNImage : NSObject
 
 @property NSUInteger height;
 @property NSUInteger width;
 @property NSString *url;
+
+
+#pragma mark Methods
+
+- (id)initWithDictionary:(NSDictionary*)dictionary;
++ (id)imageWithDictionary:(NSDictionary*)dictionary;
+
+- (void)updateWithDictionary:(NSDictionary*)dictionary;
 
 @end
