@@ -12,10 +12,11 @@
 
 
 typedef enum {
-    ADNUserTypeHuman        = 0,
-    ADNUserTypeBot          = (1 << 0),
-    ADNUserTypeCorporate    = (1 << 1),
-    ADNUserTypeFeed         = (1 << 2),
+    ADNUserTypeHuman        = (1 << 0),
+    ADNUserTypeBot          = (1 << 1),
+    ADNUserTypeCorporate    = (1 << 2),
+    ADNUserTypeFeed         = (1 << 3),
+    ADNUserTypeUnknown      = 0
 } ADNUserType;
 
 
@@ -26,7 +27,7 @@ typedef enum {
 @interface ADNUser : NSObject
 
 // Primary identifier for a user. This idspace is unique to User objects. There can be a Post and User with the same ID; no relation is implied.
-@property NSUInteger *userID;
+@property NSUInteger userID;
 
 // Case insensitive. 20 characters, may only contain a-z, 0-9 and underscore.
 @property NSString *username;
@@ -80,5 +81,14 @@ typedef enum {
 
 // Metadata about the user. See the Annotations documentation.
 @property NSDictionary *annotations;
+
+
+#pragma mark Methods
+
+- (id)initWithJSONData:(NSData*)data;
++ (id)userWithJSONData:(NSData*)data;
+
+- (void)updateWithJSONObject:(NSDictionary*)object;
+
 
 @end

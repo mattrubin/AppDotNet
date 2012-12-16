@@ -26,6 +26,7 @@
 		8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AB7167C71E40071D908 /* ADNToken.m */; };
 		8CED1ABC167CD7950071D908 /* ADNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ABB167CD7950071D908 /* ADNImage.m */; };
 		8CED1AD7167D3FB80071D908 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC4167D3FB80071D908 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CED1AC0167D27590071D908 /* ADN.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ABF167D27590071D908 /* ADN.m */; };
 		8CED1AD8167D3FB80071D908 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC7167D3FB80071D908 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1AD9167D3FB80071D908 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1AC9167D3FB80071D908 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CED1ADA167D3FB80071D908 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1ACB167D3FB80071D908 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -91,6 +92,8 @@
 		8CED1AB7167C71E40071D908 /* ADNToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNToken.m; sourceTree = "<group>"; };
 		8CED1ABA167CD7950071D908 /* ADNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNImage.h; sourceTree = "<group>"; };
 		8CED1ABB167CD7950071D908 /* ADNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNImage.m; sourceTree = "<group>"; };
+		8CED1ABE167D27590071D908 /* ADN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADN.h; sourceTree = "<group>"; };
+		8CED1ABF167D27590071D908 /* ADN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADN.m; sourceTree = "<group>"; };
 		8CED1AC3167D3FB80071D908 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		8CED1AC4167D3FB80071D908 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		8CED1AC5167D3FB80071D908 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
 				8CED1A97167C61580071D908 /* Resources */,
+				8CED1ABD167D26FD0071D908 /* Server */,
 				8CED1A72167C5FC90071D908 /* Supporting Files */,
 			);
 			path = AppDotNet;
@@ -229,6 +233,15 @@
 				8CED1ABB167CD7950071D908 /* ADNImage.m */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8CED1ABD167D26FD0071D908 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				8CED1ABE167D27590071D908 /* ADN.h */,
+				8CED1ABF167D27590071D908 /* ADN.m */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 		8CED1AC1167D3EFE0071D908 /* External */ = {
@@ -389,6 +402,7 @@
 				8CED1AB8167C71E40071D908 /* ADNToken.m in Sources */,
 				8CED1ABC167CD7950071D908 /* ADNImage.m in Sources */,
 				8CED1AD7167D3FB80071D908 /* ASIAuthenticationDialog.m in Sources */,
+				8CED1AC0167D27590071D908 /* ADN.m in Sources */,
 				8CED1AD8167D3FB80071D908 /* ASIDataCompressor.m in Sources */,
 				8CED1AD9167D3FB80071D908 /* ASIDataDecompressor.m in Sources */,
 				8CED1ADA167D3FB80071D908 /* ASIDownloadCache.m in Sources */,
