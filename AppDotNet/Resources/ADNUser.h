@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ADNEntities.h"
 #import "ADNImage.h"
 
 
@@ -40,7 +41,7 @@ typedef enum {
 // Server-generated annotated HTML version of biographical information.
 @property NSString *descriptionHTML;
 // Entities included in biographical information. See information on entities for reference.
-@property NSDictionary *descriptionEntities;
+@property ADNEntities *descriptionEntities;
 
 
 // User timezone in tzinfo format.

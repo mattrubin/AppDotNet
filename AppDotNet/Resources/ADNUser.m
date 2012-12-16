@@ -99,9 +99,10 @@
     NSDictionary *description = [object objectForKey:USER_KEY_DESCRIPTION];
     self.descriptionText = [description objectForKey:USER_KEY_DESCRIPTION_TEXT];
     self.descriptionHTML = [description objectForKey:USER_KEY_DESCRIPTION_HTML];
-    //self.descriptionEntities = [description objectForKey:USER_KEY_DESCRIPTION_ENTITIES];
+    self.descriptionEntities = [ADNEntities entitiesFromDictionary:[description objectForKey:USER_KEY_DESCRIPTION_ENTITIES]];
     NSLog(@"\n%@", self.descriptionText);
     NSLog(@"\n%@", self.descriptionHTML);
+    NSLog(@"%@", self.descriptionEntities);
     
     self.timezone = [object objectForKey:USER_KEY_TIMEZONE];
     self.locale   = [object objectForKey:USER_KEY_LOCALE];

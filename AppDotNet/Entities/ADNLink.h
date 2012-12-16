@@ -19,4 +19,10 @@
 // The length of the substring in text that represents this link.
 @property NSUInteger length;
 
+
+- (id)initWithDictionary:(NSDictionary*)dictionary;
++ (id)linkFromDictionary:(NSDictionary*)dictionary;
+
+- (void)updateWithDictionary:(NSDictionary*)dictionary;
+
 @end

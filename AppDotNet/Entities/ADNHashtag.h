@@ -17,4 +17,10 @@
 // The length of the substring in text that represents this hashtag. Since # is included, len will be the length of the name + 1.
 @property NSUInteger length;
 
+
+- (id)initWithDictionary:(NSDictionary*)dictionary;
++ (id)hashtagFromDictionary:(NSDictionary*)dictionary;
+
+- (void)updateWithDictionary:(NSDictionary*)dictionary;
+
 @end
