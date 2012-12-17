@@ -9,6 +9,7 @@
 #import "AppDotNetTests.h"
 
 #import "ADN.h"
+#import "ADNHelper.h"
 
 @implementation AppDotNetTests
 
@@ -28,15 +29,29 @@
 
 - (void)testUsers
 {
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:@"User" ofType:@"json"];
+    NSData *userData = [NSData dataWithContentsOfFile:path];
+    
+    NSDictionary *responseEnvelope;
+    NSDictionary *userDictionary;
+    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData])) {
+        userDictionary = [ADNHelper responseDataFromEnvelope:responseEnvelope];
+    }
+    if (!userDictionary) return;
+    
+    [ADNUser userFromDictionary:userDictionary];
+    
+    /*
     NSLog(@"==================================================");
     [ADN getCurrentUserWithCompletionHandler:nil];
     NSLog(@"==================================================");
-    [ADN getUserWithID:1 completionHandler:nil];
+    [ADN getUserWithID:3 completionHandler:nil];
     NSLog(@"==================================================");
     [ADN getUserWithUsername:@"dalton" completionHandler:nil];
     NSLog(@"==================================================");
-    [ADN getUserWithUsername:@"@dalton" completionHandler:nil];
+    [ADN getUserWithUsername:@"@berg" completionHandler:nil];
     NSLog(@"==================================================");
+    */
 }
 
 @end

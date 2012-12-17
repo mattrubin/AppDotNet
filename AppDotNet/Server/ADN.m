@@ -9,6 +9,7 @@
 #import "ADN.h"
 
 #import "ASIHTTPRequest.h"
+#import "ADNHelper.h"
 
 #define API_HOST @"alpha-api.app.net"
 #define API_BASE @"/stream/0/"
@@ -34,10 +35,28 @@
         
         // Use when fetching binary data
         NSData *responseData = [request_weak responseData];
-        ADNUser *user = [ADNUser userWithJSONData:responseData];
         
-        if (handler) {
-            handler(user, nil);
+        NSDictionary *responseEnvelope;
+        NSDictionary *userDictionary;
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
+            if((userDictionary = [ADNHelper responseDataFromEnvelope:responseEnvelope])) {
+                ADNUser *user = [ADNUser userFromDictionary:userDictionary];
+                
+                if (handler) {
+                    handler(user, nil);
+                }
+            
+            } else {
+                if (handler) {
+                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
+                    handler(nil, error);
+                }
+            }
+        } else {
+            if (handler) {
+                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
+                handler(nil, error);
+            }
         }
 
     }];
