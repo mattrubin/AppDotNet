@@ -8,6 +8,9 @@
 
 #import "ADNHelper.h"
 
+#import "NSDictionary+ADN.h"
+
+
 @implementation ADNHelper
 
 + (NSDictionary*)dictionaryFromJSONData:(NSData *)data
@@ -30,13 +33,13 @@
 
 + (NSDictionary*)responseDataFromEnvelope:(NSDictionary *)responseEnvelope
 {
-    NSDictionary *meta = [responseEnvelope objectForKey:@"meta"];
-    NSInteger code = [(NSNumber*)[meta objectForKey:@"code"] integerValue];
+    NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];
+    NSInteger code = [meta integerForKey:@"code"];
     
     if (code == 200) {
-        return [responseEnvelope objectForKey:@"data"];
+        return [responseEnvelope dictionaryForKey:@"data"];
     } else {
-        NSString * errorMessage = [meta objectForKey:@"error_message"];
+        NSString * errorMessage = [meta stringForKey:@"error_message"];
         NSLog(@"Error %i: %@", code, errorMessage);
         return nil;
     }

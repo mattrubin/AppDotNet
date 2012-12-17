@@ -9,6 +9,7 @@
 #import "ADNUser.h"
 
 #import "ADNHelper.h"
+#import "NSDictionary+ADN.h"
 
 
 #define USER_KEY_ID                     @"id"
@@ -78,46 +79,37 @@
 
 - (void)updateWithDictionary:(NSDictionary *)object
 {
-    self.userID   = [(NSString*)[object objectForKey:USER_KEY_ID] integerValue];
-    self.username = (NSString*)[object objectForKey:USER_KEY_USERNAME];
-    self.name     = (NSString*)[object objectForKey:USER_KEY_NAME];
-    NSLog(@"User #%u, @%@, \"%@\"", self.userID, self.username, self.name);
+    self.userID   = [object integerForKey:USER_KEY_ID];
+    self.username = [object stringForKey:USER_KEY_USERNAME];
+    self.name     = [object stringForKey:USER_KEY_NAME];
 
-    NSDictionary *description = [object objectForKey:USER_KEY_DESCRIPTION];
-    self.descriptionText = [description objectForKey:USER_KEY_DESCRIPTION_TEXT];
-    self.descriptionHTML = [description objectForKey:USER_KEY_DESCRIPTION_HTML];
-    self.descriptionEntities = [ADNEntities entitiesFromDictionary:[description objectForKey:USER_KEY_DESCRIPTION_ENTITIES]];
-    NSLog(@"\n%@", self.descriptionText);
-    NSLog(@"\n%@", self.descriptionHTML);
-    NSLog(@"%@", self.descriptionEntities);
+    NSDictionary *description = [object dictionaryForKey:USER_KEY_DESCRIPTION];
+    self.descriptionText = [description stringForKey:USER_KEY_DESCRIPTION_TEXT];
+    self.descriptionHTML = [description stringForKey:USER_KEY_DESCRIPTION_HTML];
+    self.descriptionEntities = [ADNEntities entitiesFromDictionary:[description dictionaryForKey:USER_KEY_DESCRIPTION_ENTITIES]];
     
-    self.timezone = [object objectForKey:USER_KEY_TIMEZONE];
-    self.locale   = [object objectForKey:USER_KEY_LOCALE];
-    NSLog(@"Time zone: %@, locale: %@", self.timezone, self.locale);
+    self.timezone = [object stringForKey:USER_KEY_TIMEZONE];
+    self.locale   = [object stringForKey:USER_KEY_LOCALE];
     
-    self.avatarImage = [ADNImage imageWithDictionary:[object objectForKey:USER_KEY_AVATAR_IMAGE]];
-    self.coverImage  = [ADNImage imageWithDictionary:[object objectForKey:USER_KEY_COVER_IMAGE]];
-    NSLog(@"Avatar image: %@", self.avatarImage);
-    NSLog(@"Cover image: %@", self.coverImage);
+    self.avatarImage = [ADNImage imageWithDictionary:[object dictionaryForKey:USER_KEY_AVATAR_IMAGE]];
+    self.coverImage  = [ADNImage imageWithDictionary:[object dictionaryForKey:USER_KEY_COVER_IMAGE]];
     
-    self.type = [ADNUser typeFromString:[object objectForKey:USER_KEY_TYPE]];
-    self.createdAt = [[ADNHelper dateFormatter] dateFromString:[object objectForKey:USER_KEY_CREATED_AT]];
-    NSLog(@"Type: %@", [ADNUser stringFromType:self.type]);
-    NSLog(@"Created at: %@", self.createdAt);
+    self.type = [ADNUser typeFromString:[object stringForKey:USER_KEY_TYPE]];
+    self.createdAt = [[ADNHelper dateFormatter] dateFromString:[object stringForKey:USER_KEY_CREATED_AT]];
     
-    NSDictionary *counts = [object objectForKey:USER_KEY_COUNTS];
-    self.followingCount = [(NSNumber*)[counts objectForKey:USER_KEY_COUNTS_FOLLOWING] unsignedIntegerValue];
-    self.followerCount  = [(NSNumber*)[counts objectForKey:USER_KEY_COUNTS_FOLLOWERS] unsignedIntegerValue];
-    self.postCount      = [(NSNumber*)[counts objectForKey:USER_KEY_COUNTS_POSTS] unsignedIntegerValue];
-    self.starCount      = [(NSNumber*)[counts objectForKey:USER_KEY_COUNTS_STARS] unsignedIntegerValue];
-    NSLog(@"Following: %u, Followers: %u, Posts: %u, Stars: %u", self.followingCount, self.followerCount, self.postCount, self.starCount);
+    NSDictionary *counts = [object dictionaryForKey:USER_KEY_COUNTS];
+    self.followingCount = [counts integerForKey:USER_KEY_COUNTS_FOLLOWING];
+    self.followerCount  = [counts integerForKey:USER_KEY_COUNTS_FOLLOWERS];
+    self.postCount      = [counts integerForKey:USER_KEY_COUNTS_POSTS];
+    self.starCount      = [counts integerForKey:USER_KEY_COUNTS_STARS];
     
-    self.followsYou = [(NSNumber*)[object objectForKey:USER_KEY_FOLLOWS_YOU] boolValue];
-    self.youFollow  = [(NSNumber*)[object objectForKey:USER_KEY_YOU_FOLLOW] boolValue];
-    self.youMuted   = [(NSNumber*)[object objectForKey:USER_KEY_YOU_MUTED] boolValue];
-    NSLog(@"Follows you: %u, You follow: %u, You muted: %u", self.followsYou, self.youFollow, self.youMuted);
+    if ([object objectForKey:USER_KEY_FOLLOWS_YOU]) {
+        self.followsYou = [object boolForKey:USER_KEY_FOLLOWS_YOU];
+        self.youFollow  = [object boolForKey:USER_KEY_YOU_FOLLOW];
+        self.youMuted   = [object boolForKey:USER_KEY_YOU_MUTED];
+    }
     
-    //self.annotations =[object objectForKey:USER_KEY_YOU_MUTED];
+    //self.annotations = [object objectForKey:USER_KEY_YOU_MUTED];
 }
 
 + (ADNUserType)typeFromString:(NSString*)typeString

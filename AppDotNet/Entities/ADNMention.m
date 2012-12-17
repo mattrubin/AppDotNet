@@ -8,6 +8,9 @@
 
 #import "ADNMention.h"
 
+#import "NSDictionary+ADN.h"
+
+
 #define MENTION_KEY_ID          @"id"
 #define MENTION_KEY_USERNAME    @"name"
 #define MENTION_KEY_POSITION    @"pos"
@@ -43,10 +46,10 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    self.username = [dictionary objectForKey:MENTION_KEY_USERNAME];
-    self.userID   = [(NSString*)[dictionary objectForKey:MENTION_KEY_ID] integerValue];
-    self.position = [(NSNumber*)[dictionary objectForKey:MENTION_KEY_POSITION] integerValue];
-    self.length   = [(NSNumber*)[dictionary objectForKey:MENTION_KEY_LENGTH] integerValue];
+    self.username = [dictionary stringForKey:MENTION_KEY_USERNAME];
+    self.userID   = [dictionary integerForKey:MENTION_KEY_ID];
+    self.position = [dictionary integerForKey:MENTION_KEY_POSITION];
+    self.length   = [dictionary integerForKey:MENTION_KEY_LENGTH];
 }
 
 - (NSString*)description

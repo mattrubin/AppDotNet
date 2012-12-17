@@ -8,6 +8,9 @@
 
 #import "ADNLink.h"
 
+#import "NSDictionary+ADN.h"
+
+
 #define LINK_KEY_TEXT       @"text"
 #define LINK_KEY_URL        @"url"
 #define LINK_KEY_POSITION   @"pos"
@@ -43,10 +46,10 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    self.text     = [dictionary objectForKey:LINK_KEY_TEXT];
-    self.url      = [dictionary objectForKey:LINK_KEY_URL];
-    self.position = [(NSNumber*)[dictionary objectForKey:LINK_KEY_POSITION] integerValue];
-    self.length   = [(NSNumber*)[dictionary objectForKey:LINK_KEY_LENGTH] integerValue];
+    self.text     = [dictionary stringForKey:LINK_KEY_TEXT];
+    self.url      = [dictionary stringForKey:LINK_KEY_URL];
+    self.position = [dictionary integerForKey:LINK_KEY_POSITION];
+    self.length   = [dictionary integerForKey:LINK_KEY_LENGTH];
 }
 
 - (NSString*)description

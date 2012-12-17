@@ -8,6 +8,9 @@
 
 #import "ADNImage.h"
 
+#import "NSDictionary+ADN.h"
+
+
 #define IMAGE_KEY_HEIGHT    @"height"
 #define IMAGE_KEY_WIDTH     @"width"
 #define IMAGE_KEY_URL       @"url"
@@ -32,9 +35,9 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    self.height = [[dictionary objectForKey:IMAGE_KEY_HEIGHT] unsignedIntegerValue];
-    self.width  = [[dictionary objectForKey:IMAGE_KEY_WIDTH] unsignedIntegerValue];
-    self.url    = [dictionary objectForKey:IMAGE_KEY_URL];
+    self.height = [dictionary integerForKey:IMAGE_KEY_HEIGHT];
+    self.width  = [dictionary integerForKey:IMAGE_KEY_WIDTH];
+    self.url    = [dictionary stringForKey:IMAGE_KEY_URL];
 }
 
 - (NSString*)description

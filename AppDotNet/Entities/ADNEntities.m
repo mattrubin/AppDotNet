@@ -8,6 +8,9 @@
 
 #import "ADNEntities.h"
 
+#import "NSDictionary+ADN.h"
+
+
 #define ENTITY_KEY_MENTIONS @"mentions"
 #define ENTITY_KEY_HASHTAGS @"hashtags"
 #define ENTITY_KEY_LINKS    @"links"
@@ -42,21 +45,21 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-    NSArray *rawMentions = [dictionary objectForKey:ENTITY_KEY_MENTIONS];
+    NSArray *rawMentions = [dictionary arrayForKey:ENTITY_KEY_MENTIONS];
     for (NSDictionary *mentionDictionary in rawMentions) {
         ADNMention *newMention = [ADNMention mentionFromDictionary:mentionDictionary];
         // TODO: check for errors and discard if malformed?
         [(NSMutableArray*)self.mentions addObject:newMention];
     }
     
-    NSArray *rawHashtags = [dictionary objectForKey:ENTITY_KEY_HASHTAGS];
+    NSArray *rawHashtags = [dictionary arrayForKey:ENTITY_KEY_HASHTAGS];
     for (NSDictionary *hashtagDictionary in rawHashtags) {
         ADNHashtag *newHashtag = [ADNHashtag hashtagFromDictionary:hashtagDictionary];
         // TODO: check for errors and discard if malformed?
         [(NSMutableArray*)self.hashtags addObject:newHashtag];
     }
     
-    NSArray *rawLinks = [dictionary objectForKey:ENTITY_KEY_LINKS];
+    NSArray *rawLinks = [dictionary arrayForKey:ENTITY_KEY_LINKS];
     for (NSDictionary *linkDictionary in rawLinks) {
         ADNLink *newLink = [ADNLink linkFromDictionary:linkDictionary];
         // TODO: check for errors and discard if malformed?
