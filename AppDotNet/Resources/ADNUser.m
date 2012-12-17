@@ -149,5 +149,15 @@
     }
 }
 
+- (void)setTypeString:(NSString *)typeString
+{
+    self.type = [self.class typeFromString:typeString];
+}
+
+- (NSString*)typeString
+{
+    return [self.class stringFromType:self.type];
+}
+
 
 @end

@@ -58,6 +58,7 @@ typedef enum {
 
 // An account can be one of the following types: human, bot, corporate, or feed.
 @property ADNUserType type;
+@property NSString *typeString;
 // The time at which the User was created in ISO 8601 format.
 @property NSDate *createdAt;
 
