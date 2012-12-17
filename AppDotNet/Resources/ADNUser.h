@@ -10,6 +10,7 @@
 
 #import "ADNEntities.h"
 #import "ADNImage.h"
+#import "ADNAnnotation.h"
 
 
 typedef enum {

@@ -14,6 +14,7 @@
 		8C7B24B2167ECF8300C38F51 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C7B24B1167ECF8300C38F51 /* User.json */; };
 		8C7B24B5167ED44A00C38F51 /* ADNHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24B4167ED44A00C38F51 /* ADNHelper.m */; };
 		8C7B24BD167F211500C38F51 /* NSDictionary+ADN.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24BC167F211500C38F51 /* NSDictionary+ADN.m */; };
+		8C7B24C0167F31B800C38F51 /* ADNAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A76167C5FC90071D908 /* AppDotNet.m */; };
@@ -87,6 +88,8 @@
 		8C7B24B4167ED44A00C38F51 /* ADNHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNHelper.m; sourceTree = "<group>"; };
 		8C7B24BB167F211400C38F51 /* NSDictionary+ADN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ADN.h"; sourceTree = "<group>"; };
 		8C7B24BC167F211500C38F51 /* NSDictionary+ADN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ADN.m"; sourceTree = "<group>"; };
+		8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAnnotation.h; sourceTree = "<group>"; };
+		8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotation.m; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-Prefix.pch"; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 		8C7B24A2167DB11300C38F51 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */,
+				8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */,
 				8C7B24A4167DB18B00C38F51 /* ADNEntities.h */,
 				8C7B24A5167DB18B00C38F51 /* ADNEntities.m */,
 				8C7B24A7167DB2C100C38F51 /* ADNMention.h */,
@@ -491,6 +496,7 @@
 				8C7B24AF167DB3D600C38F51 /* ADNLink.m in Sources */,
 				8C7B24B5167ED44A00C38F51 /* ADNHelper.m in Sources */,
 				8C7B24BD167F211500C38F51 /* NSDictionary+ADN.m in Sources */,
+				8C7B24C0167F31B800C38F51 /* ADNAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

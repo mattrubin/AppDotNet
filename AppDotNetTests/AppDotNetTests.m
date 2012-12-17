@@ -90,7 +90,7 @@
     STAssertEquals(user.youFollow,  [[userDictionary objectForKey:@"you_follow"] boolValue],  @"(you_follow)");
     STAssertEquals(user.youMuted,   [[userDictionary objectForKey:@"you_muted"] boolValue],   @"(you_muted)");
     
-    //[self validateAnnotations:user.annotations withArray:[userDictionary objectForKey:@"annotations"]];
+    [self validateAnnotations:user.annotations withArray:[userDictionary objectForKey:@"annotations"]];
 }
 
 - (void)validateEntities:(ADNEntities*)entities withDictionary:(NSDictionary*)entitiesDictionary
@@ -184,7 +184,18 @@
         STFail(@"Annotations array is not an NSArray. %@", annotationsArray);
     }
     
-    STFail(@"Implement annotations validation");
+    for (NSDictionary *annotationDict in annotationsArray) {
+        NSString *type = [annotationDict objectForKey:@"type"];
+        ADNAnnotation *annotation;
+        if ((annotation = [annotations objectForKey:type])) {
+            if (([annotation.type isEqualToString:type]) &&
+                ([annotation.value isEqual:[annotationDict objectForKey:@"value"]])) {
+                continue;
+            }
+        }
+        STFail(@"No matching annotation found:\n%@", annotationDict);
+    }
+
 }
 
 

@@ -109,7 +109,12 @@
         self.youMuted   = [object boolForKey:USER_KEY_YOU_MUTED];
     }
     
-    //self.annotations = [object objectForKey:USER_KEY_YOU_MUTED];
+    NSArray *annotationArray = [object arrayForKey:USER_KEY_ANNOTATIONS];
+    self.annotations = [NSMutableDictionary dictionaryWithCapacity:[annotationArray count]];
+    for (NSDictionary *annotationDict in annotationArray) {
+        ADNAnnotation *annotation = [ADNAnnotation annotationFromDictionary:annotationDict];
+        [(NSMutableDictionary*)self.annotations setObject:annotation forKey:annotation.type];
+    }
 }
 
 + (ADNUserType)typeFromString:(NSString*)typeString
