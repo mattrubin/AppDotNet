@@ -181,21 +181,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C7B24A2167DB11300C38F51 /* Entities */ = {
+		8C7B24A2167DB11300C38F51 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
 				8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */,
 				8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */,
 				8C7B24A4167DB18B00C38F51 /* ADNEntities.h */,
 				8C7B24A5167DB18B00C38F51 /* ADNEntities.m */,
-				8C7B24A7167DB2C100C38F51 /* ADNMention.h */,
-				8C7B24A8167DB2C100C38F51 /* ADNMention.m */,
-				8C7B24AA167DB32000C38F51 /* ADNHashtag.h */,
-				8C7B24AB167DB32000C38F51 /* ADNHashtag.m */,
-				8C7B24AD167DB3D600C38F51 /* ADNLink.h */,
-				8C7B24AE167DB3D600C38F51 /* ADNLink.m */,
+				8C7B24C1167F379100C38F51 /* Entities */,
 			);
-			path = Entities;
+			path = Meta;
 			sourceTree = "<group>";
 		};
 		8C7B24B0167ECEF600C38F51 /* Mock Data */ = {
@@ -204,6 +199,19 @@
 				8C7B24B1167ECF8300C38F51 /* User.json */,
 			);
 			path = "Mock Data";
+			sourceTree = "<group>";
+		};
+		8C7B24C1167F379100C38F51 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				8C7B24A7167DB2C100C38F51 /* ADNMention.h */,
+				8C7B24A8167DB2C100C38F51 /* ADNMention.m */,
+				8C7B24AA167DB32000C38F51 /* ADNHashtag.h */,
+				8C7B24AB167DB32000C38F51 /* ADNHashtag.m */,
+				8C7B24AD167DB3D600C38F51 /* ADNLink.h */,
+				8C7B24AE167DB3D600C38F51 /* ADNLink.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		8CED1A61167C5FC80071D908 = {
@@ -247,7 +255,7 @@
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
 				8CED1A97167C61580071D908 /* Resources */,
-				8C7B24A2167DB11300C38F51 /* Entities */,
+				8C7B24A2167DB11300C38F51 /* Meta */,
 				8CED1ABD167D26FD0071D908 /* Server */,
 				8CED1A72167C5FC90071D908 /* Supporting Files */,
 			);
