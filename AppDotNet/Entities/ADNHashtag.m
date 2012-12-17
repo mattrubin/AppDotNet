@@ -8,6 +8,11 @@
 
 #import "ADNHashtag.h"
 
+#define HASHTAG_KEY_NAME        @"name"
+#define HASHTAG_KEY_POSITION    @"pos"
+#define HASHTAG_KEY_LENGTH      @"len"
+
+
 @implementation ADNHashtag
 
 /*
@@ -37,6 +42,14 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    // TODO
+    self.name     = [dictionary objectForKey:HASHTAG_KEY_NAME];
+    self.position = [(NSNumber*)[dictionary objectForKey:HASHTAG_KEY_POSITION] integerValue];
+    self.length   = [(NSNumber*)[dictionary objectForKey:HASHTAG_KEY_LENGTH] integerValue];
 }
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"[%@: %@ (%u @ %u)]", self.class, self.name, self.length, self.position];
+}
+
 @end

@@ -8,6 +8,12 @@
 
 #import "ADNMention.h"
 
+#define MENTION_KEY_ID          @"id"
+#define MENTION_KEY_USERNAME    @"name"
+#define MENTION_KEY_POSITION    @"pos"
+#define MENTION_KEY_LENGTH      @"len"
+
+
 @implementation ADNMention
 
 /*
@@ -37,7 +43,15 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    // TODO
+    self.username = [dictionary objectForKey:MENTION_KEY_USERNAME];
+    self.userID   = [(NSString*)[dictionary objectForKey:MENTION_KEY_ID] integerValue];
+    self.position = [(NSNumber*)[dictionary objectForKey:MENTION_KEY_POSITION] integerValue];
+    self.length   = [(NSNumber*)[dictionary objectForKey:MENTION_KEY_LENGTH] integerValue];
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"[%@: #%u @%@ (%u @ %u)]", self.class, self.userID, self.username, self.length, self.position];
 }
 
 @end

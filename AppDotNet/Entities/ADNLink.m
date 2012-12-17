@@ -8,6 +8,12 @@
 
 #import "ADNLink.h"
 
+#define LINK_KEY_TEXT       @"text"
+#define LINK_KEY_URL        @"url"
+#define LINK_KEY_POSITION   @"pos"
+#define LINK_KEY_LENGTH     @"len"
+
+
 @implementation ADNLink
 
 /*
@@ -37,6 +43,15 @@
 
 - (void)updateWithDictionary:(NSDictionary*)dictionary
 {
-    // TODO
+    self.text     = [dictionary objectForKey:LINK_KEY_TEXT];
+    self.url      = [dictionary objectForKey:LINK_KEY_URL];
+    self.position = [(NSNumber*)[dictionary objectForKey:LINK_KEY_POSITION] integerValue];
+    self.length   = [(NSNumber*)[dictionary objectForKey:LINK_KEY_LENGTH] integerValue];
 }
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"[%@: %@ (%u @ %u) <%@>]", self.class, self.text, self.length, self.position, self.url];
+}
+
 @end
