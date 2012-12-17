@@ -51,45 +51,31 @@
 
 @implementation ADNUser
 
-- (id)initWithJSONData:(NSData*)data
+- (id)init
 {
     self = [super init];
     if (self) {
-        
-        NSError *error;
-        id JSONObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        
-        if (!error) {
-            if ([JSONObject isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *JSONDictionary = JSONObject;
-                
-                NSDictionary *meta = [JSONDictionary objectForKey:@"meta"];
-                
-                NSInteger code = [(NSNumber*)[meta objectForKey:@"code"] integerValue];
-                if (code == 200) {
-                    NSDictionary *data = [JSONDictionary objectForKey:@"data"];
-                    [self updateWithJSONObject:data];
-                } else {
-                    NSString * errorMessage = [meta objectForKey:@"error_message"];
-                    NSLog(@"Error %i: %@", code, errorMessage);
-                }
-            }
-        } else {
-            NSLog(@"ERROR:\n\n%@", error);
-        }
-
+        // Initialization
     }
     return self;
 }
 
-+ (id)userWithJSONData:(NSData*)data
+- (id)initWithDictionary:(NSDictionary *)dictionary
 {
-    return [[ADNUser alloc] initWithJSONData:data];
+    self = [self init];
+    if (self) {
+        [self updateWithDictionary:dictionary];
+    }
+    return self;
+}
+
++ (id)userFromDictionary:(NSDictionary *)dictionary
+{
+    return [[ADNUser alloc] initWithDictionary:dictionary];
 }
 
 
-
-- (void)updateWithJSONObject:(NSDictionary*)object
+- (void)updateWithDictionary:(NSDictionary *)object
 {
     self.userID   = [(NSString*)[object objectForKey:USER_KEY_ID] integerValue];
     self.username = (NSString*)[object objectForKey:USER_KEY_USERNAME];

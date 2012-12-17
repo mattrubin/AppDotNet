@@ -86,10 +86,10 @@ typedef enum {
 
 #pragma mark Methods
 
-- (id)initWithJSONData:(NSData*)data;
-+ (id)userWithJSONData:(NSData*)data;
+- (id)initWithDictionary:(NSDictionary*)dictionary;
++ (id)userFromDictionary:(NSDictionary*)dictionary;
 
-- (void)updateWithJSONObject:(NSDictionary*)object;
+- (void)updateWithDictionary:(NSDictionary*)object;
 
 
 @end
