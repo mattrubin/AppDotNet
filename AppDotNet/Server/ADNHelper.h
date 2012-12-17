@@ -14,4 +14,6 @@
 
 + (NSDictionary*)responseDataFromEnvelope:(NSDictionary*)responseEnvelope;
 
++ (NSDateFormatter*)dateFormatter;
+
 @end

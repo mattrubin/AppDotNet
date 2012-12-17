@@ -8,6 +8,7 @@
 
 #import "ADNUser.h"
 
+#import "ADNHelper.h"
 
 
 #define USER_KEY_ID                     @"id"
@@ -100,8 +101,9 @@
     NSLog(@"Cover image: %@", self.coverImage);
     
     self.type = [ADNUser typeFromString:[object objectForKey:USER_KEY_TYPE]];
-    //self.createdAt = [object objectForKey:USER_KEY_CREATED_AT];
+    self.createdAt = [[ADNHelper dateFormatter] dateFromString:[object objectForKey:USER_KEY_CREATED_AT]];
     NSLog(@"Type: %@", [ADNUser stringFromType:self.type]);
+    NSLog(@"Created at: %@", self.createdAt);
     
     NSDictionary *counts = [object objectForKey:USER_KEY_COUNTS];
     self.followingCount = [(NSNumber*)[counts objectForKey:USER_KEY_COUNTS_FOLLOWING] unsignedIntegerValue];
