@@ -31,6 +31,66 @@ static NSString *_accessToken;
 }
 
 
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint
+{
+    NSString *urlString = [NSString stringWithFormat:@"https://%@%@%@", API_HOST, API_BASE, endpoint];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    if ([self accessToken]) {
+        [request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", [self accessToken]]];
+    }
+    
+    return request;
+}
+
++ (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler
+{
+    NSString *endpoint = @"token";
+    
+    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];;
+    
+    [request setCompletionBlock:^{
+        NSData *responseData = [request responseData];
+        
+        NSDictionary *responseEnvelope;
+        NSDictionary *tokenDictionary;
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
+            if((tokenDictionary = [ADNHelper responseDataFromEnvelope:responseEnvelope])) {
+                ADNToken *token = [ADNToken tokenFromDictionary:tokenDictionary];
+                
+                if (handler) {
+                    handler(token, nil);
+                }
+                
+            } else {
+                if (handler) {
+                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
+                    handler(nil, error);
+                }
+            }
+        } else {
+            if (handler) {
+                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
+                handler(nil, error);
+            }
+        }
+        
+    }];
+    [request setFailedBlock:^{
+        NSLog(@"Error: %@", [[request error] localizedDescription]);
+        NSLog(@"\n%@", [request responseString]);
+        NSLog(@"\n%@", [request requestHeaders]);
+        
+        if (handler) {
+            handler(nil, [request error]);
+        }
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
 
 + (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
@@ -42,9 +102,6 @@ static NSString *_accessToken;
     __weak ASIHTTPRequest *request_weak = request;
     
     [request setCompletionBlock:^{
-        // Use when fetching text data
-        NSString *responseString = [request_weak responseString];
-        //NSLog(@"%@", responseString);
         
         // Use when fetching binary data
         NSData *responseData = [request_weak responseData];

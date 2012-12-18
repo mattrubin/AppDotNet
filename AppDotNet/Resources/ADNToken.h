@@ -20,4 +20,12 @@
 
 @property ADNUser *user;
 
+
+#pragma mark Methods
+
+- (id)initWithDictionary:(NSDictionary*)dictionary;
++ (id)tokenFromDictionary:(NSDictionary*)dictionary;
+
+- (void)updateWithDictionary:(NSDictionary*)dictionary;
+
 @end

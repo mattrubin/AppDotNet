@@ -9,15 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "ADNUser.h"
+#import "ADNToken.h"
 
 
-typedef void (^ADNUserCompletionHandler)(ADNUser *user, NSError *error);
+typedef void (^ADNTokenCompletionHandler)(ADNToken *token, NSError *error);
+typedef void (^ADNUserCompletionHandler) (ADNUser  *user,  NSError *error);
 
 
 @interface ADN : NSObject
 
 + (NSString*)accessToken;
 + (void)setAccessToken:(NSString*)accessToken;
+
++ (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler;
 
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;
