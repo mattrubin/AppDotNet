@@ -16,6 +16,9 @@ typedef void (^ADNUserCompletionHandler)(ADNUser *user, NSError *error);
 
 @interface ADN : NSObject
 
++ (NSString*)accessToken;
++ (void)setAccessToken:(NSString*)accessToken;
+
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUserWithID:(NSUInteger)userID        completionHandler:(ADNUserCompletionHandler)handler;

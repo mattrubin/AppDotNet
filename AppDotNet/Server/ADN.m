@@ -15,7 +15,20 @@
 #define API_BASE @"/stream/0/"
 
 
+static NSString *_accessToken;
+
+
 @implementation ADN
+
++ (NSString*)accessToken
+{
+    return _accessToken;
+}
+
++ (void)setAccessToken:(NSString*)accessToken
+{
+    _accessToken = accessToken;
+}
 
 
 
