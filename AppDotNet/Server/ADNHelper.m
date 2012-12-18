@@ -31,13 +31,13 @@
     }
 }
 
-+ (NSDictionary*)responseDataFromEnvelope:(NSDictionary *)responseEnvelope
++ (id)responseDataFromEnvelope:(NSDictionary *)responseEnvelope
 {
     NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];
     NSInteger code = [meta integerForKey:@"code"];
     
     if (code == 200) {
-        return [responseEnvelope dictionaryForKey:@"data"];
+        return [responseEnvelope objectForKey:@"data"];
     } else {
         NSString * errorMessage = [meta stringForKey:@"error_message"];
         NSLog(@"Error %i: %@", code, errorMessage);
