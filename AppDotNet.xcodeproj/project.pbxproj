@@ -25,6 +25,8 @@
 		8C07344A167FC48B002B9EBC /* ADN.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1ABE167D27590071D908 /* ADN.h */; };
 		8C07344B167FC48B002B9EBC /* ADNHelper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7B24B3167ED44A00C38F51 /* ADNHelper.h */; };
 		8C07344C167FC48B002B9EBC /* NSDictionary+ADN.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7B24BB167F211400C38F51 /* NSDictionary+ADN.h */; };
+		8C1A3DAD167FEA7B00261C9B /* ADNAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A3DAC167FEA7B00261C9B /* ADNAuthenticationRequest.m */; };
+		8C1A3DAE167FEF5300261C9B /* ADNAuthenticationRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */; };
 		8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
 		8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A8167DB2C100C38F51 /* ADNMention.m */; };
 		8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AB167DB32000C38F51 /* ADNHashtag.m */; };
@@ -86,6 +88,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8C1A3DAE167FEF5300261C9B /* ADNAuthenticationRequest.h in CopyFiles */,
 				8C07343B167FC48B002B9EBC /* ADNChannel.h in CopyFiles */,
 				8C07343C167FC48B002B9EBC /* ADNFilter.h in CopyFiles */,
 				8C07343D167FC48B002B9EBC /* ADNInteraction.h in CopyFiles */,
@@ -111,6 +114,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAuthenticationRequest.h; sourceTree = "<group>"; };
+		8C1A3DAC167FEA7B00261C9B /* ADNAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAuthenticationRequest.m; sourceTree = "<group>"; };
 		8C7B24A4167DB18B00C38F51 /* ADNEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNEntities.h; sourceTree = "<group>"; };
 		8C7B24A5167DB18B00C38F51 /* ADNEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNEntities.m; sourceTree = "<group>"; };
 		8C7B24A7167DB2C100C38F51 /* ADNMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMention.h; sourceTree = "<group>"; };
@@ -217,6 +222,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1A3DA9167FE9F900261C9B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */,
+				8C1A3DAC167FEA7B00261C9B /* ADNAuthenticationRequest.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		8C7B24A2167DB11300C38F51 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +304,7 @@
 			children = (
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
+				8C1A3DA9167FE9F900261C9B /* Authentication */,
 				8CED1A97167C61580071D908 /* Resources */,
 				8C7B24A2167DB11300C38F51 /* Meta */,
 				8CED1ABD167D26FD0071D908 /* Server */,
@@ -541,6 +556,7 @@
 				8C7B24B5167ED44A00C38F51 /* ADNHelper.m in Sources */,
 				8C7B24BD167F211500C38F51 /* NSDictionary+ADN.m in Sources */,
 				8C7B24C0167F31B800C38F51 /* ADNAnnotation.m in Sources */,
+				8C1A3DAD167FEA7B00261C9B /* ADNAuthenticationRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
