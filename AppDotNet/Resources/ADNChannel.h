@@ -24,6 +24,7 @@
 @property (nonatomic, assign) BOOL youCanEdit;
 @property (nonatomic, assign) BOOL youSubscribed;
 @property (nonatomic, copy)   NSArray *annotations;
+@property (nonatomic, copy)   NSNumber *recentMessageID;
 
 
 + (ADNChannel *)instanceFromDictionary:(NSDictionary *)aDictionary;

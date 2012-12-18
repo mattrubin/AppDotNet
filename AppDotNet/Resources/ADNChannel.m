@@ -80,6 +80,8 @@
         [self setValue:value forKey:@"youCanEdit"];
     } else if ([key isEqualToString:@"you_subscribed"]) {
         [self setValue:value forKey:@"youSubscribed"];
+    } else if ([key isEqualToString:@"recent_message_id"]) {
+        [self setValue:value forKey:@"recentMessageID"];
     } else {
         [super setValue:value forUndefinedKey:key];
     }
