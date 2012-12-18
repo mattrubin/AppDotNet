@@ -92,6 +92,54 @@ static NSString *_accessToken;
 }
 
 
++ (void)getSubscribedChannelsWithCompletionHandler:(ADNChannelCompletionHandler)handler
+{
+    NSString *endpoint = @"channels";
+    
+    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];;
+    
+    [request setCompletionBlock:^{
+        NSData *responseData = [request responseData];
+        
+        NSDictionary *responseEnvelope;
+        NSArray *channelArray;
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
+            if((channelArray = (NSArray*)[ADNHelper responseDataFromEnvelope:responseEnvelope])) {
+                ADNChannel *channel = [ADNChannel instanceFromDictionary:[channelArray objectAtIndex:0]];
+                
+                if (handler) {
+                    handler(channel, nil);
+                }
+                
+            } else {
+                if (handler) {
+                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
+                    handler(nil, error);
+                }
+            }
+        } else {
+            if (handler) {
+                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
+                handler(nil, error);
+            }
+        }
+        
+    }];
+    [request setFailedBlock:^{
+        NSLog(@"Error: %@", [[request error] localizedDescription]);
+        NSLog(@"\n%@", [request responseString]);
+        NSLog(@"\n%@", [request requestHeaders]);
+        
+        if (handler) {
+            handler(nil, [request error]);
+        }
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+
 + (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];

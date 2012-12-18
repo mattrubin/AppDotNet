@@ -10,10 +10,12 @@
 
 #import "ADNUser.h"
 #import "ADNToken.h"
+#import "ADNChannel.h"
 
 
-typedef void (^ADNTokenCompletionHandler)(ADNToken *token, NSError *error);
-typedef void (^ADNUserCompletionHandler) (ADNUser  *user,  NSError *error);
+typedef void (^ADNUserCompletionHandler)   (ADNUser    *user,    NSError *error);
+typedef void (^ADNTokenCompletionHandler)  (ADNToken   *token,   NSError *error);
+typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error);
 
 
 @interface ADN : NSObject
@@ -22,6 +24,8 @@ typedef void (^ADNUserCompletionHandler) (ADNUser  *user,  NSError *error);
 + (void)setAccessToken:(NSString*)accessToken;
 
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler;
+
++ (void)getSubscribedChannelsWithCompletionHandler:(ADNChannelCompletionHandler)handler;
 
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;
