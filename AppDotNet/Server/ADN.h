@@ -13,6 +13,7 @@
 #import "ADNChannel.h"
 
 
+typedef void (^NSArrayCompletionHandler)  (NSArray    *objects, NSError *error);
 typedef void (^ADNUserCompletionHandler)   (ADNUser    *user,    NSError *error);
 typedef void (^ADNTokenCompletionHandler)  (ADNToken   *token,   NSError *error);
 typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error);
@@ -25,7 +26,7 @@ typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error)
 
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler;
 
-+ (void)getSubscribedChannelsWithCompletionHandler:(ADNChannelCompletionHandler)handler;
++ (void)getSubscribedChannelsWithCompletionHandler:(NSArrayCompletionHandler)handler;
 
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;

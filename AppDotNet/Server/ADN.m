@@ -48,7 +48,7 @@ static NSString *_accessToken;
 {
     NSString *endpoint = @"token";
     
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];;
+    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
     
     [request setCompletionBlock:^{
         NSData *responseData = [request responseData];
@@ -92,11 +92,11 @@ static NSString *_accessToken;
 }
 
 
-+ (void)getSubscribedChannelsWithCompletionHandler:(ADNChannelCompletionHandler)handler
++ (void)getSubscribedChannelsWithCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = @"channels";
     
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];;
+    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
     
     [request setCompletionBlock:^{
         NSData *responseData = [request responseData];
@@ -105,10 +105,14 @@ static NSString *_accessToken;
         NSArray *channelArray;
         if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
             if((channelArray = (NSArray*)[ADNHelper responseDataFromEnvelope:responseEnvelope])) {
-                ADNChannel *channel = [ADNChannel instanceFromDictionary:[channelArray objectAtIndex:0]];
+                NSMutableArray *channels = [NSMutableArray arrayWithCapacity:channelArray.count];
+                
+                for (NSDictionary *channelDict in channelArray) {
+                    [channels addObject:[ADNChannel instanceFromDictionary:channelDict]];
+                }
                 
                 if (handler) {
-                    handler(channel, nil);
+                    handler(channels, nil);
                 }
                 
             } else {
