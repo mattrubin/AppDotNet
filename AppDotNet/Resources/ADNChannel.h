@@ -27,5 +27,4 @@
 @property (nonatomic, copy)   NSArray *annotations;
 @property (nonatomic, copy)   NSNumber *recentMessageID;
 
-
 @end

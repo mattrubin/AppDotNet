@@ -28,4 +28,15 @@
     return [NSString stringWithFormat:@"[%@: %@, %@]", self.class, self.type, self.value];
 }
 
+
+- (NSDictionary *)toDictionary
+{
+    NSMutableDictionary *dictionary = [NSDictionary dictionary];
+    
+    [dictionary setObject:self.type forKey:ANNOTATION_KEY_TYPE];
+    [dictionary setObject:self.value forKey:ANNOTATION_KEY_VALUE];
+    
+    return dictionary;
+}
+
 @end

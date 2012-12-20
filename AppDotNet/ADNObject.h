@@ -13,4 +13,6 @@
 + (id)instanceFromDictionary:(NSDictionary *)dictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)dictionary;
 
+- (NSDictionary *)toDictionary;
+
 @end

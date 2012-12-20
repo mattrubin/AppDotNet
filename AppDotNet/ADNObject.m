@@ -25,4 +25,9 @@
     [self setValuesForKeysWithDictionary:dictionary];
 }
 
+- (NSDictionary *)toDictionary
+{
+    return [NSDictionary dictionary];
+}
+
 @end
