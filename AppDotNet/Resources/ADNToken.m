@@ -21,21 +21,7 @@
 
 @implementation ADNToken
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [self init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)tokenFromDictionary:(NSDictionary*)dictionary
-{
-    return [[self alloc] initWithDictionary:dictionary];
-}
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary
+- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
     NSDictionary *appInfo = [dictionary dictionaryForKey:TOKEN_KEY_APP];
     self.clientID   = [appInfo stringForKey:TOKEN_KEY_CLIENT_ID];
@@ -48,7 +34,7 @@
         [(NSMutableArray*)self.scopes addObject:scopeString];
     }
     
-    self.user = [ADNUser userFromDictionary:[dictionary dictionaryForKey:TOKEN_KEY_USER]];
+    self.user = [ADNUser instanceFromDictionary:[dictionary dictionaryForKey:TOKEN_KEY_USER]];
 }
 
 - (NSString*)description

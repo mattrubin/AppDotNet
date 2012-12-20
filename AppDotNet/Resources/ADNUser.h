@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 #import "ADNEntities.h"
 #import "ADNImage.h"
@@ -26,7 +27,7 @@ typedef enum {
  * A User is the central object of the App.net APIs.
  * User objects have usernames, follow other users, and post content for their followers.
  */
-@interface ADNUser : NSObject
+@interface ADNUser : ADNObject
 
 // Primary identifier for a user. This idspace is unique to User objects. There can be a Post and User with the same ID; no relation is implied.
 @property NSUInteger userID;
@@ -84,14 +85,6 @@ typedef enum {
 
 // Metadata about the user. See the Annotations documentation.
 @property NSDictionary *annotations;
-
-
-#pragma mark Methods
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)userFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)object;
 
 
 @end

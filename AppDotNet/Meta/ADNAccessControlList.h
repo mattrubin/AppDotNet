@@ -7,17 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
-@interface ADNAccessControlList : NSObject
+
+@interface ADNAccessControlList : ADNObject
 
 @property (nonatomic, assign) BOOL anyUser;
 @property (nonatomic, assign) BOOL immutable;
 @property (nonatomic, assign) BOOL public;
 @property (nonatomic, assign) BOOL you;
 @property (nonatomic, copy)   NSArray *userIDs;
-
-
-+ (ADNAccessControlList *)instanceFromDictionary:(NSDictionary *)aDictionary;
-- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 @end

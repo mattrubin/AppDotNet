@@ -10,24 +10,6 @@
 
 @implementation ADNChannel
 
-+ (ADNChannel *)instanceFromDictionary:(NSDictionary *)aDictionary {
-    
-    ADNChannel *instance = [[ADNChannel alloc] init];
-    [instance setAttributesFromDictionary:aDictionary];
-    return instance;
-    
-}
-
-- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
-    
-    if (![aDictionary isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-    
-    [self setValuesForKeysWithDictionary:aDictionary];
-    
-}
-
 - (void)setValue:(id)value forKey:(NSString *)key {
     
     
@@ -37,7 +19,7 @@
             
             NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
             for (id valueMember in value) {
-                ADNAnnotation *populatedMember = [ADNAnnotation annotationFromDictionary:valueMember];
+                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
                 [myMembers addObject:populatedMember];
             }
             
@@ -48,7 +30,7 @@
     } else if ([key isEqualToString:@"owner"]) {
         
         if ([value isKindOfClass:[NSDictionary class]]) {
-            self.owner = [ADNUser userFromDictionary:value];
+            self.owner = [ADNUser instanceFromDictionary:value];
         }
         
     } else if ([key isEqualToString:@"readers"]) {

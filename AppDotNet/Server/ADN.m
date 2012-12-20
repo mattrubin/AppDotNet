@@ -141,7 +141,7 @@ static NSString *_accessToken;
             if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
                 NSMutableArray *users = [NSMutableArray arrayWithCapacity:responseContent.count];
                 for (NSDictionary *responseItem in responseContent) {
-                    [users addObject:[ADNUser userFromDictionary:responseItem]];
+                    [users addObject:[ADNUser instanceFromDictionary:responseItem]];
                 }
                 
                 if (handler) {
@@ -227,7 +227,7 @@ static NSString *_accessToken;
         NSDictionary *tokenDictionary;
         if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
             if((tokenDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
-                ADNToken *token = [ADNToken tokenFromDictionary:tokenDictionary];
+                ADNToken *token = [ADNToken instanceFromDictionary:tokenDictionary];
                 
                 if (handler) {
                     handler(token, nil);
@@ -410,7 +410,7 @@ static NSString *_accessToken;
         NSDictionary *userDictionary;
         if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
             if((userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
-                ADNUser *user = [ADNUser userFromDictionary:userDictionary];
+                ADNUser *user = [ADNUser instanceFromDictionary:userDictionary];
                 
                 if (handler) {
                     handler(user, nil);

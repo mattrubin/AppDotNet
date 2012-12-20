@@ -18,22 +18,7 @@
 
 @implementation ADNImage
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [super init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)imageWithDictionary:(NSDictionary*)dictionary
-{
-    return [[ADNImage alloc] initWithDictionary:dictionary];
-}
-
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary
+- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
     self.height = [dictionary integerForKey:IMAGE_KEY_HEIGHT];
     self.width  = [dictionary integerForKey:IMAGE_KEY_WIDTH];

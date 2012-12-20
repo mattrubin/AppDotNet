@@ -55,7 +55,7 @@
     }
     if (!userDictionary) return;
     
-    ADNUser *user = [ADNUser userFromDictionary:userDictionary];
+    ADNUser *user = [ADNUser instanceFromDictionary:userDictionary];
     
     [self validateUser:user withDictionary:userDictionary];
 }

@@ -17,32 +17,7 @@
 
 @implementation ADNAnnotation
 
-/*
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization
-    }
-    return self;
-}
-*/
-
-- (id)initWithDictionary:(NSDictionary*)dictionary
-{
-    self = [self init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)annotationFromDictionary:(NSDictionary*)dictionary
-{
-    return [[ADNAnnotation alloc] initWithDictionary:dictionary];
-}
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary
+- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
     self.type  = [dictionary stringForKey:ANNOTATION_KEY_TYPE];
     self.value = [dictionary dictionaryForKey:ANNOTATION_KEY_VALUE];

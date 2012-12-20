@@ -10,24 +10,6 @@
 
 @implementation ADNAccessControlList
 
-+ (ADNAccessControlList *)instanceFromDictionary:(NSDictionary *)aDictionary {
-
-    ADNAccessControlList *instance = [[ADNAccessControlList alloc] init];
-    [instance setAttributesFromDictionary:aDictionary];
-    return instance;
-
-}
-
-- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
-
-    if (![aDictionary isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-
-    [self setValuesForKeysWithDictionary:aDictionary];
-
-}
-
 - (void)setValue:(id)value forKey:(NSString *)key {
 
     if ([key isEqualToString:@"user_ids"]) {

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 #import "ADNUser.h"
 
-@interface ADNPost : NSObject
+
+@interface ADNPost : ADNObject
 
 // Primary identifier for a post.
 @property NSInteger postID;

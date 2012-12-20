@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
-@interface ADNLink : NSObject
+
+@interface ADNLink : ADNObject
 
 // The anchor text to be linked (could be a url).
 @property NSString *text;
@@ -18,11 +20,5 @@
 @property NSUInteger position;
 // The length of the substring in text that represents this link.
 @property NSUInteger length;
-
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)linkFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
 
 @end

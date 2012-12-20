@@ -18,32 +18,7 @@
 
 @implementation ADNHashtag
 
-/*
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization
-    }
-    return self;
-}
-*/
-
-- (id)initWithDictionary:(NSDictionary*)dictionary
-{
-    self = [self init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)hashtagFromDictionary:(NSDictionary*)dictionary
-{
-    return [[ADNHashtag alloc] initWithDictionary:dictionary];
-}
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary
+- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
     self.name     = [dictionary stringForKey:HASHTAG_KEY_NAME];
     self.position = [dictionary integerForKey:HASHTAG_KEY_POSITION];

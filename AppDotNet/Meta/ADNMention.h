@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
-@interface ADNMention : NSObject
+
+@interface ADNMention : ADNObject
 
 // The username being mentioned (doesn't include '@').
 @property NSString *username;
@@ -18,11 +20,5 @@
 @property NSUInteger position;
 // The length of the substring in text that represents this mention. Since @ is included, len will be the length of the name + 1.
 @property NSUInteger length;
-
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)mentionFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
 
 @end
