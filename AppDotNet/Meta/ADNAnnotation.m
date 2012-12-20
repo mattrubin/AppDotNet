@@ -33,8 +33,10 @@
 {
     NSMutableDictionary *dictionary = [NSDictionary dictionary];
     
-    [dictionary setObject:self.type forKey:ANNOTATION_KEY_TYPE];
-    [dictionary setObject:self.value forKey:ANNOTATION_KEY_VALUE];
+    if (self.type)
+        [dictionary setObject:self.type forKey:ANNOTATION_KEY_TYPE];
+    if (self.value)
+        [dictionary setObject:self.value forKey:ANNOTATION_KEY_VALUE];
     
     return dictionary;
 }

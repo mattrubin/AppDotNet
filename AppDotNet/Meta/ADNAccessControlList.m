@@ -61,7 +61,8 @@
     [dictionary setObject:[NSNumber numberWithBool:self.public]    forKey:ACL_KEY_PUBLIC];
     [dictionary setObject:[NSNumber numberWithBool:self.you]       forKey:ACL_KEY_YOU];
     
-    [dictionary setObject:self.userIDs.copy forKey:ACL_KEY_USER_IDS];
+    if (self.userIDs)
+        [dictionary setObject:self.userIDs.copy forKey:ACL_KEY_USER_IDS];
     
     return dictionary;
 }
