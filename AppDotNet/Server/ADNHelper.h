@@ -12,7 +12,7 @@
 
 + (NSDictionary*)dictionaryFromJSONData:(NSData*)data;
 
-+ (id)responseDataFromEnvelope:(NSDictionary*)responseEnvelope;
++ (id)responseContentFromEnvelope:(NSDictionary*)responseEnvelope;
 
 + (NSDateFormatter*)dateFormatter;
 

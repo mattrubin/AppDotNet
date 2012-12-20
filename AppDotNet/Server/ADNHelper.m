@@ -31,7 +31,7 @@
     }
 }
 
-+ (id)responseDataFromEnvelope:(NSDictionary *)responseEnvelope
++ (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope
 {
     NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];
     NSInteger code = [meta integerForKey:@"code"];
