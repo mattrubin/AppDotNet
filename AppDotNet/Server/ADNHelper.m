@@ -31,6 +31,20 @@
     }
 }
 
++ (NSData*)JSONDataFromDictionary:(NSDictionary*)dictionary
+{
+    NSError *error;
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:dictionary options:0/*NSJSONWritingPrettyPrinted*/ error:&error];
+    
+    if (!error) {
+        return JSONData;
+    } else {
+        NSLog(@"ERROR: %@", error);
+        return nil;
+    }
+}
+
+
 + (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope
 {
     NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];

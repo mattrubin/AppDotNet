@@ -271,8 +271,7 @@ static NSString *_accessToken;
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"POST";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-#warning API Implementation Incomplete
-    //request.postBody = ...;
+    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
     
     [request startAsynchronous];
 }
@@ -284,8 +283,7 @@ static NSString *_accessToken;
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"PUT";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-#warning API Implementation Incomplete
-    //request.postBody = ...];
+    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
     
     [request startAsynchronous];
 }
