@@ -15,67 +15,67 @@
 @interface ADNPost : ADNObject
 
 // Primary identifier for a post.
-@property NSInteger postID;
+@property (nonatomic, assign) NSInteger postID;
 
 // The associated User object. Note: In certain cases (e.g., when a user account has been deleted), this key may be omitted.
-@property ADNUser *user;
+@property (nonatomic, strong) ADNUser *user;
 // The time at which the post was created.
-@property NSDate  *createdAt;
+@property (nonatomic, copy) NSDate  *createdAt;
 
 
 // User supplied text of the post.
-@property NSString *text;
+@property (nonatomic, copy) NSString *text;
 // Server-generated annotated HTML rendering of post text.
-@property NSString *html;
+@property (nonatomic, copy) NSString *html;
 
 
 // Description of the API consumer that created this post.
-@property NSString *sourceName;
+@property (nonatomic, copy) NSString *sourceName;
 // Link provided by the API consumer that created this post.
-@property NSString *sourceLink;
+@property (nonatomic, copy) NSString *sourceLink;
 
 
 // The id of the post this post is replying to (or null if not a reply).
-@property NSInteger replyTo;
+@property (nonatomic, assign) NSInteger replyTo;
 // The URL of the post's detail page on Alpha.
-@property NSString *canonicalURL;
+@property (nonatomic, copy) NSString *canonicalURL;
 // The id of the post at the root of the thread that this post is a part of. If thread_id==id than this property does not guarantee that the thread has > 1 post. Please see num_replies.
-@property NSInteger threadID;
+@property (nonatomic, assign) NSInteger threadID;
 
 
 // The number of posts created in reply to this post.
-@property NSUInteger numReplies;
+@property (nonatomic, assign) NSUInteger numReplies;
 // The number of users who have starred this post.
-@property NSUInteger numStars;
+@property (nonatomic, assign) NSUInteger numStars;
 // The number of users who have reposted this post.
-@property NSUInteger numReposts;
+@property (nonatomic, assign) NSUInteger numReposts;
 
 
 // Metadata about the entire post. See the Annotations documentation.
-@property NSDictionary *annotations;
+@property (nonatomic, copy) NSDictionary *annotations;
 // Rich text information for this post. See the Entities documentation.
-@property NSDictionary *entities;
+@property (nonatomic, copy) NSDictionary *entities;
 
 
 // Has this post been deleted? For non-deleted posts, this key may be omitted instead of being false. If a post has been deleted, the text, html, and entities properties will be empty and may be omitted.
-@property BOOL isDeleted;
+@property (nonatomic, assign) BOOL isDeleted;
 // Is this Post meant for humans or other apps? See [Machine only Posts] for more information.
-@property BOOL machineOnly;
+@property (nonatomic, assign) BOOL machineOnly;
 
 
 // Have you starred this Post? May be omitted if this is not an authenticated request.
-@property BOOL youStarred;
+@property (nonatomic, assign) BOOL youStarred;
 // A partial list of users who have starred this post. This is not comprehensive and is meant to be a sample of users who have starred this post giving preference to users the current user follows. This is only included if `include_starred_by=1` is passed to App.net. May be omitted if this is not an authenticated request.
-@property NSArray *starredBy;
+@property (nonatomic, copy) NSArray *starredBy;
 
 
 // Have you reposted this Post? May be omitted if this is not an authenticated request.
-@property BOOL youReposted;
+@property (nonatomic, assign) BOOL youReposted;
 // A partial list of users who have reposted this post. This is not comprehensive and is meant to be a sample of users who have starred this post giving preference to users the current user follows. This is only included if `include_reposters=1` is passed to App.net. May be omitted if this is not an authenticated request.
-@property NSArray *reposters;
+@property (nonatomic, copy) NSArray *reposters;
 
 
 // If this post is a repost, this key will contain the complete original Post.
-@property ADNPost *repostOf;
+@property (nonatomic, strong) ADNPost *repostOf;
 
 @end

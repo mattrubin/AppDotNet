@@ -13,12 +13,12 @@
 @interface ADNMention : ADNObject
 
 // The username being mentioned (doesn't include '@').
-@property NSString *username;
+@property (nonatomic, copy) NSString *username;
 // The user id of the mentioned user.
-@property NSUInteger userID;
+@property (nonatomic, assign) NSUInteger userID;
 // The 0 based index where this entity begins text (include @).
-@property NSUInteger position;
+@property (nonatomic, assign) NSUInteger position;
 // The length of the substring in text that represents this mention. Since @ is included, len will be the length of the name + 1.
-@property NSUInteger length;
+@property (nonatomic, assign) NSUInteger length;
 
 @end

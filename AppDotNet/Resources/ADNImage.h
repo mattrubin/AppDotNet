@@ -12,8 +12,8 @@
 
 @interface ADNImage : ADNObject
 
-@property NSUInteger height;
-@property NSUInteger width;
-@property NSString *url;
+@property (nonatomic, assign) NSUInteger height;
+@property (nonatomic, assign) NSUInteger width;
+@property (nonatomic, copy)   NSString *url;
 
 @end

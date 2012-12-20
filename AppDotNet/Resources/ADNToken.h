@@ -14,12 +14,12 @@
 
 @interface ADNToken : ADNObject
 
-@property NSString *clientID;
-@property NSString *clientLink;
-@property NSString *clientName;
+@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientLink;
+@property (nonatomic, copy) NSString *clientName;
 
-@property NSSet *scopes;
+@property (nonatomic, copy) NSSet *scopes;
 
-@property ADNUser *user;
+@property (nonatomic, strong) ADNUser *user;
 
 @end

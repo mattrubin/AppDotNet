@@ -13,12 +13,12 @@
 @interface ADNLink : ADNObject
 
 // The anchor text to be linked (could be a url).
-@property NSString *text;
+@property (nonatomic, copy) NSString *text;
 // The destination url (only http or https accepted).
-@property NSString *url;
+@property (nonatomic, copy) NSString *url;
 // The 0 based index where this entity begins text.
-@property NSUInteger position;
+@property (nonatomic, assign) NSUInteger position;
 // The length of the substring in text that represents this link.
-@property NSUInteger length;
+@property (nonatomic, assign) NSUInteger length;
 
 @end
