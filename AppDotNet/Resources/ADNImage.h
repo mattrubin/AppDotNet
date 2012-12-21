@@ -7,20 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 
-@interface ADNImage : NSObject
+@interface ADNImage : ADNObject
 
-@property NSUInteger height;
-@property NSUInteger width;
-@property NSString *url;
-
-
-#pragma mark Methods
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)imageWithDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
+@property (nonatomic, assign) NSUInteger height;
+@property (nonatomic, assign) NSUInteger width;
+@property (nonatomic, copy)   NSString *url;
 
 @end

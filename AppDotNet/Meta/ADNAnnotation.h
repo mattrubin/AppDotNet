@@ -7,18 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface ADNAnnotation : NSObject
-
-@property NSString *type;
-@property NSDictionary *value;
+#import "ADNObject.h"
 
 
-#pragma mark Methods
+@interface ADNAnnotation : ADNObject
 
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)annotationFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSDictionary *value;
 
 @end

@@ -19,32 +19,7 @@
 
 @implementation ADNLink
 
-/*
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization
-    }
-    return self;
-}
-*/
-
-- (id)initWithDictionary:(NSDictionary*)dictionary
-{
-    self = [self init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)linkFromDictionary:(NSDictionary*)dictionary
-{
-    return [[ADNLink alloc] initWithDictionary:dictionary];
-}
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary
+- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
     self.text     = [dictionary stringForKey:LINK_KEY_TEXT];
     self.url      = [dictionary stringForKey:LINK_KEY_URL];

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
-@interface ADNMessage : NSObject
+
+@interface ADNMessage : ADNObject
 
 @end

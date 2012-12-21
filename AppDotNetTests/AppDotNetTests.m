@@ -51,11 +51,11 @@
     NSDictionary *responseEnvelope;
     NSDictionary *userDictionary;
     if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData])) {
-        userDictionary = [ADNHelper responseDataFromEnvelope:responseEnvelope];
+        userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope];
     }
     if (!userDictionary) return;
     
-    ADNUser *user = [ADNUser userFromDictionary:userDictionary];
+    ADNUser *user = [ADNUser instanceFromDictionary:userDictionary];
     
     [self validateUser:user withDictionary:userDictionary];
 }

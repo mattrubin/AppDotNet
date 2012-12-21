@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
-@interface ADNFilter : NSObject
+
+@interface ADNFilter : ADNObject
 
 @end

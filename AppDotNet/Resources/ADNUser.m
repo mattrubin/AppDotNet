@@ -53,31 +53,7 @@
 
 @implementation ADNUser
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization
-    }
-    return self;
-}
-
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [self init];
-    if (self) {
-        [self updateWithDictionary:dictionary];
-    }
-    return self;
-}
-
-+ (id)userFromDictionary:(NSDictionary *)dictionary
-{
-    return [[ADNUser alloc] initWithDictionary:dictionary];
-}
-
-
-- (void)updateWithDictionary:(NSDictionary *)object
+- (void)setAttributesFromDictionary:(NSDictionary *)object
 {
     self.userID   = [object integerForKey:USER_KEY_ID];
     self.username = [object stringForKey:USER_KEY_USERNAME];
@@ -86,13 +62,13 @@
     NSDictionary *description = [object dictionaryForKey:USER_KEY_DESCRIPTION];
     self.descriptionText = [description stringForKey:USER_KEY_DESCRIPTION_TEXT];
     self.descriptionHTML = [description stringForKey:USER_KEY_DESCRIPTION_HTML];
-    self.descriptionEntities = [ADNEntities entitiesFromDictionary:[description dictionaryForKey:USER_KEY_DESCRIPTION_ENTITIES]];
+    self.descriptionEntities = [ADNEntities instanceFromDictionary:[description dictionaryForKey:USER_KEY_DESCRIPTION_ENTITIES]];
     
     self.timezone = [object stringForKey:USER_KEY_TIMEZONE];
     self.locale   = [object stringForKey:USER_KEY_LOCALE];
     
-    self.avatarImage = [ADNImage imageWithDictionary:[object dictionaryForKey:USER_KEY_AVATAR_IMAGE]];
-    self.coverImage  = [ADNImage imageWithDictionary:[object dictionaryForKey:USER_KEY_COVER_IMAGE]];
+    self.avatarImage = [ADNImage instanceFromDictionary:[object dictionaryForKey:USER_KEY_AVATAR_IMAGE]];
+    self.coverImage  = [ADNImage instanceFromDictionary:[object dictionaryForKey:USER_KEY_COVER_IMAGE]];
     
     self.type = [ADNUser typeFromString:[object stringForKey:USER_KEY_TYPE]];
     self.createdAt = [[ADNHelper dateFormatter] dateFromString:[object stringForKey:USER_KEY_CREATED_AT]];
@@ -113,7 +89,7 @@
         NSArray *annotationArray = [object arrayForKey:USER_KEY_ANNOTATIONS];
         self.annotations = [NSMutableDictionary dictionaryWithCapacity:[annotationArray count]];
         for (NSDictionary *annotationDict in annotationArray) {
-            ADNAnnotation *annotation = [ADNAnnotation annotationFromDictionary:annotationDict];
+            ADNAnnotation *annotation = [ADNAnnotation instanceFromDictionary:annotationDict];
             [(NSMutableDictionary*)self.annotations setObject:annotation forKey:annotation.type];
         }
     }

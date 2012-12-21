@@ -7,22 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 #import "ADNMention.h"
 #import "ADNHashtag.h"
 #import "ADNLink.h"
 
 
-@interface ADNEntities : NSObject
+@interface ADNEntities : ADNObject
 
-@property NSArray *mentions;
-@property NSArray *hashtags;
-@property NSArray *links;
-
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)entitiesFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
+@property (nonatomic, copy) NSArray *mentions;
+@property (nonatomic, copy) NSArray *hashtags;
+@property (nonatomic, copy) NSArray *links;
 
 @end

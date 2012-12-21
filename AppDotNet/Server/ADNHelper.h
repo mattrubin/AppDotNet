@@ -11,8 +11,9 @@
 @interface ADNHelper : NSObject
 
 + (NSDictionary*)dictionaryFromJSONData:(NSData*)data;
++ (NSData*)JSONDataFromDictionary:(NSDictionary*)dictionary;
 
-+ (id)responseDataFromEnvelope:(NSDictionary*)responseEnvelope;
++ (id)responseContentFromEnvelope:(NSDictionary*)responseEnvelope;
 
 + (NSDateFormatter*)dateFormatter;
 

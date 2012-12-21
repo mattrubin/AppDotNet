@@ -7,25 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 #import "ADNUser.h"
 
-@interface ADNToken : NSObject
 
-@property NSString *clientID;
-@property NSString *clientLink;
-@property NSString *clientName;
+@interface ADNToken : ADNObject
 
-@property NSSet *scopes;
+@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientLink;
+@property (nonatomic, copy) NSString *clientName;
 
-@property ADNUser *user;
+@property (nonatomic, copy) NSSet *scopes;
 
-
-#pragma mark Methods
-
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)tokenFromDictionary:(NSDictionary*)dictionary;
-
-- (void)updateWithDictionary:(NSDictionary*)dictionary;
+@property (nonatomic, strong) ADNUser *user;
 
 @end

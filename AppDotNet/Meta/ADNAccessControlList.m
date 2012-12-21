@@ -8,29 +8,18 @@
 
 #import "ADNAccessControlList.h"
 
+#define ACL_KEY_ANY_USER    @"any_user"
+#define ACL_KEY_IMMUTABLE   @"immutable"
+#define ACL_KEY_PUBLIC      @"public"
+#define ACL_KEY_YOU         @"you"
+#define ACL_KEY_USER_IDS    @"user_ids"
+
+
 @implementation ADNAccessControlList
-
-+ (ADNAccessControlList *)instanceFromDictionary:(NSDictionary *)aDictionary {
-
-    ADNAccessControlList *instance = [[ADNAccessControlList alloc] init];
-    [instance setAttributesFromDictionary:aDictionary];
-    return instance;
-
-}
-
-- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
-
-    if (![aDictionary isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-
-    [self setValuesForKeysWithDictionary:aDictionary];
-
-}
 
 - (void)setValue:(id)value forKey:(NSString *)key {
 
-    if ([key isEqualToString:@"user_ids"]) {
+    if ([key isEqualToString:ACL_KEY_USER_IDS]) {
 
         if ([value isKindOfClass:[NSArray class]]) {
 
@@ -52,9 +41,9 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
 
-    if ([key isEqualToString:@"any_user"]) {
+    if ([key isEqualToString:ACL_KEY_ANY_USER]) {
         [self setValue:value forKey:@"anyUser"];
-    } else if ([key isEqualToString:@"user_ids"]) {
+    } else if ([key isEqualToString:ACL_KEY_USER_IDS]) {
         [self setValue:value forKey:@"userIDs"];
     } else {
         [super setValue:value forUndefinedKey:key];
@@ -62,5 +51,20 @@
 
 }
 
+
+- (NSDictionary*)toDictionary
+{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setObject:[NSNumber numberWithBool:self.anyUser]   forKey:ACL_KEY_ANY_USER];
+    [dictionary setObject:[NSNumber numberWithBool:self.immutable] forKey:ACL_KEY_IMMUTABLE];
+    [dictionary setObject:[NSNumber numberWithBool:self.public]    forKey:ACL_KEY_PUBLIC];
+    [dictionary setObject:[NSNumber numberWithBool:self.you]       forKey:ACL_KEY_YOU];
+    
+    if (self.userIDs)
+        [dictionary setObject:self.userIDs.copy forKey:ACL_KEY_USER_IDS];
+    
+    return dictionary;
+}
 
 @end

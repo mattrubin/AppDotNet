@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADNObject.h"
 
 #import "ADNUser.h"
 #import "ADNAccessControlList.h"
 #import "ADNAnnotation.h"
 
 
-@interface ADNChannel : NSObject
+@interface ADNChannel : ADNObject
 
 @property (nonatomic, copy)   NSNumber *channelID;
 @property (nonatomic, copy)   NSString *type;
@@ -25,9 +26,5 @@
 @property (nonatomic, assign) BOOL youSubscribed;
 @property (nonatomic, copy)   NSArray *annotations;
 @property (nonatomic, copy)   NSNumber *recentMessageID;
-
-
-+ (ADNChannel *)instanceFromDictionary:(NSDictionary *)aDictionary;
-- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 @end
