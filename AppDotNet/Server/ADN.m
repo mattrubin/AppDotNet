@@ -16,7 +16,11 @@
 
 
 static NSString *_accessToken;
+static BOOL _asynchronous = YES;
 
+@interface ADN ()
++ (void)startRequest:(ASIHTTPRequest*)request;
+@end
 
 @implementation ADN
 
@@ -28,6 +32,28 @@ static NSString *_accessToken;
 + (void)setAccessToken:(NSString*)accessToken
 {
     _accessToken = accessToken;
+}
+
++ (BOOL)asynchronous
+{
+    return _asynchronous;
+}
+
++ (void)useAsynchronous:(BOOL)asynchronous
+{
+    _asynchronous = asynchronous;
+}
+
+
++ (void)startRequest:(ASIHTTPRequest*)request
+{
+    if ([self asynchronous]) {
+        NSLog(@"Starting asynchronous request...");
+        [request startAsynchronous];
+    } else {
+        NSLog(@"Starting synchronous request...");
+        [request startSynchronous];
+    }
 }
 
 #pragma mark Requests
@@ -258,7 +284,7 @@ static NSString *_accessToken;
         
     }];
     
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 
@@ -273,7 +299,7 @@ static NSString *_accessToken;
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
     request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
     
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)updateChannel:(ADNChannel*)channel withCompletionHandler:(ADNChannelCompletionHandler)handler
@@ -285,21 +311,21 @@ static NSString *_accessToken;
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
     request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
     
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)getChannelWithID:(NSNumber*)channelID withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channelID intValue]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)getChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [@"channels?ids=" stringByAppendingString:[channelIDs componentsJoinedByString:@","]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelArrayHandler:handler];
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 
@@ -353,7 +379,7 @@ static NSString *_accessToken;
         
     }];
     
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)subscribeToChannelWithID:(NSNumber*)channelID         withCompletionHandler:(ADNChannelCompletionHandler)handler
@@ -361,7 +387,7 @@ static NSString *_accessToken;
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"POST";
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)unsubscribeFromChannelWithID:(NSNumber*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler
@@ -369,21 +395,21 @@ static NSString *_accessToken;
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"DELETE";
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)getSubscribersForChannelWithID:(NSNumber*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers", [channelID intValue]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withUserArrayHandler:handler];
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 + (void)getSubscriberIDsForChannelWithID:(NSNumber*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers/ids", [channelID intValue]];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withArrayHandler:handler];
-    [request startAsynchronous];
+    [self startRequest:request];
 }
 
 
@@ -436,8 +462,7 @@ static NSString *_accessToken;
 
     }];
     
-    //[request startAsynchronous];
-    [request startSynchronous];
+    [self startRequest:request];
 }
 
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler

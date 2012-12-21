@@ -24,6 +24,9 @@ typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error)
 + (NSString*)accessToken;
 + (void)setAccessToken:(NSString*)accessToken;
 
++ (BOOL)asynchronous;
++ (void)useAsynchronous:(BOOL)asynchronous;
+
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler;
 
 // Channel
