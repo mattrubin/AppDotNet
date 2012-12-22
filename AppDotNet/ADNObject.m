@@ -8,6 +8,9 @@
 
 #import "ADNObject.h"
 
+#import <objc/runtime.h>
+
+
 @implementation ADNObject
 
 + (id)instanceFromDictionary:(NSDictionary *)dictionary
@@ -28,6 +31,30 @@
 - (NSDictionary *)toDictionary
 {
     return [NSDictionary dictionary];
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    objc_property_t theProperty = class_getProperty([self class], [key UTF8String]);
+    
+    if (theProperty) {
+        char *typeEncoding = property_copyAttributeValue(theProperty, "T");
+        Class class = nil;
+        
+        if (typeEncoding[0] == '@') {
+            // Object
+            if (strlen(typeEncoding) >= 3) {
+                char *className = strndup(typeEncoding+2, strlen(typeEncoding)-3);
+                class = NSClassFromString([NSString stringWithUTF8String:className]);
+            }
+            
+            if (class && ![value isKindOfClass:class]) {
+                [NSException raise:@"InvalidPropertyAssignment" format:@"Trying to assign an object of type %@ to a property of type %@ (%@.%@)", [value class], class, [self class], key];
+            }
+        }
+        free(typeEncoding);
+    }
+    [super setValue:value forKey:key];
 }
 
 @end
