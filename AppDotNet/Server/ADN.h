@@ -13,10 +13,14 @@
 #import "ADNChannel.h"
 
 
-typedef void (^NSArrayCompletionHandler)  (NSArray    *objects, NSError *error);
-typedef void (^ADNUserCompletionHandler)   (ADNUser    *user,    NSError *error);
-typedef void (^ADNTokenCompletionHandler)  (ADNToken   *token,   NSError *error);
-typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error);
+typedef void (^GenericCompletionHandler)     (id            object,  NSError *error);
+typedef void (^NSArrayCompletionHandler)     (NSArray      *objects, NSError *error);
+typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, NSError *error);
+typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    NSError *error);
+typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   NSError *error);
+typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, NSError *error);
+
+typedef id (^ADNDataConverter)(id responseContent);
 
 
 @interface ADN : NSObject
@@ -41,6 +45,7 @@ typedef void (^ADNChannelCompletionHandler)(ADNChannel *channel, NSError *error)
 + (void)unsubscribeFromChannelWithID:(NSNumber*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler;
 + (void)getSubscribersForChannelWithID:(NSNumber*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler;
 + (void)getSubscriberIDsForChannelWithID:(NSNumber*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler;
++ (void)getSubscriberIDsForChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSDictionaryCompletionHandler)handler;
 
 
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;

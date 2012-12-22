@@ -48,10 +48,8 @@ static BOOL _asynchronous = YES;
 + (void)startRequest:(ASIHTTPRequest*)request
 {
     if ([self asynchronous]) {
-        NSLog(@"Starting asynchronous request...");
         [request startAsynchronous];
     } else {
-        NSLog(@"Starting synchronous request...");
         [request startSynchronous];
     }
 }
@@ -238,7 +236,44 @@ static BOOL _asynchronous = YES;
     return request;
 }
 
-#pragma mark Tokens
++ (ASIHTTPRequest *)requestForEndpoint:(NSString *)endpoint withConverter:(ADNDataConverter)converter handler:(GenericCompletionHandler)handler
+{
+    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
+    
+    [request setCompletionBlock:^{
+        NSData *responseData = [request responseData];
+        NSDictionary *responseEnvelope;
+        id responseContent;
+        NSError *error = [NSError errorWithDomain:@"ERROR" code:0 userInfo:nil];
+        
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
+            if ((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+                if (converter) {
+                    responseContent = converter(responseContent);
+                    
+                }
+                if (handler) {
+                    handler(responseContent, nil);
+                }
+                return; // success
+            }
+        }
+        if (handler) {
+            handler(nil, error); // failure
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        if (handler) {
+            handler(nil, [request error]);
+        }
+    }];
+    
+    return request;
+}
+
+
+#pragma mark - Tokens
 
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler
 {
@@ -411,6 +446,33 @@ static BOOL _asynchronous = YES;
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withArrayHandler:handler];
     [self startRequest:request];
 }
+
++ (void)getSubscriberIDsForChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSDictionaryCompletionHandler)handler
+{
+    NSString *idList = [channelIDs componentsJoinedByString:@","];
+    NSString *endpoint = [@"channels/subscribers/ids?ids=" stringByAppendingString:idList?idList:@""];
+    
+    ADNDataConverter converter = ^id(id responseContent) {
+        NSDictionary *rawDict = responseContent;
+        NSMutableDictionary *resultDict = [NSMutableDictionary dictionaryWithCapacity:rawDict.count];
+        
+        for (NSString *key in rawDict) {
+            NSArray *rawArray = [rawDict objectForKey:key];
+            NSMutableArray *channelArray = [NSMutableArray arrayWithCapacity:rawArray.count];
+            
+            for (NSString *rawString in rawArray) {
+                [channelArray addObject:[NSNumber numberWithInteger:[rawString integerValue]]];
+            }
+            
+            [resultDict setObject:channelArray forKey:[NSNumber numberWithInteger:[key integerValue]]];
+        }
+        return resultDict;
+    };
+    
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withConverter:converter handler:handler];
+    [self startRequest:request];
+}
+
 
 
 
