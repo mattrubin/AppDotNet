@@ -31,7 +31,7 @@
 
 - (NSDictionary *)toDictionary
 {
-    NSMutableDictionary *dictionary = [NSDictionary dictionary];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     if (self.type)
         [dictionary setObject:self.type forKey:ANNOTATION_KEY_TYPE];
