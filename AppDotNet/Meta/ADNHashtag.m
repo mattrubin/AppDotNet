@@ -11,19 +11,38 @@
 #import "NSDictionary+ADN.h"
 
 
-#define HASHTAG_KEY_NAME        @"name"
-#define HASHTAG_KEY_POSITION    @"pos"
-#define HASHTAG_KEY_LENGTH      @"len"
-
-
 @implementation ADNHashtag
 
-- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    self.name     = [dictionary stringForKey:HASHTAG_KEY_NAME];
-    self.position = [dictionary integerForKey:HASHTAG_KEY_POSITION];
-    self.length   = [dictionary integerForKey:HASHTAG_KEY_LENGTH];
+    if ([key isEqualToString:@"len"]) {
+        [self setValue:value forKey:@"length"];
+    } else if ([key isEqualToString:@"pos"]) {
+        [self setValue:value forKey:@"position"];
+    } else {
+        [super setValue:value forUndefinedKey:key];
+    }
 }
+
+- (NSDictionary *)toDictionary
+{
+    NSArray *propertyKeys = [NSArray arrayWithObjects:@"name", @"pos", @"len", nil];
+    return [self dictionaryWithValuesForKeys:propertyKeys];
+}
+
+- (id)valueForUndefinedKey:(NSString *)key
+{
+    if ([key isEqualToString:@"len"]) {
+        return [self valueForKey:@"length"];
+    } else if ([key isEqualToString:@"pos"]) {
+        return [self valueForKey:@"position"];
+    } else {
+        return [super valueForUndefinedKey:key];
+    }
+}
+
+
+#pragma mark -
 
 - (NSString*)description
 {

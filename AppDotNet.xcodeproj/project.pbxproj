@@ -75,6 +75,9 @@
 		8CED1AF3167D437B0071D908 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */; };
 		8CED1AF5167D43B60071D908 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */; };
 		8CED1AF7167D56FE0071D908 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF6167D56FE0071D908 /* libz.dylib */; };
+		8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D4C16880B610075FA7A /* ADNSource.m */; };
+		8CFB9D5116881D800075FA7A /* ADNMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D5016881D800075FA7A /* ADNMessageTests.m */; };
+		8CFB9D53168820ED0075FA7A /* Message.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB9D52168820ED0075FA7A /* Message.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +210,11 @@
 		8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8CED1AF6167D56FE0071D908 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8CFB9D4B16880B610075FA7A /* ADNSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNSource.h; sourceTree = "<group>"; };
+		8CFB9D4C16880B610075FA7A /* ADNSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNSource.m; sourceTree = "<group>"; };
+		8CFB9D4F16881D800075FA7A /* ADNMessageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMessageTests.h; sourceTree = "<group>"; };
+		8CFB9D5016881D800075FA7A /* ADNMessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMessageTests.m; sourceTree = "<group>"; };
+		8CFB9D52168820ED0075FA7A /* Message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Message.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +264,8 @@
 				8C7B24C1167F379100C38F51 /* Entities */,
 				8C1A3DD91680696200261C9B /* ADNAccessControlList.h */,
 				8C1A3DDA1680696200261C9B /* ADNAccessControlList.m */,
+				8CFB9D4B16880B610075FA7A /* ADNSource.h */,
+				8CFB9D4C16880B610075FA7A /* ADNSource.m */,
 			);
 			path = Meta;
 			sourceTree = "<group>";
@@ -265,6 +275,7 @@
 			children = (
 				8C7B24B1167ECF8300C38F51 /* User.json */,
 				8C1A3E0C1682D87100261C9B /* Channel.json */,
+				8CFB9D52168820ED0075FA7A /* Message.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -350,6 +361,8 @@
 				8CED1A8D167C5FC90071D908 /* AppDotNetTests.m */,
 				8C1A3E061682D4F200261C9B /* ADNChannelTests.h */,
 				8C1A3E071682D4F200261C9B /* ADNChannelTests.m */,
+				8CFB9D4F16881D800075FA7A /* ADNMessageTests.h */,
+				8CFB9D5016881D800075FA7A /* ADNMessageTests.m */,
 				8C7B24B0167ECEF600C38F51 /* Mock Data */,
 				8CED1A87167C5FC90071D908 /* Supporting Files */,
 			);
@@ -525,6 +538,7 @@
 				8CED1A8B167C5FC90071D908 /* InfoPlist.strings in Resources */,
 				8C7B24B2167ECF8300C38F51 /* User.json in Resources */,
 				8C1A3E0D1682D87100261C9B /* Channel.json in Resources */,
+				8CFB9D53168820ED0075FA7A /* Message.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +596,7 @@
 				8C1A3DAD167FEA7B00261C9B /* ADNAuthenticationRequest.m in Sources */,
 				8C1A3DDB1680696200261C9B /* ADNAccessControlList.m in Sources */,
 				8C1A3E031682C40500261C9B /* ADNObject.m in Sources */,
+				8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +606,7 @@
 			files = (
 				8CED1A8E167C5FC90071D908 /* AppDotNetTests.m in Sources */,
 				8C1A3E081682D4F200261C9B /* ADNChannelTests.m in Sources */,
+				8CFB9D5116881D800075FA7A /* ADNMessageTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,8 +23,8 @@
     NSData *userData = [NSData dataWithContentsOfFile:path];
     
     NSDictionary *responseEnvelope;
-    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData])) {
-        self.dataDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope];
+    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
+        self.dataDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil];
     }
 }
 
@@ -39,15 +39,17 @@
 {
     ADNChannel *channel = [ADNChannel instanceFromDictionary:self.dataDictionary];
     
-    NSMutableDictionary *testDictionary = [self.dataDictionary mutableCopy];
+    NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
+    NSMutableDictionary *channelDictionary = [channel.toDictionary mutableCopy];
     
 #warning Channel validation incomplete: currently ignoring owner object
     [testDictionary removeObjectForKey:@"owner"];
+    [channelDictionary removeObjectForKey:@"owner"];
     
-    if (![channel.toDictionary isEqualToDictionary:testDictionary]) {
+    if (![channelDictionary isEqualToDictionary:testDictionary]) {
         STFail(@"Channel dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);
-        NSLog(@"B:\n%@", channel.toDictionary);
+        NSLog(@"B:\n%@", channelDictionary);
     }
 }
 

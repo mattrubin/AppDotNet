@@ -50,8 +50,8 @@
     
     NSDictionary *responseEnvelope;
     NSDictionary *userDictionary;
-    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData])) {
-        userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope];
+    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
+        userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil];
     }
     if (!userDictionary) return;
     
@@ -108,7 +108,7 @@
 
         for (ADNMention *mention in entities.mentions) {
             if (([mention.username isEqualToString:[mentionDictionary objectForKey:@"name"]]) &&
-                ([[NSString stringWithFormat:@"%u", mention.userID] isEqualToString:[mentionDictionary objectForKey:@"id"]]) &&
+                ([mention.userID isEqualToString:[mentionDictionary objectForKey:@"id"]]) &&
                 (mention.position == [[mentionDictionary objectForKey:@"pos"] integerValue]) &&
                 (mention.length == [[mentionDictionary objectForKey:@"len"] integerValue]))
             {

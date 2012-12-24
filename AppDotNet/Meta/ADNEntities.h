@@ -16,8 +16,8 @@
 
 @interface ADNEntities : ADNObject
 
-@property (nonatomic, copy) NSArray *mentions;
-@property (nonatomic, copy) NSArray *hashtags;
-@property (nonatomic, copy) NSArray *links;
+@property (nonatomic, strong, readonly) NSMutableArray *mentions;
+@property (nonatomic, strong, readonly) NSMutableArray *hashtags;
+@property (nonatomic, strong, readonly) NSMutableArray *links;
 
 @end

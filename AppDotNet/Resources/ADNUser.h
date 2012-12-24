@@ -84,7 +84,7 @@ typedef enum {
 
 
 // Metadata about the user. See the Annotations documentation.
-@property (nonatomic, copy) NSDictionary *annotations;
+@property (nonatomic, strong) NSDictionary *annotations;
 
 
 @end

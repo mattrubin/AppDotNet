@@ -16,7 +16,7 @@
 
 @interface ADNChannel : ADNObject
 
-@property (nonatomic, copy)   NSNumber *channelID;
+@property (nonatomic, copy)   NSString *channelID;
 @property (nonatomic, copy)   NSString *type;
 @property (nonatomic, strong) ADNUser *owner;
 @property (nonatomic, strong) ADNAccessControlList *readers;
@@ -25,6 +25,6 @@
 @property (nonatomic, assign) BOOL youCanEdit;
 @property (nonatomic, assign) BOOL youSubscribed;
 @property (nonatomic, copy)   NSArray *annotations;
-@property (nonatomic, copy)   NSNumber *recentMessageID;
+@property (nonatomic, copy)   NSString *recentMessageID;
 
 @end
