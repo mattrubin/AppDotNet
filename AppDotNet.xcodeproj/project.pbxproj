@@ -75,6 +75,7 @@
 		8CED1AF3167D437B0071D908 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */; };
 		8CED1AF5167D43B60071D908 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */; };
 		8CED1AF7167D56FE0071D908 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1AF6167D56FE0071D908 /* libz.dylib */; };
+		8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D4C16880B610075FA7A /* ADNSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,8 @@
 		8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8CED1AF6167D56FE0071D908 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8CFB9D4B16880B610075FA7A /* ADNSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNSource.h; sourceTree = "<group>"; };
+		8CFB9D4C16880B610075FA7A /* ADNSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,8 @@
 				8C7B24C1167F379100C38F51 /* Entities */,
 				8C1A3DD91680696200261C9B /* ADNAccessControlList.h */,
 				8C1A3DDA1680696200261C9B /* ADNAccessControlList.m */,
+				8CFB9D4B16880B610075FA7A /* ADNSource.h */,
+				8CFB9D4C16880B610075FA7A /* ADNSource.m */,
 			);
 			path = Meta;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				8C1A3DAD167FEA7B00261C9B /* ADNAuthenticationRequest.m in Sources */,
 				8C1A3DDB1680696200261C9B /* ADNAccessControlList.m in Sources */,
 				8C1A3E031682C40500261C9B /* ADNObject.m in Sources */,
+				8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
