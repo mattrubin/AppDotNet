@@ -38,27 +38,72 @@
     return self;
 }
 
-- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
+
+- (void)setValue:(id)value forKey:(NSString *)key
 {
-    NSArray *rawMentions = [dictionary arrayForKey:ENTITY_KEY_MENTIONS];
-    for (NSDictionary *mentionDictionary in rawMentions) {
-        ADNMention *newMention = [ADNMention instanceFromDictionary:mentionDictionary];
-        // TODO: check for errors and discard if malformed?
-        [self.mentions addObject:newMention];
+    if ([key isEqualToString:@"hashtags"]) {
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *hashtags = [NSMutableArray arrayWithCapacity:[value count]];
+            for (id rawHashtag in value) {
+                if ([rawHashtag isKindOfClass:[NSDictionary class]]) {
+                    [hashtags addObject:[ADNHashtag instanceFromDictionary:rawHashtag]];
+                }
+            }
+            self.hashtags = hashtags;
+        }
+    } else if ([key isEqualToString:@"links"]) {
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *links = [NSMutableArray arrayWithCapacity:[value count]];
+            for (id rawLink in value) {
+                if ([rawLink isKindOfClass:[NSDictionary class]]) {
+                    [links addObject:[ADNLink instanceFromDictionary:rawLink]];
+                }
+            }
+            self.links = links;
+        }
+    } else if ([key isEqualToString:@"mentions"]) {
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *mentions = [NSMutableArray arrayWithCapacity:[value count]];
+            for (id rawMention in value) {
+                if ([rawMention isKindOfClass:[NSDictionary class]]) {
+                    [mentions addObject:[ADNMention instanceFromDictionary:rawMention]];
+                }
+            }
+            self.mentions = mentions;
+        }
+    } else {
+        [super setValue:value forKey:key];
     }
-    
-    NSArray *rawHashtags = [dictionary arrayForKey:ENTITY_KEY_HASHTAGS];
-    for (NSDictionary *hashtagDictionary in rawHashtags) {
-        ADNHashtag *newHashtag = [ADNHashtag instanceFromDictionary:hashtagDictionary];
-        // TODO: check for errors and discard if malformed?
-        [self.hashtags addObject:newHashtag];
-    }
-    
-    NSArray *rawLinks = [dictionary arrayForKey:ENTITY_KEY_LINKS];
-    for (NSDictionary *linkDictionary in rawLinks) {
-        ADNLink *newLink = [ADNLink instanceFromDictionary:linkDictionary];
-        // TODO: check for errors and discard if malformed?
-        [self.links addObject:newLink];
+}
+
+- (NSDictionary *)toDictionary
+{
+    NSArray *propertyKeys = [NSArray arrayWithObjects:@"hashtags", @"links", @"mentions", nil];
+    return [self dictionaryWithValuesForKeys:propertyKeys];
+}
+
+- (id)valueForKey:(NSString *)key
+{
+    if ([key isEqualToString:@"hashtags"]) {
+        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.hashtags.count];
+        for (ADNHashtag *hashtag in self.hashtags) {
+            [value addObject:hashtag.toDictionary];
+        }
+        return value;
+    } else if ([key isEqualToString:@"links"]) {
+        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.links.count];
+        for (ADNLink *link in self.links) {
+            [value addObject:link.toDictionary];
+        }
+        return value;
+    } else if ([key isEqualToString:@"mentions"]) {
+        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.mentions.count];
+        for (ADNMention *mention in self.mentions) {
+            [value addObject:mention.toDictionary];
+        }
+        return value;
+    } else {
+        return [super valueForKey:key];
     }
 }
 

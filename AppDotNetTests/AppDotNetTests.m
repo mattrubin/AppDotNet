@@ -108,7 +108,7 @@
 
         for (ADNMention *mention in entities.mentions) {
             if (([mention.username isEqualToString:[mentionDictionary objectForKey:@"name"]]) &&
-                ([[NSString stringWithFormat:@"%u", mention.userID] isEqualToString:[mentionDictionary objectForKey:@"id"]]) &&
+                ([mention.userID isEqualToString:[mentionDictionary objectForKey:@"id"]]) &&
                 (mention.position == [[mentionDictionary objectForKey:@"pos"] integerValue]) &&
                 (mention.length == [[mentionDictionary objectForKey:@"len"] integerValue]))
             {

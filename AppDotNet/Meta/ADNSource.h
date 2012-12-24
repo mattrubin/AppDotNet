@@ -11,7 +11,7 @@
 
 @interface ADNSource : ADNObject
 
-@property (nonatomic, copy) NSString *clientId;
+@property (nonatomic, copy) NSString *clientID;
 @property (nonatomic, copy) NSString *link;
 @property (nonatomic, copy) NSString *name;
 
