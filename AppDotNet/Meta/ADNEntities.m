@@ -16,6 +16,15 @@
 #define ENTITY_KEY_LINKS    @"links"
 
 
+@interface ADNEntities ()
+
+@property (nonatomic, strong, readwrite) NSMutableArray *mentions;
+@property (nonatomic, strong, readwrite) NSMutableArray *hashtags;
+@property (nonatomic, strong, readwrite) NSMutableArray *links;
+
+@end
+
+
 @implementation ADNEntities
 
 - (id)init
@@ -35,21 +44,21 @@
     for (NSDictionary *mentionDictionary in rawMentions) {
         ADNMention *newMention = [ADNMention instanceFromDictionary:mentionDictionary];
         // TODO: check for errors and discard if malformed?
-        [(NSMutableArray*)self.mentions addObject:newMention];
+        [self.mentions addObject:newMention];
     }
     
     NSArray *rawHashtags = [dictionary arrayForKey:ENTITY_KEY_HASHTAGS];
     for (NSDictionary *hashtagDictionary in rawHashtags) {
         ADNHashtag *newHashtag = [ADNHashtag instanceFromDictionary:hashtagDictionary];
         // TODO: check for errors and discard if malformed?
-        [(NSMutableArray*)self.hashtags addObject:newHashtag];
+        [self.hashtags addObject:newHashtag];
     }
     
     NSArray *rawLinks = [dictionary arrayForKey:ENTITY_KEY_LINKS];
     for (NSDictionary *linkDictionary in rawLinks) {
         ADNLink *newLink = [ADNLink instanceFromDictionary:linkDictionary];
         // TODO: check for errors and discard if malformed?
-        [(NSMutableArray*)self.links addObject:newLink];
+        [self.links addObject:newLink];
     }
 }
 
