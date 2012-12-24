@@ -57,11 +57,6 @@
             self.writers = [ADNAccessControlList instanceFromDictionary:value];
         }
         
-    } else if ([key isEqualToString:@"channelID"]) {
-        if ([value isKindOfClass:[NSString class]]) {
-            value = [NSNumber numberWithInteger:[value integerValue]];
-        }
-        [super setValue:value forKey:key];
     } else {
         [super setValue:value forKey:key];
     }
