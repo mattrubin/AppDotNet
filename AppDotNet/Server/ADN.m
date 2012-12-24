@@ -69,172 +69,93 @@ static BOOL _asynchronous = YES;
     return request;
 }
 
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withTokenHandler:(ADNTokenCompletionHandler)handler
+{
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSDictionary class]]) {
+            return [ADNToken instanceFromDictionary:responseContent];
+        } else {
+            return nil;
+        }
+    };
+    
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
+}
+
 + (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withChannelHandler:(ADNChannelCompletionHandler)handler
 {
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSDictionary *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                ADNChannel *channel = [ADNChannel instanceFromDictionary:responseContent];
-                
-                if (handler) {
-                    handler(channel, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
-            }
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSDictionary class]]) {
+            return [ADNChannel instanceFromDictionary:responseContent];
         } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
+            return nil;
         }
-        
-    }];
-    [request setFailedBlock:^{
-        if (handler) {
-            handler(nil, [request error]);
-        }
-    }];
-
-    return request;
+    };
+    
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
 }
 
 + (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withChannelArrayHandler:(NSArrayCompletionHandler)handler
 {
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                NSMutableArray *channels = [NSMutableArray arrayWithCapacity:responseContent.count];
-                for (NSDictionary *responseItem in responseContent) {
-                    [channels addObject:[ADNChannel instanceFromDictionary:responseItem]];
-                }
-                
-                if (handler) {
-                    handler(channels, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSArray class]]) {
+            NSMutableArray *channels = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
+            for (NSDictionary *responseItem in responseContent) {
+                [channels addObject:[ADNChannel instanceFromDictionary:responseItem]];
             }
+            return channels;
         } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
+            return nil;
         }
-        
-    }];
-    [request setFailedBlock:^{
-        if (handler) {
-            handler(nil, [request error]);
-        }
-    }];
+    };
     
-    return request;
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
+}
+
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withUserHandler:(ADNUserCompletionHandler)handler
+{
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSDictionary class]]) {
+            return [ADNUser instanceFromDictionary:responseContent];
+        } else {
+            return nil;
+        }
+    };
+    
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
 }
 
 + (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withUserArrayHandler:(NSArrayCompletionHandler)handler
 {
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                NSMutableArray *users = [NSMutableArray arrayWithCapacity:responseContent.count];
-                for (NSDictionary *responseItem in responseContent) {
-                    [users addObject:[ADNUser instanceFromDictionary:responseItem]];
-                }
-                
-                if (handler) {
-                    handler(users, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSArray class]]) {
+            NSMutableArray *users = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
+            for (NSDictionary *responseItem in responseContent) {
+                [users addObject:[ADNUser instanceFromDictionary:responseItem]];
             }
+            return users;
         } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
+            return nil;
         }
-        
-    }];
-    [request setFailedBlock:^{
-        if (handler) {
-            handler(nil, [request error]);
-        }
-    }];
+    };
     
-    return request;
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
 }
 
 
 + (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withArrayHandler:(NSArrayCompletionHandler)handler
 {
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                NSArray *objects = [responseContent copy];
-                
-                if (handler) {
-                    handler(objects, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
-            }
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSArray class]]) {
+            return [responseContent copy];
         } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
+            return nil;
         }
-        
-    }];
-    [request setFailedBlock:^{
-        if (handler) {
-            handler(nil, [request error]);
-        }
-    }];
+    };
     
-    return request;
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
 }
+
 
 + (ASIHTTPRequest *)requestForEndpoint:(NSString *)endpoint withConverter:(ADNDataConverter)converter handler:(GenericCompletionHandler)handler
 {
@@ -277,47 +198,7 @@ static BOOL _asynchronous = YES;
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler
 {
     NSString *endpoint = @"token";
-    
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSDictionary *tokenDictionary;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((tokenDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                ADNToken *token = [ADNToken instanceFromDictionary:tokenDictionary];
-                
-                if (handler) {
-                    handler(token, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
-            }
-        } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
-        }
-        
-    }];
-    [request setFailedBlock:^{
-        NSLog(@"Error: %@", [[request error] localizedDescription]);
-        NSLog(@"\n%@", [request responseString]);
-        NSLog(@"\n%@", [request requestHeaders]);
-        
-        if (handler) {
-            handler(nil, [request error]);
-        }
-        
-    }];
-    
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withTokenHandler:handler];
     [self startRequest:request];
 }
 
@@ -368,51 +249,7 @@ static BOOL _asynchronous = YES;
 + (void)getSubscribedChannelsWithCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = @"channels";
-    
-    __weak ASIHTTPRequest *request = [self requestForEndpoint:endpoint];
-    
-    [request setCompletionBlock:^{
-        NSData *responseData = [request responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSArray *channelArray;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((channelArray = (NSArray*)[ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                NSMutableArray *channels = [NSMutableArray arrayWithCapacity:channelArray.count];
-                
-                for (NSDictionary *channelDict in channelArray) {
-                    [channels addObject:[ADNChannel instanceFromDictionary:channelDict]];
-                }
-                
-                if (handler) {
-                    handler(channels, nil);
-                }
-                
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
-            }
-        } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
-        }
-        
-    }];
-    [request setFailedBlock:^{
-        NSLog(@"Error: %@", [[request error] localizedDescription]);
-        NSLog(@"\n%@", [request responseString]);
-        NSLog(@"\n%@", [request requestHeaders]);
-        
-        if (handler) {
-            handler(nil, [request error]);
-        }
-        
-    }];
-    
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelArrayHandler:handler];
     [self startRequest:request];
 }
 
@@ -480,49 +317,7 @@ static BOOL _asynchronous = YES;
 + (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
-    NSString *urlString = [NSString stringWithFormat:@"https://%@%@%@", API_HOST, API_BASE, endpoint];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    __weak ASIHTTPRequest *request_weak = request;
-    
-    [request setCompletionBlock:^{
-        
-        // Use when fetching binary data
-        NSData *responseData = [request_weak responseData];
-        
-        NSDictionary *responseEnvelope;
-        NSDictionary *userDictionary;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
-            if((userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
-                ADNUser *user = [ADNUser instanceFromDictionary:userDictionary];
-                
-                if (handler) {
-                    handler(user, nil);
-                }
-            
-            } else {
-                if (handler) {
-                    NSError *error = [NSError errorWithDomain:@"ADN" code:0 userInfo:[NSDictionary dictionaryWithObject:@"ADN Error" forKey:NSLocalizedDescriptionKey]];
-                    handler(nil, error);
-                }
-            }
-        } else {
-            if (handler) {
-                NSError *error = [NSError errorWithDomain:@"JSON" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON Error" forKey:NSLocalizedDescriptionKey]];
-                handler(nil, error);
-            }
-        }
-
-    }];
-    [request setFailedBlock:^{
-        NSLog(@"Error: %@", [[request_weak error] localizedDescription]);
-        if (handler) {
-            handler(nil, [request_weak error]);
-        }
-
-    }];
-    
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withUserHandler:handler];
     [self startRequest:request];
 }
 
