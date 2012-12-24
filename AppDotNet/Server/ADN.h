@@ -11,6 +11,7 @@
 #import "ADNUser.h"
 #import "ADNToken.h"
 #import "ADNChannel.h"
+#import "ADNMessage.h"
 
 
 typedef void (^GenericCompletionHandler)     (id            object,  NSError *error);
@@ -19,8 +20,7 @@ typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, NSError *er
 typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    NSError *error);
 typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   NSError *error);
 typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, NSError *error);
-
-typedef id (^ADNDataConverter)(id responseContent);
+typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, NSError *error);
 
 
 @interface ADN : NSObject
@@ -31,7 +31,9 @@ typedef id (^ADNDataConverter)(id responseContent);
 + (BOOL)asynchronous;
 + (void)useAsynchronous:(BOOL)asynchronous;
 
+// Tokens
 + (void)getTokenWithCompletionHandler:(ADNTokenCompletionHandler)handler;
+
 
 // Channel
 + (void)createChannel:(ADNChannel*)channel      withCompletionHandler:(ADNChannelCompletionHandler)handler;
@@ -48,6 +50,15 @@ typedef id (^ADNDataConverter)(id responseContent);
 + (void)getSubscriberIDsForChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSDictionaryCompletionHandler)handler;
 
 
+// Messages
++ (void)getMessagesInChannelWithID:(NSString*)channelID                               withCompletionHandler:(NSArrayCompletionHandler)handler;
++ (void)createMessage:(ADNMessage*)message                                            withCompletionHandler:(ADNMessageCompletionHandler)handler;
++ (void)getMessageWithID:(NSString*)messageID    inChannelWithID:(NSString*)channelID withCompletionHandler:(ADNMessageCompletionHandler)handler;
++ (void)getMessagesWithIDs:(NSArray*)messageIDs                                       withCompletionHandler:(NSArrayCompletionHandler)handler;
++ (void)deleteMessageWithID:(NSString*)messageID inChannelWithID:(NSString*)channelID withCompletionHandler:(ADNMessageCompletionHandler)handler;
+
+
+// Users
 + (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;
 + (void)getUserWithID:(NSUInteger)userID        completionHandler:(ADNUserCompletionHandler)handler;

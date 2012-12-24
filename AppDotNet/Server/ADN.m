@@ -11,16 +11,35 @@
 #import "ASIHTTPRequest.h"
 #import "ADNHelper.h"
 
+
 #define API_HOST @"alpha-api.app.net"
 #define API_BASE @"/stream/0/"
+
+
+typedef id (^ADNDataConverter)(id responseContent);
 
 
 static NSString *_accessToken;
 static BOOL _asynchronous = YES;
 
+
 @interface ADN ()
+
 + (void)startRequest:(ASIHTTPRequest*)request;
+
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString *)endpoint withConverter:(ADNDataConverter)converter handler:(GenericCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withTokenHandler:(ADNTokenCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withChannelHandler:(ADNChannelCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withChannelArrayHandler:(NSArrayCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withMessageHandler:(ADNMessageCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withMessageArrayHandler:(NSArrayCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withUserHandler:(ADNUserCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withUserArrayHandler:(NSArrayCompletionHandler)handler;
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withArrayHandler:(NSArrayCompletionHandler)handler;
+
 @end
+
 
 @implementation ADN
 
@@ -104,6 +123,38 @@ static BOOL _asynchronous = YES;
                 [channels addObject:[ADNChannel instanceFromDictionary:responseItem]];
             }
             return channels;
+        } else {
+            return nil;
+        }
+    };
+    
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
+}
+
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withMessageHandler:(ADNMessageCompletionHandler)handler
+{
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSDictionary class]]) {
+            return [ADNMessage instanceFromDictionary:responseContent];
+        } else {
+            return nil;
+        }
+    };
+    
+    return [self requestForEndpoint:endpoint withConverter:converter handler:handler];
+}
+
++ (ASIHTTPRequest*)requestForEndpoint:(NSString*)endpoint withMessageArrayHandler:(NSArrayCompletionHandler)handler
+{
+    ADNDataConverter converter = ^id(id responseContent) {
+        if ([responseContent isKindOfClass:[NSArray class]]) {
+            NSMutableArray *messages = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
+            for (id responseItem in responseContent) {
+                if ([responseItem isKindOfClass:[NSDictionary class]]) {
+                    [messages addObject:[ADNMessage instanceFromDictionary:responseItem]];
+                }
+            }
+            return messages;
         } else {
             return nil;
         }
@@ -358,6 +409,71 @@ static BOOL _asynchronous = YES;
 }
 
 
+#pragma mark - Messages
+/*
+ * Retrieve the Messages in a Channel
+ * GET /stream/0/channels/[channel_id]/messages
+ * http://developers.app.net/docs/resources/message/lifecycle/#retrieve-the-messages-in-a-channel
+ */
++ (void)getMessagesInChannelWithID:(NSString*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+    NSString * endpoint = [NSString stringWithFormat:@"channels/%@/messages", channelID];
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageArrayHandler:handler];
+    [self startRequest:request];
+}
+
+/*
+ * Create a Message
+ * POST /stream/0/channels/[channel_id]/messages
+ * http://developers.app.net/docs/resources/message/lifecycle/#create-a-message
+ */
++ (void)createMessage:(ADNMessage*)message withCompletionHandler:(ADNMessageCompletionHandler)handler
+{
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages", message.channelID];
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageHandler:handler];
+    request.requestMethod = @"POST";
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    request.postBody = [[ADNHelper JSONDataFromDictionary:message.toDictionary] mutableCopy];
+    
+    [self startRequest:request];
+}
+
+/*
+ * Retrieve a Message
+ * GET /stream/0/channels/[channel_id]/messages/[message_id]
+ * http://developers.app.net/docs/resources/message/lookup/#retrieve-a-message
+ */
++ (void)getMessageWithID:(NSString*)messageID inChannelWithID:(NSString*)channelID withCompletionHandler:(ADNMessageCompletionHandler)handler
+{
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages/%@", channelID, messageID];
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageHandler:handler];
+    [self startRequest:request];
+}
+
+/*
+ * Retrieve multiple Messages
+ * GET /stream/0/channels/messages
+ * http://developers.app.net/docs/resources/message/lookup/#retrieve-multiple-messages
+ */
++ (void)getMessagesWithIDs:(NSArray*)messageIDs withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+    NSString *endpoint = [NSString stringWithFormat:@"channels/messages?ids=%@", [messageIDs componentsJoinedByString:@","]];
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageArrayHandler:handler];
+    [self startRequest:request];
+}
+
+/*
+ * Delete a Message
+ * DELETE /stream/0/channels/[channel_id]/messages/[message_id]
+ * http://developers.app.net/docs/resources/message/lifecycle/#delete-a-message
+ */
++ (void)deleteMessageWithID:(NSString*)messageID inChannelWithID:(NSString*)channelID withCompletionHandler:(ADNMessageCompletionHandler)handler
+{
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages/%@", channelID, messageID];
+    ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageHandler:handler];
+    request.requestMethod = @"DELETE";
+    [self startRequest:request];
+}
 
 
 #pragma mark - Users
