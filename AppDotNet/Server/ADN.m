@@ -78,8 +78,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSDictionary *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 ADNChannel *channel = [ADNChannel instanceFromDictionary:responseContent];
                 
                 if (handler) {
@@ -118,8 +118,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 NSMutableArray *channels = [NSMutableArray arrayWithCapacity:responseContent.count];
                 for (NSDictionary *responseItem in responseContent) {
                     [channels addObject:[ADNChannel instanceFromDictionary:responseItem]];
@@ -161,8 +161,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 NSMutableArray *users = [NSMutableArray arrayWithCapacity:responseContent.count];
                 for (NSDictionary *responseItem in responseContent) {
                     [users addObject:[ADNUser instanceFromDictionary:responseItem]];
@@ -205,8 +205,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSArray *responseContent;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 NSArray *objects = [responseContent copy];
                 
                 if (handler) {
@@ -244,13 +244,12 @@ static BOOL _asynchronous = YES;
         NSData *responseData = [request responseData];
         NSDictionary *responseEnvelope;
         id responseContent;
-        NSError *error = [NSError errorWithDomain:@"ERROR" code:0 userInfo:nil];
+        NSError *error;
         
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if ((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:&error])) {
+            if ((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:&error])) {
                 if (converter) {
                     responseContent = converter(responseContent);
-                    
                 }
                 if (handler) {
                     handler(responseContent, nil);
@@ -286,8 +285,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSDictionary *tokenDictionary;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((tokenDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((tokenDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 ADNToken *token = [ADNToken instanceFromDictionary:tokenDictionary];
                 
                 if (handler) {
@@ -377,8 +376,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSArray *channelArray;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((channelArray = (NSArray*)[ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((channelArray = (NSArray*)[ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 NSMutableArray *channels = [NSMutableArray arrayWithCapacity:channelArray.count];
                 
                 for (NSDictionary *channelDict in channelArray) {
@@ -494,8 +493,8 @@ static BOOL _asynchronous = YES;
         
         NSDictionary *responseEnvelope;
         NSDictionary *userDictionary;
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData])) {
-            if((userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope])) {
+        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:nil])) {
+            if((userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil])) {
                 ADNUser *user = [ADNUser instanceFromDictionary:userDictionary];
                 
                 if (handler) {

@@ -13,7 +13,7 @@
 
 @implementation ADNHelper
 
-+ (NSDictionary*)dictionaryFromJSONData:(NSData *)data
++ (NSDictionary*)dictionaryFromJSONData:(NSData *)data error:(NSError **)errorPointer
 {
     NSError *error;
     id JSONObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
@@ -22,11 +22,13 @@
         if ([JSONObject isKindOfClass:[NSDictionary class]]) {
             return (NSDictionary*)JSONObject;
         } else {
-            NSLog(@"Error: JSON object is not a dictionary");
+            if (errorPointer)
+                *errorPointer = [NSError errorWithDomain:@"ADNHelper" code:0 userInfo:[NSDictionary dictionaryWithObject:@"JSON object is not a dictionary" forKey:NSLocalizedDescriptionKey]];
             return nil;
         }
     } else {
-        NSLog(@"ERROR: %@", error);
+        if (errorPointer)
+            *errorPointer = error;
         return nil;
     }
 }
@@ -45,7 +47,7 @@
 }
 
 
-+ (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope
++ (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope error:(NSError **)error
 {
     NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];
     NSInteger code = [meta integerForKey:@"code"];
@@ -54,7 +56,9 @@
         return [responseEnvelope objectForKey:@"data"];
     } else {
         NSString * errorMessage = [meta stringForKey:@"error_message"];
-        NSLog(@"Error %i: %@", code, errorMessage);
+        if (error) {
+            *error = [NSError errorWithDomain:@"ADN" code:code userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];
+        }
         return nil;
     }
 
