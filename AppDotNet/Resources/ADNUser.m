@@ -52,7 +52,7 @@
 
 
 @implementation ADNUser
-
+/*
 - (void)setAttributesFromDictionary:(NSDictionary *)object
 {
     self.userID   = [object integerForKey:USER_KEY_ID];
@@ -94,7 +94,67 @@
         }
     }
 }
+*/
 
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    if ([key isEqualToString:@"annotations"]) {
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
+            for (id valueMember in value) {
+                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
+                [myMembers addObject:populatedMember];
+            }
+            self.annotations = myMembers;
+        }
+    } else if ([key isEqualToString:@"avatar_image"]) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.avatarImage = [ADNImage instanceFromDictionary:value];
+        }
+    } else if ([key isEqualToString:@"counts"]) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.counts = [ADNCounts instanceFromDictionary:value];
+        }
+    } else if ([key isEqualToString:@"cover_image"]) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.coverImage = [ADNImage instanceFromDictionary:value];
+        }
+    } else if ([key isEqualToString:@"description"]) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.description = [ADNDescription instanceFromDictionary:value];
+        }
+    } else if ([key isEqualToString:@"createdAt"]){
+        if ([value isKindOfClass:[NSString class]]) {
+            self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];
+        }
+    } else {
+        [super setValue:value forKey:key];
+    }
+}
+
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    
+    if ([key isEqualToString:@"avatar_image"]) {
+        [self setValue:value forKey:@"avatarImage"];
+    } else if ([key isEqualToString:@"canonical_url"]) {
+        [self setValue:value forKey:@"canonicalURL"];
+    } else if ([key isEqualToString:@"cover_image"]) {
+        [self setValue:value forKey:@"coverImage"];
+    } else if ([key isEqualToString:@"created_at"]) {
+        [self setValue:value forKey:@"createdAt"];
+    } else if ([key isEqualToString:@"description"]) {
+        [self setValue:value forKey:@"descriptionText"];
+    } else if ([key isEqualToString:@"id"]) {
+        [self setValue:value forKey:@"userID"];
+    } else {
+        [super setValue:value forUndefinedKey:key];
+    }
+    
+}
+
+#pragma mark -
+/*
 + (ADNUserType)typeFromString:(NSString*)typeString
 {
     if ([typeString isEqualToString:USER_TYPE_STRING_HUMAN]) {
@@ -135,6 +195,6 @@
 {
     return [self.class stringFromType:self.type];
 }
-
+*/
 
 @end
