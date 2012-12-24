@@ -204,10 +204,14 @@ static BOOL _asynchronous = YES;
 
 
 #pragma mark  - Channels
-
+/*
+ * Create a Channel
+ * POST /stream/0/channels
+ * http://developers.app.net/docs/resources/channel/lifecycle/#create-a-channel
+ */
 + (void)createChannel:(ADNChannel*)channel withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
-    NSString *endpoint = @"channels/";
+    NSString *endpoint = @"channels";
     
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"POST";
@@ -217,6 +221,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Update a Channel
+ * PUT /stream/0/channels/[channel_id]
+ * http://developers.app.net/docs/resources/channel/lifecycle/#update-a-channel
+ */
 + (void)updateChannel:(ADNChannel*)channel withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channel.channelID intValue]];
@@ -229,6 +238,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Retrieve a Channel
+ * GET /stream/0/channels/[channel_id]
+ * http://developers.app.net/docs/resources/channel/lookup/#retrieve-a-channel
+ */
 + (void)getChannelWithID:(NSNumber*)channelID withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channelID intValue]];
@@ -236,6 +250,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Retrieve multiple Channels
+ * GET /stream/0/channels
+ * http://developers.app.net/docs/resources/channel/lookup/#retrieve-multiple-channels
+ */
 + (void)getChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [@"channels?ids=" stringByAppendingString:[channelIDs componentsJoinedByString:@","]];
@@ -245,7 +264,11 @@ static BOOL _asynchronous = YES;
 
 
 #pragma mark Channel Subscriptions
-
+/*
+ * Get current user's subscribed channels
+ * GET /stream/0/channels
+ * http://developers.app.net/docs/resources/channel/subscriptions/#get-current-users-subscribed-channels
+ */
 + (void)getSubscribedChannelsWithCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = @"channels";
@@ -253,6 +276,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Subscribe to a Channel
+ * POST /stream/0/channels/[channel_id]/subscribe
+ * http://developers.app.net/docs/resources/channel/subscriptions/#subscribe-to-a-channel
+ */
 + (void)subscribeToChannelWithID:(NSNumber*)channelID         withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
@@ -261,6 +289,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Unsubscribe from a Channel
+ * DELETE /stream/0/channels/[channel_id]/subscribe
+ * http://developers.app.net/docs/resources/channel/subscriptions/#unsubscribe-from-a-channel
+ */
 + (void)unsubscribeFromChannelWithID:(NSNumber*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
@@ -269,6 +302,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Retrieve users subscribed to a Channel
+ * GET /stream/0/channels/[channel_id]/subscribers
+ * http://developers.app.net/docs/resources/channel/subscriptions/#retrieve-users-subscribed-to-a-channel
+ */
 + (void)getSubscribersForChannelWithID:(NSNumber*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers", [channelID intValue]];
@@ -276,6 +314,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Retrieve user ids subscribed to a Channel
+ * GET /stream/0/channels/[channel_id]/subscribers/ids
+ * http://developers.app.net/docs/resources/channel/subscriptions/#retrieve-user-ids-subscribed-to-a-channel
+ */
 + (void)getSubscriberIDsForChannelWithID:(NSNumber*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers/ids", [channelID intValue]];
@@ -283,6 +326,11 @@ static BOOL _asynchronous = YES;
     [self startRequest:request];
 }
 
+/*
+ * Retrieve user ids subscribed to multiple Channels
+ * GET /stream/0/channels/subscribers/ids
+ * http://developers.app.net/docs/resources/channel/subscriptions/#retrieve-user-ids-subscribed-to-a-channel
+ */
 + (void)getSubscriberIDsForChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSDictionaryCompletionHandler)handler
 {
     NSString *idList = [channelIDs componentsJoinedByString:@","];
