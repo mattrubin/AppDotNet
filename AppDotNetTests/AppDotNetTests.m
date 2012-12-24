@@ -50,8 +50,8 @@
     
     NSDictionary *responseEnvelope;
     NSDictionary *userDictionary;
-    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData])) {
-        userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope];
+    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
+        userDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil];
     }
     if (!userDictionary) return;
     
