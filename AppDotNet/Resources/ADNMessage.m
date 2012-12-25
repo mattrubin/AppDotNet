@@ -15,6 +15,15 @@
 
 @implementation ADNMessage
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.annotations = [ADNAnnotationCollection new];
+    }
+    return self;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"annotations"]) {
