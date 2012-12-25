@@ -57,12 +57,7 @@
 {
     if ([key isEqualToString:@"annotations"]) {
         if ([value isKindOfClass:[NSArray class]]) {
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-            self.annotations = myMembers;
+            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:@"avatar_image"]) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -149,11 +144,7 @@
 - (id)valueForKey:(NSString *)key
 {
     if ([key isEqualToString:@"annotations"]) {
-        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.annotations.count];
-        for (ADNAnnotation *annotation in self.annotations) {
-            [value addObject:annotation.toDictionary];
-        }
-        return value;
+        return self.annotations.toArray;
     } else if ([key isEqualToString:@"avatar_image"] ||
                [key isEqualToString:@"counts"] ||
                [key isEqualToString:@"cover_image"] ||

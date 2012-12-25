@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ADNObject.h"
-
+#import "ADNAnnotationCollection.h"
 
 @class ADNEntities;
 @class ADNSource;
@@ -31,6 +31,6 @@
 
 @property (nonatomic, copy)   NSString *replyToID;
 @property (nonatomic, assign) BOOL isDeleted;
-@property (nonatomic, copy)   NSArray *annotations;
+@property (nonatomic, strong) ADNAnnotationCollection *annotations;
 
 @end

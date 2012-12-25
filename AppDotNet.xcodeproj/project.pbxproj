@@ -86,6 +86,9 @@
 		8CFB9D66168908120075FA7A /* ADNUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D65168908120075FA7A /* ADNUserTests.m */; };
 		8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D78168978010075FA7A /* ADNGeolocation.m */; };
 		8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D77168978010075FA7A /* ADNGeolocation.h */; };
+		8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */; };
+		8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */; };
+		8CFB9D841689AEF80075FA7A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFB9D831689AEF80075FA7A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */,
 				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
 				8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */,
@@ -235,6 +239,9 @@
 		8CFB9D65168908120075FA7A /* ADNUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNUserTests.m; sourceTree = "<group>"; };
 		8CFB9D77168978010075FA7A /* ADNGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNGeolocation.h; sourceTree = "<group>"; };
 		8CFB9D78168978010075FA7A /* ADNGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNGeolocation.m; sourceTree = "<group>"; };
+		8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAnnotationCollection.h; sourceTree = "<group>"; };
+		8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotationCollection.m; sourceTree = "<group>"; };
+		8CFB9D831689AEF80075FA7A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFB9D841689AEF80075FA7A /* CoreLocation.framework in Frameworks */,
 				8CED1AF7167D56FE0071D908 /* libz.dylib in Frameworks */,
 				8CED1AF5167D43B60071D908 /* MobileCoreServices.framework in Frameworks */,
 				8CED1AF3167D437B0071D908 /* SystemConfiguration.framework in Frameworks */,
@@ -277,6 +285,8 @@
 		8C7B24A2167DB11300C38F51 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
+				8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */,
+				8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */,
 				8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */,
 				8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */,
 				8CFB9D751689752B0075FA7A /* Annotations */,
@@ -348,6 +358,7 @@
 				8CED1AF2167D437A0071D908 /* SystemConfiguration.framework */,
 				8CED1AF4167D43B60071D908 /* MobileCoreServices.framework */,
 				8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */,
+				8CFB9D831689AEF80075FA7A /* CoreLocation.framework */,
 				8CED1AF6167D56FE0071D908 /* libz.dylib */,
 			);
 			name = Frameworks;
@@ -636,6 +647,7 @@
 				8CFB9D5C1688FB9C0075FA7A /* ADNCounts.m in Sources */,
 				8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */,
 				8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */,
+				8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

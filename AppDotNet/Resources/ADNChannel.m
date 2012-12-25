@@ -28,15 +28,7 @@
     if ([key isEqualToString:CHANNEL_KEY_ANNOTATIONS]) {
         
         if ([value isKindOfClass:[NSArray class]]) {
-            
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-            
-            self.annotations = myMembers;
-            
+            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
         
     } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
@@ -109,15 +101,8 @@
         [dictionary setObject:self.readers.toDictionary forKey:CHANNEL_KEY_READERS];
     if (self.writers)
         [dictionary setObject:self.writers.toDictionary forKey:CHANNEL_KEY_WRITERS];
-    
-    if (self.annotations) {
-        NSMutableArray *annotationsArray = [NSMutableArray arrayWithCapacity:self.annotations.count];
-        for (NSUInteger i=0; i<self.annotations.count; i++) {
-            ADNAnnotation *annotation = [self.annotations objectAtIndex:i];
-            [annotationsArray insertObject:annotation.toDictionary atIndex:i];
-        }
-        [dictionary setObject:annotationsArray forKey:CHANNEL_KEY_ANNOTATIONS];
-    }
+    if (self.annotations)
+        [dictionary setObject:self.annotations.toArray forKey:CHANNEL_KEY_ANNOTATIONS];
     
     return dictionary;
 }
