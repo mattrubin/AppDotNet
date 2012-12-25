@@ -39,13 +39,14 @@
     
     if (theProperty) {
         char *typeEncoding = property_copyAttributeValue(theProperty, "T");
-        Class class = nil;
+        __autoreleasing Class class = nil;
         
         if (typeEncoding[0] == '@') {
             // Object
             if (strlen(typeEncoding) >= 3) {
                 char *className = strndup(typeEncoding+2, strlen(typeEncoding)-3);
                 class = NSClassFromString([NSString stringWithUTF8String:className]);
+                free(className);
             }
             
             if (class && ![value isKindOfClass:class]) {
