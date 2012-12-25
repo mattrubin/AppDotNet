@@ -38,15 +38,15 @@ typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, NSError *er
 // Channel
 + (void)createChannel:(ADNChannel*)channel      withCompletionHandler:(ADNChannelCompletionHandler)handler;
 + (void)updateChannel:(ADNChannel*)channel      withCompletionHandler:(ADNChannelCompletionHandler)handler;
-+ (void)getChannelWithID:(NSNumber*)channelID   withCompletionHandler:(ADNChannelCompletionHandler)handler;
++ (void)getChannelWithID:(NSString*)channelID   withCompletionHandler:(ADNChannelCompletionHandler)handler;
 + (void)getChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSArrayCompletionHandler)handler;
 
 // Channel Subscription
 + (void)getSubscribedChannelsWithCompletionHandler:(NSArrayCompletionHandler)handler;
-+ (void)subscribeToChannelWithID:(NSNumber*)channelID         withCompletionHandler:(ADNChannelCompletionHandler)handler;
-+ (void)unsubscribeFromChannelWithID:(NSNumber*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler;
-+ (void)getSubscribersForChannelWithID:(NSNumber*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler;
-+ (void)getSubscriberIDsForChannelWithID:(NSNumber*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler;
++ (void)subscribeToChannelWithID:(NSString*)channelID           withCompletionHandler:(ADNChannelCompletionHandler)handler;
++ (void)unsubscribeFromChannelWithID:(NSString*)channelID       withCompletionHandler:(ADNChannelCompletionHandler)handler;
++ (void)getSubscribersForChannelWithID:(NSString*)channelID     withCompletionHandler:(NSArrayCompletionHandler)handler;
++ (void)getSubscriberIDsForChannelWithID:(NSString*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler;
 + (void)getSubscriberIDsForChannelsWithIDs:(NSArray*)channelIDs withCompletionHandler:(NSDictionaryCompletionHandler)handler;
 
 

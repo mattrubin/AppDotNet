@@ -294,9 +294,9 @@ static BOOL _asynchronous = YES;
  * GET /stream/0/channels/[channel_id]
  * http://developers.app.net/docs/resources/channel/lookup/#retrieve-a-channel
  */
-+ (void)getChannelWithID:(NSNumber*)channelID withCompletionHandler:(ADNChannelCompletionHandler)handler
++ (void)getChannelWithID:(NSString*)channelID withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     [self startRequest:request];
 }
@@ -332,9 +332,9 @@ static BOOL _asynchronous = YES;
  * POST /stream/0/channels/[channel_id]/subscribe
  * http://developers.app.net/docs/resources/channel/subscriptions/#subscribe-to-a-channel
  */
-+ (void)subscribeToChannelWithID:(NSNumber*)channelID         withCompletionHandler:(ADNChannelCompletionHandler)handler
++ (void)subscribeToChannelWithID:(NSString*)channelID         withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/subscribe", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"POST";
     [self startRequest:request];
@@ -345,9 +345,9 @@ static BOOL _asynchronous = YES;
  * DELETE /stream/0/channels/[channel_id]/subscribe
  * http://developers.app.net/docs/resources/channel/subscriptions/#unsubscribe-from-a-channel
  */
-+ (void)unsubscribeFromChannelWithID:(NSNumber*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler
++ (void)unsubscribeFromChannelWithID:(NSString*)channelID     withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribe", [channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/subscribe", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"DELETE";
     [self startRequest:request];
@@ -358,9 +358,9 @@ static BOOL _asynchronous = YES;
  * GET /stream/0/channels/[channel_id]/subscribers
  * http://developers.app.net/docs/resources/channel/subscriptions/#retrieve-users-subscribed-to-a-channel
  */
-+ (void)getSubscribersForChannelWithID:(NSNumber*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler
++ (void)getSubscribersForChannelWithID:(NSString*)channelID   withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers", [channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/subscribers", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withUserArrayHandler:handler];
     [self startRequest:request];
 }
@@ -370,9 +370,9 @@ static BOOL _asynchronous = YES;
  * GET /stream/0/channels/[channel_id]/subscribers/ids
  * http://developers.app.net/docs/resources/channel/subscriptions/#retrieve-user-ids-subscribed-to-a-channel
  */
-+ (void)getSubscriberIDsForChannelWithID:(NSNumber*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
++ (void)getSubscriberIDsForChannelWithID:(NSString*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i/subscribers/ids", [channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/subscribers/ids", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withArrayHandler:handler];
     [self startRequest:request];
 }
@@ -396,10 +396,10 @@ static BOOL _asynchronous = YES;
             NSMutableArray *channelArray = [NSMutableArray arrayWithCapacity:rawArray.count];
             
             for (NSString *rawString in rawArray) {
-                [channelArray addObject:[NSNumber numberWithInteger:[rawString integerValue]]];
+                [channelArray addObject:rawString];
             }
             
-            [resultDict setObject:channelArray forKey:[NSNumber numberWithInteger:[key integerValue]]];
+            [resultDict setObject:channelArray forKey:key];
         }
         return resultDict;
     };
