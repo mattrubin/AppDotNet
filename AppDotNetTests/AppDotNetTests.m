@@ -59,7 +59,7 @@
     
     [self validateUser:user withDictionary:userDictionary];
 }
-*/
+
 - (void)validateUser:(ADNUser*)user withDictionary:(NSDictionary*)userDictionary
 {
     STAssertEqualObjects([userDictionary objectForKey:@"id"],       ([NSString stringWithFormat:@"%u", user.userID]), @"(id)");
@@ -197,6 +197,6 @@
     }
 
 }
-
+*/
 
 @end
