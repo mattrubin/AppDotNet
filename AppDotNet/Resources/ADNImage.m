@@ -11,18 +11,12 @@
 #import "NSDictionary+ADN.h"
 
 
-#define IMAGE_KEY_HEIGHT    @"height"
-#define IMAGE_KEY_WIDTH     @"width"
-#define IMAGE_KEY_URL       @"url"
-
-
 @implementation ADNImage
 
-- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
+- (NSDictionary *)toDictionary
 {
-    self.height = [dictionary integerForKey:IMAGE_KEY_HEIGHT];
-    self.width  = [dictionary integerForKey:IMAGE_KEY_WIDTH];
-    self.url    = [dictionary stringForKey:IMAGE_KEY_URL];
+    NSArray *propertyKeys = @[@"height", @"width", @"url"];
+    return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
 - (NSString*)description

@@ -17,7 +17,16 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"entities"]) {
+    if ([key isEqualToString:@"annotations"]) {
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
+            for (id valueMember in value) {
+                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
+                [myMembers addObject:populatedMember];
+            }
+            self.annotations = myMembers;
+        }
+    } else if ([key isEqualToString:@"entities"]) {
         if ([value isKindOfClass:[NSDictionary class]]) {
             self.entities = [ADNEntities instanceFromDictionary:value];
         }
@@ -52,6 +61,10 @@
         [self setValue:value forKey:@"numReplies"];
     } else if ([key isEqualToString:@"thread_id"]) {
         [self setValue:value forKey:@"threadID"];
+    } else if ([key isEqualToString:@"reply_to"]) {
+        [self setValue:value forKey:@"replyToID"];
+    } else if ([key isEqualToString:@"is_deleted"]) {
+        [self setValue:value forKey:@"isDeleted"];
     } else {
         [super setValue:value forUndefinedKey:key];
     }
@@ -70,6 +83,9 @@
                                                       @"text",
                                                       @"thread_id",
                                                       @"user",
+                                                      @"reply_to",
+                                                      @"is_deleted",
+                                                      @"annotations",
                                                       nil];
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
@@ -88,6 +104,10 @@
         return [self valueForKey:@"numReplies"];
     } else if ([key isEqualToString:@"thread_id"]) {
         return [self valueForKey:@"threadID"];
+    } else if ([key isEqualToString:@"reply_to"]) {
+        return [self valueForKey:@"replyToID"];
+    } else if ([key isEqualToString:@"is_deleted"]) {
+        return [self valueForKey:@"isDeleted"];
     } else {
         return [super valueForUndefinedKey:key];
     }
@@ -95,7 +115,13 @@
 
 - (id)valueForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"entities"] ||
+    if ([key isEqualToString:@"annotations"]) {
+        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.annotations.count];
+        for (ADNAnnotation *annotation in self.annotations) {
+            [value addObject:annotation.toDictionary];
+        }
+        return value;
+    } else if ([key isEqualToString:@"entities"] ||
         [key isEqualToString:@"source"] ||
         [key isEqualToString:@"user"])
     {
