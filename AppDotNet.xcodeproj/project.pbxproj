@@ -84,6 +84,8 @@
 		8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5A1688FB9B0075FA7A /* ADNCounts.h */; };
 		8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */; };
 		8CFB9D66168908120075FA7A /* ADNUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D65168908120075FA7A /* ADNUserTests.m */; };
+		8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D78168978010075FA7A /* ADNGeolocation.m */; };
+		8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D77168978010075FA7A /* ADNGeolocation.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
 				8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */,
 				8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */,
@@ -230,6 +233,8 @@
 		8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNDescription.m; sourceTree = "<group>"; };
 		8CFB9D64168908120075FA7A /* ADNUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNUserTests.h; sourceTree = "<group>"; };
 		8CFB9D65168908120075FA7A /* ADNUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNUserTests.m; sourceTree = "<group>"; };
+		8CFB9D77168978010075FA7A /* ADNGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNGeolocation.h; sourceTree = "<group>"; };
+		8CFB9D78168978010075FA7A /* ADNGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNGeolocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +279,7 @@
 			children = (
 				8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */,
 				8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */,
+				8CFB9D751689752B0075FA7A /* Annotations */,
 				8C7B24A4167DB18B00C38F51 /* ADNEntities.h */,
 				8C7B24A5167DB18B00C38F51 /* ADNEntities.m */,
 				8C7B24C1167F379100C38F51 /* Entities */,
@@ -484,6 +490,15 @@
 			path = ../External/Reachability;
 			sourceTree = "<group>";
 		};
+		8CFB9D751689752B0075FA7A /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				8CFB9D77168978010075FA7A /* ADNGeolocation.h */,
+				8CFB9D78168978010075FA7A /* ADNGeolocation.m */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -620,6 +635,7 @@
 				8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */,
 				8CFB9D5C1688FB9C0075FA7A /* ADNCounts.m in Sources */,
 				8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */,
+				8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
