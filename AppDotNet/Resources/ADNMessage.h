@@ -29,4 +29,8 @@
 @property (nonatomic, copy)   NSString *threadID;
 @property (nonatomic, strong) ADNUser *user;
 
+@property (nonatomic, copy)   NSString *replyToID;
+@property (nonatomic, assign) BOOL isDeleted;
+@property (nonatomic, copy)   NSArray *annotations;
+
 @end

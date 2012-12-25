@@ -52,49 +52,6 @@
 
 
 @implementation ADNUser
-/*
-- (void)setAttributesFromDictionary:(NSDictionary *)object
-{
-    self.userID   = [object integerForKey:USER_KEY_ID];
-    self.username = [object stringForKey:USER_KEY_USERNAME];
-    self.name     = [object stringForKey:USER_KEY_NAME];
-
-    NSDictionary *description = [object dictionaryForKey:USER_KEY_DESCRIPTION];
-    self.descriptionText = [description stringForKey:USER_KEY_DESCRIPTION_TEXT];
-    self.descriptionHTML = [description stringForKey:USER_KEY_DESCRIPTION_HTML];
-    self.descriptionEntities = [ADNEntities instanceFromDictionary:[description dictionaryForKey:USER_KEY_DESCRIPTION_ENTITIES]];
-    
-    self.timezone = [object stringForKey:USER_KEY_TIMEZONE];
-    self.locale   = [object stringForKey:USER_KEY_LOCALE];
-    
-    self.avatarImage = [ADNImage instanceFromDictionary:[object dictionaryForKey:USER_KEY_AVATAR_IMAGE]];
-    self.coverImage  = [ADNImage instanceFromDictionary:[object dictionaryForKey:USER_KEY_COVER_IMAGE]];
-    
-    self.type = [ADNUser typeFromString:[object stringForKey:USER_KEY_TYPE]];
-    self.createdAt = [[ADNHelper dateFormatter] dateFromString:[object stringForKey:USER_KEY_CREATED_AT]];
-    
-    NSDictionary *counts = [object dictionaryForKey:USER_KEY_COUNTS];
-    self.followingCount = [counts integerForKey:USER_KEY_COUNTS_FOLLOWING];
-    self.followerCount  = [counts integerForKey:USER_KEY_COUNTS_FOLLOWERS];
-    self.postCount      = [counts integerForKey:USER_KEY_COUNTS_POSTS];
-    self.starCount      = [counts integerForKey:USER_KEY_COUNTS_STARS];
-    
-    if ([object objectForKey:USER_KEY_FOLLOWS_YOU]) {
-        self.followsYou = [object boolForKey:USER_KEY_FOLLOWS_YOU];
-        self.youFollow  = [object boolForKey:USER_KEY_YOU_FOLLOW];
-        self.youMuted   = [object boolForKey:USER_KEY_YOU_MUTED];
-    }
-    
-    if ([object objectForKey:USER_KEY_ANNOTATIONS]) {
-        NSArray *annotationArray = [object arrayForKey:USER_KEY_ANNOTATIONS];
-        self.annotations = [NSMutableDictionary dictionaryWithCapacity:[annotationArray count]];
-        for (NSDictionary *annotationDict in annotationArray) {
-            ADNAnnotation *annotation = [ADNAnnotation instanceFromDictionary:annotationDict];
-            [(NSMutableDictionary*)self.annotations setObject:annotation forKey:annotation.type];
-        }
-    }
-}
-*/
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
@@ -133,8 +90,8 @@
 }
 
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
     if ([key isEqualToString:@"avatar_image"]) {
         [self setValue:value forKey:@"avatarImage"];
     } else if ([key isEqualToString:@"canonical_url"]) {
@@ -147,11 +104,69 @@
         [self setValue:value forKey:@"descriptionText"];
     } else if ([key isEqualToString:@"id"]) {
         [self setValue:value forKey:@"userID"];
+    } else if ([key isEqualToString:@"follows_you"]) {
+        [self setValue:value forKey:@"followsYou"];
+    } else if ([key isEqualToString:@"you_follow"]) {
+        [self setValue:value forKey:@"youFollow"];
+    } else if ([key isEqualToString:@"you_muted"]) {
+        [self setValue:value forKey:@"youMuted"];
     } else {
         [super setValue:value forUndefinedKey:key];
     }
-    
 }
+
+- (NSDictionary *)toDictionary
+{
+    NSArray *propertyKeys = @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
+    return [self dictionaryWithValuesForKeys:propertyKeys];
+}
+
+- (id)valueForUndefinedKey:(NSString *)key
+{
+    if ([key isEqualToString:@"avatar_image"]) {
+        return [self valueForKey:@"avatarImage"];
+    } else if ([key isEqualToString:@"canonical_url"]) {
+        return [self valueForKey:@"canonicalURL"];
+    } else if ([key isEqualToString:@"cover_image"]) {
+        return [self valueForKey:@"coverImage"];
+    } else if ([key isEqualToString:@"created_at"]) {
+        return [self valueForKey:@"createdAt"];
+    } else if ([key isEqualToString:@"description"]) {
+        return [self valueForKey:@"descriptionText"];
+    } else if ([key isEqualToString:@"id"]) {
+        return [self valueForKey:@"userID"];
+    } else if ([key isEqualToString:@"follows_you"]) {
+        return [self valueForKey:@"followsYou"];
+    } else if ([key isEqualToString:@"you_follow"]) {
+        return [self valueForKey:@"youFollow"];
+    } else if ([key isEqualToString:@"you_muted"]) {
+        return [self valueForKey:@"youMuted"];
+    } else {
+        return [super valueForUndefinedKey:key];
+    }
+}
+
+- (id)valueForKey:(NSString *)key
+{
+    if ([key isEqualToString:@"annotations"]) {
+        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.annotations.count];
+        for (ADNAnnotation *annotation in self.annotations) {
+            [value addObject:annotation.toDictionary];
+        }
+        return value;
+    } else if ([key isEqualToString:@"avatar_image"] ||
+               [key isEqualToString:@"counts"] ||
+               [key isEqualToString:@"cover_image"] ||
+               [key isEqualToString:@"description"])
+    {
+        return ((ADNObject*)[super valueForKey:key]).toDictionary;
+    } else if ([key isEqualToString:@"createdAt"]){
+        return [[ADNHelper dateFormatter] stringFromDate:self.createdAt];
+    } else {
+        return [super valueForKey:key];
+    }
+}
+
 
 #pragma mark -
 /*
