@@ -2,6 +2,9 @@
 
 The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.net API](http://developers.app.net).
 
+## Status
+This is a work in progress, and I develop parts as needed for my own App.net projects. API methods and model objects for Users, Channels, and Messages are fully implemented, along with their annotations and other sub-objects. More of the resources will be added over time.
+
 ## Usage
 
 I recommend adding this library to your code's repository as a [Git submodule](http://git-scm.com/book/en/Git-Tools-Submodules) and then to Xcode as a subproject. A thorough walkthrough of using subprojects and submodules can be found [here](http://www.blog.montgomerie.net/easy-xcode-static-library-subprojects-and-submodules).
