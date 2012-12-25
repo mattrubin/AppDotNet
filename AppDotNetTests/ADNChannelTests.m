@@ -42,10 +42,6 @@
     NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
     NSMutableDictionary *channelDictionary = [channel.toDictionary mutableCopy];
     
-#warning Channel validation incomplete: currently ignoring owner object
-    [testDictionary removeObjectForKey:@"owner"];
-    [channelDictionary removeObjectForKey:@"owner"];
-    
     if (![channelDictionary isEqualToDictionary:testDictionary]) {
         STFail(@"Channel dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);

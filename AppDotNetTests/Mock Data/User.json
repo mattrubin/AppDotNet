@@ -69,12 +69,15 @@
             "html": "<span itemscope=\"https://app.net/schemas/Post\">Founder/CEO <a href=\"http://App.net\">App.net</a> \r<br>Blog: <a href=\"http://daltoncaldwell.com\">daltoncaldwell.com</a></span>",
             "text": "Founder/CEO App.net \r\nBlog: daltoncaldwell.com"
         },
+        "follows_you": 0,
         "id": "1",
         "locale": "en_US",
         "name": "Dalton Caldwell",
         "timezone": "America/Los_Angeles",
         "type": "human",
-        "username": "dalton"
+        "username": "dalton",
+        "you_follow": 1,
+        "you_muted": 0
     },
     "meta": {
         "code": 200

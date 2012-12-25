@@ -32,12 +32,15 @@
                 "html": "<span itemscope=\"https://app.net/schemas/Post\">Professional developer, Amateur designer.\r<br>Reluctant student, Eager teacher. \r<br>Hiker, biker, and climber.\r<br>Part-time philosopher.</span>",
                 "text": "Professional developer, Amateur designer.\r\nReluctant student, Eager teacher. \r\nHiker, biker, and climber.\r\nPart-time philosopher."
             },
+            "follows_you": 0,
             "id": "4906",
             "locale": "en_US",
             "name": "Matt Rubin",
             "timezone": "America/Los_Angeles",
             "type": "human",
-            "username": "mattrubin"
+            "username": "mattrubin",
+            "you_follow": 0,
+            "you_muted": 0
         },
         "readers": {
             "any_user": false,

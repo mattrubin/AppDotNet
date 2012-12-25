@@ -83,6 +83,7 @@
 		8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D4B16880B610075FA7A /* ADNSource.h */; };
 		8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5A1688FB9B0075FA7A /* ADNCounts.h */; };
 		8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */; };
+		8CFB9D66168908120075FA7A /* ADNUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D65168908120075FA7A /* ADNUserTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,8 @@
 		8CFB9D5B1688FB9C0075FA7A /* ADNCounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNCounts.m; sourceTree = "<group>"; };
 		8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNDescription.h; sourceTree = "<group>"; };
 		8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNDescription.m; sourceTree = "<group>"; };
+		8CFB9D64168908120075FA7A /* ADNUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNUserTests.h; sourceTree = "<group>"; };
+		8CFB9D65168908120075FA7A /* ADNUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNUserTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +382,8 @@
 				8C1A3E071682D4F200261C9B /* ADNChannelTests.m */,
 				8CFB9D4F16881D800075FA7A /* ADNMessageTests.h */,
 				8CFB9D5016881D800075FA7A /* ADNMessageTests.m */,
+				8CFB9D64168908120075FA7A /* ADNUserTests.h */,
+				8CFB9D65168908120075FA7A /* ADNUserTests.m */,
 				8C7B24B0167ECEF600C38F51 /* Mock Data */,
 				8CED1A87167C5FC90071D908 /* Supporting Files */,
 			);
@@ -625,6 +630,7 @@
 				8CED1A8E167C5FC90071D908 /* AppDotNetTests.m in Sources */,
 				8C1A3E081682D4F200261C9B /* ADNChannelTests.m in Sources */,
 				8CFB9D5116881D800075FA7A /* ADNMessageTests.m in Sources */,
+				8CFB9D66168908120075FA7A /* ADNUserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
