@@ -11,7 +11,7 @@
 
 #import "ADNUser.h"
 #import "ADNAccessControlList.h"
-#import "ADNAnnotation.h"
+#import "ADNAnnotationCollection.h"
 
 
 @interface ADNChannel : ADNObject
@@ -24,7 +24,7 @@
 @property (nonatomic, assign) BOOL hasUnread;
 @property (nonatomic, assign) BOOL youCanEdit;
 @property (nonatomic, assign) BOOL youSubscribed;
-@property (nonatomic, copy)   NSArray *annotations;
+@property (nonatomic, strong) ADNAnnotationCollection *annotations;
 @property (nonatomic, copy)   NSString *recentMessageID;
 
 @end

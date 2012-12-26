@@ -10,6 +10,7 @@
 #import "ADNObject.h"
 
 #import "ADNUser.h"
+#import "ADNAnnotation.h"
 
 
 @interface ADNPost : ADNObject
@@ -52,7 +53,7 @@
 
 
 // Metadata about the entire post. See the Annotations documentation.
-@property (nonatomic, copy) NSDictionary *annotations;
+@property (nonatomic, strong) ADNAnnotationCollection *annotations;
 // Rich text information for this post. See the Entities documentation.
 @property (nonatomic, copy) NSDictionary *entities;
 

@@ -12,7 +12,7 @@
 #import "ADNDescription.h"
 #import "ADNImage.h"
 #import "ADNCounts.h"
-#import "ADNAnnotation.h"
+#import "ADNAnnotationCollection.h"
 
 
 typedef enum {
@@ -78,7 +78,7 @@ typedef enum {
 
 
 // Metadata about the user. See the Annotations documentation.
-@property (nonatomic, copy) NSArray *annotations;
+@property (nonatomic, strong) ADNAnnotationCollection *annotations;
 
 
 @end

@@ -15,16 +15,20 @@
 
 @implementation ADNMessage
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.annotations = [ADNAnnotationCollection new];
+    }
+    return self;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"annotations"]) {
         if ([value isKindOfClass:[NSArray class]]) {
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                ADNAnnotation *populatedMember = [ADNAnnotation instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-            self.annotations = myMembers;
+            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:@"entities"]) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -116,11 +120,7 @@
 - (id)valueForKey:(NSString *)key
 {
     if ([key isEqualToString:@"annotations"]) {
-        NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.annotations.count];
-        for (ADNAnnotation *annotation in self.annotations) {
-            [value addObject:annotation.toDictionary];
-        }
-        return value;
+        return self.annotations.toArray;
     } else if ([key isEqualToString:@"entities"] ||
         [key isEqualToString:@"source"] ||
         [key isEqualToString:@"user"])

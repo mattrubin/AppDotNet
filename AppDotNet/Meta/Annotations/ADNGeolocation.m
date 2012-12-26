@@ -8,15 +8,13 @@
 
 #import "ADNGeolocation.h"
 
-#define GEOLOCATION_TYPE @"net.app.core.geolocation"
-
 @implementation ADNGeolocation
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.type = GEOLOCATION_TYPE;
+        self.type = ADNAnnotationTypeGeolocation;
         // Negative accuracy values are flags for bad data
         self.horizontalAccuracy = -1;
         self.verticalAccuracy = -1;
@@ -60,10 +58,10 @@
 // Don't allow the type to change
 - (void)setType:(NSString *)type
 {
-    if ([type isEqualToString:GEOLOCATION_TYPE]) {
-        [super setType:GEOLOCATION_TYPE];
+    if ([type isEqualToString:ADNAnnotationTypeGeolocation]) {
+        [super setType:ADNAnnotationTypeGeolocation];
     } else {
-        NSLog(@"%@ has a fixed type of %@", self.class, GEOLOCATION_TYPE);
+        NSLog(@"%@ has a fixed type of %@", self.class, ADNAnnotationTypeGeolocation);
     }
 }
 
