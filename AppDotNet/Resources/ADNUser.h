@@ -73,6 +73,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL youFollow;
 // Has the user making the request blocked this user? May be omitted if this is not an authenticated request.
 @property (nonatomic, assign) BOOL youMuted;
+//Does the user making the request have the ability to subscribe this user to channels? May be omitted if this is not an authenticated request.
+@property (nonatomic, assign) BOOL youCanSubscribe;
 
 
 // Metadata about the user. See the Annotations documentation.

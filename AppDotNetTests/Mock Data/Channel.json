@@ -65,6 +65,7 @@
             "timezone": "America/Los_Angeles",
             "type": "human",
             "username": "mattrubin",
+            "you_can_subscribe": 1,
             "you_follow": 0,
             "you_muted": 0
         },

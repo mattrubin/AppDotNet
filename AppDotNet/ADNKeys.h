@@ -66,6 +66,7 @@
 #define KEY_WRITERS             @"writers"
 #define KEY_YOU                 @"you"
 #define KEY_YOU_CAN_EDIT        @"you_can_edit"
+#define KEY_YOU_CAN_SUBSCRIBE   @"you_can_subscribe"
 #define KEY_YOU_FOLLOW          @"you_follow"
 #define KEY_YOU_MUTED           @"you_muted"
 #define KEY_YOU_SUBSCRIBED      @"you_subscribed"

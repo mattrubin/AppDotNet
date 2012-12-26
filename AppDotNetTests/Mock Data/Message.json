@@ -135,6 +135,7 @@
                 "timezone": "America/Los_Angeles",
                 "type": "human",
                 "username": "dalton",
+                "you_can_subscribe": 1,
                 "you_follow": 1,
                 "you_muted": 0
             },
