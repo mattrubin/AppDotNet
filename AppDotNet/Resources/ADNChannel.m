@@ -8,19 +8,22 @@
 
 #import "ADNChannel.h"
 
+
 #define CHANNEL_KEY_ID                  @"id"
 #define CHANNEL_KEY_TYPE                @"type"
 #define CHANNEL_KEY_OWNER               @"owner"
+#define CHANNEL_KEY_ANNOTATIONS         @"annotations"
 #define CHANNEL_KEY_READERS             @"readers"
 #define CHANNEL_KEY_WRITERS             @"writers"
-#define CHANNEL_KEY_HAS_UNREAD          @"has_unread"
-#define CHANNEL_KEY_YOU_CAN_EDIT        @"you_can_edit"
 #define CHANNEL_KEY_YOU_SUBSCRIBED      @"you_subscribed"
-#define CHANNEL_KEY_ANNOTATIONS         @"annotations"
+#define CHANNEL_KEY_YOU_CAN_EDIT        @"you_can_edit"
+#define CHANNEL_KEY_HAS_UNREAD          @"has_unread"
 #define CHANNEL_KEY_RECENT_MESSAGE_ID   @"recent_message_id"
 
 
 @implementation ADNChannel
+
+#pragma mark Initilaization
 
 - (id)init
 {
@@ -31,42 +34,31 @@
     return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    
+- (void)setValue:(id)value forKey:(NSString *)key
+{
     if ([key isEqualToString:CHANNEL_KEY_ANNOTATIONS]) {
-        
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-        
     } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
-        
         if ([value isKindOfClass:[NSDictionary class]]) {
             self.owner = [ADNUser instanceFromDictionary:value];
         }
-        
     } else if ([key isEqualToString:CHANNEL_KEY_READERS]) {
-        
         if ([value isKindOfClass:[NSDictionary class]]) {
             self.readers = [ADNAccessControlList instanceFromDictionary:value];
         }
-        
     } else if ([key isEqualToString:CHANNEL_KEY_WRITERS]) {
-        
         if ([value isKindOfClass:[NSDictionary class]]) {
             self.writers = [ADNAccessControlList instanceFromDictionary:value];
         }
-        
     } else {
         [super setValue:value forKey:key];
     }
-    
 }
 
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
     if ([key isEqualToString:CHANNEL_KEY_HAS_UNREAD]) {
         [self setValue:value forKey:@"hasUnread"];
     } else if ([key isEqualToString:CHANNEL_KEY_ID]) {
@@ -80,14 +72,10 @@
     } else {
         [super setValue:value forUndefinedKey:key];
     }
-    
 }
 
 
-- (NSString*)description
-{
-    return [NSString stringWithFormat:@"[%@ #%i: %@, @%@]", self.class, [self.channelID intValue], self.type, self.owner.username];
-}
+#pragma mark Export
 
 - (NSDictionary *)toDictionary
 {
@@ -114,6 +102,11 @@
         [dictionary setObject:self.annotations.toArray forKey:CHANNEL_KEY_ANNOTATIONS];
     
     return dictionary;
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"[%@ #%i: %@, @%@]", self.class, [self.channelID intValue], self.type, self.owner.username];
 }
 
 @end
