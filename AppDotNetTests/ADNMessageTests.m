@@ -46,6 +46,10 @@
     NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
     NSMutableDictionary *messageDictionary = [message.toDictionary mutableCopy];
     
+    for (NSString *ignore in message.ignoredKeys) {
+        [testDictionary removeObjectForKey:ignore];
+    }
+
     if (![messageDictionary isEqual:testDictionary]) {
         STFail(@"Message dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);

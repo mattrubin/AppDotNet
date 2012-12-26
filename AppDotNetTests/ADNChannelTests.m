@@ -42,6 +42,10 @@
     NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
     NSMutableDictionary *channelDictionary = [channel.toDictionary mutableCopy];
     
+    for (NSString *ignore in channel.ignoredKeys) {
+        [testDictionary removeObjectForKey:ignore];
+    }
+
     if (![channelDictionary isEqualToDictionary:testDictionary]) {
         STFail(@"Channel dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);

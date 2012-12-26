@@ -18,5 +18,6 @@
 - (NSSet *)conversionKeys;
 - (NSDictionary *)alteredKeys;
 - (NSArray *)exportKeys;
+- (NSArray *)ignoredKeys;
 
 @end

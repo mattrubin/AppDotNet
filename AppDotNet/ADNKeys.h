@@ -70,4 +70,11 @@
 #define KEY_YOU_MUTED           @"you_muted"
 #define KEY_YOU_SUBSCRIBED      @"you_subscribed"
 
+
+#pragma mark - Deprecated
+
+#define KEY_IS_FOLLOWING        @"is_following"
+#define KEY_IS_FOLLOWER         @"is_follower"
+#define KEY_IS_MUTED            @"is_muted"
+
 #endif

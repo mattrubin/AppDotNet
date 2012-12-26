@@ -146,8 +146,18 @@
     return @{};
 }
 
+- (NSArray *)ignoredKeys
+{
+    return @[];
+}
+
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
+    if ([self.ignoredKeys containsObject:key]) {
+        return;
+    }
+    
     id newKey = [self.alteredKeys objectForKey:key];
     if (newKey) {
         [self setValue:value forKey:newKey];
