@@ -29,27 +29,9 @@
     return [NSSet setWithArray:@[@"annotations", @"entities", @"source", @"user", @"createdAt"]];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"channel_id"]) {
-        [self setValue:value forKey:@"channelID"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        [self setValue:value forKey:@"createdAt"];
-    } else if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"messageID"];
-    } else if ([key isEqualToString:@"machine_only"]) {
-        [self setValue:value forKey:@"machineOnly"];
-    } else if ([key isEqualToString:@"num_replies"]) {
-        [self setValue:value forKey:@"numReplies"];
-    } else if ([key isEqualToString:@"thread_id"]) {
-        [self setValue:value forKey:@"threadID"];
-    } else if ([key isEqualToString:@"reply_to"]) {
-        [self setValue:value forKey:@"replyToID"];
-    } else if ([key isEqualToString:@"is_deleted"]) {
-        [self setValue:value forKey:@"isDeleted"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"channel_id":@"channelID", @"created_at":@"createdAt", @"id":@"messageID", @"machine_only":@"machineOnly", @"num_replies":@"numReplies", @"thread_id":@"threadID", @"reply_to":@"replyToID", @"is_deleted":@"isDeleted"};
 }
 
 - (NSDictionary *)toDictionary

@@ -39,21 +39,9 @@
     return [NSSet setWithArray:@[CHANNEL_KEY_ANNOTATIONS, CHANNEL_KEY_OWNER, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS]];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:CHANNEL_KEY_HAS_UNREAD]) {
-        [self setValue:value forKey:@"hasUnread"];
-    } else if ([key isEqualToString:CHANNEL_KEY_ID]) {
-        [self setValue:value forKey:@"channelID"];
-    } else if ([key isEqualToString:CHANNEL_KEY_YOU_CAN_EDIT]) {
-        [self setValue:value forKey:@"youCanEdit"];
-    } else if ([key isEqualToString:CHANNEL_KEY_YOU_SUBSCRIBED]) {
-        [self setValue:value forKey:@"youSubscribed"];
-    } else if ([key isEqualToString:CHANNEL_KEY_RECENT_MESSAGE_ID]) {
-        [self setValue:value forKey:@"recentMessageID"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{CHANNEL_KEY_HAS_UNREAD:@"hasUnread", CHANNEL_KEY_ID:@"channelID", CHANNEL_KEY_YOU_CAN_EDIT:@"youCanEdit", CHANNEL_KEY_YOU_SUBSCRIBED:@"youSubscribed", CHANNEL_KEY_RECENT_MESSAGE_ID:@"recentMessageID"};
 }
 
 

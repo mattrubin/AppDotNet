@@ -39,16 +39,9 @@
 }
 
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:ACL_KEY_ANY_USER]) {
-        [self setValue:value forKey:@"anyUser"];
-    } else if ([key isEqualToString:ACL_KEY_USER_IDS]) {
-        [self setValue:value forKey:@"userIDs"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-
+- (NSDictionary *)alteredKeys
+{
+    return @{ACL_KEY_ANY_USER:@"anyUser", ACL_KEY_USER_IDS:@"userIDs"};
 }
 
 

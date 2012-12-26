@@ -67,29 +67,9 @@
     return [NSSet setWithArray:@[@"annotations", @"avatarImage", @"coverImage", @"counts", @"description", @"createdAt"]];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"avatar_image"]) {
-        [self setValue:value forKey:@"avatarImage"];
-    } else if ([key isEqualToString:@"canonical_url"]) {
-        [self setValue:value forKey:@"canonicalURL"];
-    } else if ([key isEqualToString:@"cover_image"]) {
-        [self setValue:value forKey:@"coverImage"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        [self setValue:value forKey:@"createdAt"];
-    } else if ([key isEqualToString:@"description"]) {
-        [self setValue:value forKey:@"descriptionText"];
-    } else if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"userID"];
-    } else if ([key isEqualToString:@"follows_you"]) {
-        [self setValue:value forKey:@"followsYou"];
-    } else if ([key isEqualToString:@"you_follow"]) {
-        [self setValue:value forKey:@"youFollow"];
-    } else if ([key isEqualToString:@"you_muted"]) {
-        [self setValue:value forKey:@"youMuted"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"avatar_image": @"avatarImage", @"canonical_url": @"canonicalURL", @"cover_image": @"coverImage", @"created_at": @"createdAt", @"description": @"descriptionText", @"id": @"userID", @"follows_you": @"followsYou", @"you_follow": @"youFollow", @"you_muted": @"youMuted"};
 }
 
 - (NSDictionary *)toDictionary

@@ -11,13 +11,9 @@
 
 @implementation ADNSource
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"client_id"]) {
-        [self setValue:value forKey:@"clientID"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"client_id":@"clientID"};
 }
 
 - (NSDictionary *)toDictionary

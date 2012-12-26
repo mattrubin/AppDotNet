@@ -13,15 +13,9 @@
 
 @implementation ADNHashtag
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"len"]) {
-        [self setValue:value forKey:@"length"];
-    } else if ([key isEqualToString:@"pos"]) {
-        [self setValue:value forKey:@"position"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"len":@"length", @"pos":@"position"};
 }
 
 - (NSDictionary *)toDictionary

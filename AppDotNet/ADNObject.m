@@ -16,6 +16,8 @@
 @interface ADNObject ()
 
 - (Class)propertyClassForKey:(NSString *)key;
+
+- (void)setConvertedValue:(id)value forKey:(NSString *)key;
 - (void)setValue:(id)value toClass:(Class)keyClass forKey:(NSString *)key;
 
 @end
@@ -132,5 +134,21 @@
     return value;
 }
 
+
+
+- (NSDictionary *)alteredKeys
+{
+    return @{};
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    id newKey = [self.alteredKeys objectForKey:key];
+    if (newKey) {
+        [self setValue:value forKey:newKey];
+    } else {
+        [super setValue:value forUndefinedKey:key];
+    }
+}
 
 @end
