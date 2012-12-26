@@ -13,7 +13,7 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key {
 
-    if ([key isEqualToString:ACL_KEY_USER_IDS]) {
+    if ([key isEqualToString:KEY_USER_IDS]) {
 
         if ([value isKindOfClass:[NSArray class]]) {
 
@@ -35,12 +35,12 @@
 
 - (NSDictionary *)alteredKeys
 {
-    return @{ACL_KEY_ANY_USER:@"anyUser", ACL_KEY_USER_IDS:@"userIDs"};
+    return @{KEY_ANY_USER:@"anyUser", KEY_USER_IDS:@"userIDs"};
 }
 
 - (NSArray *)exportKeys
 {
-    return @[ACL_KEY_ANY_USER, ACL_KEY_IMMUTABLE, ACL_KEY_PUBLIC, ACL_KEY_YOU, ACL_KEY_USER_IDS];
+    return @[KEY_ANY_USER, KEY_IMMUTABLE, KEY_PUBLIC, KEY_YOU, KEY_USER_IDS];
 }
 
 @end

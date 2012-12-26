@@ -385,9 +385,9 @@
 			isa = PBXGroup;
 			children = (
 				8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */,
+				8CC18C8A168B00160033B8C5 /* ADNKeys.h */,
 				8C7B24BB167F211400C38F51 /* NSDictionary+ADN.h */,
 				8C7B24BC167F211500C38F51 /* NSDictionary+ADN.m */,
-				8CC18C8A168B00160033B8C5 /* ADNKeys.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -15,18 +15,18 @@
 
 - (void)setAttributesFromDictionary:(NSDictionary *)dictionary
 {
-    NSDictionary *appInfo = [dictionary dictionaryForKey:TOKEN_KEY_APP];
-    self.clientID   = [appInfo stringForKey:TOKEN_KEY_CLIENT_ID];
-    self.clientLink = [appInfo stringForKey:TOKEN_KEY_APP_LINK];
-    self.clientName = [appInfo stringForKey:TOKEN_KEY_APP_NAME];
+    NSDictionary *appInfo = [dictionary dictionaryForKey:KEY_APP];
+    self.clientID   = [appInfo stringForKey:KEY_CLIENT_ID];
+    self.clientLink = [appInfo stringForKey:KEY_LINK];
+    self.clientName = [appInfo stringForKey:KEY_NAME];
     
-    NSArray *scopesArray = [dictionary arrayForKey:TOKEN_KEY_SCOPES];
+    NSArray *scopesArray = [dictionary arrayForKey:KEY_SCOPES];
     self.scopes = [NSMutableArray arrayWithCapacity:scopesArray.count];
     for (NSString *scopeString in scopesArray) {
         [(NSMutableArray*)self.scopes addObject:scopeString];
     }
     
-    self.user = [ADNUser instanceFromDictionary:[dictionary dictionaryForKey:TOKEN_KEY_USER]];
+    self.user = [ADNUser instanceFromDictionary:[dictionary dictionaryForKey:KEY_USER]];
 }
 
 - (NSString*)description

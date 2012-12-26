@@ -36,7 +36,7 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"hashtags"]) {
+    if ([key isEqualToString:KEY_HASHTAGS]) {
         if ([value isKindOfClass:[NSArray class]]) {
             NSMutableArray *hashtags = [NSMutableArray arrayWithCapacity:[value count]];
             for (id rawHashtag in value) {
@@ -46,7 +46,7 @@
             }
             self.hashtags = hashtags;
         }
-    } else if ([key isEqualToString:@"links"]) {
+    } else if ([key isEqualToString:KEY_LINKS]) {
         if ([value isKindOfClass:[NSArray class]]) {
             NSMutableArray *links = [NSMutableArray arrayWithCapacity:[value count]];
             for (id rawLink in value) {
@@ -56,7 +56,7 @@
             }
             self.links = links;
         }
-    } else if ([key isEqualToString:@"mentions"]) {
+    } else if ([key isEqualToString:KEY_MENTIONS]) {
         if ([value isKindOfClass:[NSArray class]]) {
             NSMutableArray *mentions = [NSMutableArray arrayWithCapacity:[value count]];
             for (id rawMention in value) {
@@ -73,24 +73,24 @@
 
 - (NSArray *)exportKeys
 {
-    return @[@"hashtags", @"links", @"mentions"];
+    return @[KEY_HASHTAGS, KEY_LINKS, KEY_MENTIONS];
 }
 
 - (id)valueForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"hashtags"]) {
+    if ([key isEqualToString:KEY_HASHTAGS]) {
         NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.hashtags.count];
         for (ADNHashtag *hashtag in self.hashtags) {
             [value addObject:hashtag.toDictionary];
         }
         return value;
-    } else if ([key isEqualToString:@"links"]) {
+    } else if ([key isEqualToString:KEY_LINKS]) {
         NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.links.count];
         for (ADNLink *link in self.links) {
             [value addObject:link.toDictionary];
         }
         return value;
-    } else if ([key isEqualToString:@"mentions"]) {
+    } else if ([key isEqualToString:KEY_MENTIONS]) {
         NSMutableArray *value = [NSMutableArray arrayWithCapacity:self.mentions.count];
         for (ADNMention *mention in self.mentions) {
             [value addObject:mention.toDictionary];

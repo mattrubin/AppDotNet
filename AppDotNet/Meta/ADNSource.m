@@ -13,12 +13,12 @@
 
 - (NSDictionary *)alteredKeys
 {
-    return @{@"client_id":@"clientID"};
+    return @{KEY_CLIENT_ID:@"clientID"};
 }
 
 - (NSArray *)exportKeys
 {
-    return @[@"client_id", @"link", @"name"];
+    return @[KEY_CLIENT_ID, KEY_LINK, KEY_NAME];
 }
 
 @end

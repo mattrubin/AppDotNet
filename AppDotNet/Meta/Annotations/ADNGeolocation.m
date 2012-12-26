@@ -25,7 +25,7 @@
 // When building from a dictionary, intercept the "value" key
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"value"]) {
+    if ([key isEqualToString:KEY_VALUE]) {
         if ([value isKindOfClass:[NSDictionary class]]) {
             [self setValue:value];
         }
@@ -37,7 +37,7 @@
 // When converting to a dictionary, intercept the "value" key
 - (id)valueForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"value"]) {
+    if ([key isEqualToString:KEY_VALUE]) {
         return [self value];
     } else {
         return [super valueForKey:key];

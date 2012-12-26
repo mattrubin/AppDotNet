@@ -13,12 +13,12 @@
 
 - (NSSet *)conversionKeys
 {
-    return [NSSet setWithObject:@"entities"];
+    return [NSSet setWithObject:KEY_ENTITIES];
 }
 
 - (NSArray *)exportKeys
 {
-    return @[@"text", @"entities", @"html"];
+    return @[KEY_TEXT, KEY_ENTITIES, KEY_HTML];
 }
 
 @end

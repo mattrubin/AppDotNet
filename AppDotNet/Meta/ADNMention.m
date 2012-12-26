@@ -15,12 +15,12 @@
 
 - (NSDictionary *)alteredKeys
 {
-    return @{@"id":@"userID", @"name":@"username", @"len":@"length", @"pos":@"position"};
+    return @{KEY_ID:@"userID", KEY_NAME:@"username", KEY_LEN:@"length", KEY_POS:@"position"};
 }
 
 - (NSArray *)exportKeys
 {
-    return @[@"id", @"len", @"name", @"pos"];
+    return @[KEY_ID, KEY_LEN, KEY_NAME, KEY_POS];
 }
 
 

@@ -21,7 +21,7 @@
 
 - (NSArray *)exportKeys
 {
-    return @[@"type", @"value"];
+    return @[KEY_TYPE, KEY_VALUE];
 }
 
 @end

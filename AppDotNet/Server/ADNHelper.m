@@ -49,11 +49,11 @@
 
 + (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope error:(NSError **)error
 {
-    NSDictionary *meta = [responseEnvelope dictionaryForKey:@"meta"];
-    NSInteger code = [meta integerForKey:@"code"];
+    NSDictionary *meta = [responseEnvelope dictionaryForKey:KEY_META];
+    NSInteger code = [meta integerForKey:KEY_CODE];
     
     if (code == 200) {
-        return [responseEnvelope objectForKey:@"data"];
+        return [responseEnvelope objectForKey:KEY_DATA];
     } else {
         NSString * errorMessage = [meta stringForKey:@"error_message"];
         if (error) {

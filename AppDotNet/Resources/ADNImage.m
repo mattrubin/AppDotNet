@@ -15,7 +15,7 @@
 
 - (NSArray *)exportKeys
 {
-    return @[@"height", @"width", @"url"];
+    return @[KEY_HEIGHT, KEY_WIDTH, KEY_URL];
 }
 
 - (NSString*)description

@@ -13,7 +13,7 @@
 
 - (NSArray *)exportKeys
 {
-    return @[@"followers", @"following", @"posts", @"stars"];
+    return @[KEY_FOLLOWERS, KEY_FOLLOWING, KEY_POSTS, KEY_STARS];
 }
 
 @end
