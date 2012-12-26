@@ -11,13 +11,9 @@
 
 @implementation ADNDescription
 
-- (void)setValue:(id)value forKey:(NSString *)key
+- (NSSet *)conversionKeys
 {
-    if ([key isEqualToString:@"entities"]) {
-        [self setConvertedValue:value forKey:key];
-    } else {
-        [super setValue:value forKey:key];
-    }
+    return [NSSet setWithObject:@"entities"];
 }
 
 - (NSDictionary *)toDictionary

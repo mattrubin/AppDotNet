@@ -30,15 +30,14 @@
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-    } else if ([key isEqualToString:@"entities"] ||
-               [key isEqualToString:@"source"] ||
-               [key isEqualToString:@"user"] ||
-               [key isEqualToString:@"createdAt"])
-    {
-        [self setConvertedValue:value forKey:key];
     } else {
         [super setValue:value forKey:key];
     }
+}
+
+- (NSSet *)conversionKeys
+{
+    return [NSSet setWithArray:@[@"entities", @"source", @"user", @"createdAt"]];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key

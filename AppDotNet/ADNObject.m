@@ -42,8 +42,18 @@
     return [NSDictionary dictionary];
 }
 
+- (NSSet *)conversionKeys
+{
+    return [NSSet set];
+}
+
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
+    if ([self.conversionKeys containsObject:key]) {
+        [self setConvertedValue:value forKey:key];
+        return;
+    }
     Class class = [self propertyClassForKey:key];
     if (class && ![value isKindOfClass:class]) {
         [NSException raise:@"InvalidPropertyAssignment" format:@"Trying to assign an object of type %@ to a property of type %@ (%@.%@)", [value class], class, [self class], key];

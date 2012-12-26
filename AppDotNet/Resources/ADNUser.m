@@ -68,18 +68,15 @@
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-    } else if ([key isEqualToString:@"avatarImage"] ||
-               [key isEqualToString:@"coverImage"] ||
-               [key isEqualToString:@"counts"] ||
-               [key isEqualToString:@"description"] ||
-               [key isEqualToString:@"createdAt"])
-    {
-        [self setConvertedValue:value forKey:key];
     } else {
         [super setValue:value forKey:key];
     }
 }
 
+- (NSSet *)conversionKeys
+{
+    return [NSSet setWithArray:@[@"avatarImage", @"coverImage", @"counts", @"description", @"createdAt"]];
+}
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {

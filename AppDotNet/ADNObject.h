@@ -15,6 +15,7 @@
 
 - (NSDictionary *)toDictionary;
 
+- (NSSet *)conversionKeys;
 - (void)setConvertedValue:(id)value forKey:(NSString *)key;
 
 @end
