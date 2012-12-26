@@ -71,13 +71,10 @@
     } else if ([key isEqualToString:@"avatarImage"] ||
                [key isEqualToString:@"coverImage"] ||
                [key isEqualToString:@"counts"] ||
-               [key isEqualToString:@"description"])
+               [key isEqualToString:@"description"] ||
+               [key isEqualToString:@"createdAt"])
     {
         [self setConvertedValue:value forKey:key];
-    } else if ([key isEqualToString:@"createdAt"]){
-        if ([value isKindOfClass:[NSString class]]) {
-            self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];
-        }
     } else {
         [super setValue:value forKey:key];
     }

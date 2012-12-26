@@ -32,13 +32,10 @@
         }
     } else if ([key isEqualToString:@"entities"] ||
                [key isEqualToString:@"source"] ||
-               [key isEqualToString:@"user"])
+               [key isEqualToString:@"user"] ||
+               [key isEqualToString:@"createdAt"])
     {
         [self setConvertedValue:value forKey:key];
-    } else if ([key isEqualToString:@"createdAt"]){
-        if ([value isKindOfClass:[NSString class]]) {
-            self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];
-        }
     } else {
         [super setValue:value forKey:key];
     }

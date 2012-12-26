@@ -9,6 +9,7 @@
 #import "ADNObject.h"
 
 #import <objc/runtime.h>
+#import "ADNHelper.h"
 
 
 @interface ADNObject ()
@@ -76,10 +77,16 @@
 }
 - (void)setValue:(id)value toClass:(Class)keyClass forKey:(NSString *)key
 {
+    id newValue = nil;
     if ([value isKindOfClass:[NSDictionary class]]) {
-        id newValue = [keyClass instanceFromDictionary:value];
-        [super setValue:newValue forKey:key];
+        newValue = [keyClass instanceFromDictionary:value];
+    } else if ([value isKindOfClass:[NSString class]]) {
+        if (keyClass == [NSDate class]) {
+            newValue = [[ADNHelper dateFormatter] dateFromString:value];
+        }
     }
+    if (newValue)
+        [super setValue:newValue forKey:key];
 }
 
 @end
