@@ -11,30 +11,14 @@
 
 @implementation ADNDescription
 
-- (void)setValue:(id)value forKey:(NSString *)key
+- (NSSet *)conversionKeys
 {
-    if ([key isEqualToString:@"entities"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.entities = [ADNEntities instanceFromDictionary:value];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
+    return [NSSet setWithObject:@"entities"];
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"text", @"entities", @"html"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
-}
-
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"entities"]) {
-        return self.entities.toDictionary;
-    } else {
-        return [super valueForKey:key];
-    }
+    return @[@"text", @"entities", @"html"];
 }
 
 @end

@@ -13,32 +13,14 @@
 
 @implementation ADNLink
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"len"]) {
-        [self setValue:value forKey:@"length"];
-    } else if ([key isEqualToString:@"pos"]) {
-        [self setValue:value forKey:@"position"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"len":@"length", @"pos":@"position"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"text", @"url", @"pos", @"len", nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
-}
-
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"len"]) {
-        return [self valueForKey:@"length"];
-    } else if ([key isEqualToString:@"pos"]) {
-        return [self valueForKey:@"position"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
+    return @[@"text", @"url", @"pos", @"len"];
 }
 
 

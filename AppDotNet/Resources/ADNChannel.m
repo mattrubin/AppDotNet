@@ -34,74 +34,22 @@
     return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key
+- (NSSet *)conversionKeys
 {
-    if ([key isEqualToString:CHANNEL_KEY_ANNOTATIONS]) {
-        if ([value isKindOfClass:[NSArray class]]) {
-            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
-        }
-    } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.owner = [ADNUser instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:CHANNEL_KEY_READERS]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.readers = [ADNAccessControlList instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:CHANNEL_KEY_WRITERS]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.writers = [ADNAccessControlList instanceFromDictionary:value];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
+    return [NSSet setWithArray:@[CHANNEL_KEY_ANNOTATIONS, CHANNEL_KEY_OWNER, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS]];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:CHANNEL_KEY_HAS_UNREAD]) {
-        [self setValue:value forKey:@"hasUnread"];
-    } else if ([key isEqualToString:CHANNEL_KEY_ID]) {
-        [self setValue:value forKey:@"channelID"];
-    } else if ([key isEqualToString:CHANNEL_KEY_YOU_CAN_EDIT]) {
-        [self setValue:value forKey:@"youCanEdit"];
-    } else if ([key isEqualToString:CHANNEL_KEY_YOU_SUBSCRIBED]) {
-        [self setValue:value forKey:@"youSubscribed"];
-    } else if ([key isEqualToString:CHANNEL_KEY_RECENT_MESSAGE_ID]) {
-        [self setValue:value forKey:@"recentMessageID"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{CHANNEL_KEY_HAS_UNREAD:@"hasUnread", CHANNEL_KEY_ID:@"channelID", CHANNEL_KEY_YOU_CAN_EDIT:@"youCanEdit", CHANNEL_KEY_YOU_SUBSCRIBED:@"youSubscribed", CHANNEL_KEY_RECENT_MESSAGE_ID:@"recentMessageID"};
 }
 
 
 #pragma mark Export
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
-    if (self.channelID)
-        [dictionary setObject:self.channelID       forKey:CHANNEL_KEY_ID];
-    if (self.type)
-        [dictionary setObject:self.type            forKey:CHANNEL_KEY_TYPE];
-    if (self.recentMessageID)
-        [dictionary setObject:self.recentMessageID forKey:CHANNEL_KEY_RECENT_MESSAGE_ID];
-    
-    [dictionary setObject:[NSNumber numberWithBool:self.hasUnread]     forKey:CHANNEL_KEY_HAS_UNREAD];
-    [dictionary setObject:[NSNumber numberWithBool:self.youCanEdit]    forKey:CHANNEL_KEY_YOU_CAN_EDIT];
-    [dictionary setObject:[NSNumber numberWithBool:self.youSubscribed] forKey:CHANNEL_KEY_YOU_SUBSCRIBED];
-    
-    if (self.owner)
-        [dictionary setObject:self.owner.toDictionary forKey:CHANNEL_KEY_OWNER];
-    if (self.readers)
-        [dictionary setObject:self.readers.toDictionary forKey:CHANNEL_KEY_READERS];
-    if (self.writers)
-        [dictionary setObject:self.writers.toDictionary forKey:CHANNEL_KEY_WRITERS];
-    if (self.annotations)
-        [dictionary setObject:self.annotations.toArray forKey:CHANNEL_KEY_ANNOTATIONS];
-    
-    return dictionary;
+    return @[CHANNEL_KEY_ID, CHANNEL_KEY_TYPE, CHANNEL_KEY_OWNER, CHANNEL_KEY_ANNOTATIONS, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS, CHANNEL_KEY_YOU_SUBSCRIBED, CHANNEL_KEY_YOU_CAN_EDIT, CHANNEL_KEY_HAS_UNREAD, CHANNEL_KEY_RECENT_MESSAGE_ID];
 }
 
 - (NSString*)description

@@ -13,41 +13,16 @@
 
 @implementation ADNMention
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"userID"];
-    } else if ([key isEqualToString:@"len"]) {
-        [self setValue:value forKey:@"length"];
-    } else if ([key isEqualToString:@"name"]) {
-        [self setValue:value forKey:@"username"];
-    } else if ([key isEqualToString:@"pos"]) {
-        [self setValue:value forKey:@"position"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"id":@"userID", @"name":@"username", @"len":@"length", @"pos":@"position"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"id", @"len", @"name", @"pos", nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"id", @"len", @"name", @"pos"];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"id"]) {
-        return [self valueForKey:@"userID"];
-    } else if ([key isEqualToString:@"len"]) {
-        return [self valueForKey:@"length"];
-    } else if ([key isEqualToString:@"name"]) {
-        return [self valueForKey:@"username"];
-    } else if ([key isEqualToString:@"pos"]) {
-        return [self valueForKey:@"position"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
 
 
 #pragma mark -

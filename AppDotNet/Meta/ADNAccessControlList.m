@@ -39,32 +39,14 @@
 }
 
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:ACL_KEY_ANY_USER]) {
-        [self setValue:value forKey:@"anyUser"];
-    } else if ([key isEqualToString:ACL_KEY_USER_IDS]) {
-        [self setValue:value forKey:@"userIDs"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-
+- (NSDictionary *)alteredKeys
+{
+    return @{ACL_KEY_ANY_USER:@"anyUser", ACL_KEY_USER_IDS:@"userIDs"};
 }
 
-
-- (NSDictionary*)toDictionary
+- (NSArray *)exportKeys
 {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
-    [dictionary setObject:[NSNumber numberWithBool:self.anyUser]   forKey:ACL_KEY_ANY_USER];
-    [dictionary setObject:[NSNumber numberWithBool:self.immutable] forKey:ACL_KEY_IMMUTABLE];
-    [dictionary setObject:[NSNumber numberWithBool:self.public]    forKey:ACL_KEY_PUBLIC];
-    [dictionary setObject:[NSNumber numberWithBool:self.you]       forKey:ACL_KEY_YOU];
-    
-    if (self.userIDs)
-        [dictionary setObject:self.userIDs.copy forKey:ACL_KEY_USER_IDS];
-    
-    return dictionary;
+    return @[ACL_KEY_ANY_USER, ACL_KEY_IMMUTABLE, ACL_KEY_PUBLIC, ACL_KEY_YOU, ACL_KEY_USER_IDS];
 }
 
 @end

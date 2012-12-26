@@ -11,31 +11,14 @@
 
 @implementation ADNSource
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"client_id"]) {
-        [self setValue:value forKey:@"clientID"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"client_id":@"clientID"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"client_id",
-                                                      @"link",
-                                                      @"name",
-                                                      nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
-}
-
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"client_id"]) {
-        return [self valueForKey:@"clientID"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
+    return @[@"client_id", @"link", @"name"];
 }
 
 @end

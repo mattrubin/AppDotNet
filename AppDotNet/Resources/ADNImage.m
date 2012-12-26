@@ -13,10 +13,9 @@
 
 @implementation ADNImage
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"height", @"width", @"url"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"height", @"width", @"url"];
 }
 
 - (NSString*)description

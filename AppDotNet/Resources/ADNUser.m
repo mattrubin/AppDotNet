@@ -62,110 +62,21 @@
     return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key
+- (NSSet *)conversionKeys
 {
-    if ([key isEqualToString:@"annotations"]) {
-        if ([value isKindOfClass:[NSArray class]]) {
-            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
-        }
-    } else if ([key isEqualToString:@"avatar_image"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.avatarImage = [ADNImage instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:@"counts"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.counts = [ADNCounts instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:@"cover_image"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.coverImage = [ADNImage instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:@"description"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.description = [ADNDescription instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:@"createdAt"]){
-        if ([value isKindOfClass:[NSString class]]) {
-            self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
+    return [NSSet setWithArray:@[@"annotations", @"avatarImage", @"coverImage", @"counts", @"description", @"createdAt"]];
 }
 
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (NSDictionary *)alteredKeys
 {
-    if ([key isEqualToString:@"avatar_image"]) {
-        [self setValue:value forKey:@"avatarImage"];
-    } else if ([key isEqualToString:@"canonical_url"]) {
-        [self setValue:value forKey:@"canonicalURL"];
-    } else if ([key isEqualToString:@"cover_image"]) {
-        [self setValue:value forKey:@"coverImage"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        [self setValue:value forKey:@"createdAt"];
-    } else if ([key isEqualToString:@"description"]) {
-        [self setValue:value forKey:@"descriptionText"];
-    } else if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"userID"];
-    } else if ([key isEqualToString:@"follows_you"]) {
-        [self setValue:value forKey:@"followsYou"];
-    } else if ([key isEqualToString:@"you_follow"]) {
-        [self setValue:value forKey:@"youFollow"];
-    } else if ([key isEqualToString:@"you_muted"]) {
-        [self setValue:value forKey:@"youMuted"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
+    return @{@"avatar_image": @"avatarImage", @"canonical_url": @"canonicalURL", @"cover_image": @"coverImage", @"created_at": @"createdAt", @"description": @"descriptionText", @"id": @"userID", @"follows_you": @"followsYou", @"you_follow": @"youFollow", @"you_muted": @"youMuted"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"avatar_image"]) {
-        return [self valueForKey:@"avatarImage"];
-    } else if ([key isEqualToString:@"canonical_url"]) {
-        return [self valueForKey:@"canonicalURL"];
-    } else if ([key isEqualToString:@"cover_image"]) {
-        return [self valueForKey:@"coverImage"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        return [self valueForKey:@"createdAt"];
-    } else if ([key isEqualToString:@"description"]) {
-        return [self valueForKey:@"descriptionText"];
-    } else if ([key isEqualToString:@"id"]) {
-        return [self valueForKey:@"userID"];
-    } else if ([key isEqualToString:@"follows_you"]) {
-        return [self valueForKey:@"followsYou"];
-    } else if ([key isEqualToString:@"you_follow"]) {
-        return [self valueForKey:@"youFollow"];
-    } else if ([key isEqualToString:@"you_muted"]) {
-        return [self valueForKey:@"youMuted"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
-
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"annotations"]) {
-        return self.annotations.toArray;
-    } else if ([key isEqualToString:@"avatar_image"] ||
-               [key isEqualToString:@"counts"] ||
-               [key isEqualToString:@"cover_image"] ||
-               [key isEqualToString:@"description"])
-    {
-        return ((ADNObject*)[super valueForKey:key]).toDictionary;
-    } else if ([key isEqualToString:@"createdAt"]){
-        return [[ADNHelper dateFormatter] stringFromDate:self.createdAt];
-    } else {
-        return [super valueForKey:key];
-    }
-}
 
 
 #pragma mark -
