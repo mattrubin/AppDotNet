@@ -9,6 +9,7 @@
 #import "ADNAnnotationCollection.h"
 #import "ADNGeolocation.h"
 
+
 @interface ADNAnnotationCollection ()
 
 @property(nonatomic, strong) NSMutableArray *annotations;

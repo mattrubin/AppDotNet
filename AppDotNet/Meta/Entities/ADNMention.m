@@ -8,8 +8,6 @@
 
 #import "ADNMention.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @implementation ADNMention
 
@@ -22,7 +20,6 @@
 {
     return @[KEY_ID, KEY_LEN, KEY_NAME, KEY_POS];
 }
-
 
 
 #pragma mark -

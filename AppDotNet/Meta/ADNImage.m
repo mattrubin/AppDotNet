@@ -8,8 +8,6 @@
 
 #import "ADNImage.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @implementation ADNImage
 

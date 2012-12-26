@@ -6,10 +6,11 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ADNObject.h"
 
+
 static NSString *ADNAnnotationTypeGeolocation = @"net.app.core.geolocation";
+
 
 @interface ADNAnnotation : ADNObject
 

@@ -8,8 +8,6 @@
 
 #import "ADNLink.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @implementation ADNLink
 

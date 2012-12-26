@@ -8,8 +8,6 @@
 
 #import "ADNEntities.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @interface ADNEntities ()
 

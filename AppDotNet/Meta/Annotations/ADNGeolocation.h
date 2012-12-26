@@ -8,7 +8,7 @@
 
 #import "ADNAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
-#import <CoreLocation/CLLocation.h>
+
 
 @interface ADNGeolocation : ADNAnnotation
 

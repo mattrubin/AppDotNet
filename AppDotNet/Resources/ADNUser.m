@@ -8,9 +8,6 @@
 
 #import "ADNUser.h"
 
-#import "ADNHelper.h"
-#import "NSDictionary+ADN.h"
-
 
 #define USER_TYPE_STRING_HUMAN          @"human"
 #define USER_TYPE_STRING_BOT            @"bot"

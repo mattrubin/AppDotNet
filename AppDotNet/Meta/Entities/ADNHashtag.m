@@ -8,8 +8,6 @@
 
 #import "ADNHashtag.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @implementation ADNHashtag
 
