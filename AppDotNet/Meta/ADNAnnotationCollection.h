@@ -17,7 +17,7 @@
 
 - (NSArray *)toArray;
 
-//- (ADNAnnotation *)annotationWithType:(NSString *)type;
-//- (void)setAnnotation:(id)value withType:(NSString *)type;
+- (ADNAnnotation *)annotationWithType:(NSString *)type;
+- (void)addAnnotation:(ADNAnnotation *)annotation;
 
 @end

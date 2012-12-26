@@ -18,6 +18,15 @@
 
 @implementation ADNAnnotationCollection
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.annotations = [NSMutableArray new];
+    }
+    return self;
+}
+
 + (id)instanceFromArray:(NSArray *)array
 {
     ADNAnnotationCollection *instance = [[self alloc] init];
@@ -52,6 +61,23 @@
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len
 {
     return [self.annotations countByEnumeratingWithState:state objects:buffer count:len];
+}
+
+#pragma mark Annotations
+
+- (void)addAnnotation:(ADNAnnotation *)annotation
+{
+    [self.annotations addObject:annotation];
+}
+
+- (ADNAnnotation *)annotationWithType:(NSString *)type
+{
+    for (ADNAnnotation *annotation in self.annotations) {
+        if ([annotation.type isEqualToString:type]) {
+            return annotation;
+        }
+    }
+    return nil;
 }
 
 @end
