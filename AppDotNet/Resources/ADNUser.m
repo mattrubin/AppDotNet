@@ -123,22 +123,6 @@
     }
 }
 
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"annotations"]) {
-        return self.annotations.toArray;
-    } else if ([key isEqualToString:@"avatar_image"] ||
-               [key isEqualToString:@"counts"] ||
-               [key isEqualToString:@"cover_image"] ||
-               [key isEqualToString:@"description"])
-    {
-        return ((ADNObject*)[super valueForKey:key]).toDictionary;
-    } else if ([key isEqualToString:@"createdAt"]){
-        return [[ADNHelper dateFormatter] stringFromDate:self.createdAt];
-    } else {
-        return [super valueForKey:key];
-    }
-}
 
 
 #pragma mark -

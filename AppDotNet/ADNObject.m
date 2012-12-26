@@ -105,4 +105,32 @@
         [super setValue:newValue forKey:key];
 }
 
+
+/////
+
+- (id)valueForKey:(NSString *)key
+{
+    if ([self.conversionKeys containsObject:key]) {
+        return [self convertedValueForKey:key];
+    } else {
+        return [super valueForKey:key];
+    }
+}
+
+- (id)convertedValueForKey:(NSString *)key
+{
+    id value = [super valueForKey:key];
+    
+    if ([value isKindOfClass:[ADNObject class]]) {
+        return  [value toDictionary];
+    } else if ([value isKindOfClass:[NSDate class]]) {
+        return [[ADNHelper dateFormatter] stringFromDate:value];
+    } else if ([value isKindOfClass:[ADNAnnotationCollection class]]) {
+        return [value toArray];
+    }
+    // fallback
+    return value;
+}
+
+
 @end

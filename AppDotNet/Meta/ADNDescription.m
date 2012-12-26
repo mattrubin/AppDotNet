@@ -22,13 +22,4 @@
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"entities"]) {
-        return self.entities.toDictionary;
-    } else {
-        return [super valueForKey:key];
-    }
-}
-
 @end

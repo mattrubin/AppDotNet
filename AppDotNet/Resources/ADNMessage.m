@@ -95,20 +95,4 @@
     }
 }
 
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"annotations"]) {
-        return self.annotations.toArray;
-    } else if ([key isEqualToString:@"entities"] ||
-        [key isEqualToString:@"source"] ||
-        [key isEqualToString:@"user"])
-    {
-        return ((ADNObject*)[super valueForKey:key]).toDictionary;
-    } else if ([key isEqualToString:@"createdAt"]){
-        return [[ADNHelper dateFormatter] stringFromDate:self.createdAt];
-    } else {
-        return [super valueForKey:key];
-    }
-}
-
 @end
