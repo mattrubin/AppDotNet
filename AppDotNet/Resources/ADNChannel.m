@@ -40,9 +40,10 @@
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-    } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
-        [self setConvertedValue:value forKey:key];
-    } else if ([key isEqualToString:CHANNEL_KEY_READERS] || [key isEqualToString:CHANNEL_KEY_WRITERS]) {
+    } else if ([key isEqualToString:CHANNEL_KEY_OWNER] ||
+               [key isEqualToString:CHANNEL_KEY_READERS] ||
+               [key isEqualToString:CHANNEL_KEY_WRITERS])
+    {
         [self setConvertedValue:value forKey:key];
     } else {
         [super setValue:value forKey:key];
