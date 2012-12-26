@@ -68,7 +68,7 @@
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-    } else if ([key isEqualToString:@"avatar_image"] || [key isEqualToString:@"cover_image"]) {
+    } else if ([key isEqualToString:@"avatarImage"] || [key isEqualToString:@"coverImage"]) {
         [self setValue:value toClass:[ADNImage class] forKey:key];
     } else if ([key isEqualToString:@"counts"]) {
         [self setValue:value toClass:[ADNCounts class] forKey:key];
