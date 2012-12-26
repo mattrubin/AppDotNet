@@ -68,22 +68,12 @@
         if ([value isKindOfClass:[NSArray class]]) {
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
-    } else if ([key isEqualToString:@"avatar_image"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.avatarImage = [ADNImage instanceFromDictionary:value];
-        }
+    } else if ([key isEqualToString:@"avatar_image"] || [key isEqualToString:@"cover_image"]) {
+        [self setValue:value toClass:[ADNImage class] forKey:key];
     } else if ([key isEqualToString:@"counts"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.counts = [ADNCounts instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:@"cover_image"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.coverImage = [ADNImage instanceFromDictionary:value];
-        }
+        [self setValue:value toClass:[ADNCounts class] forKey:key];
     } else if ([key isEqualToString:@"description"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.description = [ADNDescription instanceFromDictionary:value];
-        }
+        [self setValue:value toClass:[ADNDescription class] forKey:key];
     } else if ([key isEqualToString:@"createdAt"]){
         if ([value isKindOfClass:[NSString class]]) {
             self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];

@@ -41,17 +41,9 @@
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.owner = [ADNUser instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:CHANNEL_KEY_READERS]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.readers = [ADNAccessControlList instanceFromDictionary:value];
-        }
-    } else if ([key isEqualToString:CHANNEL_KEY_WRITERS]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.writers = [ADNAccessControlList instanceFromDictionary:value];
-        }
+        [self setValue:value toClass:[ADNUser class] forKey:key];
+    } else if ([key isEqualToString:CHANNEL_KEY_READERS] || [key isEqualToString:CHANNEL_KEY_WRITERS]) {
+        [self setValue:value toClass:[ADNAccessControlList class] forKey:key];
     } else {
         [super setValue:value forKey:key];
     }

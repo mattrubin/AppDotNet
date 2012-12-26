@@ -14,9 +14,7 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"entities"]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.entities = [ADNEntities instanceFromDictionary:value];
-        }
+        [self setValue:value toClass:[ADNEntities class] forKey:key];
     } else {
         [super setValue:value forKey:key];
     }
