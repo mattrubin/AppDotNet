@@ -25,13 +25,4 @@
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"client_id"]) {
-        return [self valueForKey:@"clientID"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
-
 @end

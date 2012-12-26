@@ -54,27 +54,4 @@
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"channel_id"]) {
-        return [self valueForKey:@"channelID"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        return [self valueForKey:@"createdAt"];
-    } else if ([key isEqualToString:@"id"]) {
-        return [self valueForKey:@"messageID"];
-    } else if ([key isEqualToString:@"machine_only"]) {
-        return [self valueForKey:@"machineOnly"];
-    } else if ([key isEqualToString:@"num_replies"]) {
-        return [self valueForKey:@"numReplies"];
-    } else if ([key isEqualToString:@"thread_id"]) {
-        return [self valueForKey:@"threadID"];
-    } else if ([key isEqualToString:@"reply_to"]) {
-        return [self valueForKey:@"replyToID"];
-    } else if ([key isEqualToString:@"is_deleted"]) {
-        return [self valueForKey:@"isDeleted"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
-
 @end

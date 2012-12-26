@@ -24,20 +24,6 @@
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"id"]) {
-        return [self valueForKey:@"userID"];
-    } else if ([key isEqualToString:@"len"]) {
-        return [self valueForKey:@"length"];
-    } else if ([key isEqualToString:@"name"]) {
-        return [self valueForKey:@"username"];
-    } else if ([key isEqualToString:@"pos"]) {
-        return [self valueForKey:@"position"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
 
 
 #pragma mark -

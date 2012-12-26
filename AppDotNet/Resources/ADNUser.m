@@ -78,31 +78,6 @@
     return [self dictionaryWithValuesForKeys:propertyKeys];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:@"avatar_image"]) {
-        return [self valueForKey:@"avatarImage"];
-    } else if ([key isEqualToString:@"canonical_url"]) {
-        return [self valueForKey:@"canonicalURL"];
-    } else if ([key isEqualToString:@"cover_image"]) {
-        return [self valueForKey:@"coverImage"];
-    } else if ([key isEqualToString:@"created_at"]) {
-        return [self valueForKey:@"createdAt"];
-    } else if ([key isEqualToString:@"description"]) {
-        return [self valueForKey:@"descriptionText"];
-    } else if ([key isEqualToString:@"id"]) {
-        return [self valueForKey:@"userID"];
-    } else if ([key isEqualToString:@"follows_you"]) {
-        return [self valueForKey:@"followsYou"];
-    } else if ([key isEqualToString:@"you_follow"]) {
-        return [self valueForKey:@"youFollow"];
-    } else if ([key isEqualToString:@"you_muted"]) {
-        return [self valueForKey:@"youMuted"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
-
 
 
 #pragma mark -

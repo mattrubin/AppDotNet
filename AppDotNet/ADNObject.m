@@ -151,4 +151,14 @@
     }
 }
 
+- (id)valueForUndefinedKey:(NSString *)key
+{
+    id newKey = [self.alteredKeys objectForKey:key];
+    if (newKey) {
+        return [self valueForKey:newKey];
+    } else {
+        return [super valueForUndefinedKey:key];
+    }
+}
+
 @end
