@@ -69,11 +69,11 @@
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:@"avatarImage"] || [key isEqualToString:@"coverImage"]) {
-        [self setValue:value toClass:[ADNImage class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"counts"]) {
-        [self setValue:value toClass:[ADNCounts class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"description"]) {
-        [self setValue:value toClass:[ADNDescription class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"createdAt"]){
         if ([value isKindOfClass:[NSString class]]) {
             self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];

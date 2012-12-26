@@ -14,6 +14,7 @@
 @interface ADNObject ()
 
 - (Class)propertyClassForKey:(NSString *)key;
+- (void)setValue:(id)value toClass:(Class)keyClass forKey:(NSString *)key;
 
 @end
 
@@ -69,6 +70,10 @@
     return class;
 }
 
+- (void)setConvertedValue:(id)value forKey:(NSString *)key
+{
+    [self setValue:value toClass:[self propertyClassForKey:key] forKey:key];
+}
 - (void)setValue:(id)value toClass:(Class)keyClass forKey:(NSString *)key
 {
     if ([value isKindOfClass:[NSDictionary class]]) {

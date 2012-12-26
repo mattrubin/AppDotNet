@@ -41,9 +41,9 @@
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:CHANNEL_KEY_OWNER]) {
-        [self setValue:value toClass:[ADNUser class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:CHANNEL_KEY_READERS] || [key isEqualToString:CHANNEL_KEY_WRITERS]) {
-        [self setValue:value toClass:[ADNAccessControlList class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else {
         [super setValue:value forKey:key];
     }

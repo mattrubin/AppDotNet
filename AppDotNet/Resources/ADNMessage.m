@@ -31,11 +31,11 @@
             self.annotations = [ADNAnnotationCollection instanceFromArray:value];
         }
     } else if ([key isEqualToString:@"entities"]) {
-        [self setValue:value toClass:[ADNEntities class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"source"]) {
-        [self setValue:value toClass:[ADNSource class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"user"]) {
-        [self setValue:value toClass:[ADNUser class] forKey:key];
+        [self setConvertedValue:value forKey:key];
     } else if ([key isEqualToString:@"createdAt"]){
         if ([value isKindOfClass:[NSString class]]) {
             self.createdAt = [[ADNHelper dateFormatter] dateFromString:value];
