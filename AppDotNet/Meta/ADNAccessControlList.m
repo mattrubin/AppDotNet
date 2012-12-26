@@ -8,12 +8,6 @@
 
 #import "ADNAccessControlList.h"
 
-#define ACL_KEY_ANY_USER    @"any_user"
-#define ACL_KEY_IMMUTABLE   @"immutable"
-#define ACL_KEY_PUBLIC      @"public"
-#define ACL_KEY_YOU         @"you"
-#define ACL_KEY_USER_IDS    @"user_ids"
-
 
 @implementation ADNAccessControlList
 

@@ -11,10 +11,6 @@
 #import "NSDictionary+ADN.h"
 
 
-#define ANNOTATION_KEY_TYPE     @"type"
-#define ANNOTATION_KEY_VALUE    @"value"
-
-
 @implementation ADNAnnotation
 
 - (NSString*)description

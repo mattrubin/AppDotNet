@@ -11,11 +11,6 @@
 #import "NSDictionary+ADN.h"
 
 
-#define ENTITY_KEY_MENTIONS @"mentions"
-#define ENTITY_KEY_HASHTAGS @"hashtags"
-#define ENTITY_KEY_LINKS    @"links"
-
-
 @interface ADNEntities ()
 
 @property (nonatomic, strong, readwrite) NSMutableArray *mentions;

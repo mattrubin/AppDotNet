@@ -165,6 +165,7 @@
 		8C7B24BC167F211500C38F51 /* NSDictionary+ADN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ADN.m"; sourceTree = "<group>"; };
 		8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAnnotation.h; sourceTree = "<group>"; };
 		8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotation.m; sourceTree = "<group>"; };
+		8CC18C8A168B00160033B8C5 /* ADNKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNKeys.h; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-Prefix.pch"; sourceTree = "<group>"; };
@@ -386,6 +387,7 @@
 				8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */,
 				8C7B24BB167F211400C38F51 /* NSDictionary+ADN.h */,
 				8C7B24BC167F211500C38F51 /* NSDictionary+ADN.m */,
+				8CC18C8A168B00160033B8C5 /* ADNKeys.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

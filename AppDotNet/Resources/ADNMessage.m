@@ -24,19 +24,22 @@
     return self;
 }
 
+
+#pragma mark Keys
+
 - (NSSet *)conversionKeys
 {
-    return [NSSet setWithArray:@[@"annotations", @"entities", @"source", @"user", @"createdAt"]];
+    return [NSSet setWithArray:@[KEY_ANNOTATIONS, KEY_ENTITIES, KEY_SOURCE, KEY_USER, @"createdAt"]];
 }
 
 - (NSDictionary *)alteredKeys
 {
-    return @{@"channel_id":@"channelID", @"created_at":@"createdAt", @"id":@"messageID", @"machine_only":@"machineOnly", @"num_replies":@"numReplies", @"thread_id":@"threadID", @"reply_to":@"replyToID", @"is_deleted":@"isDeleted"};
+    return @{KEY_CHANNEL_ID:@"channelID", KEY_CREATED_AT:@"createdAt", KEY_ID:@"messageID", KEY_MACHINE_ONLY:@"machineOnly", KEY_NUM_REPLIES:@"numReplies", KEY_THREAD_ID:@"threadID", KEY_REPLY_TO:@"replyToID", KEY_IS_DELETED:@"isDeleted"};
 }
 
 - (NSArray *)exportKeys
 {
-    return @[@"channel_id", @"created_at", @"entities", @"html", @"id", @"machine_only", @"num_replies", @"source", @"text", @"thread_id", @"user", @"reply_to", @"is_deleted", @"annotations"];
+    return @[KEY_CHANNEL_ID, KEY_CREATED_AT, KEY_ENTITIES, KEY_HTML, KEY_ID, KEY_MACHINE_ONLY, KEY_NUM_REPLIES, KEY_SOURCE, KEY_TEXT, KEY_THREAD_ID, KEY_USER, KEY_REPLY_TO, KEY_IS_DELETED, KEY_ANNOTATIONS];
 }
 
 @end

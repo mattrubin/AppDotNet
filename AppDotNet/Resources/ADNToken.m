@@ -11,14 +11,6 @@
 #import "NSDictionary+ADN.h"
 
 
-#define TOKEN_KEY_CLIENT_ID @"client_id"
-#define TOKEN_KEY_APP       @"app"
-#define TOKEN_KEY_APP_NAME  @"name"
-#define TOKEN_KEY_APP_LINK  @"link"
-#define TOKEN_KEY_SCOPES    @"scopes"
-#define TOKEN_KEY_USER      @"user"
-
-
 @implementation ADNToken
 
 - (void)setAttributesFromDictionary:(NSDictionary *)dictionary

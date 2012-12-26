@@ -12,43 +12,10 @@
 #import "NSDictionary+ADN.h"
 
 
-#define USER_KEY_ID                     @"id"
-#define USER_KEY_USERNAME               @"username"
-#define USER_KEY_NAME                   @"name"
-
-#define USER_KEY_DESCRIPTION            @"description"
-#define USER_KEY_DESCRIPTION_TEXT       @"text"
-#define USER_KEY_DESCRIPTION_HTML       @"html"
-#define USER_KEY_DESCRIPTION_ENTITIES   @"entities"
-
-#define USER_KEY_TIMEZONE               @"timezone"
-#define USER_KEY_LOCALE                 @"locale"
-
-#define USER_KEY_AVATAR_IMAGE           @"avatar_image"
-#define USER_KEY_COVER_IMAGE            @"cover_image"
-
-#define USER_KEY_TYPE                   @"type"
-#define USER_KEY_CREATED_AT             @"created_at"
-
-#define USER_KEY_COUNTS                 @"counts"
-#define USER_KEY_COUNTS_FOLLOWING       @"following"
-#define USER_KEY_COUNTS_FOLLOWERS       @"followers"
-#define USER_KEY_COUNTS_POSTS           @"posts"
-#define USER_KEY_COUNTS_STARS           @"stars"
-
-#define USER_KEY_FOLLOWS_YOU            @"follows_you"
-#define USER_KEY_YOU_FOLLOW             @"you_follow"
-#define USER_KEY_YOU_MUTED              @"you_muted"
-
-#define USER_KEY_ANNOTATIONS            @"annotations"
-
-
 #define USER_TYPE_STRING_HUMAN          @"human"
 #define USER_TYPE_STRING_BOT            @"bot"
 #define USER_TYPE_STRING_CORPORATE      @"corporate"
 #define USER_TYPE_STRING_FEED           @"feed"
-
-
 
 
 @implementation ADNUser
@@ -62,19 +29,22 @@
     return self;
 }
 
+
+#pragma mark Keys
+
 - (NSSet *)conversionKeys
 {
-    return [NSSet setWithArray:@[@"annotations", @"avatarImage", @"coverImage", @"counts", @"description", @"createdAt"]];
+    return [NSSet setWithArray:@[USER_KEY_ANNOTATIONS, @"avatarImage", @"coverImage", USER_KEY_COUNTS, USER_KEY_DESCRIPTION, @"createdAt"]];
 }
 
 - (NSDictionary *)alteredKeys
 {
-    return @{@"avatar_image": @"avatarImage", @"canonical_url": @"canonicalURL", @"cover_image": @"coverImage", @"created_at": @"createdAt", @"description": @"descriptionText", @"id": @"userID", @"follows_you": @"followsYou", @"you_follow": @"youFollow", @"you_muted": @"youMuted"};
+    return @{USER_KEY_AVATAR_IMAGE: @"avatarImage", USER_KEY_CANONICAL_URL: @"canonicalURL", USER_KEY_COVER_IMAGE: @"coverImage", USER_KEY_CREATED_AT: @"createdAt", USER_KEY_DESCRIPTION: @"descriptionText", USER_KEY_ID: @"userID", USER_KEY_FOLLOWS_YOU: @"followsYou", USER_KEY_YOU_FOLLOW: @"youFollow", USER_KEY_YOU_MUTED: @"youMuted"};
 }
 
 - (NSArray *)exportKeys
 {
-    return @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
+    return @[USER_KEY_ID, USER_KEY_USERNAME, USER_KEY_NAME, USER_KEY_DESCRIPTION, USER_KEY_TIMEZONE, USER_KEY_LOCALE, USER_KEY_AVATAR_IMAGE, USER_KEY_COVER_IMAGE, USER_KEY_TYPE, USER_KEY_CREATED_AT, USER_KEY_CANONICAL_URL, USER_KEY_COUNTS, USER_KEY_FOLLOWS_YOU, USER_KEY_YOU_FOLLOW, USER_KEY_YOU_MUTED, USER_KEY_ANNOTATIONS];
 }
 
 
