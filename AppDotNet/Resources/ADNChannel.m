@@ -47,31 +47,9 @@
 
 #pragma mark Export
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
-    if (self.channelID)
-        [dictionary setObject:self.channelID       forKey:CHANNEL_KEY_ID];
-    if (self.type)
-        [dictionary setObject:self.type            forKey:CHANNEL_KEY_TYPE];
-    if (self.recentMessageID)
-        [dictionary setObject:self.recentMessageID forKey:CHANNEL_KEY_RECENT_MESSAGE_ID];
-    
-    [dictionary setObject:[NSNumber numberWithBool:self.hasUnread]     forKey:CHANNEL_KEY_HAS_UNREAD];
-    [dictionary setObject:[NSNumber numberWithBool:self.youCanEdit]    forKey:CHANNEL_KEY_YOU_CAN_EDIT];
-    [dictionary setObject:[NSNumber numberWithBool:self.youSubscribed] forKey:CHANNEL_KEY_YOU_SUBSCRIBED];
-    
-    if (self.owner)
-        [dictionary setObject:self.owner.toDictionary forKey:CHANNEL_KEY_OWNER];
-    if (self.readers)
-        [dictionary setObject:self.readers.toDictionary forKey:CHANNEL_KEY_READERS];
-    if (self.writers)
-        [dictionary setObject:self.writers.toDictionary forKey:CHANNEL_KEY_WRITERS];
-    if (self.annotations)
-        [dictionary setObject:self.annotations.toArray forKey:CHANNEL_KEY_ANNOTATIONS];
-    
-    return dictionary;
+    return @[CHANNEL_KEY_ID, CHANNEL_KEY_TYPE, CHANNEL_KEY_OWNER, CHANNEL_KEY_ANNOTATIONS, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS, CHANNEL_KEY_YOU_SUBSCRIBED, CHANNEL_KEY_YOU_CAN_EDIT, CHANNEL_KEY_HAS_UNREAD, CHANNEL_KEY_RECENT_MESSAGE_ID];
 }
 
 - (NSString*)description

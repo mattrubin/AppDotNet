@@ -16,10 +16,9 @@
     return [NSSet setWithObject:@"entities"];
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"text", @"entities", @"html"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"text", @"entities", @"html"];
 }
 
 @end

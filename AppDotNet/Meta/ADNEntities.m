@@ -76,10 +76,9 @@
     }
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"hashtags", @"links", @"mentions", nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"hashtags", @"links", @"mentions"];
 }
 
 - (id)valueForKey:(NSString *)key

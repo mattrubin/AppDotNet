@@ -42,7 +42,12 @@
 
 - (NSDictionary *)toDictionary
 {
-    return [NSDictionary dictionary];
+    return [self dictionaryWithValuesForKeys:self.exportKeys];
+}
+
+- (NSArray *)exportKeys
+{
+    return @[];
 }
 
 - (NSSet *)conversionKeys

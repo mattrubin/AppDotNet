@@ -72,10 +72,9 @@
     return @{@"avatar_image": @"avatarImage", @"canonical_url": @"canonicalURL", @"cover_image": @"coverImage", @"created_at": @"createdAt", @"description": @"descriptionText", @"id": @"userID", @"follows_you": @"followsYou", @"you_follow": @"youFollow", @"you_muted": @"youMuted"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"id", @"username", @"name", @"description", @"timezone", @"locale", @"avatar_image", @"cover_image", @"type", @"created_at", @"canonical_url", @"counts", @"follows_you", @"you_follow", @"you_muted", @"annotations"];
 }
 
 

@@ -34,24 +34,9 @@
     return @{@"channel_id":@"channelID", @"created_at":@"createdAt", @"id":@"messageID", @"machine_only":@"machineOnly", @"num_replies":@"numReplies", @"thread_id":@"threadID", @"reply_to":@"replyToID", @"is_deleted":@"isDeleted"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"channel_id",
-                                                      @"created_at",
-                                                      @"entities",
-                                                      @"html",
-                                                      @"id",
-                                                      @"machine_only",
-                                                      @"num_replies",
-                                                      @"source",
-                                                      @"text",
-                                                      @"thread_id",
-                                                      @"user",
-                                                      @"reply_to",
-                                                      @"is_deleted",
-                                                      @"annotations",
-                                                      nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"channel_id", @"created_at", @"entities", @"html", @"id", @"machine_only", @"num_replies", @"source", @"text", @"thread_id", @"user", @"reply_to", @"is_deleted", @"annotations"];
 }
 
 @end

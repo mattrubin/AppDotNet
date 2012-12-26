@@ -18,10 +18,9 @@
     return @{@"len":@"length", @"pos":@"position"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"name", @"pos", @"len", nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"name", @"pos", @"len"];
 }
 
 

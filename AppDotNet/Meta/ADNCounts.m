@@ -11,10 +11,9 @@
 
 @implementation ADNCounts
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"followers", @"following", @"posts", @"stars"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"followers", @"following", @"posts", @"stars"];
 }
 
 @end

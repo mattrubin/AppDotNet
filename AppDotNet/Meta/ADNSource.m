@@ -16,13 +16,9 @@
     return @{@"client_id":@"clientID"};
 }
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = [NSArray arrayWithObjects:@"client_id",
-                                                      @"link",
-                                                      @"name",
-                                                      nil];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"client_id", @"link", @"name"];
 }
 
 @end

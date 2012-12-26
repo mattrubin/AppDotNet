@@ -23,10 +23,9 @@
 }
 
 
-- (NSDictionary *)toDictionary
+- (NSArray *)exportKeys
 {
-    NSArray *propertyKeys = @[@"type", @"value"];
-    return [self dictionaryWithValuesForKeys:propertyKeys];
+    return @[@"type", @"value"];
 }
 
 @end
