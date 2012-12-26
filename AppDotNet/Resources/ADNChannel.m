@@ -34,20 +34,9 @@
     return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key
-{
-    if ([key isEqualToString:CHANNEL_KEY_ANNOTATIONS]) {
-        if ([value isKindOfClass:[NSArray class]]) {
-            self.annotations = [ADNAnnotationCollection instanceFromArray:value];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
-}
-
 - (NSSet *)conversionKeys
 {
-    return [NSSet setWithArray:@[CHANNEL_KEY_OWNER, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS]];
+    return [NSSet setWithArray:@[CHANNEL_KEY_ANNOTATIONS, CHANNEL_KEY_OWNER, CHANNEL_KEY_READERS, CHANNEL_KEY_WRITERS]];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key

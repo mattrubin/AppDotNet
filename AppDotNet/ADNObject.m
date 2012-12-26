@@ -10,6 +10,7 @@
 
 #import <objc/runtime.h>
 #import "ADNHelper.h"
+#import "ADNAnnotationCollection.h"
 
 
 @interface ADNObject ()
@@ -94,7 +95,12 @@
         if (keyClass == [NSDate class]) {
             newValue = [[ADNHelper dateFormatter] dateFromString:value];
         }
+    } else if ([value isKindOfClass:[NSArray class]]) {
+        if (keyClass == [ADNAnnotationCollection class]) {
+            newValue = [ADNAnnotationCollection instanceFromArray:value];
+        }
     }
+    
     if (newValue)
         [super setValue:newValue forKey:key];
 }
