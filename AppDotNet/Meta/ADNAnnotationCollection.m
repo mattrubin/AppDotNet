@@ -7,7 +7,7 @@
 //
 
 #import "ADNAnnotationCollection.h"
-
+#import "ADNGeolocation.h"
 
 @interface ADNAnnotationCollection ()
 
@@ -42,7 +42,15 @@
     
     for (id arrayItem in array) {
         if ([arrayItem isKindOfClass:[NSDictionary class]]) {
-            [self.annotations addObject:[ADNAnnotation instanceFromDictionary:arrayItem]];
+            ADNAnnotation *newAnnotation;
+            NSString *newType = [arrayItem objectForKey:@"type"];
+            if ([newType isEqualToString:ADNAnnotationTypeGeolocation]) {
+                newAnnotation = [ADNGeolocation instanceFromDictionary:arrayItem];
+            } else {
+                newAnnotation = [ADNAnnotation instanceFromDictionary:arrayItem];
+            }
+            
+            [self.annotations addObject:newAnnotation];
         }
     }
 }
