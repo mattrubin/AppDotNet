@@ -71,7 +71,7 @@
 
 - (NSArray *)exportKeys
 {
-    return @[KEY_HASHTAGS, KEY_LINKS, KEY_MENTIONS];
+    return @[/*KEY_HASHTAGS, KEY_LINKS,*/ KEY_MENTIONS];
 }
 
 - (id)valueForKey:(NSString *)key

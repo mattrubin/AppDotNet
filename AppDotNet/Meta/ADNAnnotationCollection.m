@@ -28,6 +28,11 @@
     return self;
 }
 
+- (NSString *)description
+{
+    return self.annotations.description;
+}
+
 + (id)instanceFromArray:(NSArray *)array
 {
     ADNAnnotationCollection *instance = [[self alloc] init];

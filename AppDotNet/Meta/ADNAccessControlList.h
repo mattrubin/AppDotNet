@@ -15,6 +15,6 @@
 @property (nonatomic, assign) BOOL immutable;
 @property (nonatomic, assign) BOOL public;
 @property (nonatomic, assign) BOOL you;
-@property (nonatomic, copy)   NSArray *userIDs;
+@property (nonatomic, strong) NSMutableArray *userIDs;
 
 @end

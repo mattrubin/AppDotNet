@@ -417,7 +417,8 @@ static BOOL _asynchronous = YES;
  */
 + (void)getMessagesInChannelWithID:(NSString*)channelID withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-    NSString * endpoint = [NSString stringWithFormat:@"channels/%@/messages", channelID];
+    //NSString * endpoint = [NSString stringWithFormat:@"channels/%@/messages", channelID];
+    NSString * endpoint = [NSString stringWithFormat:@"channels/%@/messages?include_machine=1&include_annotations=1", channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageArrayHandler:handler];
     [self startRequest:request];
 }
@@ -429,7 +430,7 @@ static BOOL _asynchronous = YES;
  */
 + (void)createMessage:(ADNMessage*)message withCompletionHandler:(ADNMessageCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages", message.channelID];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages?include_annotations=1", message.channelID];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageHandler:handler];
     request.requestMethod = @"POST";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];

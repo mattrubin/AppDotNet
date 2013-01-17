@@ -16,6 +16,7 @@
     self = [super init];
     if (self) {
         self.annotations = [ADNAnnotationCollection new];
+        self.entities = [ADNEntities new];
     }
     return self;
 }

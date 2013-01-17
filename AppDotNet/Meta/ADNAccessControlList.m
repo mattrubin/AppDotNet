@@ -11,6 +11,15 @@
 
 @implementation ADNAccessControlList
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.userIDs = [NSMutableArray new];
+    }
+    return self;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key {
 
     if ([key isEqualToString:KEY_USER_IDS]) {
