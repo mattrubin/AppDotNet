@@ -8,19 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ADNHandlers.h"
+
 #import "ADNUser.h"
 #import "ADNToken.h"
 #import "ADNChannel.h"
 #import "ADNMessage.h"
-
-
-typedef void (^GenericCompletionHandler)     (id            object,  NSError *error);
-typedef void (^NSArrayCompletionHandler)     (NSArray      *objects, NSError *error);
-typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, NSError *error);
-typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    NSError *error);
-typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   NSError *error);
-typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, NSError *error);
-typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, NSError *error);
 
 
 @interface ADN : NSObject
