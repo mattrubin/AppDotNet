@@ -53,6 +53,11 @@
 
 #pragma mark - Users
 
+/*
+ * Retrieve a User
+ * GET /stream/0/users/[user_id]
+ * http://developers.app.net/docs/resources/user/lookup/#retrieve-a-user
+ */
 - (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
@@ -91,6 +96,97 @@
     }
     
     [self getUser:username withCompletionHandler:handler];
+}
+
+
+/*
+ * Update a User
+ * PUT /stream/0/users/me
+ * http://developers.app.net/docs/resources/user/profile/#update-a-user
+ */
+- (void)updateUser:(ADNUser *)user withCompletionHandler:(ADNUserCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Retrieve a User's avatar image
+ * GET /stream/0/users/[user_id]/avatar
+ * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-avatar-image
+ */
+- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Update a User's avatar image
+ * POST /stream/0/users/me/avatar
+ * http://developers.app.net/docs/resources/user/profile/#update-a-users-avatar-image
+ */
+- (void)updateAvatarImage:(id)image withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Retrieve a User's cover image
+ * GET /stream/0/users/[user_id]/cover
+ * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-cover-image
+ */
+- (void)getCoverImageForUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Update a User's cover image
+ * POST /stream/0/users/me/cover
+ * http://developers.app.net/docs/resources/user/profile/#update-a-users-cover-image
+ */
+- (void)updateCoverImage:(id)image withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Follow a User
+ * POST /stream/0/users/[user_id]/follow
+ * http://developers.app.net/docs/resources/user/following/#follow-a-user
+ */
+- (void)followUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Unfollow a User
+ * DELETE /stream/0/users/[user_id]/follow
+ * http://developers.app.net/docs/resources/user/following/#unfollow-a-user
+ */
+- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Mute a User
+ * POST /stream/0/users/[user_id]/mute
+ * http://developers.app.net/docs/resources/user/muting/#mute-a-user
+ */
+- (void)muteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
+}
+
+/*
+ * Unmute a User
+ * DELETE /stream/0/users/[user_id]/mute
+ * http://developers.app.net/docs/resources/user/muting/#unmute-a-user
+ */
+- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+{
+    
 }
 
 
