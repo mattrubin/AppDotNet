@@ -10,6 +10,7 @@
 #import "ADNHandlers.h"
 
 #import "ADNUser.h"
+#import "ADNChannel.h"
 
 
 @interface ADNClient : AFHTTPClient
@@ -18,6 +19,10 @@
 
 @property (nonatomic, copy) NSString *accessToken;
 
-- (void)getUserWithID:(NSUInteger)userID completionHandler:(void (^)(ADNUser *user, NSError *error))handler;
+// Users
+- (void)getUser:(NSString*)usernameOrID     withCompletionHandler:(ADNUserCompletionHandler)handler;
+- (void)getUserWithID:(NSUInteger)userID        completionHandler:(ADNUserCompletionHandler)handler;
+- (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler;
+- (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
 
 @end

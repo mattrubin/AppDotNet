@@ -51,14 +51,17 @@
 }
 
 
-- (void)getUserWithID:(NSUInteger)userID completionHandler:(void (^)(ADNUser *user, NSError *error))handler
+#pragma mark - Users
+
+- (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    [self getPath:@"users/1" parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
+    [self getPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         ADNUser *user = nil;
         NSDictionary *userFromResponse = [JSON valueForKeyPath:@"data"];
-
+        
         if ([userFromResponse isKindOfClass:[NSDictionary class]]) {
-             user = [ADNUser instanceFromDictionary:userFromResponse];
+            user = [ADNUser instanceFromDictionary:userFromResponse];
         }
         
         if (handler) {
@@ -70,5 +73,25 @@
         }
     }];
 }
+
+- (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler
+{
+    [self getUser:@"me" withCompletionHandler:handler];
+}
+
+- (void)getUserWithID:(NSUInteger)userID completionHandler:(ADNUserCompletionHandler)handler
+{
+    [self getUser:[NSString stringWithFormat:@"%u", userID] withCompletionHandler:handler];
+}
+
+- (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler
+{
+    if (![username hasPrefix:@"@"]) {
+        username = [@"@" stringByAppendingString:username];
+    }
+    
+    [self getUser:username withCompletionHandler:handler];
+}
+
 
 @end
