@@ -14,6 +14,8 @@
 
 + (instancetype)sharedClient;
 
+@property (nonatomic, copy) NSString *accessToken;
+
 - (void)getUserWithID:(NSUInteger)userID completionHandler:(void (^)(ADNUser *user, NSError *error))handler;
 
 @end

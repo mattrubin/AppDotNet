@@ -37,6 +37,19 @@
     return self;
 }
 
+- (void)setAccessToken:(NSString *)accessToken
+{
+    _accessToken = [accessToken copy];
+    
+    if (_accessToken) {
+        [self setDefaultHeader:@"Authorization"
+                         value:[@"Bearer " stringByAppendingString:_accessToken]];
+    } else {
+        [self setDefaultHeader:@"Authorization"
+                         value:nil];
+    }
+}
+
 
 - (void)getUserWithID:(NSUInteger)userID completionHandler:(void (^)(ADNUser *user, NSError *error))handler
 {
