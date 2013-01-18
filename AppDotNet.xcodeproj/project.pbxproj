@@ -25,6 +25,9 @@
 		8C07344A167FC48B002B9EBC /* ADN.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1ABE167D27590071D908 /* ADN.h */; };
 		8C07344B167FC48B002B9EBC /* ADNHelper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7B24B3167ED44A00C38F51 /* ADNHelper.h */; };
 		8C07344C167FC48B002B9EBC /* NSDictionary+ADN.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7B24BB167F211400C38F51 /* NSDictionary+ADN.h */; };
+		8C0C6B3516A7FBC900E1A1CE /* ADNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */; };
+		8C0C6B3716A7FEF800E1A1CE /* ADNClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */; };
+		8C0C6B3816A7FF4600E1A1CE /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85308D16A7B9D100357F6E /* AFHTTPClient.h */; };
 		8C1A3DAD167FEA7B00261C9B /* ADNAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A3DAC167FEA7B00261C9B /* ADNAuthenticationRequest.m */; };
 		8C1A3DAE167FEF5300261C9B /* ADNAuthenticationRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */; };
 		8C1A3DDB1680696200261C9B /* ADNAccessControlList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A3DDA1680696200261C9B /* ADNAccessControlList.m */; };
@@ -117,6 +120,8 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8C0C6B3816A7FF4600E1A1CE /* AFHTTPClient.h in CopyFiles */,
+				8C0C6B3716A7FEF800E1A1CE /* ADNClient.h in CopyFiles */,
 				8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */,
 				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
@@ -150,6 +155,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNClient.h; sourceTree = "<group>"; };
+		8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNClient.m; sourceTree = "<group>"; };
 		8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAuthenticationRequest.h; sourceTree = "<group>"; };
 		8C1A3DAC167FEA7B00261C9B /* ADNAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAuthenticationRequest.m; sourceTree = "<group>"; };
 		8C1A3DD91680696200261C9B /* ADNAccessControlList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAccessControlList.h; sourceTree = "<group>"; };
@@ -505,6 +512,8 @@
 				8CED1ABF167D27590071D908 /* ADN.m */,
 				8C7B24B3167ED44A00C38F51 /* ADNHelper.h */,
 				8C7B24B4167ED44A00C38F51 /* ADNHelper.m */,
+				8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */,
+				8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -715,6 +724,7 @@
 				8C8530A616A7B9D100357F6E /* AFURLConnectionOperation.m in Sources */,
 				8C8530A716A7B9D100357F6E /* AFXMLRequestOperation.m in Sources */,
 				8C8530A816A7B9D100357F6E /* UIImageView+AFNetworking.m in Sources */,
+				8C0C6B3516A7FBC900E1A1CE /* ADNClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
