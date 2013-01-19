@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
+extern NSString * const ADNErrorInvalidToken;
+extern NSString * const ADNErrorNotAuthorized;
+extern NSString * const ADNErrorTokenExpired;
+extern NSString * const ADNErrorCodeUsed;
+extern NSString * const ADNErrorRedirectURIRequired;
+
+
 @interface ADNMetadata : NSObject
 
 @property (nonatomic, strong) NSDictionary *rawDictionary;

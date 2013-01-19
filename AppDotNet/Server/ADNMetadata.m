@@ -14,6 +14,12 @@ NSString * const ADNMetadataErrorIdKey      = @"error_id";
 NSString * const ADNMetadataErrorSlugKey    = @"error_slug";
 NSString * const ADNMetadataErrorMessageKey = @"error_message";
 
+NSString * const ADNErrorInvalidToken        = @"invalid-token";
+NSString * const ADNErrorNotAuthorized       = @"not-authorized";
+NSString * const ADNErrorTokenExpired        = @"token-expired";
+NSString * const ADNErrorCodeUsed            = @"code-used";
+NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
+
 
 @implementation ADNMetadata
 
