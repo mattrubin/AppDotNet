@@ -16,4 +16,10 @@
 - (id)initWithDictionary:(NSDictionary *)metaDictionary;
 + (instancetype)metadataWithDictionary:(NSDictionary *)metaDictionary;
 
+@property (nonatomic, readonly, assign) NSUInteger code;
+
+@property (nonatomic, readonly, copy) NSString *errorId;
+@property (nonatomic, readonly, copy) NSString *errorSlug;
+@property (nonatomic, readonly, copy) NSString *errorMessage;
+
 @end
