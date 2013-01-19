@@ -7,7 +7,7 @@
 //
 
 #import "ADNClient.h"
-#import "AFJSONRequestOperation.h"
+#import "ADNJSONRequestOperation.h"
 #import "ADNImageRequestOperation.h"
 
 @implementation ADNClient
@@ -31,7 +31,7 @@
     }
     
     [self registerHTTPOperationClass:[ADNImageRequestOperation class]];
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [self registerHTTPOperationClass:[ADNJSONRequestOperation class]];
     
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
