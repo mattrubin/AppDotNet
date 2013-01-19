@@ -14,11 +14,14 @@ extern NSString * const ADNResponseEnvelopeMetaKey;
 extern NSString * const ADNResponseEnvelopeDataKey;
 
 
+@class ADNMetadata;
+
+
 @interface ADNResponseEnvelope : NSObject
 
 @property (nonatomic, strong) NSDictionary *rawDictionary;
-@property (nonatomic, strong) NSDictionary *meta;
-@property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong, readonly) ADNMetadata *meta;
+@property (nonatomic, readonly) NSDictionary *data;
 
 
 - (id)initWithDictionary:(NSDictionary *)responseDictionary;
