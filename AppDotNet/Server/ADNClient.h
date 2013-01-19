@@ -34,8 +34,8 @@
 - (void)updateAvatarImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 - (void)updateCoverImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 
-- (void)  followUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
-- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
+- (void)  followUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
+- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
 
 - (void)  muteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
 - (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;

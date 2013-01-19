@@ -65,6 +65,21 @@
     }];
 }
 
+- (ADNUser *)userFromResponse:(id)responseObject
+{
+    ADNUser *user = nil;
+    
+    if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *userFromResponse = [responseObject valueForKeyPath:@"data"];
+        if ([userFromResponse isKindOfClass:[NSDictionary class]]) {
+            user = [ADNUser instanceFromDictionary:userFromResponse];
+        }
+    }
+    
+    return user;
+}
+
+
 #pragma mark - Users
 
 /*
@@ -174,9 +189,22 @@
  * POST /stream/0/users/[user_id]/follow
  * http://developers.app.net/docs/resources/user/following/#follow-a-user
  */
-- (void)followUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)followUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
+
+    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ADNUser *user = [self userFromResponse:responseObject];
+        
+        if (handler) {
+            handler(user, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (handler) {
+            handler(nil, error);
+        }
+    }];
 }
 
 /*
@@ -184,9 +212,22 @@
  * DELETE /stream/0/users/[user_id]/follow
  * http://developers.app.net/docs/resources/user/following/#unfollow-a-user
  */
-- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
     
+    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ADNUser *user = [self userFromResponse:responseObject];
+        
+        if (handler) {
+            handler(user, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (handler) {
+            handler(nil, error);
+        }
+    }];
 }
 
 /*
