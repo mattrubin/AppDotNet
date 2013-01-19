@@ -11,6 +11,10 @@
 #import "ADNImageRequestOperation.h"
 #include "ADNResponseEnvelope.h"
 
+
+NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
+
+
 @implementation ADNClient
 
 + (instancetype)sharedClient
@@ -50,6 +54,17 @@
     } else {
         [self setDefaultHeader:@"Authorization"
                          value:nil];
+    }
+}
+
+- (void)setPrettyJSON:(BOOL)prettyJSON
+{
+    _prettyJSON = prettyJSON;
+    
+    if (_prettyJSON) {
+        [self setDefaultHeader:ADNHeaderPrettyJSON value:@"1"];
+    } else {
+        [self setDefaultHeader:ADNHeaderPrettyJSON value:nil];
     }
 }
 

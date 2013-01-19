@@ -19,6 +19,8 @@
 
 @property (nonatomic, copy) NSString *accessToken;
 
+@property (nonatomic, assign) BOOL prettyJSON;
+
 
 #pragma mark Users
 
