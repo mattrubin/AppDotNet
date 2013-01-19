@@ -26,10 +26,15 @@
             });
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        //NSLog(@"ADN: process meta content for error: %@", error);
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope responseEnvelopeWithDictionary:((AFJSONRequestOperation *)operation).responseJSON];
+        
+        NSMutableDictionary *newUserInfo = [error.userInfo mutableCopy];
+        [newUserInfo setObject:responseEnvelope forKey:ADNResponseEnvelopeKey];
+        NSError *newError = [[NSError alloc] initWithDomain:error.domain code:error.code userInfo:newUserInfo];
+        
         if (failure) {
             dispatch_async(self.failureCallbackQueue ?: dispatch_get_main_queue(), ^{
-                failure(operation, error);
+                failure(operation, newError);
             });
         }
     }];

@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 
+extern NSString * const ADNResponseEnvelopeKey;
+extern NSString * const ADNResponseEnvelopeMetaKey;
+extern NSString * const ADNResponseEnvelopeDataKey;
+
+
 @interface ADNResponseEnvelope : NSObject
 
 @property (nonatomic, strong) NSDictionary *rawDictionary;

@@ -9,6 +9,11 @@
 #import "ADNResponseEnvelope.h"
 
 
+NSString * const ADNResponseEnvelopeKey     = @"ADNResponseEnvelope";
+NSString * const ADNResponseEnvelopeMetaKey = @"meta";
+NSString * const ADNResponseEnvelopeDataKey = @"data";
+
+
 @implementation ADNResponseEnvelope
 
 - (id)initWithDictionary:(NSDictionary *)responseDictionary
@@ -30,12 +35,12 @@
 
 - (NSDictionary *)meta
 {
-    return [self.rawDictionary objectForKey:@"meta"];
+    return [self.rawDictionary objectForKey:ADNResponseEnvelopeMetaKey];
 }
 
 - (NSDictionary *)data
 {
-    return [self.rawDictionary objectForKey:@"data"];
+    return [self.rawDictionary objectForKey:ADNResponseEnvelopeDataKey];
 }
 
 @end
