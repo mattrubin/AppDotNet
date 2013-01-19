@@ -37,6 +37,7 @@
 		8C1A3E081682D4F200261C9B /* ADNChannelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A3E071682D4F200261C9B /* ADNChannelTests.m */; };
 		8C1A3E0D1682D87100261C9B /* Channel.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C1A3E0C1682D87100261C9B /* Channel.json */; };
 		8C5EE1A116A9363400195701 /* ADNHandlers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C5EE19F16A935C400195701 /* ADNHandlers.h */; };
+		8C5EE1A616A9B61600195701 /* ADNImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EE1A516A9B61600195701 /* ADNImageRequestOperation.m */; };
 		8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
 		8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A8167DB2C100C38F51 /* ADNMention.m */; };
 		8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AB167DB32000C38F51 /* ADNHashtag.m */; };
@@ -169,6 +170,8 @@
 		8C1A3E071682D4F200261C9B /* ADNChannelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNChannelTests.m; sourceTree = "<group>"; };
 		8C1A3E0C1682D87100261C9B /* Channel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Channel.json; sourceTree = "<group>"; };
 		8C5EE19F16A935C400195701 /* ADNHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNHandlers.h; sourceTree = "<group>"; };
+		8C5EE1A416A9B61600195701 /* ADNImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNImageRequestOperation.h; sourceTree = "<group>"; };
+		8C5EE1A516A9B61600195701 /* ADNImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNImageRequestOperation.m; sourceTree = "<group>"; };
 		8C7B24A4167DB18B00C38F51 /* ADNEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNEntities.h; sourceTree = "<group>"; };
 		8C7B24A5167DB18B00C38F51 /* ADNEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNEntities.m; sourceTree = "<group>"; };
 		8C7B24A7167DB2C100C38F51 /* ADNMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMention.h; sourceTree = "<group>"; };
@@ -518,6 +521,8 @@
 				8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */,
 				8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */,
 				8C5EE19F16A935C400195701 /* ADNHandlers.h */,
+				8C5EE1A416A9B61600195701 /* ADNImageRequestOperation.h */,
+				8C5EE1A516A9B61600195701 /* ADNImageRequestOperation.m */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				8C8530A716A7B9D100357F6E /* AFXMLRequestOperation.m in Sources */,
 				8C8530A816A7B9D100357F6E /* UIImageView+AFNetworking.m in Sources */,
 				8C0C6B3516A7FBC900E1A1CE /* ADNClient.m in Sources */,
+				8C5EE1A616A9B61600195701 /* ADNImageRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

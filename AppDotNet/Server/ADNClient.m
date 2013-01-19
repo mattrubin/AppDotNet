@@ -8,6 +8,7 @@
 
 #import "ADNClient.h"
 #import "AFJSONRequestOperation.h"
+#import "ADNImageRequestOperation.h"
 
 @implementation ADNClient
 
@@ -29,6 +30,7 @@
         return nil;
     }
     
+    [self registerHTTPOperationClass:[ADNImageRequestOperation class]];
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
     
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
@@ -50,6 +52,18 @@
     }
 }
 
+- (void)getEndpoint:(NSString *)path parameters:(NSDictionary *)parameters handler:(GenericCompletionHandler)handler
+{
+    [self getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (handler) {
+            handler(responseObject, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (handler) {
+            handler(nil, error);
+        }
+    }];
+}
 
 #pragma mark - Users
 
@@ -114,9 +128,12 @@
  * GET /stream/0/users/[user_id]/avatar
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-avatar-image
  */
-- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
 {
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
     
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/avatar", usernameOrID];
+    [self getEndpoint:endpoint parameters:nil handler:handler];
 }
 
 /*
@@ -134,9 +151,12 @@
  * GET /stream/0/users/[user_id]/cover
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-cover-image
  */
-- (void)getCoverImageForUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)getCoverImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
 {
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
     
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/cover", usernameOrID];
+    [self getEndpoint:endpoint parameters:nil handler:handler];
 }
 
 /*

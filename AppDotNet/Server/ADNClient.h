@@ -29,8 +29,8 @@
 
 - (void)updateUser:(ADNUser *)user withCompletionHandler:(ADNUserCompletionHandler)handler;
 
-- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
-- (void)getCoverImageForUser:(NSString*)usernameOrID  withCompletionHandler:(GenericCompletionHandler)handler;
+- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler;
+- (void)getCoverImageForUser:(NSString*)usernameOrID  withCompletionHandler:(UIImageCompletionHandler)handler;
 - (void)updateAvatarImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 - (void)updateCoverImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 
