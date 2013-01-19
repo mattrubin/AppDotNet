@@ -9,6 +9,7 @@
 #import "ADNClient.h"
 #import "ADNJSONRequestOperation.h"
 #import "ADNImageRequestOperation.h"
+#include "ADNResponseEnvelope.h"
 
 @implementation ADNClient
 
@@ -65,20 +66,6 @@
     }];
 }
 
-- (ADNUser *)userFromResponse:(id)responseObject
-{
-    ADNUser *user = nil;
-    
-    if ([responseObject isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *userFromResponse = [responseObject valueForKeyPath:@"data"];
-        if ([userFromResponse isKindOfClass:[NSDictionary class]]) {
-            user = [ADNUser instanceFromDictionary:userFromResponse];
-        }
-    }
-    
-    return user;
-}
-
 
 #pragma mark - Users
 
@@ -90,13 +77,8 @@
 - (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
-    [self getPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        ADNUser *user = nil;
-        NSDictionary *userFromResponse = [JSON valueForKeyPath:@"data"];
-        
-        if ([userFromResponse isKindOfClass:[NSDictionary class]]) {
-            user = [ADNUser instanceFromDictionary:userFromResponse];
-        }
+    [self getPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
+        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -194,8 +176,8 @@
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
 
-    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        ADNUser *user = [self userFromResponse:responseObject];
+    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
+        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -217,8 +199,8 @@
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
     
-    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        ADNUser *user = [self userFromResponse:responseObject];
+    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
+        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -240,8 +222,8 @@
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
-    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        ADNUser *user = [self userFromResponse:responseObject];
+    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
+        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -263,8 +245,8 @@
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
-    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        ADNUser *user = [self userFromResponse:responseObject];
+    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
+        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);

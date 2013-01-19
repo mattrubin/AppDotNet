@@ -7,6 +7,7 @@
 //
 
 #import "ADNJSONRequestOperation.h"
+#import "ADNResponseEnvelope.h"
 
 
 @implementation ADNJSONRequestOperation
@@ -17,10 +18,11 @@
                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     [super setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
-        //NSLog(@"ADN: process response envelope for success: %@", [responseObject class]);
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope responseEnvelopeWithDictionary:responseObject];
+        
         if (success) {
             dispatch_async(self.successCallbackQueue ?: dispatch_get_main_queue(), ^{
-                success(operation, responseObject);
+                success(operation, responseEnvelope);
             });
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
