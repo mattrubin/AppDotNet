@@ -37,7 +37,7 @@
 - (void)  followUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
 - (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
 
-- (void)  muteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
-- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler;
+- (void)  muteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
+- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler;
 
 @end

@@ -235,9 +235,22 @@
  * POST /stream/0/users/[user_id]/mute
  * http://developers.app.net/docs/resources/user/muting/#mute-a-user
  */
-- (void)muteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)muteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
+    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ADNUser *user = [self userFromResponse:responseObject];
+        
+        if (handler) {
+            handler(user, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (handler) {
+            handler(nil, error);
+        }
+    }];
 }
 
 /*
@@ -245,9 +258,22 @@
  * DELETE /stream/0/users/[user_id]/mute
  * http://developers.app.net/docs/resources/user/muting/#unmute-a-user
  */
-- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(GenericCompletionHandler)handler
+- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
+    NSAssert(usernameOrID, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
+    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ADNUser *user = [self userFromResponse:responseObject];
+        
+        if (handler) {
+            handler(user, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (handler) {
+            handler(nil, error);
+        }
+    }];
 }
 
 
