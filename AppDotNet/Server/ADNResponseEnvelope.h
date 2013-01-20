@@ -6,25 +6,16 @@
 //  Copyright (c) 2013 Matt Rubin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
+#import "ADNMetadata.h"
 
 
 extern NSString * const ADNResponseEnvelopeKey;
-extern NSString * const ADNResponseEnvelopeMetaKey;
-extern NSString * const ADNResponseEnvelopeDataKey;
 
 
-@class ADNMetadata;
+@interface ADNResponseEnvelope : MTLModel
 
-
-@interface ADNResponseEnvelope : NSObject
-
-@property (nonatomic, strong) NSDictionary *rawDictionary;
-@property (nonatomic, strong, readonly) ADNMetadata *meta;
-@property (nonatomic, readonly) NSDictionary *data;
-
-
-- (id)initWithDictionary:(NSDictionary *)responseDictionary;
-+ (instancetype)responseEnvelopeWithDictionary:(NSDictionary *)responseDictionary;
+@property (nonatomic, readonly, strong) ADNMetadata *meta;
+@property (nonatomic, readonly, strong) NSDictionary *data;
 
 @end
