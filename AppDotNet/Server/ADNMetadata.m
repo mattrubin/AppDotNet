@@ -10,10 +10,16 @@
 
 
 NSString * const ADNMetadataCodeKey         = @"code";
+// Error Keys
 NSString * const ADNMetadataErrorIdKey      = @"error_id";
 NSString * const ADNMetadataErrorSlugKey    = @"error_slug";
 NSString * const ADNMetadataErrorMessageKey = @"error_message";
+// Pagination Keys
+NSString * const ADNMetadataMaxIdKey        = @"max_id";
+NSString * const ADNMetadataMinIdKey        = @"min_id";
+NSString * const ADNMetadataMoreKey         = @"more";
 
+// Error Slugs
 NSString * const ADNErrorInvalidToken        = @"invalid-token";
 NSString * const ADNErrorNotAuthorized       = @"not-authorized";
 NSString * const ADNErrorTokenExpired        = @"token-expired";
@@ -63,6 +69,21 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
 - (NSString *)errorMessage
 {
     return [self.rawDictionary objectForKey:ADNMetadataErrorMessageKey];
+}
+
+- (NSString *)maxId
+{
+    return [self.rawDictionary objectForKey:ADNMetadataMaxIdKey];
+}
+
+- (NSString *)minId
+{
+    return [self.rawDictionary objectForKey:ADNMetadataMinIdKey];
+}
+
+- (BOOL)more
+{
+    return [[self.rawDictionary objectForKey:ADNMetadataMoreKey] boolValue];
 }
 
 @end
