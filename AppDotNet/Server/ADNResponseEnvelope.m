@@ -50,7 +50,7 @@ NSString * const ADNResponseEnvelopeDataKey = @"data";
     _rawDictionary = rawDictionary;
     
     NSDictionary *metaDictionary = [self.rawDictionary objectForKey:ADNResponseEnvelopeMetaKey];
-    self.meta = metaDictionary?[ADNMetadata metadataWithDictionary:metaDictionary]:nil;
+    self.meta = [ADNMetadata modelWithExternalRepresentation:metaDictionary];
 }
 
 - (NSDictionary *)data

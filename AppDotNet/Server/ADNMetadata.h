@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
 
 extern NSString * const ADNErrorInvalidToken;
@@ -16,12 +17,7 @@ extern NSString * const ADNErrorCodeUsed;
 extern NSString * const ADNErrorRedirectURIRequired;
 
 
-@interface ADNMetadata : NSObject
-
-@property (nonatomic, strong) NSDictionary *rawDictionary;
-
-- (id)initWithDictionary:(NSDictionary *)metaDictionary;
-+ (instancetype)metadataWithDictionary:(NSDictionary *)metaDictionary;
+@interface ADNMetadata : MTLModel
 
 @property (nonatomic, readonly, assign) NSUInteger code;
 
