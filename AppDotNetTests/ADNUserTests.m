@@ -40,19 +40,12 @@
 
 - (void)testMessage
 {
-    ADNUser *user = [ADNUser instanceFromDictionary:self.dataDictionary];
+    ADNUser *user = [ADNUser modelWithExternalRepresentation:self.dataDictionary];
     
-    NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
-    NSMutableDictionary *userDictionary = [user.toDictionary mutableCopy];
-    
-    for (NSString *ignore in user.ignoredKeys) {
-        [testDictionary removeObjectForKey:ignore];
-    }
-    
-    if (![userDictionary isEqual:testDictionary]) {
+    if (![user.externalRepresentation isEqual:self.dataDictionary]) {
         STFail(@"Message dictionary validation failed.");
-        NSLog(@"A:\n%@", testDictionary);
-        NSLog(@"B:\n%@", userDictionary);
+        NSLog(@"A:\n%@", self.dataDictionary);
+        NSLog(@"B:\n%@", user.externalRepresentation);
     }
 }
 
