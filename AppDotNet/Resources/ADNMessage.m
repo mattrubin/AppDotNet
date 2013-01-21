@@ -45,26 +45,6 @@
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)annotationsTransformer
-{
-    return [ADNAnnotationCollection transformerForClass];
-}
-
-+ (NSValueTransformer *)entitiesTransformer
-{
-    return [ADNEntities transformerForClass];
-}
-
-+ (NSValueTransformer *)sourceTransformer
-{
-    return [ADNSource transformerForClass];
-}
-
-+ (NSValueTransformer *)userTransformer
-{
-    return [ADNUser transformerForClass];
-}
-
 + (NSValueTransformer *)createdAtTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {

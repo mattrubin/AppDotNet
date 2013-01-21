@@ -11,9 +11,4 @@
 
 @implementation ADNDescription
 
-+ (NSValueTransformer *)entitiesTransformer
-{
-    return [ADNEntities transformerForClass];
-}
-
 @end

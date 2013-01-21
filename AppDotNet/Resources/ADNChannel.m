@@ -33,27 +33,6 @@
             }];
 }
 
-#pragma mark Transformers
-
-+ (NSValueTransformer *)annotationsTransformer
-{
-    return [ADNAnnotationCollection transformerForClass];
-}
-
-+ (NSValueTransformer *)ownerTransformer
-{
-    return [ADNUser transformerForClass];
-}
-
-+ (NSValueTransformer *)readersTransformer
-{
-    return [ADNAccessControlList transformerForClass];
-}
-
-+ (NSValueTransformer *)writersTransformer
-{
-    return [ADNAccessControlList transformerForClass];
-}
 
 
 #pragma mark Utility

@@ -16,9 +16,4 @@ NSString * const ADNResponseEnvelopeDataKey = @"data";
 
 @implementation ADNResponseEnvelope
 
-+ (NSValueTransformer *)metaTransformer
-{
-    return [ADNMetadata transformerForClass];
-}
-
 @end

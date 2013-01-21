@@ -41,21 +41,6 @@
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)annotationsTransformer
-{
-    return [ADNAnnotationCollection transformerForClass];
-}
-
-+ (NSValueTransformer *)avatarImageTransformer
-{
-    return [ADNImage transformerForClass];
-}
-
-+ (NSValueTransformer *)coverImageTransformer
-{
-    return [ADNImage transformerForClass];
-}
-
 + (NSValueTransformer *)createdAtTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
@@ -63,11 +48,6 @@
     } reverseBlock:^id(NSDate *date) {
         return [[ADNHelper dateFormatter] stringFromDate:date];
     }];
-}
-
-+ (NSValueTransformer *)bioTransformer
-{
-    return [ADNDescription transformerForClass];
 }
 
 @end

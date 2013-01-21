@@ -39,11 +39,21 @@
     }];
 }
 
++ (NSValueTransformer *)transformerForKey:(NSString *)key {
+    NSValueTransformer *transformer = [super transformerForKey:key];
+    if (!transformer) {
+        Class propertyClass = [self propertyClassForKey:key];
+        if ([propertyClass respondsToSelector:@selector(transformerForClass)]) {
+            transformer = [propertyClass transformerForClass];
+        }
+    }
+	return transformer;
+}
 
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    Class class = [self propertyClassForKey:key];
+    Class class = [[self class] propertyClassForKey:key];
     if (class && ![value isKindOfClass:class]) {
         [NSException raise:@"InvalidPropertyAssignment" format:@"Trying to assign an object of type %@ to a property of type %@ (%@.%@)", [value class], class, [self class], key];
     }
@@ -51,7 +61,7 @@
     [super setValue:value forKey:key];
 }
 
-- (Class)propertyClassForKey:(NSString *)key
++ (Class)propertyClassForKey:(NSString *)key
 {
     Class class = nil;
     
