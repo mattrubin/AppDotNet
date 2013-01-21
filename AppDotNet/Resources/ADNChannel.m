@@ -23,19 +23,52 @@
 
 #pragma mark Keys
 
-- (NSSet *)conversionKeys
-{
-    return [NSSet setWithArray:@[KEY_ANNOTATIONS, KEY_OWNER, KEY_READERS, KEY_WRITERS]];
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"hasUnread": KEY_HAS_UNREAD,
+            @"channelId": KEY_ID,
+            @"youCanEdit": KEY_YOU_CAN_EDIT,
+            @"youSubscribed": KEY_YOU_SUBSCRIBED,
+            @"recentMessageId": KEY_RECENT_MESSAGE_ID,
+            }];
 }
 
-- (NSDictionary *)alteredKeys
+#pragma mark Transformers
+
++ (NSValueTransformer *)annotationsTransformer
 {
-    return @{KEY_HAS_UNREAD:@"hasUnread", KEY_ID:@"channelID", KEY_YOU_CAN_EDIT:@"youCanEdit", KEY_YOU_SUBSCRIBED:@"youSubscribed", KEY_RECENT_MESSAGE_ID:@"recentMessageID"};
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *annotations) {
+        return [ADNAnnotationCollection instanceFromArray:annotations];
+    } reverseBlock:^id(ADNAnnotationCollection *annotations) {
+        return annotations.toArray;
+    }];
 }
 
-- (NSArray *)exportKeys
++ (NSValueTransformer *)ownerTransformer
 {
-    return @[KEY_ID, KEY_TYPE, KEY_OWNER, KEY_ANNOTATIONS, KEY_READERS, KEY_WRITERS, KEY_YOU_SUBSCRIBED, KEY_YOU_CAN_EDIT, KEY_HAS_UNREAD, KEY_RECENT_MESSAGE_ID];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNUser modelWithExternalRepresentation:dictionary];
+    } reverseBlock:^id(ADNUser *user) {
+        return user.externalRepresentation;
+    }];
+}
+
++ (NSValueTransformer *)readersTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNAccessControlList instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNAccessControlList *acl) {
+        return acl.toDictionary;
+    }];
+}
+
++ (NSValueTransformer *)writersTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNAccessControlList instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNAccessControlList *acl) {
+        return acl.toDictionary;
+    }];
 }
 
 
@@ -43,7 +76,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@ #%i: %@, @%@]", self.class, [self.channelID intValue], self.type, self.owner.username];
+    return [NSString stringWithFormat:@"[%@ #%i: %@, @%@]", self.class, [self.channelId intValue], self.type, self.owner.username];
 }
 
 @end

@@ -37,15 +37,11 @@
 
 - (void)testChannel
 {
-    ADNChannel *channel = [ADNChannel instanceFromDictionary:self.dataDictionary];
+    ADNChannel *channel = [ADNChannel modelWithExternalRepresentation:self.dataDictionary];
     
-    NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
-    NSMutableDictionary *channelDictionary = [channel.toDictionary mutableCopy];
+    NSDictionary *testDictionary    = self.dataDictionary;
+    NSDictionary *channelDictionary = channel.externalRepresentation;
     
-    for (NSString *ignore in channel.ignoredKeys) {
-        [testDictionary removeObjectForKey:ignore];
-    }
-
     if (![channelDictionary isEqualToDictionary:testDictionary]) {
         STFail(@"Channel dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);

@@ -105,7 +105,7 @@ static BOOL _asynchronous = YES;
 {
     ADNDataConverter converter = ^id(id responseContent) {
         if ([responseContent isKindOfClass:[NSDictionary class]]) {
-            return [ADNChannel instanceFromDictionary:responseContent];
+            return [ADNChannel modelWithExternalRepresentation:responseContent];
         } else {
             return nil;
         }
@@ -120,7 +120,7 @@ static BOOL _asynchronous = YES;
         if ([responseContent isKindOfClass:[NSArray class]]) {
             NSMutableArray *channels = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
             for (NSDictionary *responseItem in responseContent) {
-                [channels addObject:[ADNChannel instanceFromDictionary:responseItem]];
+                [channels addObject:[ADNChannel modelWithExternalRepresentation:responseItem]];
             }
             return channels;
         } else {
@@ -267,7 +267,7 @@ static BOOL _asynchronous = YES;
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"POST";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
+    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.externalRepresentation] mutableCopy];
     
     [self startRequest:request];
 }
@@ -279,12 +279,12 @@ static BOOL _asynchronous = YES;
  */
 + (void)updateChannel:(ADNChannel*)channel withCompletionHandler:(ADNChannelCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channel.channelID intValue]];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%i", [channel.channelId intValue]];
     
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withChannelHandler:handler];
     request.requestMethod = @"PUT";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.toDictionary] mutableCopy];
+    request.postBody = [[ADNHelper JSONDataFromDictionary:channel.externalRepresentation] mutableCopy];
     
     [self startRequest:request];
 }

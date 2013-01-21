@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 #import "ADNUser.h"
 #import "ADNAccessControlList.h"
 #import "ADNAnnotationCollection.h"
 
 
-@interface ADNChannel : ADNObject
+@interface ADNChannel : ADNModel
 
-@property (nonatomic, copy)   NSString *channelID;
+@property (nonatomic, copy)   NSString *channelId;
 @property (nonatomic, copy)   NSString *type;
 @property (nonatomic, strong) ADNUser *owner;
 @property (nonatomic, strong) ADNAnnotationCollection *annotations;
@@ -23,6 +23,6 @@
 @property (nonatomic, assign) BOOL youSubscribed;
 @property (nonatomic, assign) BOOL youCanEdit;
 @property (nonatomic, assign) BOOL hasUnread;
-@property (nonatomic, copy)   NSString *recentMessageID;
+@property (nonatomic, copy)   NSString *recentMessageId;
 
 @end
