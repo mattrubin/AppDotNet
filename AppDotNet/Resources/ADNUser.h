@@ -6,10 +6,9 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 #import "ADNDescription.h"
 #import "ADNImage.h"
-#import "ADNCounts.h"
 #import "ADNAnnotationCollection.h"
 
 
@@ -26,10 +25,10 @@ typedef enum {
  * A User is the central object of the App.net APIs.
  * User objects have usernames, follow other users, and post content for their followers.
  */
-@interface ADNUser : ADNObject
+@interface ADNUser : ADNModel
 
 // Primary identifier for a user. This idspace is unique to User objects. There can be a Post and User with the same ID; no relation is implied.
-@property (nonatomic, copy) NSString *userID;
+@property (nonatomic, copy) NSString *userId;
 
 // Case insensitive. 20 characters, may only contain a-z, 0-9 and underscore.
 @property (nonatomic, copy) NSString *username;
@@ -38,7 +37,7 @@ typedef enum {
 
 
 // User supplied biographical information. All Unicode characters allowed. Maximum length 256 characters.
-@property (nonatomic, strong) ADNDescription *description;
+@property (nonatomic, strong) ADNDescription *bio;
 
 
 // User timezone in tzinfo format.
@@ -62,9 +61,14 @@ typedef enum {
 @property (nonatomic, copy) NSString *canonicalURL;
 
 
-
-// A count of followers, following, posts, and stars
-@property (nonatomic, strong) ADNCounts *counts;
+// The number of users this user is following.
+@property (nonatomic, assign) NSUInteger followingCount;
+// The number of users following this user.
+@property (nonatomic, assign) NSUInteger followerCount;
+// The number of posts created by this user.
+@property (nonatomic, assign) NSUInteger postCount;
+// The number of posts starred by this user.
+@property (nonatomic, assign) NSUInteger starCount;
 
 
 // Does this user follow the user making the request? May be omitted if this is not an authenticated request.

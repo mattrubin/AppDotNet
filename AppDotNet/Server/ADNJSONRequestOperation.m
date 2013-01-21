@@ -18,7 +18,7 @@
                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     [super setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope responseEnvelopeWithDictionary:responseObject];
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseObject];
         
         if (success) {
             dispatch_async(self.successCallbackQueue ?: dispatch_get_main_queue(), ^{
@@ -26,7 +26,7 @@
             });
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope responseEnvelopeWithDictionary:((AFJSONRequestOperation *)operation).responseJSON];
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:((AFJSONRequestOperation *)operation).responseJSON];
         
         NSMutableDictionary *newUserInfo = [error.userInfo mutableCopy];
         [newUserInfo setObject:responseEnvelope forKey:ADNResponseEnvelopeKey];

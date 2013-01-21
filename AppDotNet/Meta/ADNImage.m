@@ -11,11 +11,6 @@
 
 @implementation ADNImage
 
-- (NSArray *)exportKeys
-{
-    return @[KEY_HEIGHT, KEY_WIDTH, KEY_URL];
-}
-
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"[%@: (%u x %u) %@]", self.class, self.width, self.height, self.url];

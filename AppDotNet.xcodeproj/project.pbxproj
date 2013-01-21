@@ -45,6 +45,7 @@
 		8C5EE1AF16AB54B700195701 /* ADNResponseEnvelope.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C5EE1AA16AB47CF00195701 /* ADNResponseEnvelope.h */; };
 		8C5EE1B216AB576600195701 /* ADNMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EE1B116AB576500195701 /* ADNMetadata.m */; };
 		8C5EE1B316AB597300195701 /* ADNMetadata.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C5EE1B016AB576500195701 /* ADNMetadata.h */; };
+		8C5EE1E316AC76E700195701 /* libMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EE1DB16AC767200195701 /* libMantle.a */; };
 		8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
 		8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A8167DB2C100C38F51 /* ADNMention.m */; };
 		8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AB167DB32000C38F51 /* ADNHashtag.m */; };
@@ -62,6 +63,8 @@
 		8C8530A616A7B9D100357F6E /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309B16A7B9D100357F6E /* AFURLConnectionOperation.m */; };
 		8C8530A716A7B9D100357F6E /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309D16A7B9D100357F6E /* AFXMLRequestOperation.m */; };
 		8C8530A816A7B9D100357F6E /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309F16A7B9D100357F6E /* UIImageView+AFNetworking.m */; };
+		8C85403816AD4D2700BA384D /* ADNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85403716AD4D2700BA384D /* ADNModel.m */; };
+		8C85403916AD4DA700BA384D /* ADNModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85403616AD4D2600BA384D /* ADNModel.h */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A76167C5FC90071D908 /* AppDotNet.m */; };
@@ -99,10 +102,8 @@
 		8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D4C16880B610075FA7A /* ADNSource.m */; };
 		8CFB9D5116881D800075FA7A /* ADNMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D5016881D800075FA7A /* ADNMessageTests.m */; };
 		8CFB9D53168820ED0075FA7A /* Message.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB9D52168820ED0075FA7A /* Message.json */; };
-		8CFB9D5C1688FB9C0075FA7A /* ADNCounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D5B1688FB9C0075FA7A /* ADNCounts.m */; };
 		8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */; };
 		8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D4B16880B610075FA7A /* ADNSource.h */; };
-		8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5A1688FB9B0075FA7A /* ADNCounts.h */; };
 		8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */; };
 		8CFB9D66168908120075FA7A /* ADNUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D65168908120075FA7A /* ADNUserTests.m */; };
 		8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D78168978010075FA7A /* ADNGeolocation.m */; };
@@ -113,6 +114,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8C5EE1D616AC767200195701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C5EE1C416AC767100195701 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC3C15F72B23004E8054;
+			remoteInfo = "Mantle Mac";
+		};
+		8C5EE1D816AC767200195701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C5EE1C416AC767100195701 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC5415F72B23004E8054;
+			remoteInfo = "Mantle Mac Tests";
+		};
+		8C5EE1DA16AC767200195701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C5EE1C416AC767100195701 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC7915F72BC7004E8054;
+			remoteInfo = "Mantle iOS";
+		};
+		8C5EE1DC16AC767200195701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C5EE1C416AC767100195701 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC8715F72BC7004E8054;
+			remoteInfo = "Mantle iOS Tests";
+		};
 		8CED1A83167C5FC90071D908 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CED1A63167C5FC80071D908 /* Project object */;
@@ -129,6 +158,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8C85403916AD4DA700BA384D /* ADNModel.h in CopyFiles */,
 				8C5EE1B316AB597300195701 /* ADNMetadata.h in CopyFiles */,
 				8C5EE1AD16AB54B700195701 /* ADNImageRequestOperation.h in CopyFiles */,
 				8C5EE1AE16AB54B700195701 /* ADNJSONRequestOperation.h in CopyFiles */,
@@ -139,7 +169,6 @@
 				8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */,
 				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
-				8CFB9D62168900C60075FA7A /* ADNCounts.h in CopyFiles */,
 				8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */,
 				8C1A3E051682C4C500261C9B /* ADNObject.h in CopyFiles */,
 				8C1A3DDD168073FD00261C9B /* ADNAccessControlList.h in CopyFiles */,
@@ -189,6 +218,7 @@
 		8C5EE1AB16AB47D000195701 /* ADNResponseEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNResponseEnvelope.m; sourceTree = "<group>"; };
 		8C5EE1B016AB576500195701 /* ADNMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMetadata.h; sourceTree = "<group>"; };
 		8C5EE1B116AB576500195701 /* ADNMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMetadata.m; sourceTree = "<group>"; };
+		8C5EE1C416AC767100195701 /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		8C7B24A4167DB18B00C38F51 /* ADNEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNEntities.h; sourceTree = "<group>"; };
 		8C7B24A5167DB18B00C38F51 /* ADNEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNEntities.m; sourceTree = "<group>"; };
 		8C7B24A7167DB2C100C38F51 /* ADNMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMention.h; sourceTree = "<group>"; };
@@ -223,6 +253,8 @@
 		8C85309D16A7B9D100357F6E /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		8C85309E16A7B9D100357F6E /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		8C85309F16A7B9D100357F6E /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8C85403616AD4D2600BA384D /* ADNModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNModel.h; sourceTree = "<group>"; };
+		8C85403716AD4D2700BA384D /* ADNModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNModel.m; sourceTree = "<group>"; };
 		8CC18C8A168B00160033B8C5 /* ADNKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNKeys.h; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -290,8 +322,6 @@
 		8CFB9D4F16881D800075FA7A /* ADNMessageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMessageTests.h; sourceTree = "<group>"; };
 		8CFB9D5016881D800075FA7A /* ADNMessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMessageTests.m; sourceTree = "<group>"; };
 		8CFB9D52168820ED0075FA7A /* Message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Message.json; sourceTree = "<group>"; };
-		8CFB9D5A1688FB9B0075FA7A /* ADNCounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNCounts.h; sourceTree = "<group>"; };
-		8CFB9D5B1688FB9C0075FA7A /* ADNCounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNCounts.m; sourceTree = "<group>"; };
 		8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNDescription.h; sourceTree = "<group>"; };
 		8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNDescription.m; sourceTree = "<group>"; };
 		8CFB9D64168908120075FA7A /* ADNUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNUserTests.h; sourceTree = "<group>"; };
@@ -308,6 +338,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5EE1E316AC76E700195701 /* libMantle.a in Frameworks */,
 				8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +372,17 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		8C5EE1C516AC767100195701 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C5EE1D716AC767200195701 /* Mantle.framework */,
+				8C5EE1D916AC767200195701 /* Mantle Mac Tests.octest */,
+				8C5EE1DB16AC767200195701 /* libMantle.a */,
+				8C5EE1DD16AC767200195701 /* Mantle iOS Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8C7B24A2167DB11300C38F51 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,8 +396,6 @@
 				8C1A3DDA1680696200261C9B /* ADNAccessControlList.m */,
 				8CFB9D4B16880B610075FA7A /* ADNSource.h */,
 				8CFB9D4C16880B610075FA7A /* ADNSource.m */,
-				8CFB9D5A1688FB9B0075FA7A /* ADNCounts.h */,
-				8CFB9D5B1688FB9C0075FA7A /* ADNCounts.m */,
 				8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */,
 				8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */,
 				8CED1ABA167CD7950071D908 /* ADNImage.h */,
@@ -414,6 +454,28 @@
 			path = AFNetworking/AFNetworking;
 			sourceTree = "<group>";
 		};
+		8C85402F16AC8B3A00BA384D /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				8C5EE1AA16AB47CF00195701 /* ADNResponseEnvelope.h */,
+				8C5EE1AB16AB47D000195701 /* ADNResponseEnvelope.m */,
+				8C5EE1B016AB576500195701 /* ADNMetadata.h */,
+				8C5EE1B116AB576500195701 /* ADNMetadata.m */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		8C85403516AC8B7500BA384D /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				8C5EE1A416A9B61600195701 /* ADNImageRequestOperation.h */,
+				8C5EE1A516A9B61600195701 /* ADNImageRequestOperation.m */,
+				8C5EE1A716AB37E600195701 /* ADNJSONRequestOperation.h */,
+				8C5EE1A816AB37E800195701 /* ADNJSONRequestOperation.m */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		8CED1A61167C5FC80071D908 = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +519,8 @@
 				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
 				8C1A3E011682C40500261C9B /* ADNObject.h */,
 				8C1A3E021682C40500261C9B /* ADNObject.m */,
+				8C85403616AD4D2600BA384D /* ADNModel.h */,
+				8C85403716AD4D2700BA384D /* ADNModel.m */,
 				8C1A3DA9167FE9F900261C9B /* Authentication */,
 				8CED1A97167C61580071D908 /* Resources */,
 				8C7B24A2167DB11300C38F51 /* Meta */,
@@ -538,14 +602,8 @@
 				8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */,
 				8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */,
 				8C5EE19F16A935C400195701 /* ADNHandlers.h */,
-				8C5EE1A416A9B61600195701 /* ADNImageRequestOperation.h */,
-				8C5EE1A516A9B61600195701 /* ADNImageRequestOperation.m */,
-				8C5EE1A716AB37E600195701 /* ADNJSONRequestOperation.h */,
-				8C5EE1A816AB37E800195701 /* ADNJSONRequestOperation.m */,
-				8C5EE1AA16AB47CF00195701 /* ADNResponseEnvelope.h */,
-				8C5EE1AB16AB47D000195701 /* ADNResponseEnvelope.m */,
-				8C5EE1B016AB576500195701 /* ADNMetadata.h */,
-				8C5EE1B116AB576500195701 /* ADNMetadata.m */,
+				8C85403516AC8B7500BA384D /* Operations */,
+				8C85402F16AC8B3A00BA384D /* Responses */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -553,6 +611,7 @@
 		8CED1AC1167D3EFE0071D908 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				8C5EE1C416AC767100195701 /* Mantle.xcodeproj */,
 				8C85308C16A7B9D100357F6E /* AFNetworking */,
 				8CED1AC2167D3F9C0071D908 /* ASIHTTPRequest */,
 			);
@@ -668,6 +727,12 @@
 			mainGroup = 8CED1A61167C5FC80071D908;
 			productRefGroup = 8CED1A6D167C5FC80071D908 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8C5EE1C516AC767100195701 /* Products */;
+					ProjectRef = 8C5EE1C416AC767100195701 /* Mantle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8CED1A6B167C5FC80071D908 /* AppDotNet */,
@@ -675,6 +740,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8C5EE1D716AC767200195701 /* Mantle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mantle.framework;
+			remoteRef = 8C5EE1D616AC767200195701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C5EE1D916AC767200195701 /* Mantle Mac Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle Mac Tests.octest";
+			remoteRef = 8C5EE1D816AC767200195701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C5EE1DB16AC767200195701 /* libMantle.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMantle.a;
+			remoteRef = 8C5EE1DA16AC767200195701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C5EE1DD16AC767200195701 /* Mantle iOS Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle iOS Tests.octest";
+			remoteRef = 8C5EE1DC16AC767200195701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8CED1A7A167C5FC90071D908 /* Resources */ = {
@@ -743,7 +839,6 @@
 				8C1A3DDB1680696200261C9B /* ADNAccessControlList.m in Sources */,
 				8C1A3E031682C40500261C9B /* ADNObject.m in Sources */,
 				8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */,
-				8CFB9D5C1688FB9C0075FA7A /* ADNCounts.m in Sources */,
 				8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */,
 				8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */,
 				8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */,
@@ -761,6 +856,7 @@
 				8C5EE1A916AB37E800195701 /* ADNJSONRequestOperation.m in Sources */,
 				8C5EE1AC16AB47D100195701 /* ADNResponseEnvelope.m in Sources */,
 				8C5EE1B216AB576600195701 /* ADNMetadata.m in Sources */,
+				8C85403816AD4D2700BA384D /* ADNModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,7 +946,10 @@
 				DSTROOT = /tmp/AppDotNet.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppDotNet/AppDotNet-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -862,7 +961,10 @@
 				DSTROOT = /tmp/AppDotNet.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppDotNet/AppDotNet-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

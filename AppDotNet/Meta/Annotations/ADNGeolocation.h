@@ -10,6 +10,9 @@
 #import <CoreLocation/CoreLocation.h>
 
 
+extern NSString * const ADNAnnotationTypeGeolocation;
+
+
 @interface ADNGeolocation : ADNAnnotation
 
 @property (nonatomic, assign) CLLocationDegrees  latitude;

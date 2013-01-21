@@ -51,9 +51,9 @@
             ADNAnnotation *newAnnotation;
             NSString *newType = [arrayItem objectForKey:KEY_TYPE];
             if ([newType isEqualToString:ADNAnnotationTypeGeolocation]) {
-                newAnnotation = [ADNGeolocation instanceFromDictionary:arrayItem];
+                newAnnotation = [ADNGeolocation modelWithExternalRepresentation:arrayItem];
             } else {
-                newAnnotation = [ADNAnnotation instanceFromDictionary:arrayItem];
+                newAnnotation = [ADNAnnotation modelWithExternalRepresentation:arrayItem];
             }
             
             [self.annotations addObject:newAnnotation];
@@ -65,7 +65,7 @@
 {
     NSMutableArray *outArray = [NSMutableArray arrayWithCapacity:self.annotations.count];
     for (ADNAnnotation *annotation in self.annotations) {
-        [outArray addObject:annotation.toDictionary];
+        [outArray addObject:annotation.externalRepresentation];
     }
     return outArray;
 }

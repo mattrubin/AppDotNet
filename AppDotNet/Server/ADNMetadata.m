@@ -29,61 +29,14 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
 
 @implementation ADNMetadata
 
-- (id)initWithDictionary:(NSDictionary *)metaDictionary
-{
-    self = [super init];
-    if (self) {
-        self.rawDictionary = metaDictionary;
-    }
-    return self;
-}
-
-+ (instancetype)metadataWithDictionary:(NSDictionary *)metaDictionary
-{
-    return [[self alloc] initWithDictionary:metaDictionary];
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@%@", [super description], [self.rawDictionary description]];
-}
-
-
-#pragma mark Accessors
-
-- (NSUInteger)code
-{
-    return [[self.rawDictionary objectForKey:ADNMetadataCodeKey] unsignedIntegerValue];
-}
-
-- (NSString *)errorId
-{
-    return [self.rawDictionary objectForKey:ADNMetadataErrorIdKey];
-}
-
-- (NSString *)errorSlug
-{
-    return [self.rawDictionary objectForKey:ADNMetadataErrorSlugKey];
-}
-
-- (NSString *)errorMessage
-{
-    return [self.rawDictionary objectForKey:ADNMetadataErrorMessageKey];
-}
-
-- (NSString *)maxId
-{
-    return [self.rawDictionary objectForKey:ADNMetadataMaxIdKey];
-}
-
-- (NSString *)minId
-{
-    return [self.rawDictionary objectForKey:ADNMetadataMinIdKey];
-}
-
-- (BOOL)more
-{
-    return [[self.rawDictionary objectForKey:ADNMetadataMoreKey] boolValue];
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"errorId": ADNMetadataErrorIdKey,
+            @"errorMessage": ADNMetadataErrorMessageKey,
+            @"errorSlug": ADNMetadataErrorSlugKey,
+            @"maxId": ADNMetadataMaxIdKey,
+            @"maxId": ADNMetadataMinIdKey,
+            }];
 }
 
 @end

@@ -9,6 +9,9 @@
 #import "ADNGeolocation.h"
 
 
+NSString * const ADNAnnotationTypeGeolocation = @"net.app.core.geolocation";
+
+
 @implementation ADNGeolocation
 
 - (id)init

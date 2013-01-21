@@ -7,7 +7,6 @@
 //
 
 #import "ADNResponseEnvelope.h"
-#import "ADNMetadata.h"
 
 
 NSString * const ADNResponseEnvelopeKey     = @"ADNResponseEnvelope";
@@ -15,47 +14,15 @@ NSString * const ADNResponseEnvelopeMetaKey = @"meta";
 NSString * const ADNResponseEnvelopeDataKey = @"data";
 
 
-@interface ADNResponseEnvelope ()
-
-@property (nonatomic, strong) ADNMetadata *meta;
-
-@end
-
-
 @implementation ADNResponseEnvelope
 
-- (id)initWithDictionary:(NSDictionary *)responseDictionary
++ (NSValueTransformer *)metaTransformer
 {
-    self = [super init];
-    if (self) {
-        self.rawDictionary = responseDictionary;
-    }
-    return self;
-}
-
-+ (instancetype)responseEnvelopeWithDictionary:(NSDictionary *)responseDictionary
-{
-    return [[self alloc] initWithDictionary:responseDictionary];
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@%@", [super description], [self.rawDictionary description]];
-}
-
-#pragma mark Accessors
-
-- (void)setRawDictionary:(NSDictionary *)rawDictionary
-{
-    _rawDictionary = rawDictionary;
-    
-    NSDictionary *metaDictionary = [self.rawDictionary objectForKey:ADNResponseEnvelopeMetaKey];
-    self.meta = metaDictionary?[ADNMetadata metadataWithDictionary:metaDictionary]:nil;
-}
-
-- (NSDictionary *)data
-{
-    return [self.rawDictionary objectForKey:ADNResponseEnvelopeDataKey];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNMetadata modelWithExternalRepresentation:dictionary];
+    } reverseBlock:^id(ADNMetadata *metadata) {
+        return metadata.externalRepresentation;
+    }];
 }
 
 @end

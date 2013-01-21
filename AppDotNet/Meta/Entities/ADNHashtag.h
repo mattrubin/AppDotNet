@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNHashtag : ADNObject
+@interface ADNHashtag : ADNModel
 
 // The text of the hashtag (not including #).
 @property (nonatomic, copy) NSString *name;

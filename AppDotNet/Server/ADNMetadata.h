@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Matt Rubin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ADNModel.h"
 
 
 extern NSString * const ADNErrorInvalidToken;
@@ -16,12 +16,7 @@ extern NSString * const ADNErrorCodeUsed;
 extern NSString * const ADNErrorRedirectURIRequired;
 
 
-@interface ADNMetadata : NSObject
-
-@property (nonatomic, strong) NSDictionary *rawDictionary;
-
-- (id)initWithDictionary:(NSDictionary *)metaDictionary;
-+ (instancetype)metadataWithDictionary:(NSDictionary *)metaDictionary;
+@interface ADNMetadata : ADNModel
 
 @property (nonatomic, readonly, assign) NSUInteger code;
 

@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 #import "ADNMention.h"
 #import "ADNHashtag.h"
 #import "ADNLink.h"
 
 
-@interface ADNEntities : ADNObject
+@interface ADNEntities : ADNModel
 
-@property (nonatomic, strong, readonly) NSMutableArray *mentions;
-@property (nonatomic, strong, readonly) NSMutableArray *hashtags;
-@property (nonatomic, strong, readonly) NSMutableArray *links;
+@property (nonatomic, strong) NSMutableArray *mentions;
+@property (nonatomic, strong) NSMutableArray *hashtags;
+@property (nonatomic, strong) NSMutableArray *links;
 
 @end

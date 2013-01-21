@@ -11,18 +11,12 @@
 
 @implementation ADNHashtag
 
-- (NSDictionary *)alteredKeys
-{
-    return @{KEY_LEN:@"length", KEY_POS:@"position"};
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"length": KEY_LEN,
+            @"position": KEY_POS,
+            }];
 }
-
-- (NSArray *)exportKeys
-{
-    return @[KEY_NAME, KEY_POS, KEY_LEN];
-}
-
-
-#pragma mark -
 
 - (NSString*)description
 {

@@ -16,9 +16,4 @@
     return [NSString stringWithFormat:@"[%@: %@, %@]", self.class, self.type, self.value];
 }
 
-- (NSArray *)exportKeys
-{
-    return @[KEY_TYPE, KEY_VALUE];
-}
-
 @end
