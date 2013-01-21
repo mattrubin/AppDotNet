@@ -167,7 +167,7 @@ static BOOL _asynchronous = YES;
 {
     ADNDataConverter converter = ^id(id responseContent) {
         if ([responseContent isKindOfClass:[NSDictionary class]]) {
-            return [ADNUser instanceFromDictionary:responseContent];
+            return [ADNUser modelWithExternalRepresentation:responseContent];
         } else {
             return nil;
         }
@@ -182,7 +182,7 @@ static BOOL _asynchronous = YES;
         if ([responseContent isKindOfClass:[NSArray class]]) {
             NSMutableArray *users = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
             for (NSDictionary *responseItem in responseContent) {
-                [users addObject:[ADNUser instanceFromDictionary:responseItem]];
+                [users addObject:[ADNUser modelWithExternalRepresentation:responseItem]];
             }
             return users;
         } else {

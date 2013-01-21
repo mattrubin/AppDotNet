@@ -7,6 +7,7 @@
 //
 
 #import "ADNUser.h"
+#import "ADNHelper.h"
 
 
 #define USER_TYPE_STRING_HUMAN          @"human"
@@ -17,82 +18,77 @@
 
 @implementation ADNUser
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.annotations = [ADNAnnotationCollection new];
-    }
-    return self;
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"avatarImage": KEY_AVATAR_IMAGE,
+            @"canonicalURL": KEY_CANONICAL_URL,
+            @"coverImage": KEY_COVER_IMAGE,
+            @"createdAt": KEY_CREATED_AT,
+            @"descriptionText": KEY_DESCRIPTION,
+            @"userId": KEY_ID,
+            @"followsYou": KEY_FOLLOWS_YOU,
+            @"youFollow": KEY_YOU_FOLLOW,
+            @"youMuted": KEY_YOU_MUTED,
+            @"youCanSubscribe": KEY_YOU_CAN_SUBSCRIBE,
+            @"bio": KEY_DESCRIPTION,
+            }];
 }
 
 
-#pragma mark Keys
+#pragma mark Transformers
 
-- (NSSet *)conversionKeys
++ (NSValueTransformer *)annotationsTransformer
 {
-    return [NSSet setWithArray:@[KEY_ANNOTATIONS, @"avatarImage", @"coverImage", KEY_COUNTS, KEY_DESCRIPTION, @"createdAt"]];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *annotations) {
+        return [ADNAnnotationCollection instanceFromArray:annotations];
+    } reverseBlock:^id(ADNAnnotationCollection *annotations) {
+        return annotations.toArray;
+    }];
 }
 
-- (NSDictionary *)alteredKeys
++ (NSValueTransformer *)avatarImageTransformer
 {
-    return @{KEY_AVATAR_IMAGE: @"avatarImage", KEY_CANONICAL_URL: @"canonicalURL", KEY_COVER_IMAGE: @"coverImage", KEY_CREATED_AT: @"createdAt", KEY_DESCRIPTION: @"descriptionText", KEY_ID: @"userID", KEY_FOLLOWS_YOU: @"followsYou", KEY_YOU_FOLLOW: @"youFollow", KEY_YOU_MUTED: @"youMuted", KEY_YOU_CAN_SUBSCRIBE:@"youCanSubscribe"};
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNImage instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNImage *image) {
+        return image.toDictionary;
+    }];
 }
 
-- (NSArray *)exportKeys
++ (NSValueTransformer *)coverImageTransformer
 {
-    return @[KEY_ID, KEY_USERNAME, KEY_NAME, KEY_DESCRIPTION, KEY_TIMEZONE, KEY_LOCALE, KEY_AVATAR_IMAGE, KEY_COVER_IMAGE, KEY_TYPE, KEY_CREATED_AT, KEY_CANONICAL_URL, KEY_COUNTS, KEY_FOLLOWS_YOU, KEY_YOU_FOLLOW, KEY_YOU_MUTED, KEY_ANNOTATIONS, KEY_YOU_CAN_SUBSCRIBE];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNImage instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNImage *image) {
+        return image.toDictionary;
+    }];
 }
 
-- (NSArray *)ignoredKeys
++ (NSValueTransformer *)countsTransformer
 {
-    return @[KEY_IS_FOLLOWING, KEY_IS_FOLLOWER, KEY_IS_MUTED];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNCounts instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNCounts *counts) {
+        return counts.toDictionary;
+    }];
 }
 
-
-
-#pragma mark -
-/*
-+ (ADNUserType)typeFromString:(NSString*)typeString
++ (NSValueTransformer *)createdAtTransformer
 {
-    if ([typeString isEqualToString:USER_TYPE_STRING_HUMAN]) {
-        return ADNUserTypeHuman;
-    } else if ([typeString isEqualToString:USER_TYPE_STRING_BOT]) {
-        return ADNUserTypeBot;
-    } else if ([typeString isEqualToString:USER_TYPE_STRING_CORPORATE]) {
-        return ADNUserTypeCorporate;
-    } else if ([typeString isEqualToString:USER_TYPE_STRING_FEED]) {
-        return ADNUserTypeFeed;
-    }
-    return ADNUserTypeUnknown;
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
+        return [[ADNHelper dateFormatter] dateFromString:dateString];
+    } reverseBlock:^id(NSDate *date) {
+        return [[ADNHelper dateFormatter] stringFromDate:date];
+    }];
 }
 
-+ (NSString*)stringFromType:(ADNUserType)type
++ (NSValueTransformer *)bioTransformer
 {
-    switch (type) {
-        case ADNUserTypeHuman:
-            return USER_TYPE_STRING_HUMAN;
-        case ADNUserTypeBot:
-            return USER_TYPE_STRING_BOT;
-        case ADNUserTypeCorporate:
-            return USER_TYPE_STRING_CORPORATE;
-        case ADNUserTypeFeed:
-            return USER_TYPE_STRING_FEED;
-        default:
-            return nil;
-            break;
-    }
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNDescription instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNDescription *description) {
+        return description.toDictionary;
+    }];
 }
-
-- (void)setTypeString:(NSString *)typeString
-{
-    self.type = [self.class typeFromString:typeString];
-}
-
-- (NSString*)typeString
-{
-    return [self.class stringFromType:self.type];
-}
-*/
 
 @end

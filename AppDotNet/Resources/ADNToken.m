@@ -25,7 +25,7 @@
         [(NSMutableArray*)self.scopes addObject:scopeString];
     }
     
-    self.user = [ADNUser instanceFromDictionary:[dictionary dictionaryForKey:KEY_USER]];
+    self.user = [ADNUser modelWithExternalRepresentation:[dictionary dictionaryForKey:KEY_USER]];
 }
 
 - (NSString*)description

@@ -93,7 +93,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
     [self getPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
+        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -192,7 +192,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
 
     [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
+        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -215,7 +215,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
     
     [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
+        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -238,7 +238,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
     [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
+        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
@@ -261,7 +261,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
     [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser instanceFromDictionary:responseEnvelope.data];
+        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
         
         if (handler) {
             handler(user, nil);
