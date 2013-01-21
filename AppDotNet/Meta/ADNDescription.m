@@ -14,9 +14,9 @@
 + (NSValueTransformer *)entitiesTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNEntities instanceFromDictionary:dictionary];
+        return [ADNEntities modelWithExternalRepresentation:dictionary];
     } reverseBlock:^id(ADNEntities *entities) {
-        return entities.toDictionary;
+        return entities.externalRepresentation;
     }];
 }
 
