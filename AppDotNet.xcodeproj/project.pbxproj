@@ -63,7 +63,6 @@
 		8C85403916AD4DA700BA384D /* ADNModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85403616AD4D2600BA384D /* ADNModel.h */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
-		8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CED1A76167C5FC90071D908 /* AppDotNet.m */; };
 		8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */; };
 		8CED1A82167C5FC90071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A85167C5FC90071D908 /* libAppDotNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6C167C5FC80071D908 /* libAppDotNet.a */; };
@@ -250,7 +249,6 @@
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-Prefix.pch"; sourceTree = "<group>"; };
 		8CED1A74167C5FC90071D908 /* AppDotNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDotNet.h; sourceTree = "<group>"; };
-		8CED1A76167C5FC90071D908 /* AppDotNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDotNet.m; sourceTree = "<group>"; };
 		8CED1A7D167C5FC90071D908 /* AppDotNetTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDotNetTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		8CED1A88167C5FC90071D908 /* AppDotNetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppDotNetTests-Info.plist"; sourceTree = "<group>"; };
@@ -506,7 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				8CED1A74167C5FC90071D908 /* AppDotNet.h */,
-				8CED1A76167C5FC90071D908 /* AppDotNet.m */,
 				8C85403616AD4D2600BA384D /* ADNModel.h */,
 				8C85403716AD4D2700BA384D /* ADNModel.m */,
 				8C1A3DA9167FE9F900261C9B /* Authentication */,
@@ -793,7 +790,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CED1A77167C5FC90071D908 /* AppDotNet.m in Sources */,
 				8CED1A9E167C64110071D908 /* ADNPost.m in Sources */,
 				8CED1AA1167C6DAA0071D908 /* ADNUser.m in Sources */,
 				8CED1AA4167C6DC20071D908 /* ADNStream.m in Sources */,
