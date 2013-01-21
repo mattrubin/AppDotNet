@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNAccessControlList : ADNObject
+@interface ADNAccessControlList : ADNModel
 
 @property (nonatomic, assign) BOOL anyUser;
 @property (nonatomic, assign) BOOL immutable;
 @property (nonatomic, assign) BOOL public;
 @property (nonatomic, assign) BOOL you;
-@property (nonatomic, strong) NSMutableArray *userIDs;
+@property (nonatomic, strong) NSMutableArray *userIds;
 
 @end

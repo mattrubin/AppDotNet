@@ -56,18 +56,18 @@
 + (NSValueTransformer *)readersTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNAccessControlList instanceFromDictionary:dictionary];
+        return [ADNAccessControlList modelWithExternalRepresentation:dictionary];
     } reverseBlock:^id(ADNAccessControlList *acl) {
-        return acl.toDictionary;
+        return acl.externalRepresentation;
     }];
 }
 
 + (NSValueTransformer *)writersTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNAccessControlList instanceFromDictionary:dictionary];
+        return [ADNAccessControlList modelWithExternalRepresentation:dictionary];
     } reverseBlock:^id(ADNAccessControlList *acl) {
-        return acl.toDictionary;
+        return acl.externalRepresentation;
     }];
 }
 

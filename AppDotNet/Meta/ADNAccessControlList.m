@@ -15,41 +15,26 @@
 {
     self = [super init];
     if (self) {
-        self.userIDs = [NSMutableArray new];
+        self.userIds = [NSMutableArray new];
     }
     return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
 
-    if ([key isEqualToString:KEY_USER_IDS]) {
-
-        if ([value isKindOfClass:[NSArray class]]) {
-
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                [myMembers addObject:valueMember];
-            }
-
-            self.userIDs = myMembers;
-
-        }
-
-    } else {
-        [super setValue:value forKey:key];
-    }
-
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"anyUser":KEY_ANY_USER,
+            @"userIds":KEY_USER_IDS,
+            }];
 }
 
-
-- (NSDictionary *)alteredKeys
++ (NSValueTransformer *)userIdsTransformer
 {
-    return @{KEY_ANY_USER:@"anyUser", KEY_USER_IDS:@"userIDs"};
-}
-
-- (NSArray *)exportKeys
-{
-    return @[KEY_ANY_USER, KEY_IMMUTABLE, KEY_PUBLIC, KEY_YOU, KEY_USER_IDS];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *userIds) {
+        return [userIds mutableCopy];
+    } reverseBlock:^id(NSMutableArray *userIds) {
+        return [userIds copy];
+    }];
 }
 
 @end
