@@ -7,30 +7,21 @@
 //
 
 #import "ADNToken.h"
-#import "NSDictionary+ADN.h"
 
 
 @implementation ADNToken
 
-- (void)setAttributesFromDictionary:(NSDictionary *)dictionary
-{
-    NSDictionary *appInfo = [dictionary dictionaryForKey:KEY_APP];
-    self.clientID   = [appInfo stringForKey:KEY_CLIENT_ID];
-    self.clientLink = [appInfo stringForKey:KEY_LINK];
-    self.clientName = [appInfo stringForKey:KEY_NAME];
-    
-    NSArray *scopesArray = [dictionary arrayForKey:KEY_SCOPES];
-    self.scopes = [NSMutableArray arrayWithCapacity:scopesArray.count];
-    for (NSString *scopeString in scopesArray) {
-        [(NSMutableArray*)self.scopes addObject:scopeString];
-    }
-    
-    self.user = [ADNUser modelWithExternalRepresentation:[dictionary dictionaryForKey:KEY_USER]];
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"clientId": @"app.client_id",
+            @"clientLink": @"app.link",
+            @"clientName": @"app.name",
+            }];
 }
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@: client: (%@, %@, %@), scopes: %@, user: %@]", self.class, self.clientName, self.clientID, self.clientLink, self.scopes, self.user];
+    return [NSString stringWithFormat:@"[%@: client: (%@, %@, %@), scopes: %@, user: %@]", self.class, self.clientName, self.clientId, self.clientLink, self.scopes, self.user];
 }
 
 @end

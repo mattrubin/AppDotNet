@@ -92,7 +92,7 @@ static BOOL _asynchronous = YES;
 {
     ADNDataConverter converter = ^id(id responseContent) {
         if ([responseContent isKindOfClass:[NSDictionary class]]) {
-            return [ADNToken instanceFromDictionary:responseContent];
+            return [ADNToken modelWithExternalRepresentation:responseContent];
         } else {
             return nil;
         }

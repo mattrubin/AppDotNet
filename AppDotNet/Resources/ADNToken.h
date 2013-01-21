@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 #import "ADNUser.h"
 
 
-@interface ADNToken : ADNObject
+@interface ADNToken : ADNModel
 
-@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientId;
 @property (nonatomic, copy) NSString *clientLink;
 @property (nonatomic, copy) NSString *clientName;
 
-@property (nonatomic, copy) NSSet *scopes;
+@property (nonatomic, strong) NSArray *scopes;
 
 @property (nonatomic, strong) ADNUser *user;
 
