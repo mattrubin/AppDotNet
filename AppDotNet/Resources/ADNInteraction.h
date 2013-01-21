@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNInteraction : ADNObject
+@interface ADNInteraction : ADNModel
 
 @end
