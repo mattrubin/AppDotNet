@@ -11,6 +11,4 @@
 
 @interface ADNModelTests : SenTestCase
 
-@property (nonatomic, retain) NSDictionary *dataDictionary;
-
 @end

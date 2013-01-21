@@ -17,73 +17,40 @@
 
 @implementation ADNModelTests
 
-- (void)testChannel
+- (BOOL)roundTripEqualityTestforModelClass:(Class)modelClass withJSONNamed:(NSString *)filename
 {
-    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:CHANNEL_TEST_FILE ofType:@"json"];
-    NSData *userData = [NSData dataWithContentsOfFile:path];
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:filename ofType:@"json"];
+    NSData *testData = [NSData dataWithContentsOfFile:path];
     
-    NSError *error;
-    self.dataDictionary = [NSJSONSerialization JSONObjectWithData:userData options:0 error:&error];
+    NSError *error = nil;
+    NSDictionary *testDictionary = [NSJSONSerialization JSONObjectWithData:testData options:0 error:&error];
     
+    ADNModel *model = [modelClass modelWithExternalRepresentation:testDictionary];
+    NSDictionary *modelDictionary = model.externalRepresentation;
     
-    ADNChannel *channel = [ADNChannel modelWithExternalRepresentation:self.dataDictionary];
-    
-    NSDictionary *testDictionary    = self.dataDictionary;
-    NSDictionary *channelDictionary = channel.externalRepresentation;
-    
-    if (![channelDictionary isEqualToDictionary:testDictionary]) {
+    if (![modelDictionary isEqualToDictionary:testDictionary]) {
         STFail(@"Channel dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);
-        NSLog(@"B:\n%@", channelDictionary);
+        NSLog(@"B:\n%@", modelDictionary);
+        return NO;
     }
     
-    
-    self.dataDictionary = nil;
+    return YES;
+}
+
+- (void)testChannel
+{
+    [self roundTripEqualityTestforModelClass:[ADNChannel class] withJSONNamed:CHANNEL_TEST_FILE];
 }
 
 - (void)testMessage
 {
-    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:MESSAGE_TEST_FILE ofType:@"json"];
-    NSData *userData = [NSData dataWithContentsOfFile:path];
-    
-    NSError *error;
-    self.dataDictionary = [NSJSONSerialization JSONObjectWithData:userData options:0 error:&error];
-    
-    
-    ADNMessage *message = [ADNMessage modelWithExternalRepresentation:self.dataDictionary];
-    
-    NSDictionary *testDictionary    = self.dataDictionary;
-    NSDictionary *messageDictionary = message.externalRepresentation;
-    
-    if (![messageDictionary isEqual:testDictionary]) {
-        STFail(@"Message dictionary validation failed.");
-        NSLog(@"A:\n%@", testDictionary);
-        NSLog(@"B:\n%@", messageDictionary);
-    }
-    
-    
-    self.dataDictionary = nil;
+    [self roundTripEqualityTestforModelClass:[ADNMessage class] withJSONNamed:MESSAGE_TEST_FILE];
 }
 
 - (void)testUser
 {
-    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:USER_TEST_FILE ofType:@"json"];
-    NSData *userData = [NSData dataWithContentsOfFile:path];
-    
-    NSError *error;
-    self.dataDictionary = [NSJSONSerialization JSONObjectWithData:userData options:0 error:&error];
-    
-    
-    ADNUser *user = [ADNUser modelWithExternalRepresentation:self.dataDictionary];
-    
-    if (![user.externalRepresentation isEqual:self.dataDictionary]) {
-        STFail(@"Message dictionary validation failed.");
-        NSLog(@"A:\n%@", self.dataDictionary);
-        NSLog(@"B:\n%@", user.externalRepresentation);
-    }
-    
-    
-    self.dataDictionary = nil;
+    [self roundTripEqualityTestforModelClass:[ADNUser class] withJSONNamed:USER_TEST_FILE];
 }
 
 
