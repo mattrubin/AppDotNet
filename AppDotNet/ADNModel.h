@@ -13,5 +13,6 @@
 
 + (NSValueTransformer *)transformerForClass;
 + (NSValueTransformer *)transformerForArrayOfClass;
++ (NSValueTransformer *)transformerForMutableArrayOfClass;
 
 @end

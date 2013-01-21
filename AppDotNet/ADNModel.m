@@ -15,14 +15,15 @@
 // Self-transformer
 + (NSValueTransformer *)transformerForClass
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [self modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNModel *model) {
-        return model.externalRepresentation;
-    }];
+    return [NSValueTransformer mtl_externalRepresentationTransformerWithModelClass:self.class];
 }
 
 + (NSValueTransformer *)transformerForArrayOfClass
+{
+    return [NSValueTransformer mtl_externalRepresentationArrayTransformerWithModelClass:self.class];
+}
+
++ (NSValueTransformer *)transformerForMutableArrayOfClass
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
@@ -30,12 +31,10 @@
             [internalArray addObject:[self modelWithExternalRepresentation:externalObject]];
         }
         return internalArray;
-    } reverseBlock:^id(NSArray *internalArray) {
-        NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
-        for (ADNModel *internalObject in internalArray) {
-            [externalArray addObject:internalObject.externalRepresentation];
-        }
-        return externalArray;
+    } reverseBlock:^(NSArray *models) {
+        return [models mtl_mapUsingBlock:^(MTLModel *model) {
+            return model.externalRepresentation;
+        }];
     }];
 }
 

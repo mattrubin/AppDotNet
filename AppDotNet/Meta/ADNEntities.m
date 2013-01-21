@@ -21,17 +21,17 @@
 
 + (NSValueTransformer *)hashtagsTransformer
 {
-    return [ADNHashtag transformerForArrayOfClass];
+    return [ADNHashtag transformerForMutableArrayOfClass];
 }
 
 + (NSValueTransformer *)linksTransformer
 {
-    return [ADNLink transformerForArrayOfClass];
+    return [ADNLink transformerForMutableArrayOfClass];
 }
 
 + (NSValueTransformer *)mentionsTransformer
 {
-    return [ADNMention transformerForArrayOfClass];
+    return [ADNMention transformerForMutableArrayOfClass];
 }
 
 @end
