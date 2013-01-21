@@ -6,14 +6,10 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNModel.h"
-#import "ADNEntities.h"
+#import "ADNText.h"
 
 
-@interface ADNDescription : ADNModel
+@interface ADNDescription : ADNText
 
-@property (nonatomic, strong) ADNEntities *entities;
-@property (nonatomic, copy) NSString *html;
-@property (nonatomic, copy) NSString *text;
 
 @end
