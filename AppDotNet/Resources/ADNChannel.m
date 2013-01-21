@@ -46,29 +46,17 @@
 
 + (NSValueTransformer *)ownerTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNUser modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNUser *user) {
-        return user.externalRepresentation;
-    }];
+    return [ADNUser transformerForClass];
 }
 
 + (NSValueTransformer *)readersTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNAccessControlList modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNAccessControlList *acl) {
-        return acl.externalRepresentation;
-    }];
+    return [ADNAccessControlList transformerForClass];
 }
 
 + (NSValueTransformer *)writersTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNAccessControlList modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNAccessControlList *acl) {
-        return acl.externalRepresentation;
-    }];
+    return [ADNAccessControlList transformerForClass];
 }
 
 

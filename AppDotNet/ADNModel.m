@@ -12,6 +12,17 @@
 
 @implementation ADNModel
 
+// Self-transformer
++ (NSValueTransformer *)transformerForClass
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [self modelWithExternalRepresentation:dictionary];
+    } reverseBlock:^id(ADNModel *model) {
+        return model.externalRepresentation;
+    }];
+}
+
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     Class class = [self propertyClassForKey:key];

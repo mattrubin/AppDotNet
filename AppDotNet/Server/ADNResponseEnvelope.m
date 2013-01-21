@@ -18,11 +18,7 @@ NSString * const ADNResponseEnvelopeDataKey = @"data";
 
 + (NSValueTransformer *)metaTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNMetadata modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNMetadata *metadata) {
-        return metadata.externalRepresentation;
-    }];
+    return [ADNMetadata transformerForClass];
 }
 
 @end

@@ -52,20 +52,12 @@
 
 + (NSValueTransformer *)avatarImageTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNImage modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNImage *image) {
-        return image.externalRepresentation;
-    }];
+    return [ADNImage transformerForClass];
 }
 
 + (NSValueTransformer *)coverImageTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNImage modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNImage *image) {
-        return image.externalRepresentation;
-    }];
+    return [ADNImage transformerForClass];
 }
 
 + (NSValueTransformer *)createdAtTransformer
@@ -79,11 +71,7 @@
 
 + (NSValueTransformer *)bioTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNDescription modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNDescription *description) {
-        return description.externalRepresentation;
-    }];
+    return [ADNDescription transformerForClass];
 }
 
 @end

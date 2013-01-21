@@ -56,11 +56,7 @@
 
 + (NSValueTransformer *)entitiesTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNEntities modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNEntities *entities) {
-        return entities.externalRepresentation;
-    }];
+    return [ADNEntities transformerForClass];
 }
 
 + (NSValueTransformer *)sourceTransformer
@@ -74,11 +70,7 @@
 
 + (NSValueTransformer *)userTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNUser modelWithExternalRepresentation:dictionary];
-    } reverseBlock:^id(ADNUser *user) {
-        return user.externalRepresentation;
-    }];
+    return [ADNUser transformerForClass];
 }
 
 + (NSValueTransformer *)createdAtTransformer
