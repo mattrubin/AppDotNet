@@ -8,6 +8,7 @@
 
 #import "ADNMessageTests.h"
 #import "ADNHelper.h"
+#import "ADNResponseEnvelope.h"
 #import "ADNMessage.h"
 
 #define TEST_FILE @"Message"
@@ -22,10 +23,11 @@
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:TEST_FILE ofType:@"json"];
     NSData *userData = [NSData dataWithContentsOfFile:path];
     
-    NSDictionary *responseEnvelope;
+    NSDictionary *responseDictionary;
     NSError *error;
-    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData error:&error])) {
-        self.dataDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:&error];
+    if ((responseDictionary = [ADNHelper dictionaryFromJSONData:userData error:&error])) {
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseDictionary];
+        self.dataDictionary = responseEnvelope.data;
     }
     if (error) {
         STFail(@"Cannot create data dictionary: %@", error);

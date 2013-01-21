@@ -10,6 +10,7 @@
 
 #import "ASIHTTPRequest.h"
 #import "ADNHelper.h"
+#import "ADNResponseEnvelope.h"
 
 
 #define API_HOST @"alpha-api.app.net"
@@ -214,19 +215,22 @@ static BOOL _asynchronous = YES;
     
     [request setCompletionBlock:^{
         NSData *responseData = [request responseData];
-        NSDictionary *responseEnvelope;
+        NSDictionary *responseDictionary;
+        ADNResponseEnvelope *responseEnvelope;
         id responseContent;
         NSError *error;
         
-        if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:responseData error:&error])) {
-            if ((responseContent = [ADNHelper responseContentFromEnvelope:responseEnvelope error:&error])) {
-                if (converter) {
-                    responseContent = converter(responseContent);
+        if ((responseDictionary = [ADNHelper dictionaryFromJSONData:responseData error:&error])) {
+            if ((responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseDictionary])) {
+                if ((responseContent = responseEnvelope.data)) {
+                    if (converter) {
+                        responseContent = converter(responseContent);
+                    }
+                    if (handler) {
+                        handler(responseContent, nil);
+                    }
+                    return; // success
                 }
-                if (handler) {
-                    handler(responseContent, nil);
-                }
-                return; // success
             }
         }
         if (handler) {

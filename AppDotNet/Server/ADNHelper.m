@@ -8,8 +8,6 @@
 
 #import "ADNHelper.h"
 
-#import "NSDictionary+ADN.h"
-
 
 @implementation ADNHelper
 
@@ -44,24 +42,6 @@
         NSLog(@"ERROR: %@", error);
         return nil;
     }
-}
-
-
-+ (id)responseContentFromEnvelope:(NSDictionary *)responseEnvelope error:(NSError **)error
-{
-    NSDictionary *meta = [responseEnvelope dictionaryForKey:KEY_META];
-    NSInteger code = [meta integerForKey:KEY_CODE];
-    
-    if (code == 200) {
-        return [responseEnvelope objectForKey:KEY_DATA];
-    } else {
-        NSString * errorMessage = [meta stringForKey:@"error_message"];
-        if (error) {
-            *error = [NSError errorWithDomain:@"ADN" code:code userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];
-        }
-        return nil;
-    }
-
 }
 
 + (NSDateFormatter*)dateFormatter

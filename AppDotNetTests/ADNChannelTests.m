@@ -9,6 +9,7 @@
 #import "ADNChannelTests.h"
 #import "ADNHelper.h"
 #import "ADNChannel.h"
+#import "ADNResponseEnvelope.h"
 
 #define CHANNEL_TEST_FILE @"Channel"
 
@@ -22,9 +23,10 @@
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:CHANNEL_TEST_FILE ofType:@"json"];
     NSData *userData = [NSData dataWithContentsOfFile:path];
     
-    NSDictionary *responseEnvelope;
-    if ((responseEnvelope = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
-        self.dataDictionary = [ADNHelper responseContentFromEnvelope:responseEnvelope error:nil];
+    NSDictionary *responseDictionary;
+    if ((responseDictionary = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseDictionary];
+        self.dataDictionary = responseEnvelope.data;
     }
 }
 

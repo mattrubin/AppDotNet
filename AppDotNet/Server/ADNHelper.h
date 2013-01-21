@@ -13,8 +13,6 @@
 + (NSDictionary*)dictionaryFromJSONData:(NSData*)data error:(NSError **)error;
 + (NSData*)JSONDataFromDictionary:(NSDictionary*)dictionary;
 
-+ (id)responseContentFromEnvelope:(NSDictionary*)responseEnvelope error:(NSError **)error;
-
 + (NSDateFormatter*)dateFormatter;
 
 @end
