@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNLink : ADNObject
+@interface ADNLink : ADNModel
 
 // The anchor text to be linked (could be a url).
 @property (nonatomic, copy) NSString *text;
