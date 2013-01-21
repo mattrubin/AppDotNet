@@ -22,6 +22,24 @@
     }];
 }
 
++ (NSValueTransformer *)transformerForArrayOfClass
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
+        NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
+        for (NSDictionary *externalObject in externalArray) {
+            [internalArray addObject:[self modelWithExternalRepresentation:externalObject]];
+        }
+        return internalArray;
+    } reverseBlock:^id(NSArray *internalArray) {
+        NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
+        for (ADNModel *internalObject in internalArray) {
+            [externalArray addObject:internalObject.externalRepresentation];
+        }
+        return externalArray;
+    }];
+}
+
+
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {

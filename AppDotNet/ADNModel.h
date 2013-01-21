@@ -12,5 +12,6 @@
 @interface ADNModel : MTLModel
 
 + (NSValueTransformer *)transformerForClass;
++ (NSValueTransformer *)transformerForArrayOfClass;
 
 @end

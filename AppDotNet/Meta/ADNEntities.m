@@ -21,53 +21,17 @@
 
 + (NSValueTransformer *)hashtagsTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
-        NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
-        for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[ADNHashtag modelWithExternalRepresentation:externalObject]];
-        }
-        return internalArray;
-    } reverseBlock:^id(NSArray *internalArray) {
-        NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
-        for (ADNHashtag *internalObject in internalArray) {
-            [externalArray addObject:internalObject.externalRepresentation];
-        }
-        return externalArray;
-    }];
+    return [ADNHashtag transformerForArrayOfClass];
 }
 
 + (NSValueTransformer *)linksTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
-        NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
-        for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[ADNLink modelWithExternalRepresentation:externalObject]];
-        }
-        return internalArray;
-    } reverseBlock:^id(NSArray *internalArray) {
-        NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
-        for (ADNLink *internalObject in internalArray) {
-            [externalArray addObject:internalObject.externalRepresentation];
-        }
-        return externalArray;
-    }];
+    return [ADNLink transformerForArrayOfClass];
 }
 
 + (NSValueTransformer *)mentionsTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
-        NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
-        for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[ADNMention modelWithExternalRepresentation:externalObject]];
-        }
-        return internalArray;
-    } reverseBlock:^id(NSArray *internalArray) {
-        NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
-        for (ADNMention *internalObject in internalArray) {
-            [externalArray addObject:internalObject.externalRepresentation];
-        }
-        return externalArray;
-    }];
+    return [ADNMention transformerForArrayOfClass];
 }
 
 @end
