@@ -80,9 +80,9 @@
 + (NSValueTransformer *)bioTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNDescription instanceFromDictionary:dictionary];
+        return [ADNDescription modelWithExternalRepresentation:dictionary];
     } reverseBlock:^id(ADNDescription *description) {
-        return description.toDictionary;
+        return description.externalRepresentation;
     }];
 }
 

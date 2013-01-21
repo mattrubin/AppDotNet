@@ -11,14 +11,13 @@
 
 @implementation ADNDescription
 
-- (NSSet *)conversionKeys
++ (NSValueTransformer *)entitiesTransformer
 {
-    return [NSSet setWithObject:KEY_ENTITIES];
-}
-
-- (NSArray *)exportKeys
-{
-    return @[KEY_TEXT, KEY_ENTITIES, KEY_HTML];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNEntities instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNEntities *entities) {
+        return entities.toDictionary;
+    }];
 }
 
 @end
