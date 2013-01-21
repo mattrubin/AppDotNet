@@ -94,4 +94,17 @@
     return nil;
 }
 
+
+#pragma mark Transformer
+
++ (NSValueTransformer *)transformerForClass
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *annotations) {
+        return [self instanceFromArray:annotations];
+    } reverseBlock:^id(ADNAnnotationCollection *annotations) {
+        return annotations.toArray;
+    }];
+}
+
+
 @end

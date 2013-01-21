@@ -19,4 +19,6 @@
 - (ADNAnnotation *)annotationWithType:(NSString *)type;
 - (void)addAnnotation:(ADNAnnotation *)annotation;
 
++ (NSValueTransformer *)transformerForClass;
+
 @end

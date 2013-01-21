@@ -37,11 +37,7 @@
 
 + (NSValueTransformer *)annotationsTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *annotations) {
-        return [ADNAnnotationCollection instanceFromArray:annotations];
-    } reverseBlock:^id(ADNAnnotationCollection *annotations) {
-        return annotations.toArray;
-    }];
+    return [ADNAnnotationCollection transformerForClass];
 }
 
 + (NSValueTransformer *)ownerTransformer
