@@ -23,11 +23,8 @@
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:CHANNEL_TEST_FILE ofType:@"json"];
     NSData *userData = [NSData dataWithContentsOfFile:path];
     
-    NSDictionary *responseDictionary;
-    if ((responseDictionary = [ADNHelper dictionaryFromJSONData:userData error:nil])) {
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseDictionary];
-        self.dataDictionary = responseEnvelope.data;
-    }
+    NSError *error;
+    self.dataDictionary = [NSJSONSerialization JSONObjectWithData:userData options:0 error:&error];
 }
 
 - (void)tearDown

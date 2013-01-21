@@ -1,5 +1,4 @@
 {
-    "data": {
         "annotations": [
             {
                 "type": "net.app.core.directory.blog",
@@ -139,8 +138,4 @@
                 "you_follow": 1,
                 "you_muted": 0
             },
-    },
-    "meta": {
-        "code": 200
-    }
 }

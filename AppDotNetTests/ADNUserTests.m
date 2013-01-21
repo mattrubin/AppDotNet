@@ -22,15 +22,8 @@
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:TEST_FILE ofType:@"json"];
     NSData *userData = [NSData dataWithContentsOfFile:path];
     
-    NSDictionary *responseDictionary;
     NSError *error;
-    if ((responseDictionary = [ADNHelper dictionaryFromJSONData:userData error:&error])) {
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseDictionary];
-        self.dataDictionary = responseEnvelope.data;
-    }
-    if (error) {
-        STFail(@"Cannot create data dictionary: %@", error);
-    }
+    self.dataDictionary = [NSJSONSerialization JSONObjectWithData:userData options:0 error:&error];
 }
 
 - (void)tearDown
