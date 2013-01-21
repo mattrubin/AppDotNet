@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNImage : ADNObject
+@interface ADNImage : ADNModel
 
 @property (nonatomic, assign) NSUInteger height;
 @property (nonatomic, assign) NSUInteger width;
