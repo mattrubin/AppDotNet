@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 #import "ADNUser.h"
 #import "ADNAnnotationCollection.h"
 
 
-@interface ADNPost : ADNObject
+@interface ADNPost : ADNModel
 
 // Primary identifier for a post.
-@property (nonatomic, assign) NSInteger postID;
+@property (nonatomic, copy) NSString *postId;
 
 // The associated User object. Note: In certain cases (e.g., when a user account has been deleted), this key may be omitted.
 @property (nonatomic, strong) ADNUser *user;
@@ -35,11 +35,11 @@
 
 
 // The id of the post this post is replying to (or null if not a reply).
-@property (nonatomic, assign) NSInteger replyTo;
+@property (nonatomic, copy) NSString *replyToId;
 // The URL of the post's detail page on Alpha.
 @property (nonatomic, copy) NSString *canonicalURL;
 // The id of the post at the root of the thread that this post is a part of. If thread_id==id than this property does not guarantee that the thread has > 1 post. Please see num_replies.
-@property (nonatomic, assign) NSInteger threadID;
+@property (nonatomic, copy) NSString *threadId;
 
 
 // The number of posts created in reply to this post.
@@ -53,7 +53,7 @@
 // Metadata about the entire post. See the Annotations documentation.
 @property (nonatomic, strong) ADNAnnotationCollection *annotations;
 // Rich text information for this post. See the Entities documentation.
-@property (nonatomic, copy) NSDictionary *entities;
+@property (nonatomic, strong) ADNEntities *entities;
 
 
 // Has this post been deleted? For non-deleted posts, this key may be omitted instead of being false. If a post has been deleted, the text, html, and entities properties will be empty and may be omitted.
