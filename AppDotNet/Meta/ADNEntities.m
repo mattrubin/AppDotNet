@@ -24,13 +24,13 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
         for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[ADNHashtag instanceFromDictionary:externalObject]];
+            [internalArray addObject:[ADNHashtag modelWithExternalRepresentation:externalObject]];
         }
         return internalArray;
     } reverseBlock:^id(NSArray *internalArray) {
         NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
         for (ADNHashtag *internalObject in internalArray) {
-            [externalArray addObject:internalObject.toDictionary];
+            [externalArray addObject:internalObject.externalRepresentation];
         }
         return externalArray;
     }];
