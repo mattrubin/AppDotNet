@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNObject.h"
+#import "ADNModel.h"
 
 
-@interface ADNSource : ADNObject
+@interface ADNSource : ADNModel
 
-@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientId;
 @property (nonatomic, copy) NSString *link;
 @property (nonatomic, copy) NSString *name;
 

@@ -57,11 +57,7 @@
 
 + (NSValueTransformer *)sourceTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNSource instanceFromDictionary:dictionary];
-    } reverseBlock:^id(ADNSource *source) {
-        return source.toDictionary;
-    }];
+    return [ADNSource transformerForClass];
 }
 
 + (NSValueTransformer *)userTransformer

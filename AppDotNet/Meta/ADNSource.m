@@ -11,14 +11,10 @@
 
 @implementation ADNSource
 
-- (NSDictionary *)alteredKeys
-{
-    return @{KEY_CLIENT_ID:@"clientID"};
-}
-
-- (NSArray *)exportKeys
-{
-    return @[KEY_CLIENT_ID, KEY_LINK, KEY_NAME];
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"clientId":KEY_CLIENT_ID,
+            }];
 }
 
 @end
