@@ -31,6 +31,10 @@
             @"youMuted": KEY_YOU_MUTED,
             @"youCanSubscribe": KEY_YOU_CAN_SUBSCRIBE,
             @"bio": KEY_DESCRIPTION,
+            @"followingCount": @"counts.following",
+            @"followerCount": @"counts.followers",
+            @"postCount": @"counts.posts",
+            @"starCount": @"counts.stars",
             }];
 }
 
@@ -61,15 +65,6 @@
         return [ADNImage modelWithExternalRepresentation:dictionary];
     } reverseBlock:^id(ADNImage *image) {
         return image.externalRepresentation;
-    }];
-}
-
-+ (NSValueTransformer *)countsTransformer
-{
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
-        return [ADNCounts instanceFromDictionary:dictionary];
-    } reverseBlock:^id(ADNCounts *counts) {
-        return counts.toDictionary;
     }];
 }
 

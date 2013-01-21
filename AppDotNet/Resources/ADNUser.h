@@ -9,7 +9,6 @@
 #import "ADNModel.h"
 #import "ADNDescription.h"
 #import "ADNImage.h"
-#import "ADNCounts.h"
 #import "ADNAnnotationCollection.h"
 
 
@@ -62,9 +61,14 @@ typedef enum {
 @property (nonatomic, copy) NSString *canonicalURL;
 
 
-
-// A count of followers, following, posts, and stars
-@property (nonatomic, strong) ADNCounts *counts;
+// The number of users this user is following.
+@property (nonatomic, assign) NSUInteger followingCount;
+// The number of users following this user.
+@property (nonatomic, assign) NSUInteger followerCount;
+// The number of posts created by this user.
+@property (nonatomic, assign) NSUInteger postCount;
+// The number of posts starred by this user.
+@property (nonatomic, assign) NSUInteger starCount;
 
 
 // Does this user follow the user making the request? May be omitted if this is not an authenticated request.
