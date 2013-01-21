@@ -7,6 +7,7 @@
 //
 
 #import "ADNMessage.h"
+#import "ADNHelper.h"
 
 
 @implementation ADNMessage
@@ -24,19 +25,69 @@
 
 #pragma mark Keys
 
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"channelId": KEY_CHANNEL_ID,
+            @"createdAt": KEY_CREATED_AT,
+            @"messageId": KEY_ID,
+            @"machineOnly": KEY_MACHINE_ONLY,
+            @"numReplies": KEY_NUM_REPLIES,
+            @"threadId": KEY_THREAD_ID,
+            @"replyToId": KEY_REPLY_TO,
+            @"isDeleted": KEY_IS_DELETED,
+            }];
+}
+
 - (NSSet *)conversionKeys
 {
     return [NSSet setWithArray:@[KEY_ANNOTATIONS, KEY_ENTITIES, KEY_SOURCE, KEY_USER, @"createdAt"]];
 }
 
-- (NSDictionary *)alteredKeys
+#pragma mark Transformers
+
++ (NSValueTransformer *)annotationsTransformer
 {
-    return @{KEY_CHANNEL_ID:@"channelID", KEY_CREATED_AT:@"createdAt", KEY_ID:@"messageID", KEY_MACHINE_ONLY:@"machineOnly", KEY_NUM_REPLIES:@"numReplies", KEY_THREAD_ID:@"threadID", KEY_REPLY_TO:@"replyToID", KEY_IS_DELETED:@"isDeleted"};
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *annotations) {
+        return [ADNAnnotationCollection instanceFromArray:annotations];
+    } reverseBlock:^id(ADNAnnotationCollection *annotations) {
+        return annotations.toArray;
+    }];
 }
 
-- (NSArray *)exportKeys
++ (NSValueTransformer *)entitiesTransformer
 {
-    return @[KEY_CHANNEL_ID, KEY_CREATED_AT, KEY_ENTITIES, KEY_HTML, KEY_ID, KEY_MACHINE_ONLY, KEY_NUM_REPLIES, KEY_SOURCE, KEY_TEXT, KEY_THREAD_ID, KEY_USER, KEY_REPLY_TO, KEY_IS_DELETED, KEY_ANNOTATIONS];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNEntities modelWithExternalRepresentation:dictionary];
+    } reverseBlock:^id(ADNEntities *entities) {
+        return entities.externalRepresentation;
+    }];
+}
+
++ (NSValueTransformer *)sourceTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNSource instanceFromDictionary:dictionary];
+    } reverseBlock:^id(ADNSource *source) {
+        return source.toDictionary;
+    }];
+}
+
++ (NSValueTransformer *)userTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSDictionary *dictionary) {
+        return [ADNUser modelWithExternalRepresentation:dictionary];
+    } reverseBlock:^id(ADNUser *user) {
+        return user.externalRepresentation;
+    }];
+}
+
++ (NSValueTransformer *)createdAtTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
+        return [[ADNHelper dateFormatter] dateFromString:dateString];
+    } reverseBlock:^id(NSDate *date) {
+        return [[ADNHelper dateFormatter] stringFromDate:date];
+    }];
 }
 
 @end

@@ -135,7 +135,7 @@ static BOOL _asynchronous = YES;
 {
     ADNDataConverter converter = ^id(id responseContent) {
         if ([responseContent isKindOfClass:[NSDictionary class]]) {
-            return [ADNMessage instanceFromDictionary:responseContent];
+            return [ADNMessage modelWithExternalRepresentation:responseContent];
         } else {
             return nil;
         }
@@ -151,7 +151,7 @@ static BOOL _asynchronous = YES;
             NSMutableArray *messages = [NSMutableArray arrayWithCapacity:((NSArray*)responseContent).count];
             for (id responseItem in responseContent) {
                 if ([responseItem isKindOfClass:[NSDictionary class]]) {
-                    [messages addObject:[ADNMessage instanceFromDictionary:responseItem]];
+                    [messages addObject:[ADNMessage modelWithExternalRepresentation:responseItem]];
                 }
             }
             return messages;
@@ -430,11 +430,11 @@ static BOOL _asynchronous = YES;
  */
 + (void)createMessage:(ADNMessage*)message withCompletionHandler:(ADNMessageCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages?include_annotations=1", message.channelID];
+    NSString *endpoint = [NSString stringWithFormat:@"channels/%@/messages?include_annotations=1", message.channelId];
     ASIHTTPRequest *request = [self requestForEndpoint:endpoint withMessageHandler:handler];
     request.requestMethod = @"POST";
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    request.postBody = [[ADNHelper JSONDataFromDictionary:message.toDictionary] mutableCopy];
+    request.postBody = [[ADNHelper JSONDataFromDictionary:message.externalRepresentation] mutableCopy];
     
     [self startRequest:request];
 }

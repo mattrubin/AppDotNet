@@ -41,15 +41,11 @@
 
 - (void)testMessage
 {
-    ADNMessage *message = [ADNMessage instanceFromDictionary:self.dataDictionary];
+    ADNMessage *message = [ADNMessage modelWithExternalRepresentation:self.dataDictionary];
     
-    NSMutableDictionary *testDictionary    = [self.dataDictionary mutableCopy];
-    NSMutableDictionary *messageDictionary = [message.toDictionary mutableCopy];
+    NSDictionary *testDictionary    = self.dataDictionary;
+    NSDictionary *messageDictionary = message.externalRepresentation;
     
-    for (NSString *ignore in message.ignoredKeys) {
-        [testDictionary removeObjectForKey:ignore];
-    }
-
     if (![messageDictionary isEqual:testDictionary]) {
         STFail(@"Message dictionary validation failed.");
         NSLog(@"A:\n%@", testDictionary);
