@@ -58,13 +58,13 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
         for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[ADNMention instanceFromDictionary:externalObject]];
+            [internalArray addObject:[ADNMention modelWithExternalRepresentation:externalObject]];
         }
         return internalArray;
     } reverseBlock:^id(NSArray *internalArray) {
         NSMutableArray *externalArray = [NSMutableArray arrayWithCapacity:internalArray.count];
         for (ADNMention *internalObject in internalArray) {
-            [externalArray addObject:internalObject.toDictionary];
+            [externalArray addObject:internalObject.externalRepresentation];
         }
         return externalArray;
     }];
