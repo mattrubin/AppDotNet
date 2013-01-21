@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
-#import "ADNModel.h"
+#import "ADNText.h"
 #import "ADNUser.h"
 #import "ADNAnnotationCollection.h"
 
 
-@interface ADNPost : ADNModel
+@interface ADNPost : ADNText
 
 // Primary identifier for a post.
 @property (nonatomic, copy) NSString *postId;
@@ -20,12 +20,6 @@
 @property (nonatomic, strong) ADNUser *user;
 // The time at which the post was created.
 @property (nonatomic, copy) NSDate  *createdAt;
-
-
-// User supplied text of the post.
-@property (nonatomic, copy) NSString *text;
-// Server-generated annotated HTML rendering of post text.
-@property (nonatomic, copy) NSString *html;
 
 
 // Description of the API consumer that created this post.
@@ -52,8 +46,6 @@
 
 // Metadata about the entire post. See the Annotations documentation.
 @property (nonatomic, strong) ADNAnnotationCollection *annotations;
-// Rich text information for this post. See the Entities documentation.
-@property (nonatomic, strong) ADNEntities *entities;
 
 
 // Has this post been deleted? For non-deleted posts, this key may be omitted instead of being false. If a post has been deleted, the text, html, and entities properties will be empty and may be omitted.
