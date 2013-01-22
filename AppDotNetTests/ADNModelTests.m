@@ -28,14 +28,65 @@
     ADNModel *model = [modelClass modelWithExternalRepresentation:testDictionary];
     NSDictionary *modelDictionary = model.externalRepresentation;
     
-    if (![modelDictionary isEqualToDictionary:testDictionary]) {
-        STFail(@"Channel dictionary validation failed.");
-        NSLog(@"A:\n%@", testDictionary);
-        NSLog(@"B:\n%@", modelDictionary);
+    if (![self recursivelyCompareDictionary:modelDictionary toDictionary:testDictionary withBaseKeyPath:nil]) {
+        STFail(@"Model dictionary validation failed.");
+        //NSLog(@"A:\n%@", testDictionary);
+        //NSLog(@"B:\n%@", modelDictionary);
         return NO;
     }
     
     return YES;
+}
+
+- (BOOL)recursivelyCompareDictionary:(NSDictionary *)A toDictionary:(NSDictionary *)B withBaseKeyPath:(NSString *)baseKeyPath
+{
+    // Construct a set of all keys from both dictionaries
+    NSMutableSet *keySet = [NSMutableSet setWithCapacity:A.count+B.count];
+    [keySet addObjectsFromArray:A.allKeys];
+    [keySet addObjectsFromArray:B.allKeys];
+    
+    BOOL equal = YES;
+    
+    for (id key in keySet) {
+        NSString *keyPath = baseKeyPath?[baseKeyPath stringByAppendingFormat:@".%@", key]:key;
+        
+        id objA = [A objectForKey:key];
+        id objB = [B objectForKey:key];
+        
+        // Don't fail if a missing key ends up as a null object
+        if ((!objA && [objB isKindOfClass:[NSNull class]]) ||
+            (!objB && [objA isKindOfClass:[NSNull class]])) {
+            NSLog(@"WARNING: Missing key mathced with null object for key path %@", keyPath);
+            continue;
+        }
+        
+        if (!objA) {
+            STFail(@"A has no object for key path %@", keyPath);
+            equal = NO;
+            continue;
+        }
+        
+        if (!objB) {
+            STFail(@"B has no object for key path %@", keyPath);
+            equal = NO;
+            continue;
+        }
+        
+        if ([objA isKindOfClass:[NSDictionary class]] && [objB isKindOfClass:[NSDictionary class]]) {
+            if (![self recursivelyCompareDictionary:objA toDictionary:objB withBaseKeyPath:keyPath]) {
+                STFail(@"A and B have unequal dictionaries for key path %@", keyPath);
+                equal = NO;
+                continue;
+            }
+        } else {
+            if (![objA isEqual:objB]) {
+                STFail(@"A and B have unequal objects for key path %@", keyPath);
+                equal = NO;
+                continue;
+            }
+        }
+    }
+    return equal;
 }
 
 - (void)testChannel
