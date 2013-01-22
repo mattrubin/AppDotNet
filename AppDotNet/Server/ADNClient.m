@@ -85,6 +85,30 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     };
 }
 
+- (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForModelOfClass:(Class)modelClass withHandler:(GenericCompletionHandler)handler
+{
+    return ^(AFHTTPRequestOperation *operation, id responseObject) {
+        // By default, just pass the response object through
+        id handledObject = responseObject;
+        
+        NSDictionary *externalRepresentation = nil;
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            externalRepresentation = responseObject;
+        } else if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
+            externalRepresentation = ((ADNResponseEnvelope *)responseObject).data;
+        }
+        
+        if (externalRepresentation &&
+            [modelClass respondsToSelector:@selector(modelWithExternalRepresentation:)]) {
+            handledObject = [modelClass modelWithExternalRepresentation:externalRepresentation];
+        }
+        
+        if (handler) {
+            handler(handledObject, nil);
+        }
+    };
+}
+
 - (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlockForHandler:(GenericCompletionHandler)handler
 {
     return ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -106,13 +130,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 - (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
-    [self getPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
-        
-        if (handler) {
-            handler(user, nil);
-        }
-    } failure:[self failureBlockForHandler:handler]];
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 - (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler
@@ -201,13 +222,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
 
-    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
-        
-        if (handler) {
-            handler(user, nil);
-        }
-    } failure:[self failureBlockForHandler:handler]];
+    [self postPath:endpoint
+        parameters:nil
+           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+           failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -220,13 +238,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
     
-    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
-        
-        if (handler) {
-            handler(user, nil);
-        }
-    } failure:[self failureBlockForHandler:handler]];
+    [self deletePath:endpoint
+          parameters:nil
+             success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+             failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -239,13 +254,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
-    [self postPath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
-        
-        if (handler) {
-            handler(user, nil);
-        }
-    } failure:[self failureBlockForHandler:handler]];
+    [self postPath:endpoint
+        parameters:nil
+           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+           failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -258,13 +270,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     NSAssert(usernameOrID, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
     
-    [self deletePath:endpoint parameters:nil success:^(AFHTTPRequestOperation *operation, ADNResponseEnvelope *responseEnvelope) {
-        ADNUser *user = [ADNUser modelWithExternalRepresentation:responseEnvelope.data];
-        
-        if (handler) {
-            handler(user, nil);
-        }
-    } failure:[self failureBlockForHandler:handler]];
+    [self deletePath:endpoint
+          parameters:nil
+             success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+             failure:[self failureBlockForHandler:handler]];
 }
 
 
