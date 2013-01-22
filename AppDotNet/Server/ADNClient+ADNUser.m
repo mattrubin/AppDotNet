@@ -11,6 +11,8 @@
 
 @implementation ADNClient (ADNUser)
 
+#pragma mark Lookup
+
 /*
  * Retrieve a User
  * GET /stream/0/users/[user_id]
@@ -44,6 +46,29 @@
     [self getUser:username withCompletionHandler:handler];
 }
 
+/*
+ * Retrieve multiple Users
+ * GET /stream/0/users
+ * http://developers.app.net/docs/resources/user/lookup/#retrieve-multiple-users
+ */
+- (void)getUsers:(NSArray *)usernamesOrIds withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Search for Users
+ * GET /stream/0/users/search
+ * http://developers.app.net/docs/resources/user/lookup/#search-for-users
+ */
+- (void)searchUsersWithQuery:(NSString *)searchString withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+
+
+#pragma mark Profile
 
 /*
  * Update a User
@@ -107,6 +132,10 @@
 #warning API call not implemented
 }
 
+
+
+#pragma mark Following
+
 /*
  * Follow a User
  * POST /stream/0/users/[user_id]/follow
@@ -137,61 +166,6 @@
           parameters:nil
              success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
              failure:[self failureBlockForHandler:handler]];
-}
-
-/*
- * Mute a User
- * POST /stream/0/users/[user_id]/mute
- * http://developers.app.net/docs/resources/user/muting/#mute-a-user
- */
-- (void)muteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
-{
-    NSAssert(usernameOrId, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
-    
-    [self postPath:endpoint
-        parameters:nil
-           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
-           failure:[self failureBlockForHandler:handler]];
-}
-
-/*
- * Unmute a User
- * DELETE /stream/0/users/[user_id]/mute
- * http://developers.app.net/docs/resources/user/muting/#unmute-a-user
- */
-- (void)unmuteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
-{
-    NSAssert(usernameOrId, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
-    
-    [self deletePath:endpoint
-          parameters:nil
-             success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
-             failure:[self failureBlockForHandler:handler]];
-}
-
-
-
-
-/*
- * Retrieve multiple Users
- * GET /stream/0/users
- * http://developers.app.net/docs/resources/user/lookup/#retrieve-multiple-users
- */
-- (void)getUsers:(NSArray *)usernamesOrIds withCompletionHandler:(NSArrayCompletionHandler)handler
-{
-#warning API call not implemented
-}
-
-/*
- * Search for Users
- * GET /stream/0/users/search
- * http://developers.app.net/docs/resources/user/lookup/#search-for-users
- */
-- (void)searchUsersWithQuery:(NSString *)searchString withCompletionHandler:(NSArrayCompletionHandler)handler
-{
-#warning API call not implemented
 }
 
 /*
@@ -234,6 +208,42 @@
 #warning API call not implemented
 }
 
+
+
+#pragma mark Muting
+
+/*
+ * Mute a User
+ * POST /stream/0/users/[user_id]/mute
+ * http://developers.app.net/docs/resources/user/muting/#mute-a-user
+ */
+- (void)muteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
+{
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
+    
+    [self postPath:endpoint
+        parameters:nil
+           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+           failure:[self failureBlockForHandler:handler]];
+}
+
+/*
+ * Unmute a User
+ * DELETE /stream/0/users/[user_id]/mute
+ * http://developers.app.net/docs/resources/user/muting/#unmute-a-user
+ */
+- (void)unmuteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
+{
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
+    
+    [self deletePath:endpoint
+          parameters:nil
+             success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+             failure:[self failureBlockForHandler:handler]];
+}
+
 /*
  * Retrieve muted Users
  * GET /stream/0/users/[user_id]/muted
@@ -243,6 +253,10 @@
 {
 #warning API call not implemented
 }
+
+
+
+#pragma mark Post Interactions
 
 /*
  * Retrieve Users who reposted a Post
