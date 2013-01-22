@@ -30,7 +30,7 @@ typedef enum {
 
 @interface ADNAuthenticationRequest : NSObject
 
-@property NSString *clientID;
+@property NSString *clientId;
 @property ADNAuthenticationResponseType responseType;
 @property NSString *redirectURI;
 @property ADNScopes scopes;

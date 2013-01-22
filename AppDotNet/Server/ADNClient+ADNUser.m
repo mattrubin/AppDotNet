@@ -16,9 +16,9 @@
  * GET /stream/0/users/[user_id]
  * http://developers.app.net/docs/resources/user/lookup/#retrieve-a-user
  */
-- (void)getUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)getUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrID];
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrId];
     [self getPath:endpoint
        parameters:nil
           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
@@ -30,9 +30,9 @@
     [self getUser:@"me" withCompletionHandler:handler];
 }
 
-- (void)getUserWithID:(NSUInteger)userID completionHandler:(ADNUserCompletionHandler)handler
+- (void)getUserWithId:(NSUInteger)userId completionHandler:(ADNUserCompletionHandler)handler
 {
-    [self getUser:[NSString stringWithFormat:@"%u", userID] withCompletionHandler:handler];
+    [self getUser:[NSString stringWithFormat:@"%u", userId] withCompletionHandler:handler];
 }
 
 - (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler
@@ -60,10 +60,10 @@
  * GET /stream/0/users/[user_id]/avatar
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-avatar-image
  */
-- (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
+- (void)getAvatarImageForUser:(NSString*)usernameOrId withCompletionHandler:(UIImageCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/avatar", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/avatar", usernameOrId];
     
     [self getPath:endpoint
        parameters:nil
@@ -86,10 +86,10 @@
  * GET /stream/0/users/[user_id]/cover
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-cover-image
  */
-- (void)getCoverImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
+- (void)getCoverImageForUser:(NSString*)usernameOrId withCompletionHandler:(UIImageCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/cover", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/cover", usernameOrId];
     
     [self getPath:endpoint
        parameters:nil
@@ -112,10 +112,10 @@
  * POST /stream/0/users/[user_id]/follow
  * http://developers.app.net/docs/resources/user/following/#follow-a-user
  */
-- (void)followUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)followUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrId];
     
     [self postPath:endpoint
         parameters:nil
@@ -128,10 +128,10 @@
  * DELETE /stream/0/users/[user_id]/follow
  * http://developers.app.net/docs/resources/user/following/#unfollow-a-user
  */
-- (void)unfollowUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)unfollowUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/follow", usernameOrId];
     
     [self deletePath:endpoint
           parameters:nil
@@ -144,10 +144,10 @@
  * POST /stream/0/users/[user_id]/mute
  * http://developers.app.net/docs/resources/user/muting/#mute-a-user
  */
-- (void)muteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)muteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
     
     [self postPath:endpoint
         parameters:nil
@@ -160,10 +160,10 @@
  * DELETE /stream/0/users/[user_id]/mute
  * http://developers.app.net/docs/resources/user/muting/#unmute-a-user
  */
-- (void)unmuteUser:(NSString*)usernameOrID withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)unmuteUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    NSAssert(usernameOrID, @"You must specify a username or ID.");
-    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrID];
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mute", usernameOrId];
     
     [self deletePath:endpoint
           parameters:nil

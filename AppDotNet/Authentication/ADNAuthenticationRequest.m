@@ -19,7 +19,7 @@
 {
     NSString *urlString = [NSString stringWithFormat:@"https://%@%@", AUTH_HOST, AUTH_ENDPOINT];
     
-    urlString = [urlString stringByAppendingFormat:@"?client_id=%@", self.clientID];
+    urlString = [urlString stringByAppendingFormat:@"?client_id=%@", self.clientId];
     urlString = [urlString stringByAppendingFormat:@"&response_type=%@", [self.class stringForResponseType:self.responseType]];
     if (self.redirectURI)
         urlString = [urlString stringByAppendingFormat:@"&redirect_uri=%@", self.redirectURI];
