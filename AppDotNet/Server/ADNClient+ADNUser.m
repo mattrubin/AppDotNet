@@ -71,7 +71,14 @@
  */
 - (void)searchUsersWithQuery:(NSString *)searchString withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(searchString, @"You must specify a search string.");
+    
+    NSString *endpoint = [@"users/search?q=" stringByAppendingString:searchString];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 
@@ -183,7 +190,14 @@
  */
 - (void)getFollowedUsersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/following", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -193,7 +207,14 @@
  */
 - (void)getFollowersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/followers", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -203,7 +224,14 @@
  */
 - (void)getFollowedUserIdsForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/following/ids", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -213,7 +241,14 @@
  */
 - (void)getFollowerIdsForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/followers/ids", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 
@@ -259,7 +294,14 @@
  */
 - (void)getMutedUsersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/muted", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 
@@ -273,7 +315,14 @@
  */
 - (void)getUsersWhoRepostedPost:(NSString *)postId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(postId, @"You must specify a post ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"posts/%@/reposters", postId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -283,7 +332,14 @@
  */
 - (void)getUsersWhoStarredPost:(NSString *)postId withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(postId, @"You must specify a post ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"posts/%@/stars", postId];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 @end

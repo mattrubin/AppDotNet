@@ -74,8 +74,14 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 - (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForHandler:(GenericCompletionHandler)handler
 {
     return ^(AFHTTPRequestOperation *operation, id responseObject) {
+        id handledObject = responseObject;
+        
+        if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
+            handledObject = ((ADNResponseEnvelope *)responseObject).data;
+        }
+
         if (handler) {
-            handler(responseObject, nil);
+            handler(handledObject, nil);
         }
     };
 }
