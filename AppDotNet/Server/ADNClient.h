@@ -9,9 +9,6 @@
 #import "AFHTTPClient.h"
 #import "ADNHandlers.h"
 
-#import "ADNUser.h"
-#import "ADNChannel.h"
-
 
 @interface ADNClient : AFHTTPClient
 

@@ -52,7 +52,7 @@
  */
 - (void)updateUser:(ADNUser *)user withCompletionHandler:(ADNUserCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 /*
@@ -78,7 +78,7 @@
  */
 - (void)updateAvatarImage:(id)image withCompletionHandler:(GenericCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 /*
@@ -104,7 +104,7 @@
  */
 - (void)updateCoverImage:(id)image withCompletionHandler:(GenericCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 /*
@@ -169,6 +169,99 @@
           parameters:nil
              success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
              failure:[self failureBlockForHandler:handler]];
+}
+
+
+
+
+/*
+ * Retrieve multiple Users
+ * GET /stream/0/users
+ * http://developers.app.net/docs/resources/user/lookup/#retrieve-multiple-users
+ */
+- (void)getUsers:(NSArray *)usernamesOrIds withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Search for Users
+ * GET /stream/0/users/search
+ * http://developers.app.net/docs/resources/user/lookup/#search-for-users
+ */
+- (void)searchUsersWithQuery:(NSString *)searchString withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve Users a User is following
+ * GET /stream/0/users/[user_id]/following
+ * http://developers.app.net/docs/resources/user/following/#list-users-a-user-is-following
+ */
+- (void)getFollowedUsersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve Users following a User
+ * GET /stream/0/users/[user_id]/followers
+ * http://developers.app.net/docs/resources/user/following/#list-users-following-a-user
+ */
+- (void)getFollowersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve IDs of Users a User is following
+ * GET /stream/0/users/[user_id]/following/ids
+ * http://developers.app.net/docs/resources/user/following/#list-user-ids-a-user-is-following
+ */
+- (void)getFollowedUserIdsForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve IDs of Users following a User
+ * GET /stream/0/users/[user_id]/followers/ids
+ * http://developers.app.net/docs/resources/user/following/#list-user-ids-following-a-user
+ */
+- (void)getFollowerIdsForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve muted Users
+ * GET /stream/0/users/[user_id]/muted
+ * http://developers.app.net/docs/resources/user/muting/#list-muted-users
+ */
+- (void)getMutedUsersForUser:(NSString *)usernameOrId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve Users who reposted a Post
+ * GET /stream/0/posts/[post_id]/reposters
+ * http://developers.app.net/docs/resources/user/post-interactions/#list-users-who-have-reposted-a-post
+ */
+- (void)getUsersWhoRepostedPost:(NSString *)postId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
+}
+
+/*
+ * Retrieve Users who starred a Post
+ * GET /stream/0/posts/[post_id]/stars
+ * http://developers.app.net/docs/resources/user/post-interactions/#list-users-who-have-starred-a-post
+ */
+- (void)getUsersWhoStarredPost:(NSString *)postId withCompletionHandler:(NSArrayCompletionHandler)handler
+{
+#warning API call not implemented
 }
 
 @end
