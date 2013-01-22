@@ -68,11 +68,6 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     }
 }
 
-- (void)getEndpoint:(NSString *)path parameters:(NSDictionary *)parameters handler:(GenericCompletionHandler)handler
-{
-    [self getPath:path parameters:nil success:[self successBlockForHandler:handler] failure:[self failureBlockForHandler:handler]];
-}
-
 
 #pragma mark Default Blocks
 
@@ -174,9 +169,12 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 - (void)getAvatarImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
 {
     NSAssert(usernameOrID, @"You must specify a username or ID.");
-    
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/avatar", usernameOrID];
-    [self getEndpoint:endpoint parameters:nil handler:handler];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -197,9 +195,12 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 - (void)getCoverImageForUser:(NSString*)usernameOrID withCompletionHandler:(UIImageCompletionHandler)handler
 {
     NSAssert(usernameOrID, @"You must specify a username or ID.");
-    
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/cover", usernameOrID];
-    [self getEndpoint:endpoint parameters:nil handler:handler];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
