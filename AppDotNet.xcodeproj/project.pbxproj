@@ -66,6 +66,7 @@
 		8C85405A16ADF63300BA384D /* Post.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C85405916ADF63300BA384D /* Post.json */; };
 		8C85408516AE1B1000BA384D /* ADNClient+ADNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85408416AE1B1000BA384D /* ADNClient+ADNUser.m */; };
 		8C85408616AE1B5800BA384D /* ADNClient+ADNUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85408316AE1B1000BA384D /* ADNClient+ADNUser.h */; };
+		8C85408916AE2D9F00BA384D /* ADNUserAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85408816AE2D9F00BA384D /* ADNUserAPITests.m */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */; };
@@ -253,6 +254,8 @@
 		8C85405916ADF63300BA384D /* Post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Post.json; sourceTree = "<group>"; };
 		8C85408316AE1B1000BA384D /* ADNClient+ADNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADNClient+ADNUser.h"; sourceTree = "<group>"; };
 		8C85408416AE1B1000BA384D /* ADNClient+ADNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADNClient+ADNUser.m"; sourceTree = "<group>"; };
+		8C85408716AE2D9F00BA384D /* ADNUserAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNUserAPITests.h; sourceTree = "<group>"; };
+		8C85408816AE2D9F00BA384D /* ADNUserAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNUserAPITests.m; sourceTree = "<group>"; };
 		8CC18C8A168B00160033B8C5 /* ADNKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNKeys.h; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -545,6 +548,8 @@
 				8C85405716ADF16A00BA384D /* ADNModelTests.m */,
 				8C7B24B0167ECEF600C38F51 /* Mock Data */,
 				8CED1A87167C5FC90071D908 /* Supporting Files */,
+				8C85408716AE2D9F00BA384D /* ADNUserAPITests.h */,
+				8C85408816AE2D9F00BA384D /* ADNUserAPITests.m */,
 			);
 			path = AppDotNetTests;
 			sourceTree = "<group>";
@@ -858,6 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C85405816ADF16A00BA384D /* ADNModelTests.m in Sources */,
+				8C85408916AE2D9F00BA384D /* ADNUserAPITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
