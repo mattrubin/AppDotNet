@@ -64,6 +64,8 @@
 		8C85405516ADEE1100BA384D /* ADNText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85405216ADED8300BA384D /* ADNText.h */; };
 		8C85405816ADF16A00BA384D /* ADNModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85405716ADF16A00BA384D /* ADNModelTests.m */; };
 		8C85405A16ADF63300BA384D /* Post.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C85405916ADF63300BA384D /* Post.json */; };
+		8C85408516AE1B1000BA384D /* ADNClient+ADNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85408416AE1B1000BA384D /* ADNClient+ADNUser.m */; };
+		8C85408616AE1B5800BA384D /* ADNClient+ADNUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85408316AE1B1000BA384D /* ADNClient+ADNUser.h */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */; };
@@ -153,6 +155,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8C85408616AE1B5800BA384D /* ADNClient+ADNUser.h in CopyFiles */,
 				8C85405516ADEE1100BA384D /* ADNText.h in CopyFiles */,
 				8C85403916AD4DA700BA384D /* ADNModel.h in CopyFiles */,
 				8C5EE1B316AB597300195701 /* ADNMetadata.h in CopyFiles */,
@@ -248,6 +251,8 @@
 		8C85405616ADF16900BA384D /* ADNModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNModelTests.h; sourceTree = "<group>"; };
 		8C85405716ADF16A00BA384D /* ADNModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNModelTests.m; sourceTree = "<group>"; };
 		8C85405916ADF63300BA384D /* Post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Post.json; sourceTree = "<group>"; };
+		8C85408316AE1B1000BA384D /* ADNClient+ADNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADNClient+ADNUser.h"; sourceTree = "<group>"; };
+		8C85408416AE1B1000BA384D /* ADNClient+ADNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADNClient+ADNUser.m"; sourceTree = "<group>"; };
 		8CC18C8A168B00160033B8C5 /* ADNKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNKeys.h; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -587,6 +592,8 @@
 				8C7B24B4167ED44A00C38F51 /* ADNHelper.m */,
 				8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */,
 				8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */,
+				8C85408316AE1B1000BA384D /* ADNClient+ADNUser.h */,
+				8C85408416AE1B1000BA384D /* ADNClient+ADNUser.m */,
 				8C5EE19F16A935C400195701 /* ADNHandlers.h */,
 				8C85403516AC8B7500BA384D /* Operations */,
 				8C85402F16AC8B3A00BA384D /* Responses */,
@@ -842,6 +849,7 @@
 				8C5EE1B216AB576600195701 /* ADNMetadata.m in Sources */,
 				8C85403816AD4D2700BA384D /* ADNModel.m in Sources */,
 				8C85405416ADED8300BA384D /* ADNText.m in Sources */,
+				8C85408516AE1B1000BA384D /* ADNClient+ADNUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

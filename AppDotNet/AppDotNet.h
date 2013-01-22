@@ -7,6 +7,8 @@
 //
 
 #import <AppDotNet/ADNClient.h>
+#import <AppDotNet/ADNClient+ADNUser.h>
+
 #import <AppDotNet/ADNAuthenticationRequest.h>
 
 #import <AppDotNet/ADNUser.h>
