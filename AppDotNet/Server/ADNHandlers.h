@@ -8,7 +8,7 @@
 
 
 @class UIImage;
-@class ADNUser, ADNToken, ADNChannel, ADNMessage;
+@class ADNUser, ADNToken, ADNChannel, ADNMessage, ADNText;
 
 
 typedef void (^GenericCompletionHandler)     (id            object,  NSError *error);
@@ -19,3 +19,4 @@ typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    NSError *er
 typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   NSError *error);
 typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, NSError *error);
 typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, NSError *error);
+typedef void (^ADNTextCompletionHandler)     (ADNText      *text,    NSError *error);

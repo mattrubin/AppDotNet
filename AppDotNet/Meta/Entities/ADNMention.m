@@ -20,6 +20,21 @@
             }];
 }
 
+// The Text Processor returns user IDs in mentions as numbers,
+// where every other API method returns them as strings.
+// This transformer deals with that inconsistency.
++ (NSValueTransformer *)userIdTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id object) {
+        if ([object isKindOfClass:[NSString class]]) {
+            return object;
+        }
+        return [NSString stringWithFormat:@"%@", object];
+    } reverseBlock:^id(NSString *userId) {
+        return userId;
+    }];
+}
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"[%@: #%@ @%@ (%u @ %u)]", self.class, self.userId, self.username, self.length, self.position];

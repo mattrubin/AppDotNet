@@ -11,4 +11,19 @@
 
 @implementation ADNClient (ADNText)
 
+/*
+ * Process text
+ * POST /stream/0/text/process
+ * http://developers.app.net/docs/resources/text-processor/#process-text
+ */
+- (void)processText:(NSString*)text withCompletionHandler:(ADNTextCompletionHandler)handler
+{
+    NSString *endpoint = @"text/process";
+    
+    [self postPath:endpoint
+        parameters:@{@"text":text}
+           success:[self successBlockForModelOfClass:[ADNText class] withHandler:handler]
+           failure:[self failureBlockForHandler:handler]];
+}
+
 @end

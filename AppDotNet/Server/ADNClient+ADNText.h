@@ -12,4 +12,6 @@
 
 @interface ADNClient (ADNText)
 
+- (void)processText:(NSString*)text withCompletionHandler:(ADNTextCompletionHandler)handler;
+
 @end
