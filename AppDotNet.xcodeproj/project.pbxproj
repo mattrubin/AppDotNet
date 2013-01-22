@@ -63,6 +63,7 @@
 		8C85405416ADED8300BA384D /* ADNText.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85405316ADED8300BA384D /* ADNText.m */; };
 		8C85405516ADEE1100BA384D /* ADNText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C85405216ADED8300BA384D /* ADNText.h */; };
 		8C85405816ADF16A00BA384D /* ADNModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85405716ADF16A00BA384D /* ADNModelTests.m */; };
+		8C85405A16ADF63300BA384D /* Post.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C85405916ADF63300BA384D /* Post.json */; };
 		8CED1A70167C5FC80071D908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A6F167C5FC80071D908 /* Foundation.framework */; };
 		8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; };
 		8CED1A7F167C5FC90071D908 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1A7E167C5FC90071D908 /* SenTestingKit.framework */; };
@@ -246,6 +247,7 @@
 		8C85405316ADED8300BA384D /* ADNText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNText.m; sourceTree = "<group>"; };
 		8C85405616ADF16900BA384D /* ADNModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNModelTests.h; sourceTree = "<group>"; };
 		8C85405716ADF16A00BA384D /* ADNModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNModelTests.m; sourceTree = "<group>"; };
+		8C85405916ADF63300BA384D /* Post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Post.json; sourceTree = "<group>"; };
 		8CC18C8A168B00160033B8C5 /* ADNKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNKeys.h; sourceTree = "<group>"; };
 		8CED1A6C167C5FC80071D908 /* libAppDotNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppDotNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED1A6F167C5FC80071D908 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -393,6 +395,7 @@
 				8C7B24B1167ECF8300C38F51 /* User.json */,
 				8C1A3E0C1682D87100261C9B /* Channel.json */,
 				8CFB9D52168820ED0075FA7A /* Message.json */,
+				8C85405916ADF63300BA384D /* Post.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				8C7B24B2167ECF8300C38F51 /* User.json in Resources */,
 				8C1A3E0D1682D87100261C9B /* Channel.json in Resources */,
 				8CFB9D53168820ED0075FA7A /* Message.json in Resources */,
+				8C85405A16ADF63300BA384D /* Post.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -104,5 +104,10 @@
     [self roundTripEqualityTestforModelClass:[ADNUser class] withJSONNamed:USER_TEST_FILE];
 }
 
+- (void)testPost
+{
+    [self roundTripEqualityTestforModelClass:[ADNPost class] withJSONNamed:@"Post"];
+}
+
 
 @end
