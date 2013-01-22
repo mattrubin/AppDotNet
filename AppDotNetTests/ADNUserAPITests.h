@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 Matt Rubin. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "APITests.h"
 
-@interface ADNUserAPITests : SenTestCase
-
-@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@interface ADNUserAPITests : APITests
 
 @end
