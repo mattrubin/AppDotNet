@@ -104,6 +104,34 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     };
 }
 
+- (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForArrayofModelsOfClass:(Class)modelClass withHandler:(GenericCompletionHandler)handler
+{
+    return ^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *externalArray = nil;
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            externalArray = responseObject;
+        } else if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
+            externalArray = ((ADNResponseEnvelope *)responseObject).data;
+        }
+        
+        NSMutableArray *modelArray = nil;
+        
+        if (externalArray && [modelClass respondsToSelector:@selector(modelWithExternalRepresentation:)]) {
+            modelArray = [NSMutableArray arrayWithCapacity:externalArray.count];
+            for (id externalObject in externalArray) {
+                [modelArray addObject:[modelClass modelWithExternalRepresentation:externalObject]];
+            }
+        } else {
+            modelArray = [externalArray mutableCopy];
+        }
+        
+        if (handler) {
+            handler([modelArray copy], nil);
+        }
+    };
+}
+
+
 - (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlockForHandler:(GenericCompletionHandler)handler
 {
     return ^(AFHTTPRequestOperation *operation, NSError *error) {

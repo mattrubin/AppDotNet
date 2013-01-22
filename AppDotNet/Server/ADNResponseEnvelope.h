@@ -16,6 +16,6 @@ extern NSString * const ADNResponseEnvelopeKey;
 @interface ADNResponseEnvelope : ADNModel
 
 @property (nonatomic, readonly, strong) ADNMetadata *meta;
-@property (nonatomic, readonly, strong) NSDictionary *data;
+@property (nonatomic, readonly, strong) id data;
 
 @end

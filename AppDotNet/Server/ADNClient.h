@@ -21,6 +21,7 @@
 // Default blocks
 - (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForHandler:(GenericCompletionHandler)handler;
 - (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForModelOfClass:(Class)modelClass withHandler:(GenericCompletionHandler)handler;
+- (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForArrayofModelsOfClass:(Class)modelClass withHandler:(GenericCompletionHandler)handler;
 - (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlockForHandler:(GenericCompletionHandler)handler;
 
 @end

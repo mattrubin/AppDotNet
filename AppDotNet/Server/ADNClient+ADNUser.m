@@ -53,7 +53,15 @@
  */
 - (void)getUsers:(NSArray *)usernamesOrIds withCompletionHandler:(NSArrayCompletionHandler)handler
 {
-#warning API call not implemented
+    NSAssert(usernamesOrIds, @"You must specify an array of @usernames and/or IDs.");
+    NSParameterAssert([usernamesOrIds isKindOfClass:[NSArray class]]);
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users?ids=%@", [usernamesOrIds componentsJoinedByString:@","]];
+    
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNUser class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /*
