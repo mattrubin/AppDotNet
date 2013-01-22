@@ -26,9 +26,7 @@
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"postId": KEY_ID,
             @"createdAt":KEY_CREATED_AT,
-            @"sourceName": @"source.name",
-            @"sourceLink": @"source.link",
-            @"replyTo": KEY_REPLY_TO,
+            @"replyToId": KEY_REPLY_TO,
             @"canonicalURL": KEY_CANONICAL_URL,
             @"threadId": KEY_THREAD_ID,
             @"numReplies": KEY_NUM_REPLIES,

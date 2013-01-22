@@ -8,6 +8,7 @@
 
 #import "ADNText.h"
 #import "ADNUser.h"
+#import "ADNSource.h"
 #import "ADNAnnotationCollection.h"
 
 
@@ -22,10 +23,8 @@
 @property (nonatomic, copy) NSDate  *createdAt;
 
 
-// Description of the API consumer that created this post.
-@property (nonatomic, copy) NSString *sourceName;
-// Link provided by the API consumer that created this post.
-@property (nonatomic, copy) NSString *sourceLink;
+// The API consumer that created this post.
+@property (nonatomic, strong) ADNSource *source;
 
 
 // The id of the post this post is replying to (or null if not a reply).
