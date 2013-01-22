@@ -70,16 +70,30 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 
 - (void)getEndpoint:(NSString *)path parameters:(NSDictionary *)parameters handler:(GenericCompletionHandler)handler
 {
-    [self getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getPath:path parameters:nil success:[self successBlockForHandler:handler] failure:[self failureBlockForHandler:handler]];
+}
+
+
+#pragma mark Default Blocks
+
+- (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlockForHandler:(GenericCompletionHandler)handler
+{
+    return ^(AFHTTPRequestOperation *operation, id responseObject) {
         if (handler) {
             handler(responseObject, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    };
+}
+
+- (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlockForHandler:(GenericCompletionHandler)handler
+{
+    return ^(AFHTTPRequestOperation *operation, NSError *error) {
         if (handler) {
             handler(nil, error);
         }
-    }];
+    };
 }
+
 
 
 #pragma mark - Users
@@ -98,11 +112,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (handler) {
             handler(user, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (handler) {
-            handler(nil, error);
-        }
-    }];
+    } failure:[self failureBlockForHandler:handler]];
 }
 
 - (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler
@@ -197,11 +207,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (handler) {
             handler(user, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (handler) {
-            handler(nil, error);
-        }
-    }];
+    } failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -220,11 +226,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (handler) {
             handler(user, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (handler) {
-            handler(nil, error);
-        }
-    }];
+    } failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -243,11 +245,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (handler) {
             handler(user, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (handler) {
-            handler(nil, error);
-        }
-    }];
+    } failure:[self failureBlockForHandler:handler]];
 }
 
 /*
@@ -266,11 +264,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (handler) {
             handler(user, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (handler) {
-            handler(nil, error);
-        }
-    }];
+    } failure:[self failureBlockForHandler:handler]];
 }
 
 
