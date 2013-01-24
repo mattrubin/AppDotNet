@@ -28,11 +28,48 @@
     ADNModel *model = [modelClass modelWithExternalRepresentation:testDictionary];
     NSDictionary *modelDictionary = model.externalRepresentation;
     
-    if (![self recursivelyCompareDictionary:modelDictionary toDictionary:testDictionary withBaseKeyPath:nil]) {
-        STFail(@"Model dictionary validation failed.");
+    if (![self recursivelyCompareObject:modelDictionary toObject:testDictionary withKeyPath:nil]) {
+        //STFail(@"Model dictionary validation failed.");
         //NSLog(@"A:\n%@", testDictionary);
         //NSLog(@"B:\n%@", modelDictionary);
         return NO;
+    }
+    
+    return YES;
+}
+
+
+#pragma mark - Recursive comparisons
+
+- (BOOL)recursivelyCompareObject:(id)A toObject:(id)B withKeyPath:(NSString *)keyPath
+{
+    // Don't fail if a missing key ends up as a null object
+    if ((!A && [B isKindOfClass:[NSNull class]]) ||
+        (!B && [A isKindOfClass:[NSNull class]])) {
+        NSLog(@"WARNING: Missing object matched with null object for key path %@", keyPath);
+        return YES;
+    }
+    
+    if (!A) {
+        STFail(@"A has no object for key path %@", keyPath);
+        return NO;
+    }
+    
+    if (!B) {
+        STFail(@"B has no object for key path %@", keyPath);
+        return NO;
+    }
+    
+    if ([A isKindOfClass:[NSDictionary class]] && [B isKindOfClass:[NSDictionary class]]) {
+        if (![self recursivelyCompareDictionary:A toDictionary:B withBaseKeyPath:keyPath]) {
+            //STFail(@"A and B have unequal dictionaries for key path %@", keyPath);
+            return NO;
+        }
+    } else {
+        if (![A isEqual:B]) {
+            STFail(@"A and B have unequal objects for key path %@", keyPath);
+            return NO;
+        }
     }
     
     return YES;
@@ -53,41 +90,16 @@
         id objA = [A objectForKey:key];
         id objB = [B objectForKey:key];
         
-        // Don't fail if a missing key ends up as a null object
-        if ((!objA && [objB isKindOfClass:[NSNull class]]) ||
-            (!objB && [objA isKindOfClass:[NSNull class]])) {
-            NSLog(@"WARNING: Missing key mathced with null object for key path %@", keyPath);
-            continue;
-        }
-        
-        if (!objA) {
-            STFail(@"A has no object for key path %@", keyPath);
+        if (![self recursivelyCompareObject:objA toObject:objB withKeyPath:keyPath]) {
             equal = NO;
-            continue;
-        }
-        
-        if (!objB) {
-            STFail(@"B has no object for key path %@", keyPath);
-            equal = NO;
-            continue;
-        }
-        
-        if ([objA isKindOfClass:[NSDictionary class]] && [objB isKindOfClass:[NSDictionary class]]) {
-            if (![self recursivelyCompareDictionary:objA toDictionary:objB withBaseKeyPath:keyPath]) {
-                STFail(@"A and B have unequal dictionaries for key path %@", keyPath);
-                equal = NO;
-                continue;
-            }
-        } else {
-            if (![objA isEqual:objB]) {
-                STFail(@"A and B have unequal objects for key path %@", keyPath);
-                equal = NO;
-                continue;
-            }
         }
     }
+    
     return equal;
 }
+
+
+#pragma mark Tests
 
 - (void)testChannel
 {
