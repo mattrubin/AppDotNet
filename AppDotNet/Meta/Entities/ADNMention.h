@@ -9,15 +9,22 @@
 #import "ADNModel.h"
 
 
+/**
+ * Bring another user’s attention to your post. A mention starts with `@`.
+ */
 @interface ADNMention : ADNModel
 
-// The username being mentioned (doesn't include '@').
+/// The username being mentioned (doesn't include `@`).
 @property (nonatomic, copy) NSString *username;
-// The user id of the mentioned user.
+
+/// The user `id` of the mentioned user.
 @property (nonatomic, copy) NSString *userId;
-// The 0 based index where this entity begins text (include @).
+
+/// The 0-based index where this entity begins in `text` (include `@`).
 @property (nonatomic, assign) NSUInteger position;
-// The length of the substring in text that represents this mention. Since @ is included, len will be the length of the name + 1.
+
+/// The length of the substring in `text` that represents this mention.
+/// Since `@` is included, `length` will be the length of the `username` + 1.
 @property (nonatomic, assign) NSUInteger length;
 
 @end
