@@ -9,13 +9,19 @@
 #import "ADNModel.h"
 
 
+/**
+ * Tag a post about a specific subject. A hashtag starts with `#`.
+ */
 @interface ADNHashtag : ADNModel
 
-// The text of the hashtag (not including #).
+/// The text of the hashtag (not including `#`).
 @property (nonatomic, copy) NSString *name;
-// The 0 based index where this entity begins text (include #).
+
+/// The 0-based index where this entity begins in `text` (include `#`).
 @property (nonatomic, assign) NSUInteger position;
-// The length of the substring in text that represents this hashtag. Since # is included, len will be the length of the name + 1.
+
+/// The length of the substring in `text` that represents this hashtag.
+/// Since `#` is included, `length` will be the length of the `name` + 1.
 @property (nonatomic, assign) NSUInteger length;
 
 @end
