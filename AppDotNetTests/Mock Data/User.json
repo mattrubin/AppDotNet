@@ -44,6 +44,7 @@
                 "links": [
                     {
                         "len": 7,
+                        "amended_len": 17,
                         "pos": 12,
                         "text": "App.net",
                         "url": "http://App.net"

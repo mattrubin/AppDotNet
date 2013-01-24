@@ -30,7 +30,7 @@
 /// protection that was inserted by App.net. This can be used to customize the display of the
 /// anti-phishing information we provide. If this link has no anti-phishing protection (because the
 /// domain of the `url` matches the `text`), then this field will be omitted.
-#warning @property (nonatomic, assign) NSUInteger amendedLength;
+@property (nonatomic, assign) NSUInteger amendedLength;
 
 
 @end

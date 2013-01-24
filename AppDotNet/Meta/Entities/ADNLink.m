@@ -14,6 +14,7 @@
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"length": KEY_LEN,
+            @"amendedLength": @"amended_len",
             @"position": KEY_POS,
             }];
 }

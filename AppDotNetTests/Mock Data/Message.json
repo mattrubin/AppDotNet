@@ -28,13 +28,15 @@
                     "len": 7,
                     "pos": 12,
                     "text": "App.net",
-                    "url": "http://App.net"
+                    "url": "http://App.net",
+                    "amended_len": 17
                 },
                 {
                     "len": 18,
                     "pos": 28,
                     "text": "daltoncaldwell.com",
-                    "url": "http://daltoncaldwell.com"
+                    "url": "http://daltoncaldwell.com",
+                    "amended_len": 28
                 }
             ],
             "mentions": [
