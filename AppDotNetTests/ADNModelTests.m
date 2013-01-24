@@ -65,6 +65,11 @@
             //STFail(@"A and B have unequal dictionaries for key path %@", keyPath);
             return NO;
         }
+    } else if ([A isKindOfClass:[NSArray class]] && [B isKindOfClass:[NSArray class]]) {
+        if (![self recursivelyCompareArray:A toArray:B withBaseKeyPath:keyPath]) {
+            //STFail(@"A and B have unequal arrays for key path %@", keyPath);
+            return NO;
+        }
     } else {
         if (![A isEqual:B]) {
             STFail(@"A and B have unequal objects for key path %@", keyPath);
@@ -97,6 +102,28 @@
     
     return equal;
 }
+
+- (BOOL)recursivelyCompareArray:(NSArray *)A toArray:(NSArray *)B withBaseKeyPath:(NSString *)baseKeyPath
+{
+    // Find a size large enough for both dictionaries
+    NSUInteger count = MAX(A.count, B.count);
+    
+    BOOL equal = YES;
+    
+    for (NSUInteger i = 0; i < count; i++) {
+        NSString *keyPath = baseKeyPath?[baseKeyPath stringByAppendingFormat:@"[%u]", i]:[NSString stringWithFormat:@"[%u]", i];
+        
+        id objA = A[i];
+        id objB = B[i];
+        
+        if (![self recursivelyCompareObject:objA toObject:objB withKeyPath:keyPath]) {
+            equal = NO;
+        }
+    }
+    
+    return equal;
+}
+
 
 
 #pragma mark Tests
