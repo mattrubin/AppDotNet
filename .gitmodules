@@ -1,6 +1,3 @@
-[submodule "External/ASIHTTPRequest"]
-	path = External/ASIHTTPRequest
-	url = git://github.com/pokeb/asi-http-request.git
 [submodule "External/AFNetworking"]
 	path = External/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
