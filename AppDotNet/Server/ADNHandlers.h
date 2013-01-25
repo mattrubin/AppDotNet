@@ -8,15 +8,15 @@
 
 
 @class UIImage;
-@class ADNUser, ADNToken, ADNChannel, ADNMessage, ADNText;
+@class ADNUser, ADNToken, ADNChannel, ADNMessage, ADNText, ADNMetadata;
 
 
-typedef void (^GenericCompletionHandler)     (id            object,  NSError *error);
-typedef void (^NSArrayCompletionHandler)     (NSArray      *objects, NSError *error);
-typedef void (^UIImageCompletionHandler)     (UIImage      *image,   NSError *error);
-typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, NSError *error);
-typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    NSError *error);
-typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   NSError *error);
-typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, NSError *error);
-typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, NSError *error);
-typedef void (^ADNTextCompletionHandler)     (ADNText      *text,    NSError *error);
+typedef void (^GenericCompletionHandler)     (id            object,  ADNMetadata *meta, NSError *error);
+typedef void (^NSArrayCompletionHandler)     (NSArray      *objects, ADNMetadata *meta, NSError *error);
+typedef void (^UIImageCompletionHandler)     (UIImage      *image,   ADNMetadata *meta, NSError *error);
+typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, ADNMetadata *meta, NSError *error);
+typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    ADNMetadata *meta, NSError *error);
+typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   ADNMetadata *meta, NSError *error);
+typedef void (^ADNChannelCompletionHandler)  (ADNChannel   *channel, ADNMetadata *meta, NSError *error);
+typedef void (^ADNMessageCompletionHandler)  (ADNMessage   *message, ADNMetadata *meta, NSError *error);
+typedef void (^ADNTextCompletionHandler)     (ADNText      *text,    ADNMetadata *meta, NSError *error);

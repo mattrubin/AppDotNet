@@ -75,13 +75,15 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 {
     return ^(AFHTTPRequestOperation *operation, id responseObject) {
         id handledObject = responseObject;
+        ADNMetadata *metaObject = nil;
         
         if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
             handledObject = ((ADNResponseEnvelope *)responseObject).data;
+            metaObject = ((ADNResponseEnvelope *)responseObject).meta;
         }
 
         if (handler) {
-            handler(handledObject, nil);
+            handler(handledObject, metaObject, nil);
         }
     };
 }
@@ -91,12 +93,14 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     return ^(AFHTTPRequestOperation *operation, id responseObject) {
         // By default, just pass the response object through
         id handledObject = responseObject;
+        ADNMetadata *metaObject = nil;
         
         NSDictionary *externalRepresentation = nil;
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             externalRepresentation = responseObject;
         } else if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
             externalRepresentation = ((ADNResponseEnvelope *)responseObject).data;
+            metaObject = ((ADNResponseEnvelope *)responseObject).meta;
         }
         
         if (externalRepresentation &&
@@ -105,7 +109,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         }
         
         if (handler) {
-            handler(handledObject, nil);
+            handler(handledObject, metaObject, nil);
         }
     };
 }
@@ -114,10 +118,13 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 {
     return ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *externalArray = nil;
+        ADNMetadata *metaObject = nil;
+
         if ([responseObject isKindOfClass:[NSArray class]]) {
             externalArray = responseObject;
         } else if ([responseObject isKindOfClass:[ADNResponseEnvelope class]]) {
             externalArray = ((ADNResponseEnvelope *)responseObject).data;
+            metaObject = ((ADNResponseEnvelope *)responseObject).meta;
         }
         
         NSMutableArray *modelArray = nil;
@@ -132,7 +139,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         }
         
         if (handler) {
-            handler([modelArray copy], nil);
+            handler([modelArray copy], metaObject, nil);
         }
     };
 }
@@ -142,7 +149,14 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
 {
     return ^(AFHTTPRequestOperation *operation, NSError *error) {
         if (handler) {
-            handler(nil, error);
+            ADNMetadata *metaObject = nil;
+            
+            ADNResponseEnvelope *envelope = [error.userInfo objectForKey:ADNResponseEnvelopeKey];
+            if ([envelope isKindOfClass:[ADNResponseEnvelope class]]) {
+                metaObject = envelope.meta;
+            }
+
+            handler(nil, metaObject, error);
         }
     };
 }
