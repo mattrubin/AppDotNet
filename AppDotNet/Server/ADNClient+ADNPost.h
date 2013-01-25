@@ -12,6 +12,6 @@
 
 @interface ADNClient (ADNPost)
 
-- (void)getGlobalStreamWithCompletionHandler:(NSArrayCompletionHandler)handler;
+- (void)getGlobalStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
 
 @end

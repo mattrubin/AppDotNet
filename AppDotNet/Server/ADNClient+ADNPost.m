@@ -16,12 +16,12 @@
  * GET /stream/0/posts/stream/global
  * http://developers.app.net/docs/resources/post/streams/#retrieve-the-global-stream
  */
-- (void)getGlobalStreamWithCompletionHandler:(NSArrayCompletionHandler)handler
+- (void)getGlobalStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
 {
     NSString *endpoint = @"posts/stream/global";
     
     [self getPath:endpoint
-       parameters:nil
+       parameters:parameters
           success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
           failure:[self failureBlockForHandler:handler]];
 }
