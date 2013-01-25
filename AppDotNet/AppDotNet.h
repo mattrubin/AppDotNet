@@ -19,6 +19,7 @@
 #import <AppDotNet/ADNClient+ADNToken.h>
 
 #import <AppDotNet/ADNAuthenticationRequest.h>
+#import <AppDotNet/ADNMetadata.h>
 
 #import <AppDotNet/ADNUser.h>
 #import <AppDotNet/ADNPost.h>

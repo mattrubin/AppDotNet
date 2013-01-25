@@ -24,8 +24,8 @@ extern NSString * const ADNErrorRedirectURIRequired;
 @property (nonatomic, readonly, copy) NSString *errorSlug;
 @property (nonatomic, readonly, copy) NSString *errorMessage;
 
-@property (nonatomic, readonly, assign) NSUInteger maxId;
-@property (nonatomic, readonly, assign) NSUInteger minId;
+@property (nonatomic, readonly, copy) NSString *maxId;
+@property (nonatomic, readonly, copy) NSString *minId;
 @property (nonatomic, readonly, assign) BOOL more;
 
 @end
