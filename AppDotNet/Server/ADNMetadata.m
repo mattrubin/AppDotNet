@@ -39,4 +39,41 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
             }];
 }
 
+
+#pragma mark Transformers
+
++ (NSValueTransformer *)maxIdTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id rawId) {
+        if ([rawId isKindOfClass:[NSString class]]) {
+            return [NSString stringWithString:rawId];
+        }
+        if ([rawId isKindOfClass:[NSNumber class]]) {
+            NSNumber *numberId = rawId;
+            return [numberId stringValue];
+        } else {
+            return [NSString stringWithFormat:@"%@", rawId];
+        }
+    } reverseBlock:^id(NSString *stringId) {
+        return stringId;
+    }];
+}
+
++ (NSValueTransformer *)minIdTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id rawId) {
+        if ([rawId isKindOfClass:[NSString class]]) {
+            return [NSString stringWithString:rawId];
+        }
+        if ([rawId isKindOfClass:[NSNumber class]]) {
+            NSNumber *numberId = rawId;
+            return [numberId stringValue];
+        } else {
+            return [NSString stringWithFormat:@"%@", rawId];
+        }
+    } reverseBlock:^id(NSString *stringId) {
+        return stringId;
+    }];
+}
+
 @end
