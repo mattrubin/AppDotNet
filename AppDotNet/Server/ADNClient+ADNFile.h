@@ -9,6 +9,14 @@
 #import "ADNClient.h"
 #import "ADNFile.h"
 
+
+extern NSString * const ADNFileParameterFileTypes;
+extern NSString * const ADNFileParameterIncludeIncomplete;
+extern NSString * const ADNFileParameterIncludeAnnotations;
+extern NSString * const ADNFileParameterIncludeFileAnnotations;
+extern NSString * const ADNFileParameterIncludeUserAnnotations;
+
+
 @interface ADNClient (ADNFile)
 
 // Create a File

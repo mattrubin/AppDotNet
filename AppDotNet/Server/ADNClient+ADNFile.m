@@ -8,6 +8,14 @@
 
 #import "ADNClient+ADNFile.h"
 
+
+NSString * const ADNFileParameterFileTypes              = @"file_types";
+NSString * const ADNFileParameterIncludeIncomplete      = @"include_incomplete";
+NSString * const ADNFileParameterIncludeAnnotations     = @"include_annotations";
+NSString * const ADNFileParameterIncludeFileAnnotations = @"include_file_annotations";
+NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotations";
+
+
 @implementation ADNClient (ADNFile)
 
 /**
