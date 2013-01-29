@@ -65,7 +65,12 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)getMyFilesWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
 {
+    NSString *endpoint = @"users/me/files";
     
+    [self getPath:endpoint
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNFile class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /**

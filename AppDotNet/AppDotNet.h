@@ -11,6 +11,7 @@
 #import <AppDotNet/ADNClient+ADNPost.h>
 #import <AppDotNet/ADNClient+ADNChannel.h>
 #import <AppDotNet/ADNClient+ADNMessage.h>
+#import <AppDotNet/ADNClient+ADNFile.h>
 #import <AppDotNet/ADNClient+ADNStream.h>
 #import <AppDotNet/ADNClient+ADNFilter.h>
 #import <AppDotNet/ADNClient+ADNInteraction.h>
