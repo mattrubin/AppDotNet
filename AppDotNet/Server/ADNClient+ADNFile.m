@@ -35,7 +35,12 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)getFile:(NSString *)fileId withCompletionHandler:(ADNFileCompletionHandler)handler
 {
+    NSString *endpoint = [@"files/" stringByAppendingString:fileId];
     
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForModelOfClass:[ADNFile class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /**
@@ -45,7 +50,12 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)getFiles:(NSArray *)fileIds withCompletionHandler:(NSArrayCompletionHandler)handler
 {
+    NSString *endpoint = [NSString stringWithFormat:@"files?ids=%@", [fileIds componentsJoinedByString:@","]];
     
+    [self getPath:endpoint
+       parameters:nil
+          success:[self successBlockForArrayofModelsOfClass:[ADNFile class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /**
@@ -55,7 +65,12 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)deleteFile:(NSString *)fileId withCompletionHandler:(ADNFileCompletionHandler)handler
 {
+    NSString *endpoint = [@"files/" stringByAppendingString:fileId];
     
+    [self deletePath:endpoint
+          parameters:nil
+             success:[self successBlockForModelOfClass:[ADNFile class] withHandler:handler]
+             failure:[self failureBlockForHandler:handler]];
 }
 
 /**
