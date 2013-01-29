@@ -17,7 +17,7 @@ NSString * const TestText = @"This is a test. #hashtag @dalton link.com";
 
 - (void)test_processText
 {
-    [[ADNClient sharedClient] processText:TestText withCompletionHandler:^(ADNText *text, NSError *error) {
+    [[ADNClient sharedClient] processText:TestText withCompletionHandler:^(ADNText *text, ADNMetadata *meta, NSError *error) {
         [self ensureObject:text isKindOfClass:[ADNText class]];
         STAssertEqualObjects(text.text, TestText, @"The text object should contain the processed text");
         

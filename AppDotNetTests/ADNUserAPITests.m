@@ -19,7 +19,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getUser
 {
-    [[ADNClient sharedClient] getUser:TestUserId withCompletionHandler:^(ADNUser *user, NSError *error)
+    [[ADNClient sharedClient] getUser:TestUserId withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:user isKindOfClass:[ADNUser class]];
         STAssertEqualObjects(user.userId, TestUserId, @"Incorrect user.");
@@ -35,7 +35,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getAvatarImageForUser
 {
-    [[ADNClient sharedClient] getAvatarImageForUser:TestUserName withCompletionHandler:^(UIImage *image, NSError *error)
+    [[ADNClient sharedClient] getAvatarImageForUser:TestUserName withCompletionHandler:^(UIImage *image, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:image isKindOfClass:[UIImage class]];
         
@@ -45,7 +45,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getCoverImageForUser
 {
-    [[ADNClient sharedClient] getCoverImageForUser:TestUserName withCompletionHandler:^(UIImage *image, NSError *error)
+    [[ADNClient sharedClient] getCoverImageForUser:TestUserName withCompletionHandler:^(UIImage *image, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:image isKindOfClass:[UIImage class]];
         
@@ -65,7 +65,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_followUser
 {
-    [[ADNClient sharedClient] followUser:TestUserName withCompletionHandler:^(ADNUser *user, NSError *error)
+    [[ADNClient sharedClient] followUser:TestUserName withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:user isKindOfClass:[ADNUser class]];
         STAssertTrue(user.youFollow, @"You should now be following the user.");
@@ -77,7 +77,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_unfollowUser
 {
-    [[ADNClient sharedClient] unfollowUser:TestUserName withCompletionHandler:^(ADNUser *user, NSError *error)
+    [[ADNClient sharedClient] unfollowUser:TestUserName withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:user isKindOfClass:[ADNUser class]];
         STAssertFalse(user.youFollow, @"You should not be following the user.");
@@ -88,7 +88,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_muteUser
 {
-    [[ADNClient sharedClient] muteUser:TestUserName withCompletionHandler:^(ADNUser *user, NSError *error)
+    [[ADNClient sharedClient] muteUser:TestUserName withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:user isKindOfClass:[ADNUser class]];
         STAssertTrue(user.youMuted, @"The user should now be muted.");
@@ -99,7 +99,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_unmuteUser
 {
-    [[ADNClient sharedClient] unmuteUser:TestUserName withCompletionHandler:^(ADNUser *user, NSError *error)
+    [[ADNClient sharedClient] unmuteUser:TestUserName withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:user isKindOfClass:[ADNUser class]];
         STAssertFalse(user.youMuted, @"The user should not be muted.");
@@ -112,7 +112,7 @@ NSString * const TestUserId = @"1";
 {
     NSArray *usernamesOrIds = @[@1,@2,@3];
     
-    [[ADNClient sharedClient] getUsers:usernamesOrIds withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getUsers:usernamesOrIds withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -124,7 +124,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_searchUsersWithQuery
 {
-    [[ADNClient sharedClient] searchUsersWithQuery:@"Matt" withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] searchUsersWithQuery:@"Matt" withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -135,7 +135,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getFollowedUsersForUser
 {
-    [[ADNClient sharedClient] getFollowedUsersForUser:TestUserId withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getFollowedUsersForUser:TestUserId withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -146,7 +146,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getFollowersForUser
 {
-    [[ADNClient sharedClient] getFollowersForUser:TestUserId withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getFollowersForUser:TestUserId withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -157,7 +157,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getFollowedUserIdsForUser
 {
-    [[ADNClient sharedClient] getFollowedUserIdsForUser:TestUserId withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getFollowedUserIdsForUser:TestUserId withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[NSString class]];
@@ -168,7 +168,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getFollowerIdsForUser
 {
-    [[ADNClient sharedClient] getFollowerIdsForUser:TestUserId withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getFollowerIdsForUser:TestUserId withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[NSString class]];
@@ -179,7 +179,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getMutedUsersForUser
 {
-    [[ADNClient sharedClient] getMutedUsersForUser:@"me" withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getMutedUsersForUser:@"me" withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -190,7 +190,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getUsersWhoRepostedPost
 {
-    [[ADNClient sharedClient] getUsersWhoRepostedPost:@"3" withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getUsersWhoRepostedPost:@"3" withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
@@ -201,7 +201,7 @@ NSString * const TestUserId = @"1";
 
 - (void)test_getUsersWhoStarredPost
 {
-    [[ADNClient sharedClient] getUsersWhoStarredPost:@"3" withCompletionHandler:^(NSArray *objects, NSError *error)
+    [[ADNClient sharedClient] getUsersWhoStarredPost:@"3" withCompletionHandler:^(NSArray *objects, ADNMetadata *meta, NSError *error)
     {
         [self ensureObject:objects isKindOfClass:[NSArray class]];
         [self ensureCollection:objects containsObjectsOfClass:[ADNUser class]];
