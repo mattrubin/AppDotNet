@@ -163,5 +163,10 @@ typedef enum {
     [self roundTripEqualityTestforModelClass:[ADNPost class] withJSONNamed:@"Post"];
 }
 
+- (void)testFile
+{
+    [self roundTripEqualityTestforModelClass:[ADNFile class] withJSONNamed:@"File"];
+}
+
 
 @end

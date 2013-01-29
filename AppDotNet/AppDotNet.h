@@ -25,6 +25,7 @@
 #import <AppDotNet/ADNPost.h>
 #import <AppDotNet/ADNChannel.h>
 #import <AppDotNet/ADNMessage.h>
+#import <AppDotNet/ADNFile.h>
 #import <AppDotNet/ADNStream.h>
 #import <AppDotNet/ADNFilter.h>
 #import <AppDotNet/ADNInteraction.h>
