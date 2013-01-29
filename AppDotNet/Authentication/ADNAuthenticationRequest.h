@@ -24,7 +24,8 @@ typedef enum {
     ADNScopePublicMessages  = (1 << 5), // send and receive public messages as this user
     ADNScopeMessages        = (1 << 6), // send and receive public and private messages as this user
     ADNScopeUpdateProfile   = (1 << 7), // update a user’s name, images, and other profile information
-    ADNScopeExport          = (1 << 8), // bulk export all of this user’s App.net data
+    ADNScopeFiles           = (1 << 8), // manage a user’s files. This is not needed for uploading files.
+    ADNScopeExport          = (1 << 9), // bulk export all of this user’s App.net data
 } ADNScopes;
 
 
