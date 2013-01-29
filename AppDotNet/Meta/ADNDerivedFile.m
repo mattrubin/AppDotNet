@@ -1,26 +1,24 @@
 //
-//  ADNFile.m
+//  ADNDerivedFile.m
 //  AppDotNet
 //
 //  Created by Me on 1/28/13.
 //  Copyright (c) 2013 Matt Rubin. All rights reserved.
 //
 
-#import "ADNFile.h"
+#import "ADNDerivedFile.h"
 #import "ADNHelper.h"
 
 
-@implementation ADNFile
+NSString * const ADNDerivedFileKeyImageThumb200s = @"image_thumb_200s";
+NSString * const ADNDerivedFileKeyImageThumb960r = @"image_thumb_960r";
 
-#pragma mark Keys
+
+@implementation ADNDerivedFile
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"derivedFiles": @"derived_files",
-            @"fileToken": @"file_token",
-            @"fileId": @"id",
             @"mimeType": @"mime_type",
-            @"totalSize": @"total_size",
             @"urlExpires": @"url_expires",
             }];
 }
@@ -44,11 +42,6 @@
     } reverseBlock:^id(NSDate *date) {
         return [[ADNHelper dateFormatter] stringFromDate:date];
     }];
-}
-
-+ (NSValueTransformer *)derivedFilesTransformer
-{
-    return [ADNDerivedFile transformerForDictionaryOfClass];
 }
 
 @end

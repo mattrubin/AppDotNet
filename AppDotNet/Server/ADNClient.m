@@ -9,7 +9,7 @@
 #import "ADNClient.h"
 #import "ADNJSONRequestOperation.h"
 #import "ADNImageRequestOperation.h"
-#include "ADNResponseEnvelope.h"
+#import "ADNResponseEnvelope.h"
 
 
 NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";

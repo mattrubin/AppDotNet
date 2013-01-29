@@ -38,6 +38,24 @@
     }];
 }
 
++ (NSValueTransformer *)transformerForDictionaryOfClass
+{
+    NSValueTransformer *individualTransformer = [NSValueTransformer mtl_externalRepresentationTransformerWithModelClass:self.class];
+    
+    return [MTLValueTransformer
+            reversibleTransformerWithForwardBlock:^(NSDictionary *representations) {
+                return [representations mtl_mapValuesUsingBlock:^id(id key, id value) {
+                    return [individualTransformer transformedValue:value];
+                }];
+            }
+            reverseBlock:^(NSDictionary *models) {
+                return [models mtl_mapValuesUsingBlock:^id(id key, id value) {
+                    MTLModel *model = value;
+                    return model.externalRepresentation;
+                }];
+            }];
+}
+
 + (NSValueTransformer *)transformerForKey:(NSString *)key {
     NSValueTransformer *transformer = [super transformerForKey:key];
     if (!transformer) {

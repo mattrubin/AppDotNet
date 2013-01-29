@@ -8,6 +8,7 @@
 
 #import "ADNModel.h"
 #import "ADNAnnotationCollection.h"
+#import "ADNDerivedFile.h"
 #import "ADNSource.h"
 #import "ADNUser.h"
 
