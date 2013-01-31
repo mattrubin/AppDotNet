@@ -13,6 +13,6 @@
 
 @property (nonatomic, assign) NSUInteger height;
 @property (nonatomic, assign) NSUInteger width;
-@property (nonatomic, copy)   NSString *url;
+@property (nonatomic, copy)   NSURL *url;
 
 @end
