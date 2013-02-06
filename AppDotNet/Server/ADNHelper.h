@@ -10,9 +10,6 @@
 
 @interface ADNHelper : NSObject
 
-+ (NSDictionary*)dictionaryFromJSONData:(NSData*)data error:(NSError **)error;
-+ (NSData*)JSONDataFromDictionary:(NSDictionary*)dictionary;
-
 + (NSDateFormatter*)dateFormatter;
 
 @end
