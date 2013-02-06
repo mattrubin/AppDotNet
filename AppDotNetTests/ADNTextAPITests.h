@@ -8,6 +8,9 @@
 
 #import "APITests.h"
 
+// Tests of the App.net API text methods
+// This test case is not currently included in AppDotNetTests
+
 @interface ADNTextAPITests : APITests
 
 @end

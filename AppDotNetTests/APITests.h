@@ -8,6 +8,8 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+// Tests of the App.net API methods
+// This test case is not currently included in AppDotNetTests
 
 @interface APITests : SenTestCase
 
