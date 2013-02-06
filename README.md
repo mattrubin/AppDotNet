@@ -1,9 +1,9 @@
 # AppDotNet
 
-The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.net API](http://developers.app.net).
+The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.net API](http://developers.app.net). The goal of this project is to provide a common base for ADN apps, making it easy for new developers to start building their ideas without the overhead of reimplementing the API methods and model objects. 
 
 ## Status
-This is a work in progress, and I develop parts as needed for my own App.net projects. API methods and model objects for Users, Channels, and Messages are fully implemented, along with their annotations and other sub-objects. More of the resources will be added over time.
+This is a work in progress, and I develop parts as needed for my own App.net projects. Model objects for Users, Posts, Channels, Messages, and Files are fully implemented, along with their annotations and other sub-objects. More of the resources will be added over time.
 
 ## Usage
 
