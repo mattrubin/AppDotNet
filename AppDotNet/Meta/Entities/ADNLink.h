@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *text;
 
 /// The destination url (only http or https accepted).
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSURL *url;
 
 /// The 0-based index where this entity begins in `text`.
 @property (nonatomic, assign) NSUInteger position;
