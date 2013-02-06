@@ -30,11 +30,7 @@
 
 + (NSValueTransformer *)urlTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *urlString) {
-        return [NSURL URLWithString:urlString];
-    } reverseBlock:^id(NSURL *url) {
-        return url.absoluteString;
-    }];
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 + (NSValueTransformer *)urlExpiresTransformer
