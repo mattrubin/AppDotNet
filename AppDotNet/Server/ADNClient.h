@@ -8,6 +8,7 @@
 
 #import "AFHTTPClient.h"
 #import "ADNHandlers.h"
+#import "ADNParameters.h"
 
 
 @interface ADNClient : AFHTTPClient

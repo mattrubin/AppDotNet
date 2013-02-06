@@ -50,6 +50,7 @@
     if (scopes & ADNScopeMessages)          [scopeStrings addObject:@"messages"];
     if (scopes & ADNScopeUpdateProfile)     [scopeStrings addObject:@"update_profile"];
     if (scopes & ADNScopeExport)            [scopeStrings addObject:@"export"];
+    if (scopes & ADNScopeFiles)             [scopeStrings addObject:@"files"];
     
     return [scopeStrings componentsJoinedByString:@","];
 }

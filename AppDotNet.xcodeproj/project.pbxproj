@@ -41,6 +41,15 @@
 		8C5EE1B216AB576600195701 /* ADNMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EE1B116AB576500195701 /* ADNMetadata.m */; };
 		8C5EE1B316AB597300195701 /* ADNMetadata.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C5EE1B016AB576500195701 /* ADNMetadata.h */; };
 		8C5EE1E316AC76E700195701 /* libMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EE1DB16AC767200195701 /* libMantle.a */; };
+		8C66617316B73ADF0056A64B /* ADNFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C66617216B73ADF0056A64B /* ADNFile.m */; };
+		8C66617916B73E4C0056A64B /* File.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C66617816B73E4C0056A64B /* File.json */; };
+		8C66617A16B73E910056A64B /* ADNFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C66617116B73ADF0056A64B /* ADNFile.h */; };
+		8C66617D16B749ED0056A64B /* ADNClient+ADNFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C66617C16B749ED0056A64B /* ADNClient+ADNFile.m */; };
+		8C66618016B74EDA0056A64B /* ADNParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C66617F16B74ED90056A64B /* ADNParameters.m */; };
+		8C66618116B750E80056A64B /* ADNParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C66617E16B74ED90056A64B /* ADNParameters.h */; };
+		8C66618216B751EC0056A64B /* ADNClient+ADNFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C66617B16B749ED0056A64B /* ADNClient+ADNFile.h */; };
+		8C6661B816B7677C0056A64B /* ADNDerivedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6661B716B7677C0056A64B /* ADNDerivedFile.m */; };
+		8C6661BA16B7687D0056A64B /* ADNDerivedFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C6661B616B7677C0056A64B /* ADNDerivedFile.h */; };
 		8C7B24A6167DB18B00C38F51 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
 		8C7B24A9167DB2C100C38F51 /* ADNMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A8167DB2C100C38F51 /* ADNMention.m */; };
 		8C7B24AC167DB32000C38F51 /* ADNHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24AB167DB32000C38F51 /* ADNHashtag.m */; };
@@ -174,6 +183,10 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				8C6661BA16B7687D0056A64B /* ADNDerivedFile.h in CopyFiles */,
+				8C66618216B751EC0056A64B /* ADNClient+ADNFile.h in CopyFiles */,
+				8C66618116B750E80056A64B /* ADNParameters.h in CopyFiles */,
+				8C66617A16B73E910056A64B /* ADNFile.h in CopyFiles */,
 				8CAAA8A016B4A2F000208FA3 /* AFHTTPRequestOperation.h in CopyFiles */,
 				8CAAA8A116B4A2F000208FA3 /* AFImageRequestOperation.h in CopyFiles */,
 				8CAAA8A216B4A2F000208FA3 /* AFJSONRequestOperation.h in CopyFiles */,
@@ -248,6 +261,15 @@
 		8C5EE1B016AB576500195701 /* ADNMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMetadata.h; sourceTree = "<group>"; };
 		8C5EE1B116AB576500195701 /* ADNMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNMetadata.m; sourceTree = "<group>"; };
 		8C5EE1C416AC767100195701 /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
+		8C66617116B73ADF0056A64B /* ADNFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFile.h; sourceTree = "<group>"; };
+		8C66617216B73ADF0056A64B /* ADNFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFile.m; sourceTree = "<group>"; };
+		8C66617816B73E4C0056A64B /* File.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = File.json; sourceTree = "<group>"; };
+		8C66617B16B749ED0056A64B /* ADNClient+ADNFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADNClient+ADNFile.h"; sourceTree = "<group>"; };
+		8C66617C16B749ED0056A64B /* ADNClient+ADNFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADNClient+ADNFile.m"; sourceTree = "<group>"; };
+		8C66617E16B74ED90056A64B /* ADNParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNParameters.h; sourceTree = "<group>"; };
+		8C66617F16B74ED90056A64B /* ADNParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNParameters.m; sourceTree = "<group>"; };
+		8C6661B616B7677C0056A64B /* ADNDerivedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNDerivedFile.h; sourceTree = "<group>"; };
+		8C6661B716B7677C0056A64B /* ADNDerivedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNDerivedFile.m; sourceTree = "<group>"; };
 		8C7B24A4167DB18B00C38F51 /* ADNEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNEntities.h; sourceTree = "<group>"; };
 		8C7B24A5167DB18B00C38F51 /* ADNEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNEntities.m; sourceTree = "<group>"; };
 		8C7B24A7167DB2C100C38F51 /* ADNMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNMention.h; sourceTree = "<group>"; };
@@ -428,6 +450,8 @@
 				8C85405116ADED6C00BA384D /* Text */,
 				8CED1ABA167CD7950071D908 /* ADNImage.h */,
 				8CED1ABB167CD7950071D908 /* ADNImage.m */,
+				8C6661B616B7677C0056A64B /* ADNDerivedFile.h */,
+				8C6661B716B7677C0056A64B /* ADNDerivedFile.m */,
 			);
 			path = Meta;
 			sourceTree = "<group>";
@@ -439,6 +463,7 @@
 				8C1A3E0C1682D87100261C9B /* Channel.json */,
 				8CFB9D52168820ED0075FA7A /* Message.json */,
 				8C85405916ADF63300BA384D /* Post.json */,
+				8C66617816B73E4C0056A64B /* File.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -530,6 +555,8 @@
 				8C85408F16AE68DA00BA384D /* ADNClient+ADNChannel.m */,
 				8C85409116AE690100BA384D /* ADNClient+ADNMessage.h */,
 				8C85409216AE690200BA384D /* ADNClient+ADNMessage.m */,
+				8C66617B16B749ED0056A64B /* ADNClient+ADNFile.h */,
+				8C66617C16B749ED0056A64B /* ADNClient+ADNFile.m */,
 				8C85409416AE692600BA384D /* ADNClient+ADNStream.h */,
 				8C85409516AE692900BA384D /* ADNClient+ADNStream.m */,
 				8C85409716AE694B00BA384D /* ADNClient+ADNFilter.h */,
@@ -653,6 +680,8 @@
 				8CED1AA7167C6FD80071D908 /* ADNChannel.m */,
 				8CED1AAF167C70CE0071D908 /* ADNMessage.h */,
 				8CED1AB0167C70CF0071D908 /* ADNMessage.m */,
+				8C66617116B73ADF0056A64B /* ADNFile.h */,
+				8C66617216B73ADF0056A64B /* ADNFile.m */,
 				8CED1AA2167C6DC20071D908 /* ADNStream.h */,
 				8CED1AA3167C6DC20071D908 /* ADNStream.m */,
 				8CED1AA9167C6FE80071D908 /* ADNFilter.h */,
@@ -672,6 +701,8 @@
 			children = (
 				8C7B24B3167ED44A00C38F51 /* ADNHelper.h */,
 				8C7B24B4167ED44A00C38F51 /* ADNHelper.m */,
+				8C66617E16B74ED90056A64B /* ADNParameters.h */,
+				8C66617F16B74ED90056A64B /* ADNParameters.m */,
 				8C85408A16AE686100BA384D /* Client */,
 				8C85403516AC8B7500BA384D /* Operations */,
 				8C85402F16AC8B3A00BA384D /* Responses */,
@@ -813,6 +844,7 @@
 				8C1A3E0D1682D87100261C9B /* Channel.json in Resources */,
 				8CFB9D53168820ED0075FA7A /* Message.json in Resources */,
 				8C85405A16ADF63300BA384D /* Post.json in Resources */,
+				8C66617916B73E4C0056A64B /* File.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +919,10 @@
 				8C85409F16AE69C900BA384D /* ADNClient+ADNStreamMarker.m in Sources */,
 				8C8540A216AE69F100BA384D /* ADNClient+ADNText.m in Sources */,
 				8C8540A516AE6A2300BA384D /* ADNClient+ADNToken.m in Sources */,
+				8C66617316B73ADF0056A64B /* ADNFile.m in Sources */,
+				8C66617D16B749ED0056A64B /* ADNClient+ADNFile.m in Sources */,
+				8C66618016B74EDA0056A64B /* ADNParameters.m in Sources */,
+				8C6661B816B7677C0056A64B /* ADNDerivedFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
