@@ -11,6 +11,8 @@
 
 /**
  * Tag a post about a specific subject. A hashtag starts with `#`.
+ * 
+ * http://developers.app.net/docs/meta/entities/#hashtags
  */
 @interface ADNHashtag : ADNModel
 

@@ -11,6 +11,8 @@
 
 /**
  * Bring another user’s attention to your post. A mention starts with `@`.
+ * 
+ * http://developers.app.net/docs/meta/entities/#mentions
  */
 @interface ADNMention : ADNModel
 

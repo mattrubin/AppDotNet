@@ -11,6 +11,8 @@
 
 /**
  * Link to another website.
+ * 
+ * http://developers.app.net/docs/meta/entities/#links
  */
 @interface ADNLink : ADNModel
 

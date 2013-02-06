@@ -12,7 +12,10 @@
 
 @implementation ADNModel
 
-// Self-transformer
+#pragma mark Self-transformers
+// These class methods return transformers which produce a model or collection of models
+// of the ADNModel subclass on which the method is called.
+
 + (NSValueTransformer *)transformerForClass
 {
     return [NSValueTransformer mtl_externalRepresentationTransformerWithModelClass:self.class];
@@ -56,6 +59,8 @@
             }];
 }
 
+// If a transformer is not specified for the given key, and the expected class
+// of the property can supply its own transformer, use that self-transformer.
 + (NSValueTransformer *)transformerForKey:(NSString *)key {
     NSValueTransformer *transformer = [super transformerForKey:key];
     if (!transformer) {
@@ -67,7 +72,9 @@
 	return transformer;
 }
 
-
+// Runtime property assignment type checking
+// If the object being set for a key is not of the type expected by that property, an exception is raised.
+// This is used to recognize improper Mantle conversion from dictionary to model object.
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     Class class = [[self class] propertyClassForKey:key];
@@ -78,6 +85,7 @@
     [super setValue:value forKey:key];
 }
 
+// Returns the expected class of the property specified by the given key
 + (Class)propertyClassForKey:(NSString *)key
 {
     Class class = nil;

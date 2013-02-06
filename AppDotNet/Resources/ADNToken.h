@@ -10,6 +10,12 @@
 #import "ADNUser.h"
 
 
+/**
+ * Info about the current OAuth access token. If the token is a user token the
+ * response will include a User object.
+ * 
+ * http://developers.app.net/docs/resources/token
+ */
 @interface ADNToken : ADNModel
 
 @property (nonatomic, copy) NSString *clientId;

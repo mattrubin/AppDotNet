@@ -12,6 +12,14 @@
 #import "ADNAnnotationCollection.h"
 
 
+/**
+ * A Post is the other central object utilized by the App.net Stream API. It has
+ * rich text and annotations which comprise all of the content a users sees in
+ * their feed. Posts are closely tied to the follow graph. If you want to create
+ * data that isn’t tied to the follow graph, you should look at Messages.
+ * 
+ * http://developers.app.net/docs/resources/post
+ */
 @interface ADNPost : ADNText
 
 // Primary identifier for a post.

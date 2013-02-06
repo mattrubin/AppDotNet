@@ -12,6 +12,14 @@
 #import "ADNUser.h"
 
 
+/**
+ * A Message is very similar to a Post but 1) it doesn’t have to be public and
+ * 2) it will be delivered to an arbitrary set of users (not just the users who
+ * follow the Message creator). For an overview of the App.net messaging API,
+ * please see the [Introduction to App.net Messaging](http://developers.app.net/docs/basics/messaging).
+ *
+ * http://developers.app.net/docs/resources/message
+ */
 @interface ADNMessage : ADNText
 
 @property (nonatomic, copy)   NSString *channelId;

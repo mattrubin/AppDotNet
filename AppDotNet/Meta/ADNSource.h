@@ -9,6 +9,11 @@
 #import "ADNModel.h"
 
 
+/**
+ * Info about the API consumer that created a post, message, or file.
+ *
+ * http://developers.app.net/docs/resources/post/#post-fields
+ */
 @interface ADNSource : ADNModel
 
 @property (nonatomic, copy) NSString *clientId;

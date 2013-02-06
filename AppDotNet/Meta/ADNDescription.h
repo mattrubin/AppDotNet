@@ -9,6 +9,11 @@
 #import "ADNText.h"
 
 
+/**
+ * User supplied biographical information, included in the ADNUser object.
+ *
+ * http://developers.app.net/docs/resources/user/#user-fields
+ */
 @interface ADNDescription : ADNText
 
 

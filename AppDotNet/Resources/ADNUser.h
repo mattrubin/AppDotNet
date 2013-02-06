@@ -22,8 +22,10 @@ typedef enum {
 
 
 /**
- * A User is the central object of the App.net APIs.
- * User objects have usernames, follow other users, and post content for their followers.
+ * A User is the central object of the App.net APIs. User objects have usernames,
+ * follow other users, and post content for their followers.
+ * 
+ * http://developers.app.net/docs/resources/user
  */
 @interface ADNUser : ADNModel
 

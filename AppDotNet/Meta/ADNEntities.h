@@ -25,6 +25,8 @@
  * for more information.
  * 
  * Ranges specified by entities may be adjacent, but may not overlap.
+ * 
+ * http://developers.app.net/docs/meta/entities
  */
 @interface ADNEntities : ADNModel
 

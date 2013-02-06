@@ -13,6 +13,11 @@
 extern NSString * const ADNAnnotationTypeGeolocation;
 
 
+/**
+ * A subclass of ADNAnnotation with properties to support the Geolocation annotation.
+ *
+ * https://github.com/appdotnet/object-metadata/blob/master/annotations/net.app.core.geolocation.md
+ */
 @interface ADNGeolocation : ADNAnnotation
 
 @property (nonatomic, assign) CLLocationDegrees  latitude;

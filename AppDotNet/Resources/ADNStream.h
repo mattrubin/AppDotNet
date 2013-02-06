@@ -9,6 +9,12 @@
 #import "ADNModel.h"
 
 
+/**
+ * A customized view of the global stream that is streamed to the client instead
+ * of polling.
+ * 
+ * http://developers.app.net/docs/resources/stream
+ */
 @interface ADNStream : ADNModel
 
 @end

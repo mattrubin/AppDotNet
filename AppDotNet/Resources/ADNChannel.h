@@ -12,6 +12,14 @@
 #import "ADNAnnotationCollection.h"
 
 
+/**
+ * A Channel is a user created stream of Messages. It controls access to the
+ * messages in the channel allowing for (among other things) public, private,
+ * and group messaging. For an overview of the App.net messaging API, please
+ * see the [Introduction to App.net Messaging](http://developers.app.net/docs/basics/messaging).
+ * 
+ * http://developers.app.net/docs/resources/channel
+ */
 @interface ADNChannel : ADNModel
 
 @property (nonatomic, copy)   NSString *channelId;

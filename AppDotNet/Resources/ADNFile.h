@@ -15,6 +15,8 @@
 
 /**
  * A file uploaded by a User and hosted by App.net.
+ * 
+ * http://developers.app.net/docs/resources/file
  */
 @interface ADNFile : ADNModel
 
