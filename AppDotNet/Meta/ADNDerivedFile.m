@@ -7,7 +7,6 @@
 //
 
 #import "ADNDerivedFile.h"
-#import "ADNHelper.h"
 
 
 NSString * const ADNDerivedFileKeyImageThumb200s = @"image_thumb_200s";
@@ -28,20 +27,12 @@ NSString * const ADNDerivedFileKeyImageThumb960r = @"image_thumb_960r";
 
 + (NSValueTransformer *)urlTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *urlString) {
-        return [NSURL URLWithString:urlString];
-    } reverseBlock:^id(NSURL *url) {
-        return url.absoluteString;
-    }];
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 + (NSValueTransformer *)urlExpiresTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
-        return [[ADNHelper dateFormatter] dateFromString:dateString];
-    } reverseBlock:^id(NSDate *date) {
-        return [[ADNHelper dateFormatter] stringFromDate:date];
-    }];
+    return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }
 
 @end

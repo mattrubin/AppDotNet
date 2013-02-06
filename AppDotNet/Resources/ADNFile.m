@@ -7,7 +7,6 @@
 //
 
 #import "ADNFile.h"
-#import "ADNHelper.h"
 
 
 @implementation ADNFile
@@ -35,11 +34,7 @@
 
 + (NSValueTransformer *)urlExpiresTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
-        return [[ADNHelper dateFormatter] dateFromString:dateString];
-    } reverseBlock:^id(NSDate *date) {
-        return [[ADNHelper dateFormatter] stringFromDate:date];
-    }];
+    return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }
 
 + (NSValueTransformer *)derivedFilesTransformer

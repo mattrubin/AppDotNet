@@ -7,7 +7,6 @@
 //
 
 #import "ADNMessage.h"
-#import "ADNHelper.h"
 
 
 @implementation ADNMessage
@@ -47,11 +46,7 @@
 
 + (NSValueTransformer *)createdAtTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {
-        return [[ADNHelper dateFormatter] dateFromString:dateString];
-    } reverseBlock:^id(NSDate *date) {
-        return [[ADNHelper dateFormatter] stringFromDate:date];
-    }];
+    return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }
 
 @end

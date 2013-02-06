@@ -7,6 +7,7 @@
 //
 
 #import <Mantle/Mantle.h>
+#import "NSValueTransformer+AppDotNet.h"
 
 
 @interface ADNModel : MTLModel
