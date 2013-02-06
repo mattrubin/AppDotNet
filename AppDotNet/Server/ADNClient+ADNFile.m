@@ -25,7 +25,7 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)createFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 /**
@@ -95,7 +95,7 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)updateFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 /**
@@ -105,7 +105,7 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  */
 - (void)setContent:(NSData *)fileData forFile:(NSString *)fileId withCompletionHandler:(ADNFileCompletionHandler)handler
 {
-    
+#warning API call not implemented
 }
 
 @end
