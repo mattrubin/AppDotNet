@@ -29,7 +29,7 @@ NSString * const ADNAnnotationTypeGeolocation = @"net.app.core.geolocation";
 // When building from a dictionary, intercept the "value" key
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:KEY_VALUE]) {
+    if ([key isEqualToString: ADNFieldValue]) {
         if ([value isKindOfClass:[NSDictionary class]]) {
             [self setValue:value];
         }
@@ -41,7 +41,7 @@ NSString * const ADNAnnotationTypeGeolocation = @"net.app.core.geolocation";
 // When converting to a dictionary, intercept the "value" key
 - (id)valueForKey:(NSString *)key
 {
-    if ([key isEqualToString:KEY_VALUE]) {
+    if ([key isEqualToString: ADNFieldValue]) {
         return [self value];
     } else {
         return [super valueForKey:key];

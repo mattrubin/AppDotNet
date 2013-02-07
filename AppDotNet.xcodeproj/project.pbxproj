@@ -59,6 +59,7 @@
 		8C7B24C0167F31B800C38F51 /* ADNAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */; };
 		8C7E3B7716C3091400D9A46B /* NSValueTransformer+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E3B7616C3091400D9A46B /* NSValueTransformer+AppDotNet.m */; };
 		8C7E3B7816C30B7100D9A46B /* NSValueTransformer+AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7E3B7516C3091400D9A46B /* NSValueTransformer+AppDotNet.h */; };
+		8C7E3B7A16C3244A00D9A46B /* ADNKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E3B7916C3244900D9A46B /* ADNKeys.m */; };
 		8C8530A016A7B9D100357F6E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85308E16A7B9D100357F6E /* AFHTTPClient.m */; };
 		8C8530A116A7B9D100357F6E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309016A7B9D100357F6E /* AFHTTPRequestOperation.m */; };
 		8C8530A216A7B9D100357F6E /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309216A7B9D100357F6E /* AFImageRequestOperation.m */; };
@@ -285,6 +286,7 @@
 		8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotation.m; sourceTree = "<group>"; };
 		8C7E3B7516C3091400D9A46B /* NSValueTransformer+AppDotNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+AppDotNet.h"; sourceTree = "<group>"; };
 		8C7E3B7616C3091400D9A46B /* NSValueTransformer+AppDotNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+AppDotNet.m"; sourceTree = "<group>"; };
+		8C7E3B7916C3244900D9A46B /* ADNKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNKeys.m; sourceTree = "<group>"; };
 		8C85308D16A7B9D100357F6E /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		8C85308E16A7B9D100357F6E /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		8C85308F16A7B9D100357F6E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 			children = (
 				8CED1A73167C5FC90071D908 /* AppDotNet-Prefix.pch */,
 				8CC18C8A168B00160033B8C5 /* ADNKeys.h */,
+				8C7E3B7916C3244900D9A46B /* ADNKeys.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				8C66618016B74EDA0056A64B /* ADNParameters.m in Sources */,
 				8C6661B816B7677C0056A64B /* ADNDerivedFile.m in Sources */,
 				8C7E3B7716C3091400D9A46B /* NSValueTransformer+AppDotNet.m in Sources */,
+				8C7E3B7A16C3244A00D9A46B /* ADNKeys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

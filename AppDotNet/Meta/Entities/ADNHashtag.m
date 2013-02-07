@@ -13,8 +13,8 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"length": KEY_LEN,
-            @"position": KEY_POS,
+            @"length": ADNFieldLength,
+            @"position": ADNFieldPosition,
             }];
 }
 

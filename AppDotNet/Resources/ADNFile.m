@@ -15,12 +15,12 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"derivedFiles": @"derived_files",
-            @"fileToken": @"file_token",
-            @"fileId": @"id",
-            @"mimeType": @"mime_type",
-            @"totalSize": @"total_size",
-            @"urlExpires": @"url_expires",
+            @"derivedFiles": ADNFieldDerivedFiles,
+            @"fileToken": ADNFieldFileToken,
+            @"fileId": ADNFieldId,
+            @"mimeType": ADNFieldMIMEType,
+            @"totalSize": ADNFieldTotalSize,
+            @"urlExpires": ADNFieldURLExpires,
             }];
 }
 

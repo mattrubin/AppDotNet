@@ -23,8 +23,8 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"anyUser":KEY_ANY_USER,
-            @"userIds":KEY_USER_IDS,
+            @"anyUser": ADNFieldAnyUser,
+            @"userIds": ADNFieldUserIds,
             }];
 }
 

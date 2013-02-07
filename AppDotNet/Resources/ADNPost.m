@@ -23,20 +23,20 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"postId": KEY_ID,
-            @"createdAt":KEY_CREATED_AT,
-            @"replyToId": KEY_REPLY_TO,
-            @"canonicalURL": KEY_CANONICAL_URL,
-            @"threadId": KEY_THREAD_ID,
-            @"numReplies": KEY_NUM_REPLIES,
-            @"numStars": @"num_stars",
-            @"numReposts": @"num_reposts",
-            @"isDeleted": KEY_IS_DELETED,
-            @"machineOnly": KEY_MACHINE_ONLY,
-            @"youStarred": @"you_starred",
-            @"starredBy": @"starred_by",
-            @"youReposted": @"you_reposted",
-            @"repostOf": @"repost_of",
+            @"postId": ADNFieldId,
+            @"createdAt": ADNFieldCreatedAt,
+            @"replyToId": ADNFieldReplyTo,
+            @"canonicalURL": ADNFieldCanonicalURL,
+            @"threadId": ADNFieldThreadId,
+            @"numReplies": ADNFieldNumReplies,
+            @"numStars": ADNFieldNumStars,
+            @"numReposts": ADNFieldNumReposts,
+            @"isDeleted": ADNFieldIsDeleted,
+            @"machineOnly": ADNFieldMachineOnly,
+            @"youStarred": ADNFieldYouStarred,
+            @"starredBy": ADNFieldStarredBy,
+            @"youReposted": ADNFieldYouReposted,
+            @"repostOf": ADNFieldRepostOf,
             }];
 }
 

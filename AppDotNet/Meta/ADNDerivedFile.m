@@ -17,8 +17,8 @@ NSString * const ADNDerivedFileKeyImageThumb960r = @"image_thumb_960r";
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"mimeType": @"mime_type",
-            @"urlExpires": @"url_expires",
+            @"mimeType": ADNFieldMIMEType,
+            @"urlExpires": ADNFieldURLExpires,
             }];
 }
 

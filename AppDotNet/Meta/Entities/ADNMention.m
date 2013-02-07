@@ -13,10 +13,10 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"userId": KEY_ID,
-            @"username": KEY_NAME,
-            @"length": KEY_LEN,
-            @"position": KEY_POS,
+            @"userId": ADNFieldId,
+            @"username": ADNFieldName,
+            @"length": ADNFieldLength,
+            @"position": ADNFieldPosition,
             }];
 }
 

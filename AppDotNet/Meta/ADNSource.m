@@ -13,7 +13,7 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"clientId":KEY_CLIENT_ID,
+            @"clientId": ADNFieldClientId,
             }];
 }
 

@@ -26,21 +26,17 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"channelId": KEY_CHANNEL_ID,
-            @"createdAt": KEY_CREATED_AT,
-            @"messageId": KEY_ID,
-            @"machineOnly": KEY_MACHINE_ONLY,
-            @"numReplies": KEY_NUM_REPLIES,
-            @"threadId": KEY_THREAD_ID,
-            @"replyToId": KEY_REPLY_TO,
-            @"isDeleted": KEY_IS_DELETED,
+            @"channelId": ADNFieldChannelId,
+            @"createdAt": ADNFieldCreatedAt,
+            @"messageId": ADNFieldId,
+            @"machineOnly": ADNFieldMachineOnly,
+            @"numReplies": ADNFieldNumReplies,
+            @"threadId": ADNFieldThreadId,
+            @"replyToId": ADNFieldReplyTo,
+            @"isDeleted": ADNFieldIsDeleted,
             }];
 }
 
-- (NSSet *)conversionKeys
-{
-    return [NSSet setWithArray:@[KEY_ANNOTATIONS, KEY_ENTITIES, KEY_SOURCE, KEY_USER, @"createdAt"]];
-}
 
 #pragma mark Transformers
 

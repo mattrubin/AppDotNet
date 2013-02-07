@@ -49,7 +49,7 @@
     for (id arrayItem in array) {
         if ([arrayItem isKindOfClass:[NSDictionary class]]) {
             ADNAnnotation *newAnnotation;
-            NSString *newType = [arrayItem objectForKey:KEY_TYPE];
+            NSString *newType = [arrayItem objectForKey: ADNFieldType];
             if ([newType isEqualToString:ADNAnnotationTypeGeolocation]) {
                 newAnnotation = [ADNGeolocation modelWithExternalRepresentation:arrayItem];
             } else {

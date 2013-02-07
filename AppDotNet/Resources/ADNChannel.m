@@ -25,11 +25,11 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"hasUnread": KEY_HAS_UNREAD,
-            @"channelId": KEY_ID,
-            @"youCanEdit": KEY_YOU_CAN_EDIT,
-            @"youSubscribed": KEY_YOU_SUBSCRIBED,
-            @"recentMessageId": KEY_RECENT_MESSAGE_ID,
+            @"hasUnread": ADNFieldHasUnread,
+            @"channelId": ADNFieldId,
+            @"youCanEdit": ADNFieldYouCanEdit,
+            @"youSubscribed": ADNFieldYouSubscribed,
+            @"recentMessageId": ADNFieldRecentMessageId,
             }];
 }
 
