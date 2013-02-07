@@ -12,15 +12,6 @@
 #import "ADNAnnotationCollection.h"
 
 
-typedef enum {
-    ADNUserTypeHuman        = (1 << 0),
-    ADNUserTypeBot          = (1 << 1),
-    ADNUserTypeCorporate    = (1 << 2),
-    ADNUserTypeFeed         = (1 << 3),
-    ADNUserTypeUnknown      = 0
-} ADNUserType;
-
-
 /**
  * A User is the central object of the App.net APIs. User objects have usernames,
  * follow other users, and post content for their followers.
