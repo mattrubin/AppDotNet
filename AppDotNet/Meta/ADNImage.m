@@ -16,6 +16,12 @@
     return [NSString stringWithFormat:@"[%@: (%u x %u) %@]", self.class, self.width, self.height, self.url];
 }
 
++ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
+    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"isDefault": ADNFieldIsDefault,
+            }];
+}
+
 + (NSValueTransformer *)urlTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];

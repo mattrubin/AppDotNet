@@ -36,6 +36,7 @@ extern NSString * const ADNFieldHTML;
 extern NSString * const ADNFieldId;
 extern NSString * const ADNFieldImmutable;
 extern NSString * const ADNFieldIsDeleted;
+extern NSString * const ADNFieldIsDefault;
 extern NSString * const ADNFieldLength;
 extern NSString * const ADNFieldLink;
 extern NSString * const ADNFieldLinks;

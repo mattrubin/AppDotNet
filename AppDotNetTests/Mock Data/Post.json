@@ -116,7 +116,8 @@
         "avatar_image":{
             "url":"https:\/\/d2rfichhc2fb9n.cloudfront.net\/image\/5\/8e2GE9hcM1idWf-1SU7FmFO0ch17InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvYTcvMDAvMDAvYTcwMDAwMDAwMDAwMDAwMC5qcGciLCJvIjoiIn0",
             "width":200,
-            "height":200
+            "height":200,
+            "is_default": false
         },
         "description":{
             "text":"Software engineer at app.net. Use #bug \/ #feature to let us know if you have problems.",
@@ -167,7 +168,8 @@
         "cover_image":{
             "url":"https:\/\/d2rfichhc2fb9n.cloudfront.net\/image\/5\/rydfXGpx3bn4IojOaWgpVtw0BBZ7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvMTAvMDAvMDAvMTAwMDAwMDAwMDAwMDAwMC5wbmciLCJvIjoiIn0",
             "width":960,
-            "height":265
+            "height":265,
+            "is_default": true
         },
         "type":"human",
         "canonical_url":"https:\/\/alpha.app.net\/mthurman",
@@ -199,7 +201,8 @@
                   "avatar_image": {
                   "height": 200,
                   "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/cPkli93m52XODvKXnhe_ASZQwgZ7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvYTgvZDEvMTAvYThkMTEwMDAwMDAwMDAwMC5qcGciLCJvIjoiIn0",
-                  "width": 200
+                  "width": 200,
+                  "is_default": true
                   },
                   "canonical_url": "https://alpha.app.net/dalton",
                   "counts": {
@@ -211,7 +214,8 @@
                   "cover_image": {
                   "height": 456,
                   "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/iV3sRFel7xEjDK7hCB9R0xgIFAF7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvNDIvMDAvMDAvNDIwMDAwMDAwMDAwMDAwMC5wbmciLCJvIjoiIn0",
-                  "width": 1103
+                  "width": 1103,
+                  "is_default": false
                   },
                   "created_at": "2012-08-03T01:17:14Z",
                   "description": {
@@ -282,7 +286,8 @@
                    "avatar_image": {
                    "height": 200,
                    "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/cPkli93m52XODvKXnhe_ASZQwgZ7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvYTgvZDEvMTAvYThkMTEwMDAwMDAwMDAwMC5qcGciLCJvIjoiIn0",
-                   "width": 200
+                   "width": 200,
+                   "is_default": false
                    },
                    "canonical_url": "https://alpha.app.net/dalton",
                    "counts": {
@@ -294,7 +299,8 @@
                    "cover_image": {
                    "height": 456,
                    "url": "https://d2rfichhc2fb9n.cloudfront.net/image/5/iV3sRFel7xEjDK7hCB9R0xgIFAF7InMiOiJzMyIsImIiOiJhZG4tdXNlci1hc3NldHMiLCJrIjoiYXNzZXRzL3VzZXIvNDIvMDAvMDAvNDIwMDAwMDAwMDAwMDAwMC5wbmciLCJvIjoiIn0",
-                   "width": 1103
+                   "width": 1103,
+                   "is_default": true
                    },
                    "created_at": "2012-08-03T01:17:14Z",
                    "description": {

@@ -36,6 +36,7 @@ NSString * const ADNFieldHTML               = @"html";
 NSString * const ADNFieldId                 = @"id";
 NSString * const ADNFieldImmutable          = @"immutable";
 NSString * const ADNFieldIsDeleted          = @"is_deleted";
+NSString * const ADNFieldIsDefault          = @"is_default";
 NSString * const ADNFieldLength             = @"len";
 NSString * const ADNFieldLink               = @"link";
 NSString * const ADNFieldLinks              = @"links";

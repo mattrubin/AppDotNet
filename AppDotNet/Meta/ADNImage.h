@@ -28,5 +28,6 @@
 @property (nonatomic, assign) NSUInteger height;
 @property (nonatomic, assign) NSUInteger width;
 @property (nonatomic, copy)   NSURL *url;
+@property (nonatomic, assign) BOOL isDefault;
 
 @end
