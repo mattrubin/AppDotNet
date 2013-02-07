@@ -10,11 +10,6 @@
 #import <AppDotNet/AppDotNet.h>
 
 
-#define CHANNEL_TEST_FILE @"Channel"
-#define MESSAGE_TEST_FILE @"Message"
-#define USER_TEST_FILE @"User"
-
-
 typedef enum {
     ADNComparisonIgnoreMissingKeysInFirst  = 1<<0,
     ADNComparisonIgnoreMissingKeysInSecond = 1<<1,
@@ -145,17 +140,17 @@ typedef enum {
 
 - (void)testChannel
 {
-    [self roundTripEqualityTestforModelClass:[ADNChannel class] withJSONNamed:CHANNEL_TEST_FILE];
+    [self roundTripEqualityTestforModelClass:[ADNChannel class] withJSONNamed:@"Channel"];
 }
 
 - (void)testMessage
 {
-    [self roundTripEqualityTestforModelClass:[ADNMessage class] withJSONNamed:MESSAGE_TEST_FILE];
+    [self roundTripEqualityTestforModelClass:[ADNMessage class] withJSONNamed:@"Message"];
 }
 
 - (void)testUser
 {
-    [self roundTripEqualityTestforModelClass:[ADNUser class] withJSONNamed:USER_TEST_FILE];
+    [self roundTripEqualityTestforModelClass:[ADNUser class] withJSONNamed:@"User"];
 }
 
 - (void)testPost
@@ -168,5 +163,9 @@ typedef enum {
     [self roundTripEqualityTestforModelClass:[ADNFile class] withJSONNamed:@"File"];
 }
 
+- (void)testToken
+{
+    [self roundTripEqualityTestforModelClass:[ADNToken class] withJSONNamed:@"Token"];
+}
 
 @end
