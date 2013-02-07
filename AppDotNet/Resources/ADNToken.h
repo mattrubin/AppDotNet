@@ -7,6 +7,7 @@
 //
 
 #import "ADNModel.h"
+#import "ADNSource.h"
 #import "ADNUser.h"
 
 
@@ -19,10 +20,14 @@
 @interface ADNToken : ADNModel
 
 @property (nonatomic, copy) NSString *clientId;
-@property (nonatomic, copy) NSString *clientLink;
-@property (nonatomic, copy) NSString *clientName;
+@property (nonatomic, strong) ADNSource *app;
 
 @property (nonatomic, strong) NSArray *scopes;
+
+// The total storage capacity is 10GB, which could exceed NSUIntegerMax when
+// measured in bytes, so we use `unsigned long long` instead.
+@property (nonatomic, assign) unsigned long long storageAvailable;
+@property (nonatomic, assign) unsigned long long storageUsed;
 
 @property (nonatomic, strong) ADNUser *user;
 

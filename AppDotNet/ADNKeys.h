@@ -62,6 +62,8 @@ extern NSString * const ADNFieldSource;
 extern NSString * const ADNFieldStarCount;
 extern NSString * const ADNFieldStarredBy;
 extern NSString * const ADNFieldStars;
+extern NSString * const ADNFieldStorageAvailable;
+extern NSString * const ADNFieldStorageUsed;
 extern NSString * const ADNFieldText;
 extern NSString * const ADNFieldThreadId;
 extern NSString * const ADNFieldTimezone;

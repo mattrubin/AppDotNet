@@ -13,15 +13,15 @@
 
 + (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
     return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"clientId": @"app.client_id",
-            @"clientLink": @"app.link",
-            @"clientName": @"app.name",
+            @"clientId": ADNFieldClientId,
+            @"storageAvailable": ADNFieldStorageAvailable,
+            @"storageUsed": ADNFieldStorageUsed
             }];
 }
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@: client: (%@, %@, %@), scopes: %@, user: %@]", self.class, self.clientName, self.clientId, self.clientLink, self.scopes, self.user];
+    return [NSString stringWithFormat:@"[%@: client: %@, scopes: %@, user: %@]", self.class, self.app, self.scopes, self.user];
 }
 
 @end
