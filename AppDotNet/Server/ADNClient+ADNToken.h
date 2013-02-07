@@ -12,4 +12,6 @@
 
 @interface ADNClient (ADNToken)
 
+- (void)getTokenWithParameters:(NSDictionary *)parameters completionHandler:(ADNTokenCompletionHandler)handler;
+
 @end
