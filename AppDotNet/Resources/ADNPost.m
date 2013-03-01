@@ -21,8 +21,8 @@
 }
 
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"postId": ADNFieldId,
             @"createdAt": ADNFieldCreatedAt,
             @"replyToId": ADNFieldReplyTo,
@@ -43,7 +43,7 @@
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)createdAtTransformer
++ (NSValueTransformer *)createdAtJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }

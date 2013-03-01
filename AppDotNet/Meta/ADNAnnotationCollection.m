@@ -50,13 +50,20 @@
         if ([arrayItem isKindOfClass:[NSDictionary class]]) {
             ADNAnnotation *newAnnotation;
             NSString *newType = [arrayItem objectForKey: ADNFieldType];
+			NSError *error = nil;
+			
             if ([newType isEqualToString:ADNAnnotationTypeGeolocation]) {
-                newAnnotation = [ADNGeolocation modelWithExternalRepresentation:arrayItem];
+				newAnnotation = [ADNGeolocation modelWithDictionary:arrayItem error:&error];
             } else {
-                newAnnotation = [ADNAnnotation modelWithExternalRepresentation:arrayItem];
+                newAnnotation = [ADNAnnotation modelWithDictionary:arrayItem error:&error];
             }
             
-            [self.annotations addObject:newAnnotation];
+			if (newAnnotation && !error) {
+				[self.annotations addObject:newAnnotation];
+			} else {
+				// TODO: might be a good idea to bubble this up
+				NSLog(@"Error loading annotation from dictionary %@: %@", arrayItem, error);
+			}
         }
     }
 }
@@ -65,7 +72,7 @@
 {
     NSMutableArray *outArray = [NSMutableArray arrayWithCapacity:self.annotations.count];
     for (ADNAnnotation *annotation in self.annotations) {
-        [outArray addObject:annotation.externalRepresentation];
+        [outArray addObject:[MTLJSONAdapter JSONDictionaryFromModel:annotation]];
     }
     return outArray;
 }

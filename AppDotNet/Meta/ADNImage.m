@@ -16,13 +16,13 @@
     return [NSString stringWithFormat:@"[%@: (%u x %u) %@]", self.class, self.width, self.height, self.url];
 }
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"isDefault": ADNFieldIsDefault,
             }];
 }
 
-+ (NSValueTransformer *)urlTransformer
++ (NSValueTransformer *)urlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }

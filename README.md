@@ -1,6 +1,6 @@
 # AppDotNet
 
-The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.net API](http://developers.app.net). The goal of this project is to provide a common base for ADN apps, making it easy for new developers to start building their ideas without the overhead of reimplementing the API methods and model objects. 
+The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.net API](http://developers.app.net). The goal of this project is to provide a common base for ADN apps, making it easy for new developers to start building their ideas without the overhead of reimplementing the API methods and model objects. It supports both iOS and OS X.
 
 ## Status
 
@@ -8,18 +8,19 @@ This is a work in progress, and I develop parts as needed for my own App.net pro
 
 ## Usage
 
+Coming soon (check back saturday!).
+
+## Installation
+
 I recommend adding this library to your code's repository as a [Git submodule](http://git-scm.com/book/en/Git-Tools-Submodules) and then to Xcode as a subproject. A thorough walkthrough of using subprojects and submodules can be found [here](http://www.blog.montgomerie.net/easy-xcode-static-library-subprojects-and-submodules).
 
 ## Requirements
 
-The AppDotNet library is intended to work on iOS 5.0 and above. Compatibility with Mac OS X  is a future goal, but the current library has not been tested on OS X.
+The AppDotNet library is intended to work on iOS 5.0 and above. There is also an OS X framework target, and OS X 10.7+ is fully supported.
 
 GitHub's [Mantle](http://github.com/github/Mantle) framework is used for modeling ADN objects, and the [AFNetworking](https://github.com/AFNetworking/AFNetworking) library is used for making API calls. They are included as submodules and can be pulled with `git submodule update --recursive --init`.
 
 The library and its submodules require [ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting), and have been developed using Xcode 4.5 and above.
-
-
-The code has not been fully tested for compatibility with all relevant OSes and OS versions, so please [open an issue](https://github.com/mattrubin/AppDotNet/issues) to report any incompatibilities.
 
 ## License
 

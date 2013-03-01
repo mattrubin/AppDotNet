@@ -18,13 +18,19 @@
                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     [super setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:responseObject];
+		NSError *error = nil;
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithDictionary:responseObject error:&error];
+		
+		// TODO: do something with error
         
         if (success) {
             success(operation, responseEnvelope);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithExternalRepresentation:((AFJSONRequestOperation *)operation).responseJSON];
+		NSError *mantleError = nil;
+        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithDictionary:((AFJSONRequestOperation *)operation).responseJSON error:&mantleError];
+		
+		// TODO: do something with mantleError
         
         NSMutableDictionary *newUserInfo = [error.userInfo mutableCopy];
         [newUserInfo setObject:responseEnvelope forKey:ADNResponseEnvelopeKey];

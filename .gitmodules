@@ -1,6 +1,9 @@
 [submodule "External/AFNetworking"]
 	path = External/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
+	ignore = dirty
 [submodule "External/Mantle"]
 	path = External/Mantle
 	url = git://github.com/github/Mantle.git
+	ignore = dirty
+

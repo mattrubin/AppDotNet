@@ -29,8 +29,8 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
 
 @implementation ADNMetadata
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"errorId": ADNMetadataErrorIdKey,
             @"errorMessage": ADNMetadataErrorMessageKey,
             @"errorSlug": ADNMetadataErrorSlugKey,
@@ -42,7 +42,7 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)maxIdTransformer
++ (NSValueTransformer *)maxIdJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id rawId) {
         if ([rawId isKindOfClass:[NSString class]]) {
@@ -59,7 +59,7 @@ NSString * const ADNErrorRedirectURIRequired = @"redirect-uri-required";
     }];
 }
 
-+ (NSValueTransformer *)minIdTransformer
++ (NSValueTransformer *)minIdJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id rawId) {
         if ([rawId isKindOfClass:[NSString class]]) {

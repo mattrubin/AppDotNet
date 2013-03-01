@@ -15,8 +15,8 @@ NSString * const ADNDerivedFileKeyImageThumb960r = @"image_thumb_960r";
 
 @implementation ADNDerivedFile
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"mimeType": ADNFieldMIMEType,
             @"urlExpires": ADNFieldURLExpires,
             }];
@@ -25,12 +25,12 @@ NSString * const ADNDerivedFileKeyImageThumb960r = @"image_thumb_960r";
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)urlTransformer
++ (NSValueTransformer *)urlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)urlExpiresTransformer
++ (NSValueTransformer *)urlExpiresJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }
