@@ -18,12 +18,12 @@
 
 + (NSValueTransformer *)transformerForClass
 {
-    return [NSValueTransformer mtl_externalRepresentationTransformerWithModelClass:self.class];
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:self.class];
 }
 
 + (NSValueTransformer *)transformerForArrayOfClass
 {
-    return [NSValueTransformer mtl_externalRepresentationArrayTransformerWithModelClass:self.class];
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:self.class];
 }
 
 + (NSValueTransformer *)transformerForMutableArrayOfClass
@@ -31,19 +31,19 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
         for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[self modelWithExternalRepresentation:externalObject]];
+            [internalArray addObject:[self modelWithDictionary:externalObject error:nil]];
         }
         return internalArray;
     } reverseBlock:^(NSArray *models) {
         return [models mtl_mapUsingBlock:^(MTLModel *model) {
-            return model.externalRepresentation;
+            return model.dictionaryValue;
         }];
     }];
 }
 
 + (NSValueTransformer *)transformerForDictionaryOfClass
 {
-    NSValueTransformer *individualTransformer = [NSValueTransformer mtl_externalRepresentationTransformerWithModelClass:self.class];
+    NSValueTransformer *individualTransformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:self.class];
     
     return [MTLValueTransformer
             reversibleTransformerWithForwardBlock:^(NSDictionary *representations) {
@@ -54,7 +54,7 @@
             reverseBlock:^(NSDictionary *models) {
                 return [models mtl_mapValuesUsingBlock:^id(id key, id value) {
                     MTLModel *model = value;
-                    return model.externalRepresentation;
+                    return model.dictionaryValue;
                 }];
             }];
 }
