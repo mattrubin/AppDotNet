@@ -12,7 +12,7 @@ I recommend adding this library to your code's repository as a [Git submodule](h
 
 ## Requirements
 
-The AppDotNet library is intended to work on iOS 5.0 and above. Compatibility with Mac OS X  is a future goal, but the current library has not been tested on OS X.
+The AppDotNet library is intended to work on iOS 5.0 and above. There is also an OS X framework target, and OS X 10.7+ is fully supported.
 
 GitHub's [Mantle](http://github.com/github/Mantle) framework is used for modeling ADN objects, and the [AFNetworking](https://github.com/AFNetworking/AFNetworking) library is used for making API calls. They are included as submodules and can be pulled with `git submodule update --recursive --init`.
 
