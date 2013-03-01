@@ -501,8 +501,6 @@
 		8CED1AB7167C71E40071D908 /* ADNToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNToken.m; sourceTree = "<group>"; };
 		8CED1ABA167CD7950071D908 /* ADNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNImage.h; sourceTree = "<group>"; };
 		8CED1ABB167CD7950071D908 /* ADNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNImage.m; sourceTree = "<group>"; };
-		8CED1ABE167D27590071D908 /* ADN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADN.h; path = Server/ADN.h; sourceTree = "<group>"; };
-		8CED1ABF167D27590071D908 /* ADN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADN.m; path = Server/ADN.m; sourceTree = "<group>"; };
 		8CED1AE9167D426D0071D908 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8CED1AEE167D43090071D908 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8CED1AF0167D43400071D908 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -772,8 +770,6 @@
 		8CC90ED316B2743000CACB31 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				8CED1ABE167D27590071D908 /* ADN.h */,
-				8CED1ABF167D27590071D908 /* ADN.m */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
