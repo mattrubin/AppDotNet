@@ -26,8 +26,8 @@ typedef enum {
     NSError *error = nil;
     NSDictionary *testDictionary = [NSJSONSerialization JSONObjectWithData:testData options:0 error:&error];
     
-    ADNModel *model = [modelClass modelWithExternalRepresentation:testDictionary];
-    NSDictionary *modelDictionary = model.externalRepresentation;
+    ADNModel *model = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:testDictionary error:nil];
+    NSDictionary *modelDictionary = [MTLJSONAdapter JSONDictionaryFromModel:model];
     
     if (![self recursivelyCompareObject:modelDictionary toObject:testDictionary withKeyPath:nil options:ADNComparisonIgnoreMissingKeysInSecond]) {
         //STFail(@"Model dictionary validation failed.");

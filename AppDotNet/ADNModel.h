@@ -18,7 +18,7 @@
  * - Defaul transformers for properties which are ADNModel objects
  * - Runtime property assignment type checking
  */
-@interface ADNModel : MTLModel
+@interface ADNModel : MTLModel <MTLJSONSerializing>
 
 // Returns a transformer which tranforms between:
 //  - a dictionary representation

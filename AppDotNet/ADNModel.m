@@ -31,12 +31,12 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
         for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[self modelWithDictionary:externalObject error:nil]];
+            [internalArray addObject:[MTLJSONAdapter modelOfClass:self.class fromJSONDictionary:externalObject error:nil]];
         }
         return internalArray;
     } reverseBlock:^(NSArray *models) {
-        return [models mtl_mapUsingBlock:^(MTLModel *model) {
-            return model.dictionaryValue;
+        return [models mtl_mapUsingBlock:^(MTLModel <MTLJSONSerializing> *model) {
+            return [MTLJSONAdapter JSONDictionaryFromModel:model];
         }];
     }];
 }
@@ -53,22 +53,20 @@
             }
             reverseBlock:^(NSDictionary *models) {
                 return [models mtl_mapValuesUsingBlock:^id(id key, id value) {
-                    MTLModel *model = value;
-                    return model.dictionaryValue;
+                    MTLModel <MTLJSONSerializing> *model = value;
+                    return [MTLJSONAdapter JSONDictionaryFromModel:model];
                 }];
             }];
 }
 
 // If a transformer is not specified for the given key, and the expected class
 // of the property can supply its own transformer, use that self-transformer.
-+ (NSValueTransformer *)transformerForKey:(NSString *)key {
-    NSValueTransformer *transformer = [super transformerForKey:key];
-    if (!transformer) {
-        Class propertyClass = [self propertyClassForKey:key];
-        if ([propertyClass respondsToSelector:@selector(transformerForClass)]) {
-            transformer = [propertyClass transformerForClass];
-        }
-    }
++ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key {
+    NSValueTransformer *transformer = nil;
+	Class propertyClass = [self propertyClassForKey:key];
+	if ([propertyClass respondsToSelector:@selector(transformerForClass)]) {
+		transformer = [propertyClass transformerForClass];
+	}
 	return transformer;
 }
 
@@ -106,5 +104,9 @@
     return class;
 }
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+	return @{};
+}
 
 @end

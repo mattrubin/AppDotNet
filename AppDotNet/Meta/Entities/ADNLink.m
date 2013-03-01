@@ -11,8 +11,8 @@
 
 @implementation ADNLink
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"length": ADNFieldLength,
             @"amendedLength": ADNFieldAmendedLength,
             @"position": ADNFieldPosition,
@@ -24,7 +24,7 @@
     return [NSString stringWithFormat:@"[%@: %@ (%u @ %u) <%@>]", self.class, self.text, self.length, self.position, self.url];
 }
 
-+ (NSValueTransformer *)urlTransformer
++ (NSValueTransformer *)urlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }

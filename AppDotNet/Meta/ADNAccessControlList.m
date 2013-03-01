@@ -21,14 +21,14 @@
 }
 
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"anyUser": ADNFieldAnyUser,
             @"userIds": ADNFieldUserIds,
             }];
 }
 
-+ (NSValueTransformer *)userIdsTransformer
++ (NSValueTransformer *)userIdsJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *userIds) {
         return [userIds mutableCopy];
