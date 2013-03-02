@@ -21,4 +21,9 @@
  */
 @interface ADNInteraction : ADNModel
 
+// TODO: action
+// TODO: event_date
+// TODO: objects
+// TODO: users
+
 @end

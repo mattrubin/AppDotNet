@@ -54,6 +54,7 @@
 @property (nonatomic, copy) NSString *sha1;
 
 /// The number of bytes of the file's contents.
+// TODO: should this and `totalSize` be an unsigned long long to avoid overflowing NSUInteger on very large files? See -[ADNToken storageAvailable]
 @property (nonatomic, assign) NSUInteger size;
 
 /// The API consumer that created this File.
@@ -80,5 +81,10 @@
 
 /// The User who created this file.
 @property (nonatomic, strong) ADNUser *user;
+
+// TODO: created_at
+// TODO: file_token_read
+// TODO: public
+// TODO: url_permanent
 
 @end

@@ -19,4 +19,11 @@
  */
 @interface ADNStreamMarker : ADNModel
 
+// TODO: id
+// TODO: last_read_id
+// TODO: name
+// TODO: percentage
+// TODO: updated_at
+// TODO: version
+
 @end
