@@ -55,7 +55,7 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
 		}
 	}];
 	
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:[self successBlockForArrayofModelsOfClass:[ADNFile class] withHandler:handler] failure:[self failureBlockForHandler:handler]];
+	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:[self successBlockForModelOfClass:[ADNFile class] withHandler:handler] failure:[self failureBlockForHandler:handler]];
     [self enqueueHTTPRequestOperation:operation];
 }
 
