@@ -34,7 +34,7 @@
 
 - (void)getUserWithId:(NSUInteger)userId completionHandler:(ADNUserCompletionHandler)handler
 {
-    [self getUser:[NSString stringWithFormat:@"%u", userId] withCompletionHandler:handler];
+    [self getUser:[[NSNumber numberWithUnsignedInteger:userId] stringValue] withCompletionHandler:handler];
 }
 
 - (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler
