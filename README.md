@@ -6,9 +6,23 @@ The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.
 
 This is a work in progress, and I develop parts as needed for my own App.net projects. Model objects for Users, Posts, Channels, Messages, and Files are fully implemented, along with their annotations and other sub-objects. More of the resources will be added over time.
 
-## Usage
+## Getting Started
 
-Coming soon (check back saturday!).
+#### Authentication
+
+```objc
+ADNAuthenticationRequest *authRequest = [ADNAuthenticationRequest new];
+authRequest.clientId = <#yourClinetID#>;
+authRequest.responseType = ADNAuthenticationResponseTypeToken;
+authRequest.redirectURI = @"yourapp://callback";
+authRequest.scopes = ADNScopeBasic | ADNScopeFiles;
+authRequest.appStoreCompliant = YES;
+    
+NSURL *authURL = authRequest.URL;
+// load the authURL in a UIWebView and figure out when auth is finished based on what URL the web view tries to load next.
+```
+
+#### 
 
 ## Installation
 
