@@ -16,6 +16,13 @@ NSString * const ADNFileParameterIncludeFileAnnotations = @"include_file_annotat
 NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotations";
 
 
+@interface ADNClient (ADNFileInternal)
+
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler;
+
+@end
+
+
 @implementation ADNClient (ADNFile)
 
 /**
@@ -23,10 +30,35 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  * POST /stream/0/files
  * http://developers.app.net/docs/resources/file/lifecycle/#create-a-file
  */
-- (void)createFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
 {
-#warning API call not implemented
+	[self createFileNamed:fileName withContent:fileData mimeType:mimeType fileURL:nil metadata:metadata completionHandler:handler];
 }
+
+- (void)createFileWithContentsOfURL:(NSURL *)URL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
+{
+	[self createFileNamed:nil withContent:nil mimeType:nil fileURL:URL metadata:metadata completionHandler:handler];
+}
+
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
+{
+	NSURLRequest *request = [self multipartFormRequestWithMethod:@"POST" path:@"files" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+		if (fileData) {
+			[formData appendPartWithFileData:fileData name:@"content" fileName:fileName mimeType:mimeType];
+		} else if (fileURL) {
+			[formData appendPartWithFileURL:fileURL name:@"content" error:nil];
+		}
+		
+		if (metadata.count > 0) {
+			// TODO: figure out what to do with error from json serialization
+			[formData appendPartWithFileData:[NSJSONSerialization dataWithJSONObject:metadata options:0 error:nil] name:@"metadata" fileName:@"metadata.json" mimeType:@"application/json"];
+		}
+	}];
+	
+	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:[self successBlockForModelOfClass:[ADNFile class] withHandler:handler] failure:[self failureBlockForHandler:handler]];
+    [self enqueueHTTPRequestOperation:operation];
+}
+
 
 /**
  * Retrieve a File

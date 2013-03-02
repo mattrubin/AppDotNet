@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		253C138716E28FE00087D70E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85308E16A7B9D100357F6E /* AFHTTPClient.m */; };
+		253C138816E28FE10087D70E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85308E16A7B9D100357F6E /* AFHTTPClient.m */; };
 		5DC3712416E08AE300190862 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC3712316E08AE300190862 /* Cocoa.framework */; };
 		5DC3712E16E08AE300190862 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DC3712C16E08AE300190862 /* InfoPlist.strings */; };
 		5DC3713A16E08AF200190862 /* AppDotNet.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1A74167C5FC90071D908 /* AppDotNet.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -104,7 +106,6 @@
 		5DC3719B16E08CA500190862 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC3719A16E08CA400190862 /* SystemConfiguration.framework */; };
 		5DC3719C16E08CFC00190862 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EE1D716AC767200195701 /* Mantle.framework */; };
 		5DC3719D16E08D7A00190862 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85308D16A7B9D100357F6E /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5DC3719E16E08D7A00190862 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85308E16A7B9D100357F6E /* AFHTTPClient.m */; };
 		5DC3719F16E08D7A00190862 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85308F16A7B9D100357F6E /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC371A016E08D7A00190862 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309016A7B9D100357F6E /* AFHTTPRequestOperation.m */; };
 		5DC371A116E08D7A00190862 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85309116A7B9D100357F6E /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -175,7 +176,6 @@
 		8C7E3B7716C3091400D9A46B /* NSValueTransformer+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E3B7616C3091400D9A46B /* NSValueTransformer+AppDotNet.m */; };
 		8C7E3B7816C30B7100D9A46B /* NSValueTransformer+AppDotNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C7E3B7516C3091400D9A46B /* NSValueTransformer+AppDotNet.h */; };
 		8C7E3B7A16C3244A00D9A46B /* ADNKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E3B7916C3244900D9A46B /* ADNKeys.m */; };
-		8C8530A016A7B9D100357F6E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85308E16A7B9D100357F6E /* AFHTTPClient.m */; };
 		8C8530A116A7B9D100357F6E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309016A7B9D100357F6E /* AFHTTPRequestOperation.m */; };
 		8C8530A216A7B9D100357F6E /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309216A7B9D100357F6E /* AFImageRequestOperation.m */; };
 		8C8530A316A7B9D100357F6E /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309416A7B9D100357F6E /* AFJSONRequestOperation.m */; };
@@ -1209,7 +1209,6 @@
 				5DC3716816E08BA500190862 /* ADNAnnotation.m in Sources */,
 				5DC3716916E08BA500190862 /* ADNGeolocation.m in Sources */,
 				5DC3716A16E08BA800190862 /* ADNAnnotationCollection.m in Sources */,
-				5DC3719E16E08D7A00190862 /* AFHTTPClient.m in Sources */,
 				5DC371A016E08D7A00190862 /* AFHTTPRequestOperation.m in Sources */,
 				5DC371A216E08D7A00190862 /* AFImageRequestOperation.m in Sources */,
 				5DC371A416E08D7A00190862 /* AFJSONRequestOperation.m in Sources */,
@@ -1217,6 +1216,7 @@
 				5DC371A916E08D7A00190862 /* AFPropertyListRequestOperation.m in Sources */,
 				5DC371AB16E08D7A00190862 /* AFURLConnectionOperation.m in Sources */,
 				5DC371AD16E08D7A00190862 /* AFXMLRequestOperation.m in Sources */,
+				253C138816E28FE10087D70E /* AFHTTPClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,7 +1246,6 @@
 				8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */,
 				8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */,
 				8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */,
-				8C8530A016A7B9D100357F6E /* AFHTTPClient.m in Sources */,
 				8C8530A116A7B9D100357F6E /* AFHTTPRequestOperation.m in Sources */,
 				8C8530A216A7B9D100357F6E /* AFImageRequestOperation.m in Sources */,
 				8C8530A316A7B9D100357F6E /* AFJSONRequestOperation.m in Sources */,
@@ -1278,6 +1277,7 @@
 				8C6661B816B7677C0056A64B /* ADNDerivedFile.m in Sources */,
 				8C7E3B7716C3091400D9A46B /* NSValueTransformer+AppDotNet.m in Sources */,
 				8C7E3B7A16C3244A00D9A46B /* ADNKeys.m in Sources */,
+				253C138716E28FE00087D70E /* AFHTTPClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1506,6 +1506,7 @@
 				5DC3713416E08AE300190862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CED1A66167C5FC80071D908 /* Build configuration list for PBXProject "AppDotNet" */ = {
 			isa = XCConfigurationList;

@@ -6,9 +6,23 @@ The AppDotNet library provides an asynchronous Objective-C wrapper for the [App.
 
 This is a work in progress, and I develop parts as needed for my own App.net projects. Model objects for Users, Posts, Channels, Messages, and Files are fully implemented, along with their annotations and other sub-objects. More of the resources will be added over time.
 
-## Usage
+## Getting Started
 
-Coming soon (check back saturday!).
+#### Authentication
+
+```objc
+ADNAuthenticationRequest *authRequest = [ADNAuthenticationRequest new];
+authRequest.clientId = <#yourClinetID#>;
+authRequest.responseType = ADNAuthenticationResponseTypeToken;
+authRequest.redirectURI = @"yourapp://callback";
+authRequest.scopes = ADNScopeBasic | ADNScopeFiles;
+authRequest.appStoreCompliant = YES;
+    
+NSURL *authURL = authRequest.URL;
+// load the authURL in a UIWebView and figure out when auth is finished based on what URL the web view tries to load next.
+```
+
+#### 
 
 ## Installation
 
@@ -21,6 +35,11 @@ The AppDotNet library is intended to work on iOS 5.0 and above. There is also an
 GitHub's [Mantle](http://github.com/github/Mantle) framework is used for modeling ADN objects, and the [AFNetworking](https://github.com/AFNetworking/AFNetworking) library is used for making API calls. They are included as submodules and can be pulled with `git submodule update --recursive --init`.
 
 The library and its submodules require [ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting), and have been developed using Xcode 4.5 and above.
+
+Other framework dependencies are:
+* CoreLocation.framework
+* SystemConfiguration.framework
+* (on iOS): MobileCoreServices.framework
 
 ## License
 
