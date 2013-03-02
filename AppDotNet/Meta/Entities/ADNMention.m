@@ -22,7 +22,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@: #%@ @%@ (%u @ %u)]", self.class, self.userId, self.username, self.length, self.position];
+    return [NSString stringWithFormat:@"[%@: #%@ @%@ (%u @ %u)]", self.class, self.userId, self.username, (unsigned)self.length, (unsigned)self.position];
 }
 
 @end
