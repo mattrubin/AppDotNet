@@ -36,6 +36,11 @@ GitHub's [Mantle](http://github.com/github/Mantle) framework is used for modelin
 
 The library and its submodules require [ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting), and have been developed using Xcode 4.5 and above.
 
+Other framework dependencies are:
+* CoreLocation.framework
+* SystemConfiguration.framework
+* (on iOS): MobileCoreServices.framework
+
 ## License
 
 This code is distributed under the terms and conditions of the MIT license.
