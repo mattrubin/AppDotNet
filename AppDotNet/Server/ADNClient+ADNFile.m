@@ -18,7 +18,7 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
 
 @interface ADNClient (ADNFileInternal)
 
-- (void)createFile:(ADNFile *)file withContent:(NSData *)fileData fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler;
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler;
 
 @end
 
@@ -30,21 +30,21 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  * POST /stream/0/files
  * http://developers.app.net/docs/resources/file/lifecycle/#create-a-file
  */
-- (void)createFile:(ADNFile *)file withContent:(NSData *)fileData metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
-{	
-	[self createFile:file withContent:fileData fileURL:nil metadata:metadata completionHandler:handler];
-}
-
-- (void)createFile:(ADNFile *)file withContentsOfURL:(NSURL *)URL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
 {
-	[self createFile:file withContent:nil fileURL:URL metadata:metadata completionHandler:handler];
+	[self createFileNamed:fileName withContent:fileData mimeType:mimeType fileURL:nil metadata:metadata completionHandler:handler];
 }
 
-- (void)createFile:(ADNFile *)file withContent:(NSData *)fileData fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
+- (void)createFileWithContentsOfURL:(NSURL *)URL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
+{
+	[self createFileNamed:nil withContent:nil mimeType:nil fileURL:URL metadata:metadata completionHandler:handler];
+}
+
+- (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType fileURL:(NSURL *)fileURL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler
 {
 	NSURLRequest *request = [self multipartFormRequestWithMethod:@"POST" path:@"files" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 		if (fileData) {
-			[formData appendPartWithFileData:fileData name:@"content" fileName:file.name mimeType:file.mimeType];
+			[formData appendPartWithFileData:fileData name:@"content" fileName:fileName mimeType:mimeType];
 		} else if (fileURL) {
 			[formData appendPartWithFileURL:fileURL name:@"content" error:nil];
 		}
