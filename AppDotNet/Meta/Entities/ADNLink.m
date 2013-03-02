@@ -21,7 +21,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@: %@ (%u @ %u) <%@>]", self.class, self.text, self.length, self.position, self.url];
+    return [NSString stringWithFormat:@"[%@: %@ (%u @ %u) <%@>]", self.class, self.text, (unsigned)self.length, (unsigned)self.position, self.url];
 }
 
 + (NSValueTransformer *)urlJSONTransformer

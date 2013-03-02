@@ -13,7 +13,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"[%@: (%u x %u) %@]", self.class, self.width, self.height, self.url];
+    return [NSString stringWithFormat:@"[%@: (%u x %u) %@]", self.class, (unsigned)self.width, (unsigned)self.height, self.url];
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
