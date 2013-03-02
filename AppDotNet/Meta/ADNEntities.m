@@ -19,17 +19,17 @@
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)hashtagsTransformer
++ (NSValueTransformer *)hashtagsJSONTransformer
 {
     return [ADNHashtag transformerForMutableArrayOfClass];
 }
 
-+ (NSValueTransformer *)linksTransformer
++ (NSValueTransformer *)linksJSONTransformer
 {
     return [ADNLink transformerForMutableArrayOfClass];
 }
 
-+ (NSValueTransformer *)mentionsTransformer
++ (NSValueTransformer *)mentionsJSONTransformer
 {
     return [ADNMention transformerForMutableArrayOfClass];
 }

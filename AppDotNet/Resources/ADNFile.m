@@ -13,8 +13,8 @@
 
 #pragma mark Keys
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"derivedFiles": ADNFieldDerivedFiles,
             @"fileToken": ADNFieldFileToken,
             @"fileId": ADNFieldId,
@@ -27,17 +27,17 @@
 
 #pragma mark Transformers
 
-+ (NSValueTransformer *)urlTransformer
++ (NSValueTransformer *)urlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)urlExpiresTransformer
++ (NSValueTransformer *)urlExpiresJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
 }
 
-+ (NSValueTransformer *)derivedFilesTransformer
++ (NSValueTransformer *)derivedFilesJSONTransformer
 {
     return [ADNDerivedFile transformerForDictionaryOfClass];
 }
