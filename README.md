@@ -26,7 +26,7 @@ NSURL *authURL = authRequest.URL;
 
 ### Setting up `ADNClient`
 
-The `ADNClient` class has a method corresponding to each API endpoint. The simplest way to make use of the client is through the singleton instance `[ADNClient sharedClient]`.
+The `ADNClient` class is responsible for communicating with App.net. It has a method corresponding to each API endpoint. The simplest way to make use of the client is through the singleton instance `[ADNClient sharedClient]`.
 
 Once an access token is acquired, it should be passed to the client:
 ```objc
@@ -37,9 +37,10 @@ To support multiple accounts, you can create multiple instances of `ADNClient`, 
 
 ### Making API Requests
 
-Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as a completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong.
+Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as an optional completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong.
 
-##### Fetching a user:
+#### Fetching a user:
+
 ```objc
 [[ADNClient sharedClient] getUser:@"@mattrubin"
             withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
@@ -54,7 +55,8 @@ Each method on `ADNClient` takes whatever parameters are required by that API en
 }];
 ```
 
-##### Fetching new files:
+#### Fetching new files:
+
 ```objc
 NSDictionary *parameters = self.maxId ? @{@"since_id":self.maxId} : nil;
 
@@ -77,6 +79,48 @@ NSDictionary *parameters = self.maxId ? @{@"since_id":self.maxId} : nil;
          NSLog(@"meta: %@", meta);
      }
  }];
+```
+
+#### Creating a Public Post:
+
+In this example, the individual steps are:
+
+1. Getting the `sharedClient` (in this example it is assumed that the `accessToken` is already set on the client object).
+2. Preparing an `ADNPost` instance to post.
+3. Posting this instance using the `sharedClient`.
+
+```objc
+- (void)postPostWithText:(NSString *)text
+{
+    ADNClient *myClient = [ADNClient sharedClient];
+    ADNPost *myPost = [[ADNPost alloc] init];
+    myPost.text = text;
+    [myClient postPost:myPost completionHandler:NULL];
+}
+```
+
+#### Retrieving Information About the Currently Authorized User
+
+This example shows how to use the completion block to interact with the rest of the application. The strategy here is:
+
+1. Retrieve the `sharedClient` and set its `accessToken`.
+2. Call the `getUser` method with the special username `me`.
+3. Use the completion handler to place a new operation on the main queue to update the UI.
+
+```objc
+- (void)retrieveUserInformation
+{
+    ADNClient *myClient = [ADNClient sharedClient];
+    myClient.accessToken = userAccessToken;
+    [myClient getUser:@"me" withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error){
+        NSBlockOperation *updateUI = [NSBlockOperation blockOperationWithBlock:^{
+        [self.usernameLabel setText:user.username];
+        [self.userIdLabel setText:user.userId];
+        }];
+        // add operation to main queue to update the UI from the main thread only
+        [[NSOperationQueue mainQueue] addOperation:updateUI];
+    }];
+}
 ```
 
 ## Installation
