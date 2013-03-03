@@ -15,7 +15,6 @@
 {
     self = [super init];
     if (self) {
-        self.annotations = [ADNAnnotationCollection new];
         self.entities = [ADNEntities new];
     }
     return self;
@@ -43,6 +42,11 @@
 + (NSValueTransformer *)createdAtJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:ADNDateValueTransformerName];
+}
+
++ (NSValueTransformer *)annotationsJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:ADNAnnotationArrayValueTransformerName];
 }
 
 @end

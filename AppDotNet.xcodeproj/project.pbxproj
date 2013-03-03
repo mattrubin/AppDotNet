@@ -59,7 +59,6 @@
 		5DC3716716E08BA000190862 /* ADNEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24A5167DB18B00C38F51 /* ADNEntities.m */; };
 		5DC3716816E08BA500190862 /* ADNAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */; };
 		5DC3716916E08BA500190862 /* ADNGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D78168978010075FA7A /* ADNGeolocation.m */; };
-		5DC3716A16E08BA800190862 /* ADNAnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */; };
 		5DC3716B16E08BC500190862 /* ADNPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1A9C167C64110071D908 /* ADNPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3716C16E08BC500190862 /* ADNChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1AA6167C6FD70071D908 /* ADNChannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3716D16E08BC500190862 /* ADNMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1AAF167C70CE0071D908 /* ADNMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,7 +68,6 @@
 		5DC3717116E08BC500190862 /* ADNInteraction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1AAC167C706B0071D908 /* ADNInteraction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3717216E08BC500190862 /* ADNStreamMarker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1AB3167C71D20071D908 /* ADNStreamMarker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3717316E08BC500190862 /* ADNToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CED1AB6167C71E40071D908 /* ADNToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5DC3717416E08BCE00190862 /* ADNAnnotationCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3717516E08BCE00190862 /* ADNAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C7B24BE167F31B800C38F51 /* ADNAnnotation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3717616E08BCE00190862 /* ADNGeolocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFB9D77168978010075FA7A /* ADNGeolocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC3717716E08BCE00190862 /* ADNEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C7B24A4167DB18B00C38F51 /* ADNEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -248,8 +246,6 @@
 		8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D5E1688FCF30075FA7A /* ADNDescription.h */; };
 		8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D78168978010075FA7A /* ADNGeolocation.m */; };
 		8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D77168978010075FA7A /* ADNGeolocation.h */; };
-		8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */; };
-		8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */; };
 		8CFB9D841689AEF80075FA7A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFB9D831689AEF80075FA7A /* CoreLocation.framework */; };
 		B8E1BE5216E300340080A260 /* ADNJSONAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8E1BE5316E300340080A260 /* ADNJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */; };
@@ -345,7 +341,6 @@
 				8C5EE1A116A9363400195701 /* ADNHandlers.h in CopyFiles */,
 				8C0C6B3816A7FF4600E1A1CE /* AFHTTPClient.h in CopyFiles */,
 				8C0C6B3716A7FEF800E1A1CE /* ADNClient.h in CopyFiles */,
-				8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */,
 				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
 				8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */,
@@ -522,8 +517,6 @@
 		8CFB9D5F1688FCF30075FA7A /* ADNDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNDescription.m; sourceTree = "<group>"; };
 		8CFB9D77168978010075FA7A /* ADNGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNGeolocation.h; sourceTree = "<group>"; };
 		8CFB9D78168978010075FA7A /* ADNGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNGeolocation.m; sourceTree = "<group>"; };
-		8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAnnotationCollection.h; sourceTree = "<group>"; };
-		8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotationCollection.m; sourceTree = "<group>"; };
 		8CFB9D831689AEF80075FA7A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNJSONAdapter.h; sourceTree = "<group>"; };
 		B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNJSONAdapter.m; sourceTree = "<group>"; };
@@ -633,8 +626,6 @@
 		8C7B24A2167DB11300C38F51 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
-				8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */,
-				8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */,
 				8CFB9D751689752B0075FA7A /* Annotations */,
 				8C7B24A4167DB18B00C38F51 /* ADNEntities.h */,
 				8C7B24A5167DB18B00C38F51 /* ADNEntities.m */,
@@ -964,7 +955,6 @@
 				5DC3717116E08BC500190862 /* ADNInteraction.h in Headers */,
 				5DC3717216E08BC500190862 /* ADNStreamMarker.h in Headers */,
 				5DC3717316E08BC500190862 /* ADNToken.h in Headers */,
-				5DC3717416E08BCE00190862 /* ADNAnnotationCollection.h in Headers */,
 				5DC3717516E08BCE00190862 /* ADNAnnotation.h in Headers */,
 				5DC3717616E08BCE00190862 /* ADNGeolocation.h in Headers */,
 				5DC3717716E08BCE00190862 /* ADNEntities.h in Headers */,
@@ -1226,7 +1216,6 @@
 				5DC3716716E08BA000190862 /* ADNEntities.m in Sources */,
 				5DC3716816E08BA500190862 /* ADNAnnotation.m in Sources */,
 				5DC3716916E08BA500190862 /* ADNGeolocation.m in Sources */,
-				5DC3716A16E08BA800190862 /* ADNAnnotationCollection.m in Sources */,
 				5DC371A016E08D7A00190862 /* AFHTTPRequestOperation.m in Sources */,
 				5DC371A216E08D7A00190862 /* AFImageRequestOperation.m in Sources */,
 				5DC371A416E08D7A00190862 /* AFJSONRequestOperation.m in Sources */,
@@ -1265,7 +1254,6 @@
 				8CFB9D4D16880B610075FA7A /* ADNSource.m in Sources */,
 				8CFB9D601688FCF30075FA7A /* ADNDescription.m in Sources */,
 				8CFB9D79168978010075FA7A /* ADNGeolocation.m in Sources */,
-				8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */,
 				8C8530A116A7B9D100357F6E /* AFHTTPRequestOperation.m in Sources */,
 				8C8530A216A7B9D100357F6E /* AFImageRequestOperation.m in Sources */,
 				8C8530A316A7B9D100357F6E /* AFJSONRequestOperation.m in Sources */,

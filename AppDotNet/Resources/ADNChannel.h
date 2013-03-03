@@ -9,7 +9,6 @@
 #import "ADNModel.h"
 #import "ADNUser.h"
 #import "ADNAccessControlList.h"
-#import "ADNAnnotationCollection.h"
 
 
 /**
@@ -25,7 +24,7 @@
 @property (nonatomic, copy)   NSString *channelId;
 @property (nonatomic, copy)   NSString *type;
 @property (nonatomic, strong) ADNUser *owner;
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, strong) ADNAccessControlList *readers;
 @property (nonatomic, strong) ADNAccessControlList *writers;
 @property (nonatomic, assign) BOOL youSubscribed;

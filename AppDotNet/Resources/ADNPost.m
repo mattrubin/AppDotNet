@@ -11,16 +11,6 @@
 
 @implementation ADNPost
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.annotations = [ADNAnnotationCollection new];
-    }
-    return self;
-}
-
-
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
             @"postId": ADNFieldId,
@@ -43,6 +33,11 @@
 
 
 #pragma mark Transformers
+
++ (NSValueTransformer *)annotationsJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:ADNAnnotationArrayValueTransformerName];
+}
 
 + (NSValueTransformer *)createdAtJSONTransformer
 {

@@ -42,4 +42,10 @@
     return [ADNDerivedFile transformerForDictionaryOfClass];
 }
 
++ (NSValueTransformer *)annotationsJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:ADNAnnotationArrayValueTransformerName];
+}
+
+
 @end

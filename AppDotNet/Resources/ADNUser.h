@@ -9,7 +9,6 @@
 #import "ADNModel.h"
 #import "ADNDescription.h"
 #import "ADNImage.h"
-#import "ADNAnnotationCollection.h"
 
 
 /**
@@ -75,7 +74,7 @@
 
 
 // Metadata about the user. See the Annotations documentation.
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 
 
 @end

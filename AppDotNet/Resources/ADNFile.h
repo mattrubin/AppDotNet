@@ -7,7 +7,6 @@
 //
 
 #import "ADNModel.h"
-#import "ADNAnnotationCollection.h"
 #import "ADNDerivedFile.h"
 #import "ADNSource.h"
 #import "ADNUser.h"
@@ -21,7 +20,7 @@
 @interface ADNFile : ADNModel
 
 /// Metadata about the File. See the Annotations documentation.
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 
 /// Is this File considered complete? A File is complete once its contents are set.
 @property (nonatomic, assign, getter = isComplete) BOOL complete;

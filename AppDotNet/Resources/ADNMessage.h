@@ -7,7 +7,6 @@
 //
 
 #import "ADNText.h"
-#import "ADNAnnotationCollection.h"
 #import "ADNSource.h"
 #import "ADNUser.h"
 
@@ -33,6 +32,6 @@
 
 @property (nonatomic, copy)   NSString *replyToId;
 @property (nonatomic, assign) BOOL isDeleted;
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 
 @end

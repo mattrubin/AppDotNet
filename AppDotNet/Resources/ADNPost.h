@@ -9,7 +9,6 @@
 #import "ADNText.h"
 #import "ADNUser.h"
 #import "ADNSource.h"
-#import "ADNAnnotationCollection.h"
 
 
 /**
@@ -52,8 +51,7 @@
 
 
 // Metadata about the entire post. See the Annotations documentation.
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
-
+@property (nonatomic, strong) NSArray *annotations;
 
 // Has this post been deleted? For non-deleted posts, this key may be omitted instead of being false. If a post has been deleted, the text, html, and entities properties will be empty and may be omitted.
 @property (nonatomic, assign) BOOL isDeleted;
