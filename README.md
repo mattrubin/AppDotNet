@@ -14,7 +14,7 @@ An `ADNAuthenticationRequest` can be used to construct a URL for the web-based a
 
 ```objc
 ADNAuthenticationRequest *authRequest = [ADNAuthenticationRequest new];
-authRequest.clientId = <#yourClinetID#>;
+authRequest.clientId = <#yourClientId#>;
 authRequest.responseType = ADNAuthenticationResponseTypeToken;
 authRequest.redirectURI = @"yourapp://callback";
 authRequest.scopes = ADNScopeBasic | ADNScopeFiles;
@@ -33,8 +33,51 @@ Once an access token is acquired, it should be passed to the client:
 [[ADNClient sharedClient] setAccessToken:accessToken];
 ```
 
-To support multiple accounts, you can create multiple instances of `ADNClient`, each with their own access token
+To support multiple accounts, you can create multiple instances of `ADNClient`, each with their own access token.
 
+### Making API Requests
+
+Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as a completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong.
+
+##### Fetching a user:
+```objc
+[[ADNClient sharedClient] getUser:@"@mattrubin"
+            withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
+{
+    if (user) {
+        NSLog(@"This user's name is %@", user.name);
+    } else {
+        // Handle the error...
+        NSLog(@"meta: %@", meta);
+        // Useful info might be in the meta object returned from ADN
+    }
+}];
+```
+
+##### Fetching new files:
+```objc
+NSDictionary *parameters = self.maxId ? @{@"since_id":self.maxId} : nil;
+
+[[ADNClient sharedClient] getMyFilesWithParameters:parameters
+                                 completionHandler:^(NSArray *files, ADNMetadata *meta, NSError *error)
+ {
+     if (!error) {
+         NSLog(@"Fetched %i new files...", files.count);
+         
+         if (files.count) { // If there are new files
+             self.maxId = meta.maxId;
+             
+             [self.files insertObjects:files
+                             atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, files.count)]];
+             // Update the UI to show the new files...
+         }
+     } else {
+         // Handle the error...
+         NSLog(@"error: %@", error);
+         NSLog(@"meta: %@", meta);
+     }
+ }];
+```
 
 ## Installation
 
