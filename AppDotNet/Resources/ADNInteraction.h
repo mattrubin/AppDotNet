@@ -2,7 +2,7 @@
 //  ADNInteraction.h
 //  AppDotNet
 //
-//  Created by Me on 12/15/12.
+//  Created by Matt Rubin on 12/15/12.
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
@@ -20,5 +20,10 @@
  * http://developers.app.net/docs/resources/interaction
  */
 @interface ADNInteraction : ADNModel
+
+// TODO: action
+// TODO: event_date
+// TODO: objects
+// TODO: users
 
 @end

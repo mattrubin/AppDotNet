@@ -2,7 +2,7 @@
 //  ADNAuthenticationRequest.h
 //  AppDotNet
 //
-//  Created by Me on 12/17/12.
+//  Created by Matt Rubin on 12/17/12.
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
@@ -14,6 +14,8 @@ typedef enum {
     ADNAuthenticationResponseTypeToken
 } ADNAuthenticationResponseType;
 
+
+// http://developers.app.net/docs/authentication/#scopes
 typedef enum {
     ADNScopeNone            = 0,
     ADNScopeBasic           = (1 << 0), // see basic information about this user
@@ -29,6 +31,13 @@ typedef enum {
 } ADNScopes;
 
 
+/**
+ * This is a helper class for generating the authentication URL used in the client authentication flow.
+ * http://developers.app.net/docs/authentication/flows/web/#client-side-flow
+ *
+ * To make use of this class, create an ADNAuthenticationRequest and set the required properties.
+ * Then present the user with a web view which loads the NSURL provided by the ADNAuthenticationRequest -URL method.
+ */
 @interface ADNAuthenticationRequest : NSObject
 
 @property NSString *clientId;
@@ -38,8 +47,10 @@ typedef enum {
 @property NSString *state;
 @property BOOL appStoreCompliant;
 
+/// The authentication URL for the client-side flow
 - (NSURL*)URL;
 
+/// Returns a comma-separated string containing the scopes included in the ADNScopes bitmask
 + (NSString*)stringForScopes:(ADNScopes)scopes;
 + (NSString*)stringForResponseType:(ADNAuthenticationResponseType)responseType;
 

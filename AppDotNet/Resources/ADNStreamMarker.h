@@ -2,7 +2,7 @@
 //  ADNStreamMarker.h
 //  AppDotNet
 //
-//  Created by Me on 12/15/12.
+//  Created by Matt Rubin on 12/15/12.
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
@@ -18,5 +18,12 @@
  * http://developers.app.net/docs/resources/stream-marker
  */
 @interface ADNStreamMarker : ADNModel
+
+// TODO: id
+// TODO: last_read_id
+// TODO: name
+// TODO: percentage
+// TODO: updated_at
+// TODO: version
 
 @end

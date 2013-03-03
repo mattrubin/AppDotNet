@@ -8,21 +8,76 @@ This is a work in progress, and I develop parts as needed for my own App.net pro
 
 ## Getting Started
 
-#### Authentication
+### Authentication
+
+An `ADNAuthenticationRequest` can be used to construct a URL for the web-based authentication flow. A working example of authentication and extracting an `access_token` from the callback URL can be seen in [NDAAuthenticationViewController](https://github.com/mattrubin/NetDotApp/blob/master/NetDotApp/Classes/NDAAuthenticationViewController.m).
 
 ```objc
 ADNAuthenticationRequest *authRequest = [ADNAuthenticationRequest new];
-authRequest.clientId = <#yourClinetID#>;
+authRequest.clientId = <#yourClientId#>;
 authRequest.responseType = ADNAuthenticationResponseTypeToken;
 authRequest.redirectURI = @"yourapp://callback";
 authRequest.scopes = ADNScopeBasic | ADNScopeFiles;
 authRequest.appStoreCompliant = YES;
-    
+
 NSURL *authURL = authRequest.URL;
 // load the authURL in a UIWebView and figure out when auth is finished based on what URL the web view tries to load next.
 ```
 
-#### 
+### Setting up `ADNClient`
+
+The `ADNClient` class has a method corresponding to each API endpoint. The simplest way to make use of the client is through the singleton instance `[ADNClient sharedClient]`.
+
+Once an access token is acquired, it should be passed to the client:
+```objc
+[[ADNClient sharedClient] setAccessToken:accessToken];
+```
+
+To support multiple accounts, you can create multiple instances of `ADNClient`, each with their own access token.
+
+### Making API Requests
+
+Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as a completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong.
+
+##### Fetching a user:
+```objc
+[[ADNClient sharedClient] getUser:@"@mattrubin"
+            withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error)
+{
+    if (user) {
+        NSLog(@"This user's name is %@", user.name);
+    } else {
+        // Handle the error...
+        NSLog(@"meta: %@", meta);
+        // Useful info might be in the meta object returned from ADN
+    }
+}];
+```
+
+##### Fetching new files:
+```objc
+NSDictionary *parameters = self.maxId ? @{@"since_id":self.maxId} : nil;
+
+[[ADNClient sharedClient] getMyFilesWithParameters:parameters
+                                 completionHandler:^(NSArray *files, ADNMetadata *meta, NSError *error)
+ {
+     if (!error) {
+         NSLog(@"Fetched %i new files...", files.count);
+         
+         if (files.count) { // If there are new files
+             self.maxId = meta.maxId;
+             
+             [self.files insertObjects:files
+                             atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, files.count)]];
+             // Update the UI to show the new files...
+         }
+     } else {
+         // Handle the error...
+         NSLog(@"error: %@", error);
+         NSLog(@"meta: %@", meta);
+     }
+ }];
+```
 
 ## Installation
 

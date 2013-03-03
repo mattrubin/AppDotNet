@@ -2,7 +2,7 @@
 //  ADNUser.h
 //  AppDotNet
 //
-//  Created by Me on 12/15/12.
+//  Created by Matt Rubin on 12/15/12.
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
@@ -51,7 +51,7 @@
 // The time at which the User was created in ISO 8601 format.
 @property (nonatomic, copy) NSDate *createdAt;
 // The URL of the user's detail page on Alpha.
-@property (nonatomic, copy) NSString *canonicalURL;
+@property (nonatomic, copy) NSString *canonicalURL; // TODO: is this actually a user field?
 
 
 // The number of users this user is following.
