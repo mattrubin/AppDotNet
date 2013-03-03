@@ -8,7 +8,9 @@ This is a work in progress, and I develop parts as needed for my own App.net pro
 
 ## Getting Started
 
-#### Authentication
+### Authentication
+
+An `ADNAuthenticationRequest` can be used to construct a URL for the web-based authentication flow. A working example of authentication and extracting an `access_token` from the callback URL can be seen in [NDAAuthenticationViewController](https://github.com/mattrubin/NetDotApp/blob/master/NetDotApp/Classes/NDAAuthenticationViewController.m).
 
 ```objc
 ADNAuthenticationRequest *authRequest = [ADNAuthenticationRequest new];
@@ -17,12 +19,22 @@ authRequest.responseType = ADNAuthenticationResponseTypeToken;
 authRequest.redirectURI = @"yourapp://callback";
 authRequest.scopes = ADNScopeBasic | ADNScopeFiles;
 authRequest.appStoreCompliant = YES;
-    
+
 NSURL *authURL = authRequest.URL;
 // load the authURL in a UIWebView and figure out when auth is finished based on what URL the web view tries to load next.
 ```
 
-#### 
+### Setting up `ADNClient`
+
+The `ADNClient` class has a method corresponding to each API endpoint. The simplest way to make use of the client is through the singleton instance `[ADNClient sharedClient]`.
+
+Once an access token is acquired, it should be passed to the client:
+```objc
+[[ADNClient sharedClient] setAccessToken:accessToken];
+```
+
+To support multiple accounts, you can create multiple instances of `ADNClient`, each with their own access token
+
 
 ## Installation
 

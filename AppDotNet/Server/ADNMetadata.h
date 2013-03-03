@@ -28,4 +28,7 @@ extern NSString * const ADNErrorRedirectURIRequired;
 @property (nonatomic, readonly, copy) NSString *minId;
 @property (nonatomic, readonly, assign) BOOL more;
 
+// TODO: marker
+// TODO: explore_stream
+
 @end
