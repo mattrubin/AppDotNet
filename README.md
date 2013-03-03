@@ -22,6 +22,56 @@ NSURL *authURL = authRequest.URL;
 // load the authURL in a UIWebView and figure out when auth is finished based on what URL the web view tries to load next.
 ```
 
+### Using the ADNClient
+
+After authentication the `ADNClient` is the main object which is responsible for communicating with app.net. It is implemented as a singleton. Typically, one interaction with the service is a multi-step process:
+
+1. Fetch the `sharedClient`, when used the first time set the `accessToken` property on the client object with the user access token received during the authentication process.
+2. Call the approbiate method on the client.
+3. (optional) Handle the result using a completion handler, which is implemented as a block.
+
+#### Creating a Public Post
+
+In this example, the individual steps are:
+
+1. Getting the `sharedClient` (in this example it is assumed that the `accessToken` is already set on the client object).
+2. Preparing an `ADNPost` instance to post.
+3. Posting this instance using the `sharedClient`.
+
+```objc
+- (void)postMessage:(NSString *)text
+{
+    ADNClient *myClient = [ADNClient sharedClient];
+    ADNPost *myPost = [[ADNPost alloc] init];
+    myPost.text = text;
+    [myClient postPost:myPost completionHandler:NULL];
+}
+```
+
+#### Retrieving Information About the Currently Authorized User
+
+This example shows how to use the completion block to interact with the rest of the application. The strategy here is:
+
+1. Retrieve the `sharedClient` and set its `accessToken`.
+2. Call the `getUser` method with the special username `me`.
+3. Use the completion handler to place a new operation on the main queue to update the UI.
+
+```objc
+- (void)retrieveUserInformation
+{
+    ADNClient *myClient = [ADNClient sharedClient];
+    myClient.accessToken = userAccessToken;
+    [myClient getUser:@"me" withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error){
+        NSBlockOperation *updateUI = [NSBlockOperation blockOperationWithBlock:^{
+        [self.usernameLabel setText:user.username];
+        [self.userIdLabel setText:user.userId];
+        }];
+        // add operation to main queue to update the UI from the main thread only
+        [[NSOperationQueue mainQueue] addOperation:updateUI];
+    }];
+}
+```
+
 #### 
 
 ## Installation
