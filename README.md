@@ -37,7 +37,7 @@ To support multiple accounts, you can create multiple instances of `ADNClient`, 
 
 ### Making API Requests
 
-Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as an optional completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong.
+Each method on `ADNClient` takes whatever parameters are required by that API endpoint, as well as an optional completion block. The completion block is passed three objects: the object or collection of objects which were returned from the server, an `ADNMetadata` object which contains the `meta` information from the response envelope, and possibly an `NSError` if something went wrong. The completion block is run on the main thread by default. 
 
 #### Fetching a user:
 
@@ -113,12 +113,8 @@ This example shows how to use the completion block to interact with the rest of 
     ADNClient *myClient = [ADNClient sharedClient];
     myClient.accessToken = userAccessToken;
     [myClient getUser:@"me" withCompletionHandler:^(ADNUser *user, ADNMetadata *meta, NSError *error){
-        NSBlockOperation *updateUI = [NSBlockOperation blockOperationWithBlock:^{
         [self.usernameLabel setText:user.username];
         [self.userIdLabel setText:user.userId];
-        }];
-        // add operation to main queue to update the UI from the main thread only
-        [[NSOperationQueue mainQueue] addOperation:updateUI];
     }];
 }
 ```
