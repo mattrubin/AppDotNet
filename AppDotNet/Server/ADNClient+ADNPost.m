@@ -23,7 +23,7 @@
 	
 	[self postPath:endpoint
 		parameters:[MTLJSONAdapter JSONDictionaryFromModel:post]
-		   success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
+		   success:[self successBlockForModelOfClass:[ADNPost class] withHandler:handler]
 		   failure:[self failureBlockForHandler:handler]];
 }
 
