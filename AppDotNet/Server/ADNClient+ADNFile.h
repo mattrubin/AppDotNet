@@ -20,7 +20,6 @@ extern NSString * const ADNFileParameterIncludeUserAnnotations;
 @interface ADNClient (ADNFile)
 
 // Create a File
-//- (void)createFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler;
 - (void)createFileNamed:(NSString *)fileName withContent:(NSData *)fileData mimeType:(NSString *)mimeType metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler;
 - (void)createFileWithContentsOfURL:(NSURL *)URL metadata:(NSDictionary *)metadata completionHandler:(ADNFileCompletionHandler)handler;
 
