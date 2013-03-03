@@ -37,6 +37,7 @@
             @"starredBy": ADNFieldStarredBy,
             @"youReposted": ADNFieldYouReposted,
             @"repostOf": ADNFieldRepostOf,
+            @"annotations": ADNFieldAnnotations
             }];
 }
 
