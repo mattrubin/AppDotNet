@@ -19,7 +19,7 @@
 {
     [super setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
 		NSError *error = nil;
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithDictionary:responseObject error:&error];
+        ADNResponseEnvelope *responseEnvelope = (ADNResponseEnvelope *)[MTLJSONAdapter modelOfClass:[ADNResponseEnvelope class] fromJSONDictionary:responseObject error:&error];
 		
 		// TODO: do something with error
         
@@ -28,7 +28,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
 		NSError *mantleError = nil;
-        ADNResponseEnvelope *responseEnvelope = [ADNResponseEnvelope modelWithDictionary:((AFJSONRequestOperation *)operation).responseJSON error:&mantleError];
+        ADNResponseEnvelope *responseEnvelope = (ADNResponseEnvelope *)[MTLJSONAdapter modelOfClass:[ADNResponseEnvelope class] fromJSONDictionary:((AFJSONRequestOperation *)operation).responseJSON error:&mantleError];
 		
 		// TODO: do something with mantleError
         

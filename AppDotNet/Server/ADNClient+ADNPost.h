@@ -12,6 +12,9 @@
 
 @interface ADNClient (ADNPost)
 
+- (void)postPost:(ADNPost *)post completionHandler:(ADNPostCompletionHandler)handler;
+- (void)postPost:(NSString *)postContent inReplyTo:(NSString *)postID completionHandler:(ADNPostCompletionHandler)handler;
+
 - (void)getGlobalStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
 
 @end

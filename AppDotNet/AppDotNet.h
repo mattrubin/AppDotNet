@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Matt Rubin. All rights reserved.
 //
 
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
+
 #import <AppDotNet/ADNClient.h>
 #import <AppDotNet/ADNClient+ADNUser.h>
 #import <AppDotNet/ADNClient+ADNPost.h>
@@ -32,3 +34,34 @@
 #import <AppDotNet/ADNInteraction.h>
 #import <AppDotNet/ADNStreamMarker.h>
 #import <AppDotNet/ADNToken.h>
+
+#else
+
+#import "ADNClient.h"
+#import "ADNClient+ADNUser.h"
+#import "ADNClient+ADNPost.h"
+#import "ADNClient+ADNChannel.h"
+#import "ADNClient+ADNMessage.h"
+#import "ADNClient+ADNFile.h"
+#import "ADNClient+ADNStream.h"
+#import "ADNClient+ADNFilter.h"
+#import "ADNClient+ADNInteraction.h"
+#import "ADNClient+ADNStreamMarker.h"
+#import "ADNClient+ADNText.h"
+#import "ADNClient+ADNToken.h"
+
+#import "ADNAuthenticationRequest.h"
+#import "ADNMetadata.h"
+
+#import "ADNUser.h"
+#import "ADNPost.h"
+#import "ADNChannel.h"
+#import "ADNMessage.h"
+#import "ADNFile.h"
+#import "ADNStream.h"
+#import "ADNFilter.h"
+#import "ADNInteraction.h"
+#import "ADNStreamMarker.h"
+#import "ADNToken.h"
+
+#endif
