@@ -105,7 +105,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         
         if (externalRepresentation &&
             [modelClass isSubclassOfClass:[ADNModel class]]) {
-            handledObject = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalRepresentation error:nil];
+            handledObject = [ADNJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalRepresentation error:nil];
         }
         
         if (handler) {

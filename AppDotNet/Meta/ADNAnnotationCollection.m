@@ -72,7 +72,7 @@
 {
     NSMutableArray *outArray = [NSMutableArray arrayWithCapacity:self.annotations.count];
     for (ADNAnnotation *annotation in self.annotations) {
-        [outArray addObject:[MTLJSONAdapter JSONDictionaryFromModel:annotation]];
+        [outArray addObject:[ADNJSONAdapter JSONDictionaryFromModel:annotation]];
     }
     return outArray;
 }

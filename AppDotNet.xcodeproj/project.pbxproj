@@ -251,6 +251,13 @@
 		8CFB9D8116898DD80075FA7A /* ADNAnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */; };
 		8CFB9D82168990D40075FA7A /* ADNAnnotationCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */; };
 		8CFB9D841689AEF80075FA7A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFB9D831689AEF80075FA7A /* CoreLocation.framework */; };
+		B8E1BE5216E300340080A260 /* ADNJSONAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8E1BE5316E300340080A260 /* ADNJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */; };
+		B8E1BE5416E300340080A260 /* ADNJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */; };
+		B8E1BE5716E300610080A260 /* NSDictionary+AppDotNet.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E1BE5516E300610080A260 /* NSDictionary+AppDotNet.h */; };
+		B8E1BE5816E300610080A260 /* NSDictionary+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E1BE5616E300610080A260 /* NSDictionary+AppDotNet.m */; };
+		B8E1BE5916E300610080A260 /* NSDictionary+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E1BE5616E300610080A260 /* NSDictionary+AppDotNet.m */; };
+		B8E1BE5A16E308970080A260 /* ADNJSONAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +368,7 @@
 				8C073449167FC48B002B9EBC /* ADNLink.h in CopyFiles */,
 				8C07344B167FC48B002B9EBC /* ADNHelper.h in CopyFiles */,
 				8CED1A75167C5FC90071D908 /* AppDotNet.h in CopyFiles */,
+				B8E1BE5A16E308970080A260 /* ADNJSONAdapter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +525,10 @@
 		8CFB9D7F16898DD70075FA7A /* ADNAnnotationCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAnnotationCollection.h; sourceTree = "<group>"; };
 		8CFB9D8016898DD70075FA7A /* ADNAnnotationCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNAnnotationCollection.m; sourceTree = "<group>"; };
 		8CFB9D831689AEF80075FA7A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNJSONAdapter.h; sourceTree = "<group>"; };
+		B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNJSONAdapter.m; sourceTree = "<group>"; };
+		B8E1BE5516E300610080A260 /* NSDictionary+AppDotNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AppDotNet.h"; sourceTree = "<group>"; };
+		B8E1BE5616E300610080A260 /* NSDictionary+AppDotNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AppDotNet.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -671,6 +683,8 @@
 			children = (
 				8C7E3B7516C3091400D9A46B /* NSValueTransformer+AppDotNet.h */,
 				8C7E3B7616C3091400D9A46B /* NSValueTransformer+AppDotNet.m */,
+				B8E1BE5516E300610080A260 /* NSDictionary+AppDotNet.h */,
+				B8E1BE5616E300610080A260 /* NSDictionary+AppDotNet.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -901,6 +915,8 @@
 				8C7B24B4167ED44A00C38F51 /* ADNHelper.m */,
 				8C66617E16B74ED90056A64B /* ADNParameters.h */,
 				8C66617F16B74ED90056A64B /* ADNParameters.m */,
+				B8E1BE5016E300330080A260 /* ADNJSONAdapter.h */,
+				B8E1BE5116E300330080A260 /* ADNJSONAdapter.m */,
 				8C85408A16AE686100BA384D /* Client */,
 				8C85403516AC8B7500BA384D /* Operations */,
 				8C85402F16AC8B3A00BA384D /* Responses */,
@@ -991,6 +1007,8 @@
 				5DC371A816E08D7A00190862 /* AFPropertyListRequestOperation.h in Headers */,
 				5DC371AA16E08D7A00190862 /* AFURLConnectionOperation.h in Headers */,
 				5DC371AC16E08D7A00190862 /* AFXMLRequestOperation.h in Headers */,
+				B8E1BE5216E300340080A260 /* ADNJSONAdapter.h in Headers */,
+				B8E1BE5716E300610080A260 /* NSDictionary+AppDotNet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1235,8 @@
 				5DC371AB16E08D7A00190862 /* AFURLConnectionOperation.m in Sources */,
 				5DC371AD16E08D7A00190862 /* AFXMLRequestOperation.m in Sources */,
 				253C138816E28FE10087D70E /* AFHTTPClient.m in Sources */,
+				B8E1BE5416E300340080A260 /* ADNJSONAdapter.m in Sources */,
+				B8E1BE5916E300610080A260 /* NSDictionary+AppDotNet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,6 +1298,8 @@
 				8C7E3B7716C3091400D9A46B /* NSValueTransformer+AppDotNet.m in Sources */,
 				8C7E3B7A16C3244A00D9A46B /* ADNKeys.m in Sources */,
 				253C138716E28FE00087D70E /* AFHTTPClient.m in Sources */,
+				B8E1BE5316E300340080A260 /* ADNJSONAdapter.m in Sources */,
+				B8E1BE5816E300610080A260 /* NSDictionary+AppDotNet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,12 +31,12 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
         NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
         for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[MTLJSONAdapter modelOfClass:self.class fromJSONDictionary:externalObject error:nil]];
+            [internalArray addObject:[ADNJSONAdapter modelOfClass:self.class fromJSONDictionary:externalObject error:nil]];
         }
         return internalArray;
     } reverseBlock:^(NSArray *models) {
         return [models mtl_mapUsingBlock:^(MTLModel <MTLJSONSerializing> *model) {
-            return [MTLJSONAdapter JSONDictionaryFromModel:model];
+            return [ADNJSONAdapter JSONDictionaryFromModel:model];
         }];
     }];
 }
@@ -54,7 +54,7 @@
             reverseBlock:^(NSDictionary *models) {
                 return [models mtl_mapValuesUsingBlock:^id(id key, id value) {
                     MTLModel <MTLJSONSerializing> *model = value;
-                    return [MTLJSONAdapter JSONDictionaryFromModel:model];
+                    return [ADNJSONAdapter JSONDictionaryFromModel:model];
                 }];
             }];
 }

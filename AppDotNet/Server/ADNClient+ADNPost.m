@@ -22,7 +22,7 @@
 	NSString *endpoint = @"posts";
 	
 	[self postPath:endpoint
-		parameters:[MTLJSONAdapter JSONDictionaryFromModel:post]
+		parameters:[ADNJSONAdapter JSONDictionaryFromModel:post]
 		   success:[self successBlockForModelOfClass:[ADNPost class] withHandler:handler]
 		   failure:[self failureBlockForHandler:handler]];
 }
