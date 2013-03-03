@@ -8,6 +8,8 @@ This is a work in progress, and I develop parts as needed for my own App.net pro
 
 ## Getting Started
 
+Example code to get you started using the library is below. For a more thorough overview of the various parts of the library, see this [AppDotNet Overview](https://github.com/mattrubin/AppDotNet/wiki/AppDotNet-Overview).
+
 ### Authentication
 
 An `ADNAuthenticationRequest` can be used to construct a URL for the web-based authentication flow. A working example of authentication and extracting an `access_token` from the callback URL can be seen in [NDAAuthenticationViewController](https://github.com/mattrubin/NetDotApp/blob/master/NetDotApp/Classes/NDAAuthenticationViewController.m).
