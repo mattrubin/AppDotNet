@@ -129,10 +129,10 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         
         NSMutableArray *modelArray = nil;
         
-        if (externalArray && [modelClass respondsToSelector:@selector(modelWithExternalRepresentation:)]) {
+        if (externalArray && [modelClass isSubclassOfClass:[ADNModel class]]) {
             modelArray = [NSMutableArray arrayWithCapacity:externalArray.count];
             for (id externalObject in externalArray) {
-                [modelArray addObject:[modelClass modelWithExternalRepresentation:externalObject]];
+                [modelArray addObject:[MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalObject error:nil]];
             }
         } else {
             modelArray = [externalArray mutableCopy];
