@@ -50,4 +50,70 @@
           failure:[self failureBlockForHandler:handler]];
 }
 
+/*
+ * Retrieve posts for a given user
+ * GET /stream/0/users/[user_id]/posts
+ * http://developers.app.net/docs/resources/post/streams/#retrieve-posts-created-by-a-user
+ */
+- (void)getPostsForUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/posts", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
+}
+
+- (void)getPostsForCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    [self getPostsForUser:@"me" withParameters:parameters completionHandler:handler];
+}
+
+/*
+ * Retrieve posts that have been starred by a given user
+ * GET /stream/0/users/[user_id]/stars
+ * http://developers.app.net/docs/resources/post/stars/#retrieve-posts-starred-by-a-user
+ */
+- (void)getPostsStarredByUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/stars", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
+}
+
+- (void)getPostsStarredByCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    [self getPostsStarredByUser:@"me" withParameters:parameters completionHandler:handler];
+}
+
+/*
+ * Retrieve posts that mention a given user
+ * GET /stream/0/users/[user_id]/mentions
+ * http://developers.app.net/docs/resources/post/streams/#retrieve-posts-mentioning-a-user
+ */
+- (void)getPostsMentioningUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    NSAssert(usernameOrId, @"You must specify a username or ID.");
+    
+    NSString *endpoint = [NSString stringWithFormat:@"users/%@/mentions", usernameOrId];
+    
+    [self getPath:endpoint
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
+}
+
+- (void)getPostsMentioningCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    [self getPostsMentioningUser:@"me" withParameters:parameters completionHandler:handler];
+}
+
 @end

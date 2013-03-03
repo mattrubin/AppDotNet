@@ -17,4 +17,14 @@
 
 - (void)getGlobalStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
 
+- (void)getPostsForUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+- (void)getPostsForCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+
+- (void)getPostsStarredByUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+- (void)getPostsStarredByCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+
+- (void)getPostsMentioningUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+- (void)getPostsMentioningCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler;
+
+
 @end
