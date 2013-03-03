@@ -17,7 +17,7 @@
  * http://developers.app.net/docs/resources/post/lifecycle/#create-a-post
  */
 
-- (void)postPost:(ADNPost *)post completionHandler:(ADNUserCompletionHandler)handler
+- (void)postPost:(ADNPost *)post completionHandler:(ADNPostCompletionHandler)handler
 {
 	NSString *endpoint = @"posts";
 	
@@ -27,7 +27,7 @@
 		   failure:[self failureBlockForHandler:handler]];
 }
 
-- (void)postPost:(NSString *)postContent inReplyTo:(NSString *)postID completionHandler:(ADNUserCompletionHandler)handler
+- (void)postPost:(NSString *)postContent inReplyTo:(NSString *)postID completionHandler:(ADNPostCompletionHandler)handler
 {
 	ADNPost *post = [[ADNPost alloc] init];
 	post.text = postContent;
