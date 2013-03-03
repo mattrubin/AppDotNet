@@ -41,6 +41,8 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
     
+    [self setParameterEncoding:AFJSONParameterEncoding];
+    
     return self;
 }
 
