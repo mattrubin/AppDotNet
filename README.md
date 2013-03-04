@@ -57,6 +57,9 @@ Each method on `ADNClient` takes whatever parameters are required by that API en
 }];
 ```
 
+Additional API examples can be found in the more thorough ["Getting Started" guide](https://github.com/mattrubin/AppDotNet/wiki/Getting-Started) in the source repository's wiki.
+
+<!--
 #### Fetching new files:
 
 ```objc
@@ -120,6 +123,7 @@ This example shows how to use the completion block to interact with the rest of 
     }];
 }
 ```
+-->
 
 ## Installation
 
