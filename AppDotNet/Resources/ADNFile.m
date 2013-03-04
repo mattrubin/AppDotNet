@@ -21,6 +21,8 @@
             @"mimeType": ADNFieldMIMEType,
             @"totalSize": ADNFieldTotalSize,
             @"urlExpires": ADNFieldURLExpires,
+            @"public": ADNFieldPublic,
+            @"permanentURL": ADNFieldURLPermanent
             }];
 }
 
