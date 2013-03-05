@@ -51,6 +51,32 @@
 }
 
 /*
+ * Retrieve the 20 most recent Posts from the current User and the Users they follow
+ * GET /stream/0/posts/stream
+ * http://developers.app.net/docs/resources/post/streams/#retrieve-a-users-personalized-stream
+ */
+- (void)getPersonalizedStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    [self getPath:@"posts/stream"
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
+}
+
+/*
+ * Return the 20 most recent Posts from the current user’s personalized stream and mentions stream merged into one stream.
+ * GET /stream/0/posts/stream/unified
+ * http://developers.app.net/docs/resources/post/streams/#retrieve-a-users-unified-stream
+ */
+- (void)getUnifiedStreamWithParameters:(NSDictionary *)parameters completionHandler:(NSArrayCompletionHandler)handler
+{
+    [self getPath:@"posts/stream/unified"
+       parameters:parameters
+          success:[self successBlockForArrayofModelsOfClass:[ADNPost class] withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
+}
+
+/*
  * Retrieve posts for a given user
  * GET /stream/0/users/[user_id]/posts
  * http://developers.app.net/docs/resources/post/streams/#retrieve-posts-created-by-a-user
