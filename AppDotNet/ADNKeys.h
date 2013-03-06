@@ -72,6 +72,7 @@ extern NSString * const ADNFieldTotalSize;
 extern NSString * const ADNFieldType;
 extern NSString * const ADNFieldURL;
 extern NSString * const ADNFieldURLExpires;
+extern NSString * const ADNFieldURLPermanent;
 extern NSString * const ADNFieldUser;
 extern NSString * const ADNFieldUserIds;
 extern NSString * const ADNFieldUsername;
