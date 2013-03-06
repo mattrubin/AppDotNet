@@ -8,6 +8,7 @@
 
 #import <Mantle/Mantle.h>
 #import "NSValueTransformer+AppDotNet.h"
+#import "ADNJSONAdapter.h"
 
 
 /**

@@ -11,16 +11,6 @@
 
 @implementation ADNChannel
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.annotations = [ADNAnnotationCollection new];
-    }
-    return self;
-}
-
-
 #pragma mark Keys
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -33,7 +23,12 @@
             }];
 }
 
+#pragma mark Transformers
 
++ (NSValueTransformer *)annotationsJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:ADNAnnotationArrayValueTransformerName];
+}
 
 #pragma mark Utility
 

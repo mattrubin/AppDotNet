@@ -7,7 +7,6 @@
 //
 
 #import "ADNText.h"
-#import "ADNAnnotationCollection.h"
 #import "ADNSource.h"
 #import "ADNUser.h"
 
@@ -45,7 +44,7 @@
 @property (nonatomic, assign) NSUInteger numReplies;
 
 /// Metadata about the entire Message. See the Annotations documentation.
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 
 /// Has this message been deleted?
 /// If a Message has been deleted, the text, html, and entities properties will be empty and may be omitted.

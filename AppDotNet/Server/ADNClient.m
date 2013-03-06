@@ -41,6 +41,8 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
     
+    [self setParameterEncoding:AFJSONParameterEncoding];
+    
     return self;
 }
 
@@ -105,7 +107,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         
         if (externalRepresentation &&
             [modelClass isSubclassOfClass:[ADNModel class]]) {
-            handledObject = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalRepresentation error:nil];
+            handledObject = [ADNJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalRepresentation error:nil];
         }
         
         if (handler) {
@@ -132,7 +134,7 @@ NSString * const ADNHeaderPrettyJSON = @"X-ADN-Pretty-JSON";
         if (externalArray && [modelClass isSubclassOfClass:[ADNModel class]]) {
             modelArray = [NSMutableArray arrayWithCapacity:externalArray.count];
             for (id externalObject in externalArray) {
-                [modelArray addObject:[MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalObject error:nil]];
+                [modelArray addObject:[ADNJSONAdapter modelOfClass:modelClass fromJSONDictionary:externalObject error:nil]];
             }
         } else {
             modelArray = [externalArray mutableCopy];

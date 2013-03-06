@@ -9,7 +9,6 @@
 #import "ADNModel.h"
 #import "ADNUser.h"
 #import "ADNAccessControlList.h"
-#import "ADNAnnotationCollection.h"
 
 
 /**
@@ -34,7 +33,7 @@
 @property (nonatomic, strong) ADNUser *owner;
 
 /// Metadata about the Channel. See the Annotations documentation.
-@property (nonatomic, strong) ADNAnnotationCollection *annotations;
+@property (nonatomic, strong) NSArray *annotations;
 
 /// The access control list that describes who can read this Channel and its Messages.
 @property (nonatomic, strong) ADNAccessControlList *readers;

@@ -14,6 +14,16 @@ NSString * const ADNAnnotationTypeGeolocation = @"net.app.core.geolocation";
 
 @implementation ADNGeolocation
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
+            @"latitude": [NSNull null],
+            @"longitude": [NSNull null],
+            @"altitude": [NSNull null],
+            @"horizontalAccuracy": [NSNull null],
+            @"verticalAccuracy": [NSNull null]
+            }];
+}
+
 - (id)init
 {
     self = [super init];

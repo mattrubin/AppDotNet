@@ -34,6 +34,7 @@
 #import <AppDotNet/ADNInteraction.h>
 #import <AppDotNet/ADNStreamMarker.h>
 #import <AppDotNet/ADNToken.h>
+#import <AppDotNet/ADNGeolocation.h>
 
 #else
 
@@ -63,5 +64,6 @@
 #import "ADNInteraction.h"
 #import "ADNStreamMarker.h"
 #import "ADNToken.h"
+#import "ADNGeolocation.h"
 
 #endif

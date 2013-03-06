@@ -12,6 +12,9 @@
 // The name for a value transformer that converts ADN date strings into NSDates and back.
 extern NSString * const ADNDateValueTransformerName;
 
+// The name for a value transformer that converts arrays of annotation JSONs into
+// arrays of the correct ADNAnnotation subclass and back
+extern NSString * const ADNAnnotationArrayValueTransformerName;
 
 @interface NSValueTransformer (AppDotNet)
 
