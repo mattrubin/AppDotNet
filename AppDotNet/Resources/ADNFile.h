@@ -82,11 +82,16 @@
 /// The User who created this file.
 @property (nonatomic, strong) ADNUser *user;
 
-/// Determines if the file is public which means that it is assigned a permanent
-/// id. This property can be changed after creation.
+/// Whether or not the file has been explicitly marked public and assigned a
+/// permanent URL. This property can be changed after creation.
+/// Files can also be made public by attaching them to other public objects;
+/// this flag is not meant to indicate whether there is some public reference
+/// to a file.
 @property (nonatomic, assign) BOOL public;
 
-/// Permanent URL to file. Only available if public is set to YES
+/// Permanent URL for this file. Only present when `public` is `YES`. This will
+/// often be an HTTP redirect to the file's content. This URL will not need any
+/// authentication to retrieve.
 @property (nonatomic, copy) NSURL *permanentURL;
 
 // TODO: created_at

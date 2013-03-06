@@ -37,6 +37,7 @@ extern NSString * const ADNFileParameterIncludeUserAnnotations;
 
 // Update a File
 - (void)updateFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler;
+- (void)updateFile:(ADNFile *)file withParameters:(NSDictionary *)parameters completionHandler:(ADNFileCompletionHandler)handler;
 
 // Set File content
 - (void)setContent:(NSData *)fileData forFile:(NSString *)fileId withCompletionHandler:(ADNFileCompletionHandler)handler;
