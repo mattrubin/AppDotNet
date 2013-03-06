@@ -18,32 +18,28 @@
  * GET /stream/0/users/[user_id]
  * http://developers.app.net/docs/resources/user/lookup/#retrieve-a-user
  */
-- (void)getUser:(NSString*)usernameOrId withCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)getUser:(NSString *)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler
 {
     NSString *endpoint = [NSString stringWithFormat:@"users/%@", usernameOrId];
+    
     [self getPath:endpoint
-       parameters:nil
+       parameters:parameters
           success:[self successBlockForModelOfClass:[ADNUser class] withHandler:handler]
           failure:[self failureBlockForHandler:handler]];
 }
 
-- (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler
+- (void)getCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler
 {
-    [self getUser:@"me" withCompletionHandler:handler];
+    [self getUser:@"me" withParameters:parameters completionHandler:handler];
 }
 
-- (void)getUserWithId:(NSUInteger)userId completionHandler:(ADNUserCompletionHandler)handler
-{
-    [self getUser:[[NSNumber numberWithUnsignedInteger:userId] stringValue] withCompletionHandler:handler];
-}
-
-- (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler
+- (void)getUserWithUsername:(NSString*)username parameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler
 {
     if (![username hasPrefix:@"@"]) {
         username = [@"@" stringByAppendingString:username];
     }
     
-    [self getUser:username withCompletionHandler:handler];
+    [self getUser:username withParameters:parameters completionHandler:handler];
 }
 
 /*

@@ -12,10 +12,9 @@
 
 @interface ADNClient (ADNUser)
 
-- (void)getUser:(NSString*)usernameOrId     withCompletionHandler:(ADNUserCompletionHandler)handler;
-- (void)getUserWithId:(NSUInteger)userId        completionHandler:(ADNUserCompletionHandler)handler;
-- (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler;
-- (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler;
+- (void)getUser:(NSString*)usernameOrId withParameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler;
+- (void)getUserWithUsername:(NSString*)username parameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler;
+- (void)getCurrentUserWithParameters:(NSDictionary *)parameters completionHandler:(ADNUserCompletionHandler)handler;
 
 - (void)updateUser:(ADNUser *)user withCompletionHandler:(ADNUserCompletionHandler)handler;
 
@@ -42,5 +41,15 @@
 
 - (void)getUsersWhoRepostedPost:(NSString *)postId         withCompletionHandler:(NSArrayCompletionHandler)handler;
 - (void)getUsersWhoStarredPost:(NSString *)postId          withCompletionHandler:(NSArrayCompletionHandler)handler;
+
+@end
+
+
+@interface ADNClient (ADNUserDeprecated)
+
+- (void)getUser:(NSString*)usernameOrId     withCompletionHandler:(ADNUserCompletionHandler)handler __attribute__((deprecated("Replaced by -getUser:withParameters:completionHandler:")));
+- (void)getUserWithId:(NSUInteger)userId        completionHandler:(ADNUserCompletionHandler)handler __attribute__((deprecated("Replaced by -getUser:withParameters:completionHandler:")));
+- (void)getUserWithUsername:(NSString*)username completionHandler:(ADNUserCompletionHandler)handler __attribute__((deprecated("Replaced by -getUserWithUsername:parameters:completionHandler:")));
+- (void)getCurrentUserWithCompletionHandler:(ADNUserCompletionHandler)handler __attribute__((deprecated("Replaced by -getCurrentUserWithParameters:completionHandler:")));
 
 @end
