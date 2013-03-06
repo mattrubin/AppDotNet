@@ -125,9 +125,14 @@ NSString * const ADNFileParameterIncludeUserAnnotations = @"include_user_annotat
  * PUT /stream/0/files/[file_id]
  * http://developers.app.net/docs/resources/file/lifecycle/#update-a-file
  */
-- (void)updateFile:(ADNFile *)file withCompletionHandler:(ADNFileCompletionHandler)handler
+- (void)updateFile:(ADNFile *)file withParameters:(NSDictionary *)parameters  completionHandler:(ADNFileCompletionHandler)handler
 {
-#warning API call not implemented
+    NSString *endpoint = [@"stream/0/files/" stringByAppendingString:file.fileId];
+    [self putPath:endpoint
+       parameters:parameters
+          success:[self successBlockForModelOfClass:[ADNFile class]
+            withHandler:handler]
+          failure:[self failureBlockForHandler:handler]];
 }
 
 /**

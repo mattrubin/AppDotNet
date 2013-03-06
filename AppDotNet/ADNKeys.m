@@ -72,6 +72,7 @@ NSString * const ADNFieldTotalSize          = @"total_size";
 NSString * const ADNFieldType               = @"type";
 NSString * const ADNFieldURL                = @"url";
 NSString * const ADNFieldURLExpires         = @"url_expires";
+NSString * const ADNFieldURLPermanent       = @"url_permanent";
 NSString * const ADNFieldUser               = @"user";
 NSString * const ADNFieldUserIds            = @"user_ids";
 NSString * const ADNFieldUsername           = @"username";
