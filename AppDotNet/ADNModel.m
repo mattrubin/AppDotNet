@@ -28,17 +28,29 @@
 
 + (NSValueTransformer *)transformerForMutableArrayOfClass
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *externalArray) {
-        NSMutableArray *internalArray = [NSMutableArray arrayWithCapacity:externalArray.count];
-        for (NSDictionary *externalObject in externalArray) {
-            [internalArray addObject:[MTLJSONAdapter modelOfClass:self.class fromJSONDictionary:externalObject error:nil]];
-        }
-        return internalArray;
-    } reverseBlock:^(NSArray *models) {
-        return [models mtl_mapUsingBlock:^(MTLModel <MTLJSONSerializing> *model) {
-            return [MTLJSONAdapter JSONDictionaryFromModel:model];
-        }];
-    }];
+    NSValueTransformer *individualTransformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:self.class];
+    
+    return [MTLValueTransformer
+            reversibleTransformerWithForwardBlock:^id(NSArray *representations) {
+                NSMutableArray *models = [NSMutableArray arrayWithCapacity:representations.count];
+                for (id representation in representations) {
+                    id model = [individualTransformer transformedValue:representation];
+                    if (model) {
+                        [models addObject:model];
+                    }
+                }
+                return models;
+            }
+            reverseBlock:^id(NSArray *models) {
+                NSMutableArray *representations = [NSMutableArray arrayWithCapacity:models.count];
+                for (id model in models) {
+                    id representation = [individualTransformer reverseTransformedValue:model];
+                    if (representation) {
+                        [representations addObject:representation];
+                    }
+                }
+                return representations;
+            }];
 }
 
 + (NSValueTransformer *)transformerForDictionaryOfClass
@@ -46,16 +58,25 @@
     NSValueTransformer *individualTransformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:self.class];
     
     return [MTLValueTransformer
-            reversibleTransformerWithForwardBlock:^(NSDictionary *representations) {
-                return [representations mtl_mapValuesUsingBlock:^id(id key, id value) {
-                    return [individualTransformer transformedValue:value];
+            reversibleTransformerWithForwardBlock:^id(NSDictionary *representations) {
+                NSMutableDictionary *models = [NSMutableDictionary dictionaryWithCapacity:representations.count];
+                [representations enumerateKeysAndObjectsUsingBlock:^(id key, id representation, BOOL *stop) {
+                    id model = [individualTransformer transformedValue:representation];
+                    if (model) {
+                        [models setObject:model forKey:key];
+                    }
                 }];
+                return models;
             }
-            reverseBlock:^(NSDictionary *models) {
-                return [models mtl_mapValuesUsingBlock:^id(id key, id value) {
-                    MTLModel <MTLJSONSerializing> *model = value;
-                    return [MTLJSONAdapter JSONDictionaryFromModel:model];
+            reverseBlock:^id(NSDictionary *models) {
+                NSMutableDictionary *representations = [NSMutableDictionary dictionaryWithCapacity:models.count];
+                [models enumerateKeysAndObjectsUsingBlock:^(id key, id model, BOOL *stop) {
+                    id representation = [individualTransformer reverseTransformedValue:model];
+                    if (representation) {
+                        [representations setObject:representation forKey:key];
+                    }
                 }];
+                return representations;
             }];
 }
 
