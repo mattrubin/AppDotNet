@@ -7,6 +7,15 @@
 //
 
 
+// http://developers.app.net/docs/meta/annotations/#retrieving
+
+extern NSString * const ADNParameterIncludeAnnotations;
+extern NSString * const ADNParameterIncludeUserAnnotations;
+extern NSString * const ADNParameterIncludePostAnnotations;
+extern NSString * const ADNParameterIncludeChannelAnnotations;
+extern NSString * const ADNParameterIncludeMessageAnnotations;
+
+
 // http://developers.app.net/docs/basics/pagination/#parameters
 
 extern NSString * const ADNParameterSinceId;
