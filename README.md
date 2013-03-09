@@ -28,7 +28,7 @@ NSURL *authURL = authRequest.URL;
 
 ### Setting up `ADNClient`
 
-The `ADNClient` class is responsible for communicating with App.net. It has a method corresponding to each API endpoint. The simplest way to make use of the client is through the singleton instance `[ADNClient sharedClient]`.
+The `ADNClient` class is responsible for communicating with App.net. It has a method corresponding to each API endpoint. The simplest way to make use of the client is through the shared instance `[ADNClient sharedClient]`.
 
 Once an access token is acquired, it should be passed to the client:
 ```objc
