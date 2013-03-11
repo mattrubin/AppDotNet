@@ -15,9 +15,8 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            ADNFieldFileToken: [NSNull null],
-            ADNFieldFileId: [NSNull null],
-            ADNFieldFormat: [NSNull null],
+            ADNAnnotationTypeFile: [NSNull null],
+            @"file": [NSNull null] // do not serialize file property to JSON
             }];
 }
 
@@ -54,7 +53,7 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
 
 - (NSDictionary *)value
 {
-    return [self dictionaryWithValuesForKeys:@[ADNFieldFileToken, ADNFieldFileId, ADNFieldFormat]];
+    return [self dictionaryWithValuesForKeys:@[ADNAnnotationTypeFile]];
 }
 
 - (void)setValue:(NSDictionary *)value
@@ -74,12 +73,8 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    if ([key isEqualToString:ADNFieldFileToken]) {
-        [self setValue:value forKey:ADNFieldFileToken];
-    } else if ([key isEqualToString:ADNFieldFileId]) {
-        [self setValue:value forKey:ADNFieldFileId];
-    } else if ([key isEqualToString:ADNFieldFormat]) {
-        [self setValue:value forKey:ADNFieldFormat];
+    if ([key isEqualToString:ADNAnnotationTypeFile]) {
+        [self setValue:value forKey:ADNAnnotationTypeFile];
     } else {
         [super setValue:value forUndefinedKey:key];
     }
@@ -87,12 +82,8 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
 
 - (id)valueForUndefinedKey:(NSString *)key
 {
-    if ([key isEqualToString:ADNFieldFileToken]) {
-        return [self valueForKey:ADNFieldFileToken];
-    } else if ([key isEqualToString:ADNFieldFileId]) {
-        return [self valueForKey:ADNFieldFileId];
-    } else if ([key isEqualToString:ADNFieldFormat]) {
-        return [self valueForKey:ADNFieldFormat];
+    if ([key isEqualToString:ADNAnnotationTypeFile]) {
+        return [self valueForKey:@"file"];
     } else {
         return [super valueForUndefinedKey:key];
     }
