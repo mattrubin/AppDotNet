@@ -120,6 +120,7 @@
 		5DC371AC16E08D7A00190862 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85309C16A7B9D100357F6E /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC371AD16E08D7A00190862 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309D16A7B9D100357F6E /* AFXMLRequestOperation.m */; };
 		5DC371AF16E08DF100190862 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC371AE16E08DF100190862 /* CoreLocation.framework */; };
+		88426B2816F3BDD9008627D9 /* FileOembedAnnotation.json in Resources */ = {isa = PBXBuildFile; fileRef = 88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */; };
 		88F6490216E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */; };
 		88F6490316E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */; };
 		88F6490416E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */; };
@@ -384,6 +385,7 @@
 		5DC3712F16E08AE300190862 /* AppDotNet-OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-OSX-Prefix.pch"; sourceTree = "<group>"; };
 		5DC3719A16E08CA400190862 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		5DC371AE16E08DF100190862 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FileOembedAnnotation.json; sourceTree = "<group>"; };
 		88F648FF16E92C5B00480E58 /* ADNFileOembedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFileOembedAnnotation.h; sourceTree = "<group>"; };
 		88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFileOembedAnnotation.m; sourceTree = "<group>"; };
 		8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNClient.h; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				8C85405916ADF63300BA384D /* Post.json */,
 				8C66617816B73E4C0056A64B /* File.json */,
 				8C73C31716C43F570027027A /* Token.json */,
+				88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				8C85405A16ADF63300BA384D /* Post.json in Resources */,
 				8C66617916B73E4C0056A64B /* File.json in Resources */,
 				8C73C31816C43F570027027A /* Token.json in Resources */,
+				88426B2816F3BDD9008627D9 /* FileOembedAnnotation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
