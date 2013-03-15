@@ -11,4 +11,6 @@
 
 @interface ADNModelTests : SenTestCase
 
+- (BOOL)roundTripEqualityTestforModelClass:(Class)modelClass withJSONNamed:(NSString *)filename;
+
 @end
