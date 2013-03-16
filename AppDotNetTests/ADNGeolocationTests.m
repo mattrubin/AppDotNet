@@ -9,6 +9,7 @@
 #import "ADNGeolocationTests.h"
 #import <AppDotNet/AppDotNet.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SenTestCase+ADNModelTests.h"
 
 @interface ADNGeolocationTests ()
 

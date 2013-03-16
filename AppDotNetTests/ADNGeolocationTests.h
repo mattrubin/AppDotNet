@@ -11,6 +11,6 @@
 // tests the geolocation annotation both for roundtrip to JSON and the
 // conversion to CoreLocation coordinates
 
-@interface ADNGeolocationTests : ADNModelTests
+@interface ADNGeolocationTests : SenTestCase
 
 @end
