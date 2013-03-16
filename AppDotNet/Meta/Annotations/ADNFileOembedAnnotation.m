@@ -7,6 +7,7 @@
 //
 
 #import "ADNFileOembedAnnotation.h"
+#import "ADNFile.h"
 
 NSString * const ADNAnnotationTypeOembed = @"net.app.core.oembed";
 NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
@@ -15,10 +16,10 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            ADNAnnotationTypeFile: [NSNull null],
             @"file": [NSNull null] // do not serialize file property to JSON
             }];
 }
+
 
 - (id)init
 {
@@ -29,36 +30,19 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
     return self;
 }
 
-// When building from a dictionary, intercept the "value" key
-- (void)setValue:(id)value forKey:(NSString *)key
++ (id)instanceFromFile:(ADNFile *)file
 {
-    if ([key isEqualToString: ADNFieldValue]) {
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            [self setValue:value];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
-}
-
-// When converting to a dictionary, intercept the "value" key
-- (id)valueForKey:(NSString *)key
-{
-    if ([key isEqualToString: ADNFieldValue]) {
-        return [self value];
-    } else {
-        return [super valueForKey:key];
-    }
+    ADNFileOembedAnnotation *instance = [[self alloc] init];
+    instance.file = file;
+    return instance;
 }
 
 - (NSDictionary *)value
 {
-    return [self dictionaryWithValuesForKeys:@[ADNAnnotationTypeFile]];
-}
-
-- (void)setValue:(NSDictionary *)value
-{
-    [self setValuesForKeysWithDictionary:value];
+    return @{ ADNAnnotationTypeFile : @{ADNFieldFileId: self.file.fileId,
+                                        ADNFieldFileToken: self.file.fileToken,
+                                        ADNFieldFormat: @"oembed"
+                                        }};
 }
 
 // Don't allow the type to change
@@ -71,30 +55,4 @@ NSString * const ADNAnnotationTypeFile = @"+net.app.core.file";
     }
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:ADNAnnotationTypeFile]) {
-        [self setValue:value forKey:ADNAnnotationTypeFile];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-}
-
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    if ([key isEqualToString:ADNAnnotationTypeFile]) {
-        return [self valueForKey:@"file"];
-    } else {
-        return [super valueForUndefinedKey:key];
-    }
-}
-
-#pragma mark -
-
-+ (id)instanceFromFile:(ADNFile *)file
-{
-    ADNFileOembedAnnotation *instance = [[self alloc] init];
-    instance.file = file;
-    return instance;
-}
 @end
