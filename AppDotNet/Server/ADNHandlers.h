@@ -7,13 +7,21 @@
 //
 
 
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 @class UIImage;
+#else
+@class NSImage;
+#endif
 @class ADNUser, ADNToken, ADNChannel, ADNMessage, ADNText, ADNMetadata, ADNFile, ADNPost;
 
 
 typedef void (^GenericCompletionHandler)     (id            object,  ADNMetadata *meta, NSError *error);
 typedef void (^NSArrayCompletionHandler)     (NSArray      *objects, ADNMetadata *meta, NSError *error);
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 typedef void (^UIImageCompletionHandler)     (UIImage      *image,   ADNMetadata *meta, NSError *error);
+#else
+typedef void (^NSImageCompletionHandler)     (NSImage      *image,   ADNMetadata *meta, NSError *error);
+#endif
 typedef void (^NSDictionaryCompletionHandler)(NSDictionary *objects, ADNMetadata *meta, NSError *error);
 typedef void (^ADNUserCompletionHandler)     (ADNUser      *user,    ADNMetadata *meta, NSError *error);
 typedef void (^ADNTokenCompletionHandler)    (ADNToken     *token,   ADNMetadata *meta, NSError *error);
