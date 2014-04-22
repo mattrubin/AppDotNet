@@ -100,7 +100,11 @@
  * GET /stream/0/users/[user_id]/avatar
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-avatar-image
  */
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 - (void)getAvatarImageForUser:(NSString*)usernameOrId withCompletionHandler:(UIImageCompletionHandler)handler
+#else
+- (void)getAvatarImageForUser:(NSString*)usernameOrId withCompletionHandler:(NSImageCompletionHandler)handler
+#endif
 {
     NSAssert(usernameOrId, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/avatar", usernameOrId];
@@ -126,7 +130,11 @@
  * GET /stream/0/users/[user_id]/cover
  * http://developers.app.net/docs/resources/user/profile/#retrieve-a-users-cover-image
  */
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 - (void)getCoverImageForUser:(NSString*)usernameOrId withCompletionHandler:(UIImageCompletionHandler)handler
+#else
+- (void)getCoverImageForUser:(NSString*)usernameOrId withCompletionHandler:(NSImageCompletionHandler)handler
+#endif
 {
     NSAssert(usernameOrId, @"You must specify a username or ID.");
     NSString *endpoint = [NSString stringWithFormat:@"users/%@/cover", usernameOrId];

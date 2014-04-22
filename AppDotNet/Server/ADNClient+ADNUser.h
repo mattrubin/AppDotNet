@@ -19,8 +19,13 @@
 
 - (void)updateUser:(ADNUser *)user withCompletionHandler:(ADNUserCompletionHandler)handler;
 
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 - (void)getAvatarImageForUser:(NSString*)usernameOrId withCompletionHandler:(UIImageCompletionHandler)handler;
 - (void)getCoverImageForUser:(NSString*)usernameOrId  withCompletionHandler:(UIImageCompletionHandler)handler;
+#else
+- (void)getAvatarImageForUser:(NSString*)usernameOrId withCompletionHandler:(NSImageCompletionHandler)handler;
+- (void)getCoverImageForUser:(NSString*)usernameOrId  withCompletionHandler:(NSImageCompletionHandler)handler;
+#endif
 - (void)updateAvatarImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 - (void)updateCoverImage:(id)image                   withCompletionHandler:(GenericCompletionHandler)handler;
 
