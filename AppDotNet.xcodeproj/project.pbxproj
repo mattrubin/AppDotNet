@@ -120,6 +120,15 @@
 		5DC371AC16E08D7A00190862 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85309C16A7B9D100357F6E /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC371AD16E08D7A00190862 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85309D16A7B9D100357F6E /* AFXMLRequestOperation.m */; };
 		5DC371AF16E08DF100190862 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC371AE16E08DF100190862 /* CoreLocation.framework */; };
+		88426B2816F3BDD9008627D9 /* FileOembedAnnotation.json in Resources */ = {isa = PBXBuildFile; fileRef = 88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */; };
+		88426B3016F3C229008627D9 /* ADNFileOembedAnnotation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88F648FF16E92C5B00480E58 /* ADNFileOembedAnnotation.h */; };
+		88426B3216F3C49E008627D9 /* Geolocation.json in Resources */ = {isa = PBXBuildFile; fileRef = 88426B3116F3C49E008627D9 /* Geolocation.json */; };
+		88426B3516F3C5DF008627D9 /* ADNGeolocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88426B3416F3C5DF008627D9 /* ADNGeolocationTests.m */; };
+		889C57BE16F482B700E9A074 /* ADNFileOembedAnnotationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C57BD16F482B600E9A074 /* ADNFileOembedAnnotationTests.m */; };
+		889C57C716F488B700E9A074 /* SenTestCase+ADNModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C57C616F488B700E9A074 /* SenTestCase+ADNModelTests.m */; };
+		88F6490216E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */; };
+		88F6490416E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */; };
+		88FC11F016ED219900C42CDB /* ADNFileOembedAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 88F648FF16E92C5B00480E58 /* ADNFileOembedAnnotation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C07343B167FC48B002B9EBC /* ADNChannel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1AA6167C6FD70071D908 /* ADNChannel.h */; };
 		8C07343C167FC48B002B9EBC /* ADNFilter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1AA9167C6FE80071D908 /* ADNFilter.h */; };
 		8C07343D167FC48B002B9EBC /* ADNInteraction.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CED1AAC167C706B0071D908 /* ADNInteraction.h */; };
@@ -342,6 +351,7 @@
 				8C0C6B3816A7FF4600E1A1CE /* AFHTTPClient.h in CopyFiles */,
 				8C0C6B3716A7FEF800E1A1CE /* ADNClient.h in CopyFiles */,
 				8CFB9D7A16897F740075FA7A /* ADNGeolocation.h in CopyFiles */,
+				88426B3016F3C229008627D9 /* ADNFileOembedAnnotation.h in CopyFiles */,
 				8CFB9D61168900C60075FA7A /* ADNSource.h in CopyFiles */,
 				8CFB9D63168900C60075FA7A /* ADNDescription.h in CopyFiles */,
 				8C1A3DDD168073FD00261C9B /* ADNAccessControlList.h in CopyFiles */,
@@ -380,6 +390,16 @@
 		5DC3712F16E08AE300190862 /* AppDotNet-OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDotNet-OSX-Prefix.pch"; sourceTree = "<group>"; };
 		5DC3719A16E08CA400190862 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		5DC371AE16E08DF100190862 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FileOembedAnnotation.json; sourceTree = "<group>"; };
+		88426B3116F3C49E008627D9 /* Geolocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Geolocation.json; sourceTree = "<group>"; };
+		88426B3316F3C5DF008627D9 /* ADNGeolocationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNGeolocationTests.h; sourceTree = "<group>"; };
+		88426B3416F3C5DF008627D9 /* ADNGeolocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNGeolocationTests.m; sourceTree = "<group>"; };
+		889C57BC16F482B600E9A074 /* ADNFileOembedAnnotationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFileOembedAnnotationTests.h; sourceTree = "<group>"; };
+		889C57BD16F482B600E9A074 /* ADNFileOembedAnnotationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFileOembedAnnotationTests.m; sourceTree = "<group>"; };
+		889C57C516F488B700E9A074 /* SenTestCase+ADNModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SenTestCase+ADNModelTests.h"; sourceTree = "<group>"; };
+		889C57C616F488B700E9A074 /* SenTestCase+ADNModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestCase+ADNModelTests.m"; sourceTree = "<group>"; };
+		88F648FF16E92C5B00480E58 /* ADNFileOembedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFileOembedAnnotation.h; sourceTree = "<group>"; };
+		88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFileOembedAnnotation.m; sourceTree = "<group>"; };
 		8C0C6B3316A7FBC900E1A1CE /* ADNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNClient.h; sourceTree = "<group>"; };
 		8C0C6B3416A7FBC900E1A1CE /* ADNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNClient.m; sourceTree = "<group>"; };
 		8C1A3DAB167FEA7B00261C9B /* ADNAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNAuthenticationRequest.h; sourceTree = "<group>"; };
@@ -652,6 +672,8 @@
 				8C85405916ADF63300BA384D /* Post.json */,
 				8C66617816B73E4C0056A64B /* File.json */,
 				8C73C31716C43F570027027A /* Token.json */,
+				88426B2716F3BDD9008627D9 /* FileOembedAnnotation.json */,
+				88426B3116F3C49E008627D9 /* Geolocation.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -851,6 +873,8 @@
 			children = (
 				8C85405616ADF16900BA384D /* ADNModelTests.h */,
 				8C85405716ADF16A00BA384D /* ADNModelTests.m */,
+				889C57C516F488B700E9A074 /* SenTestCase+ADNModelTests.h */,
+				889C57C616F488B700E9A074 /* SenTestCase+ADNModelTests.m */,
 				8C7B24B0167ECEF600C38F51 /* Mock Data */,
 				8CED1A87167C5FC90071D908 /* Supporting Files */,
 				8C8540B216AE89CE00BA384D /* APITests.h */,
@@ -859,6 +883,10 @@
 				8C85408816AE2D9F00BA384D /* ADNUserAPITests.m */,
 				8C8540AF16AE890B00BA384D /* ADNTextAPITests.h */,
 				8C8540B016AE890C00BA384D /* ADNTextAPITests.m */,
+				88426B3316F3C5DF008627D9 /* ADNGeolocationTests.h */,
+				88426B3416F3C5DF008627D9 /* ADNGeolocationTests.m */,
+				889C57BC16F482B600E9A074 /* ADNFileOembedAnnotationTests.h */,
+				889C57BD16F482B600E9A074 /* ADNFileOembedAnnotationTests.m */,
 			);
 			path = AppDotNetTests;
 			sourceTree = "<group>";
@@ -931,6 +959,8 @@
 				8C7B24BF167F31B800C38F51 /* ADNAnnotation.m */,
 				8CFB9D77168978010075FA7A /* ADNGeolocation.h */,
 				8CFB9D78168978010075FA7A /* ADNGeolocation.m */,
+				88F648FF16E92C5B00480E58 /* ADNFileOembedAnnotation.h */,
+				88F6490016E92C5B00480E58 /* ADNFileOembedAnnotation.m */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -957,6 +987,7 @@
 				5DC3717316E08BC500190862 /* ADNToken.h in Headers */,
 				5DC3717516E08BCE00190862 /* ADNAnnotation.h in Headers */,
 				5DC3717616E08BCE00190862 /* ADNGeolocation.h in Headers */,
+				88FC11F016ED219900C42CDB /* ADNFileOembedAnnotation.h in Headers */,
 				5DC3717716E08BCE00190862 /* ADNEntities.h in Headers */,
 				5DC3717816E08BD400190862 /* ADNMention.h in Headers */,
 				5DC3717916E08BD400190862 /* ADNHashtag.h in Headers */,
@@ -1146,6 +1177,8 @@
 				8C85405A16ADF63300BA384D /* Post.json in Resources */,
 				8C66617916B73E4C0056A64B /* File.json in Resources */,
 				8C73C31816C43F570027027A /* Token.json in Resources */,
+				88426B2816F3BDD9008627D9 /* FileOembedAnnotation.json in Resources */,
+				88426B3216F3C49E008627D9 /* Geolocation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1259,7 @@
 				253C138816E28FE10087D70E /* AFHTTPClient.m in Sources */,
 				B8E1BE5416E300340080A260 /* ADNJSONAdapter.m in Sources */,
 				B8E1BE5916E300610080A260 /* NSDictionary+AppDotNet.m in Sources */,
+				88F6490416E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1288,6 +1322,7 @@
 				253C138716E28FE00087D70E /* AFHTTPClient.m in Sources */,
 				B8E1BE5316E300340080A260 /* ADNJSONAdapter.m in Sources */,
 				B8E1BE5816E300610080A260 /* NSDictionary+AppDotNet.m in Sources */,
+				88F6490216E92C5B00480E58 /* ADNFileOembedAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1296,6 +1331,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C85405816ADF16A00BA384D /* ADNModelTests.m in Sources */,
+				88426B3516F3C5DF008627D9 /* ADNGeolocationTests.m in Sources */,
+				889C57BE16F482B700E9A074 /* ADNFileOembedAnnotationTests.m in Sources */,
+				889C57C716F488B700E9A074 /* SenTestCase+ADNModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
